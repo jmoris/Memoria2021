@@ -1,0 +1,116 @@
+<div class="">
+    <div class="row">
+        <div class="breadcrumb col-md-9">
+            <h1>Bienvenido</h1>
+            <ul>
+                <li><a href="">Ayudante</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="separator-breadcrumb border-top"></div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title">Has Participado en</div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="card card-icon mb-4">
+                                <div class="card-body text-center">
+                                    <i class="i-File-Clipboard-Text--Image"></i>
+                                    <p class="text-muted mt-2 mb-2">Proyectos</p>
+                                    <p class="text-primary text-24 line-height-1 m-0">{{ info.usuarios.teacher }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="card card-icon mb-4">
+                                <div class="card-body text-center">
+                                    <i class="i-Diploma-2"></i>
+                                    <p class="text-muted mt-2 mb-2">Cursos</p>
+                                    <p class="text-primary text-24 line-height-1 m-0">{{ info.usuarios.teacher }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="card card-icon mb-4">
+                                <div class="card-body text-center">
+                                    <i class="i-University"></i>
+                                    <p class="text-muted mt-2 mb-2">Semestres</p>
+                                    <p class="text-primary text-24 line-height-1 m-0">{{ info.usuarios.student }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title">Cursos Periodo Actual</div>
+                     <div echarts [options]="salesChartPie" [merge]="dataCursos" [autoResize]="true" style="height: 182px;"></div>
+                
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title">Proyectos Periodo Actual</div>
+                     <div echarts [options]="salesChartPie" [merge]="dataCursos" [autoResize]="true" style="height: 182px;"></div>
+                
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title">Eres Ayudante para</div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="card card-icon mb-4">
+                                <div class="card-body text-center">
+                                    <i class="i-File-Clipboard-Text--Image"></i>
+                                    <p class="text-muted mt-2 mb-2">Proyectos</p>
+                                    <p class="text-primary text-24 line-height-1 m-0">{{ info.usuarios.teacher }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="card card-icon mb-4">
+                                <div class="card-body text-center">
+                                    <i class="i-Diploma-2"></i>
+                                    <p class="text-muted mt-2 mb-2">Cursos</p>
+                                    <p class="text-primary text-24 line-height-1 m-0">{{ info.usuarios.teacher }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="card card-icon mb-4">
+                                <div class="card-body text-center">
+                                    <i class="i-MaleFemale"></i>
+                                    <p class="text-muted mt-2 mb-2">Alumnos</p>
+                                    <p class="text-primary text-24 line-height-1 m-0">{{ info.usuarios.student }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>

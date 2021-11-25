@@ -1,0 +1,675 @@
+<div class="breadcrumb">
+	<h1>{{this.proyecto}} </h1>
+	<button (click)="generarReporte()" style="transform: scale(0.75)" class="btn float-right btn-outline-secondary"><mat-icon>description icon</mat-icon></button>
+	<button (click)="analizar()" style="transform: scale(0.75)" class="btn btn-outline-primary float-right"><mat-icon>refresh icon</mat-icon></button>
+
+</div>
+<div class="module-loader" *ngIf="loading">
+	<div class="spinner spinner-bubble spinner-bubble-primary mr-3"></div>
+</div>
+<div class="separator-breadcrumb border-top"></div>
+
+<div class="row">
+	<div class="col-md-12">
+		<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+			<li [ngbNavItem]="1">
+				<a ngbNavLink>Avances - Información </a>
+				<ng-template ngbNavContent>
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							<div class="card o-hidden mb-4">
+								<div class="row">
+									<div class="col-md-6">
+										<!--<div class="card mb-4 mt-4 ml-4 ">
+											<div class="card-body">
+												<h6 class="mb-2 text-muted">Issues abiertos/cerrados</h6>
+												<p class="mb-2 text-24 font-weight-light text-title">
+													0.0
+												</p>
+												<p class="mb-1">
+													<ngb-progressbar type="success"
+														[value]="25" height="10px">
+													</ngb-progressbar>
+												</p>
+											</div>
+										</div>-->
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="card card-icon mb-4">
+												<div class="card-body text-center">
+													<i class="i-Book"></i>
+													<p class="text-muted mt-2 mb-2">{{ this.repositorio}}</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="col-md-4 d-inline-block">
+												<div class="card card-icon">
+													<div class="card-body text-center">
+														<i class="i-Book"></i>
+														<p class="text-muted mt-2 mb-2">Commits</p>
+														<p class="text-primary text-21 line-height-1 m-0">{{ infocommits }}</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4 d-inline-block">
+												<div class="card card-icon">
+													<div class="card-body text-center">
+														<i class="i-Support"></i>
+														<p class="text-muted mt-2 mb-2">Issues</p>
+														<p class="text-primary text-21 line-height-1 m-0">{{ infoissues }}</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4 d-inline-block">
+												<div class="card card-icon">
+													<div class="card-body text-center">
+														<i class="i-Clouds-Weather"></i>
+														<p class="text-muted mt-2 mb-2">Branches</p>
+														<p class="text-primary text-21 line-height-1 m-0"><a [routerLink]="" (click)="openBranchesModal(branchesModal, $event)">{{ infobranches }}</a></p>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+									
+									<div class="col-lg-6 col-md-12">
+										<div class="card mb-4 ml-4 ">
+											<div class="card-body">
+												<div class="row">
+													<div class="card-title">&nbsp;Equipo de trabajo </div>
+													<div class="col-md-9 text-right">
+                                                        <div style="display:inline; white-space: nowrap;">
+                                                            <!--<button style="display:inline;" class="btn btn-primary btn-rounded" (click)="openAddDialog()">
+                                                                <i class="fas fa-cloud"></i> Editar Participantes
+                                                            </button> -->
+
+                                                        </div>
+													</div>
+												</div>
+												<div *ngFor="let miembro of equipo"
+													class="d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3">
+													<img class="avatar-md rounded mr-3"
+														src="{{ miembro.avatar }}" alt="">
+													<div class="flex-grow-1">
+														<p class="m-0 text-small text-muted">{{miembro.name}}</p>
+													</div>
+													<div *ngIf="!isAlumno" class="flex-grow-1">
+														<button *ngIf="!existColaborador(miembro.name)" (click)="addStudent(addStudentModal,miembro.name,$event)" class="m-1 float-right btn btn-outline-info">Enlazar usuario</button>
+														<button *ngIf="existColaborador(miembro.name)" (click)="deleteStudent(deleteConfirmModal, miembro.name, $event)" type="button" class="float-right btn btn-outline-danger" style="transform: scale(.6);" (click)="console.log('hola')"><mat-icon>link_off</mat-icon></button>
+														<span *ngIf="existColaborador(miembro.name)" class="m-1 float-right">{{ getUserColaborador(miembro.name) }}</span>
+													</div>
+													<div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</ng-template>
+			</li>
+			<li [ngbNavItem]="2">
+				<a ngbNavLink>Ultimos 30 commits</a>
+				<ng-template ngbNavContent>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card o-hidden mb-4">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="card o-hidden mb-4 mt-4 ml-4">
+											<div class="card-body text-center">
+												<div class="content">
+													<p class="m-0 text-small text-muted">Total de commits</p>
+													<p class="text-primary text-40 line-height-1 m-0">
+														{{ infocommits}}</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<div class="card o-hidden mb-4 mt-4 mr-4">
+											<ngx-datatable style="height: calc(100vh - 270px); box-shadow: none"
+												class="material fullscreen" [columnMode]="'flex'" [headerHeight]="50"
+												[footerHeight]="50" [rowHeight]="60" [scrollbarV]="true" [limit]="10"
+												[rows]="commits">
+												<ngx-datatable-column name="sha" [flexGrow]="2">
+													<ng-template ngx-datatable-header-template>
+														SHA
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.sha }}
+													</ng-template>
+												</ngx-datatable-column>
+												<ngx-datatable-column name="commit.author.name" [flexGrow]="1">
+													<ng-template ngx-datatable-header-template>
+														Autor
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.commit.author.name }}
+													</ng-template>
+												</ngx-datatable-column>
+												<ngx-datatable-column name="commit.message" [flexGrow]="3">
+													<ng-template ngx-datatable-header-template>
+														Mensaje
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.commit.message }}
+													</ng-template>
+												</ngx-datatable-column>
+											</ngx-datatable>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ng-template>
+			</li>
+			<li *ngIf="hasWiki" [ngbNavItem]="5">
+				<a ngbNavLink>WIKI</a>
+				<ng-template ngbNavContent>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card o-hidden m-4">
+								<div class="row">
+									<div class="col-md-8">
+										<div class="card m-4">
+											<div class="m-2" [innerHtml]="rendered"></div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="card m-4">
+											<div class="card-body text-center">
+												<div class="content">
+													<ul style="list-style-type: none; text-align: left">
+														<li *ngFor="let file of wikiFiles" (click)="getMDFile(file)">{{ file.replaceAll('-', ' ').replaceAll('.md', '') }}</li>
+													</ul>
+													<p>Ult. Actualizacion: {{ lastWikiFileUpdated }}</p>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ng-template>
+			</li>
+			<li *ngIf="boards > 0" [ngbNavItem]="6">
+				<a ngbNavLink>Tableros</a>
+				<ng-template ngbNavContent>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card o-hidden mb-4">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-3 float-right">
+											<form [formGroup]="form">
+												<mat-form-field appearance="standard" class="input">
+													<mat-label>Tablero</mat-label>
+													<mat-select formControlName="tablero" (selectionChange)="onTableroChange($event)">
+														<mat-option *ngFor="let tablero of tableros" [value]="tablero.id">
+															{{ tablero.name }}
+														</mat-option>
+													</mat-select>
+													<mat-hint></mat-hint>
+												</mat-form-field>
+											</form>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="overflow-auto m-5">
+											<table class="d-inline tablero" *ngFor="let item of tablero | keyvalue: 0">
+												<thead>
+													<tr>
+														<th class="tablero left">{{ item.key }}</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="fila" *ngFor="let card of item.value">
+														<td class="celda tablero"><div class="tarjeta">{{ card.nota }}<div class="autor">Creado por: {{ card.autor }}</div></div></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ng-template>
+			</li>
+			<li [ngbNavItem]="3">
+				<a ngbNavLink>Informe MAAT</a>
+				<ng-template ngbNavContent>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card o-hidden mb-4">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="card o-hidden mb-4 mt-4 ml-4">
+											<div class="card-body text-center">
+												<div class="content">
+													<p class="m-0 text-small text-muted">Total de entidades</p>
+													<p class="text-primary text-40 line-height-1 m-0">
+														{{ maatReport.length }}</p>
+												</div>
+											</div>
+										</div>
+										<div class="card o-hidden mb-4 mt-4 ml-4">
+											<div class="card-body text-center">
+												<div class="content">
+													<p class="m-0 text-small text-muted">Análisis de complejidad</p>
+													<button mat-icon-button color="primary" (click)="projectComplexityAnalisis(projectComplexityAnalysisModal)">
+														<mat-icon class="mat-18">search</mat-icon>
+													  </button> 
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<div class="card o-hidden mb-4 mt-4 mr-4">
+											<ngx-datatable style="height: calc(100vh - 270px); box-shadow: none"
+												class="material fullscreen" [columnMode]="'flex'" [headerHeight]="50"
+												[footerHeight]="50" [rowHeight]="60" [scrollbarV]="true" [limit]="10"
+												[rows]="maatReport">
+												<ngx-datatable-column name="entity" [flexGrow]="2">
+													<ng-template ngx-datatable-header-template>
+														Entidad
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.entity }}
+													</ng-template>
+												</ngx-datatable-column>
+												<ngx-datatable-column name="nrevs" [flexGrow]="1">
+													<ng-template ngx-datatable-header-template>
+														Revisiones
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.nrevs }}
+													</ng-template>
+												</ngx-datatable-column>
+												<ngx-datatable-column name="nrevs" [flexGrow]="1">
+													<ng-template ngx-datatable-header-template>
+														Accion
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														<button mat-icon-button color="primary" (click)="complexityAnalysis(complexityAnalysisModal, row.entity)">
+															<mat-icon class="mat-18">search</mat-icon>
+														</button>
+														<button mat-icon-button color="primary" (click)="openPCAModal(projectComplexityAnalisis, row.entity)">
+															<mat-icon class="mat-18">date_range</mat-icon>
+														</button>
+													</ng-template>
+												</ngx-datatable-column>
+											</ngx-datatable>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ng-template>
+			</li>
+			<li [ngbNavItem]="4">
+				<a ngbNavLink>Informe KLOC</a>
+				<ng-template ngbNavContent>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card o-hidden mb-4">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="card o-hidden mb-4 mt-4 ml-4">
+											<div class="card-body text-center">
+												<div class="content">
+													<p class="m-0 text-small text-muted">Total de archivos</p>
+													<p class="text-primary text-40 line-height-1 m-0">
+														{{ klocReport.length }}</p>
+												</div>
+											</div>
+										</div>
+										<div class="card o-hidden mb-4 mt-4 ml-4">
+											<div class="card-body text-center">
+												<div class="content">
+													<p class="m-0 text-small text-muted">Lineas en blanco</p>
+													<p class="text-primary text-40 line-height-1 m-0">
+														{{ klocResumen.blank }}</p>
+												</div>
+											</div>
+										</div>
+										<div class="card o-hidden mb-4 mt-4 ml-4">
+											<div class="card-body text-center">
+												<div class="content">
+													<p class="m-0 text-small text-muted">Lineas comentadas</p>
+													<p class="text-primary text-40 line-height-1 m-0">
+														{{ klocResumen.comment }}</p>
+												</div>
+											</div>
+										</div>
+										<div class="card o-hidden mb-4 mt-4 ml-4">
+											<div class="card-body text-center">
+												<div class="content">
+													<p class="m-0 text-small text-muted">Lineas de codigo</p>
+													<p class="text-primary text-40 line-height-1 m-0">
+														{{ klocResumen.code }}</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<div class="card o-hidden mb-4 mt-4 mr-4">
+											<ngx-datatable style="height: calc(100vh - 270px); box-shadow: none"
+												class="material fullscreen" [columnMode]="'flex'" [headerHeight]="50"
+												[footerHeight]="50" [rowHeight]="60" [scrollbarV]="true" [limit]="10"
+												[rows]="klocReport">
+												<ngx-datatable-column name="language" [flexGrow]="1">
+													<ng-template ngx-datatable-header-template>
+														Lenguaje
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.language }}
+													</ng-template>
+												</ngx-datatable-column>
+												<ngx-datatable-column name="file" [flexGrow]="3">
+													<ng-template ngx-datatable-header-template>
+														Archivo
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.file }}
+													</ng-template>
+												</ngx-datatable-column>
+												<ngx-datatable-column name="blank" [flexGrow]="1">
+													<ng-template ngx-datatable-header-template>
+														Vacias
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.blank }}
+													</ng-template>
+												</ngx-datatable-column>
+												<ngx-datatable-column name="comment" [flexGrow]="1">
+													<ng-template ngx-datatable-header-template>
+														Comentadas
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.comment }}
+													</ng-template>
+												</ngx-datatable-column>
+												<ngx-datatable-column name="ccode" [flexGrow]="1">
+													<ng-template ngx-datatable-header-template>
+														Codigo
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.code }}
+													</ng-template>
+												</ngx-datatable-column>
+											</ngx-datatable>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ng-template>
+			</li>
+		</ul>
+
+		<div [ngbNavOutlet]="nav" class="mt-2"></div>
+	</div>
+</div>
+
+
+<!-- VENTANA MODAL QUE SE DESPLEGA PARA AGREGA UNA NUEVA TAREA-->
+<ng-template #modalSingleUser let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Asignar nuevo estudiante </h4>
+        <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row">
+                <div class="col-md-12 form-group ">
+                    <div class="input-group">
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="lastName">Usuario </label>
+                            <select class="form-control" (change)="changeUsuarioModal($event.target.value)">
+                                <option value="" disabled="true" [selected]="true">Seleccione un usuario</option>
+                                <option *ngFor="let item of usuarios" [value]="item.id">{{ item.name + ' ' + item.lastname }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" (click)="onCloseSingleUser(modalSingleUser)" class="btn btn-outline-primary m-1">Agregar</button>
+    </div>
+</ng-template>
+<!-- VENTANA MODAL PARA REVISAR BRANCHES -->
+<ng-template #branchesModal let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-title">Ramas del proyecto</h4>
+		<button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+			(click)="modal.dismiss('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="col-md-12 mb-3">
+				<div class="card o-hidden mb-4 mt-4 mr-4">
+					<table mat-table [dataSource]="dataSource" matSort class="col-lg-12" matSortActive="name"
+						matSortDirection="asc" matSortDisableClear>
+						<ng-container matColumnDef="name">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+							<td mat-cell *matCellDef="let element"> {{ element?.name }} </td>
+						</ng-container>
+
+						<ng-container matColumnDef="last_update">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Ult. Actualización </th>
+							<td mat-cell *matCellDef="let element"> {{ formatDate(element?.last_update) }} </td>
+						</ng-container>
+
+						<ng-container matColumnDef="author">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Autor </th>
+							<td mat-cell *matCellDef="let element"> {{element?.author}} </td>
+						</ng-container>
+
+						<ng-container matColumnDef="message">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Mensaje </th>
+							<td mat-cell class="overflow:hidden; white-space:nowrap; text-overflow: ellipsis;" *matCellDef="let element"> {{element?.message}} </td>
+						</ng-container>
+
+						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+						<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+					</table>
+					<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" class="mat-elevation-z8">
+					</mat-paginator>
+				</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" (click)="modal.dismiss('Cross click')" class="btn btn-outline-danger m-1">Cerrar</button>
+	</div>
+</ng-template>
+<!-- VENTANA MODAL PARA AGREGAR ESTUDIANTES/COLABORADORES-->
+<ng-template #addStudentModal let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-title">Agregar Colaborador</h4>
+		<button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+			(click)="modal.dismiss('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="col-md-12 form-group mb-3">
+			<label for="picker1">Estudiante a agregar </label>
+			<select [(ngModel)]="estudianteAgregar" class="form-control">
+				<option *ngFor="let estudiante of estudiantes"  > {{estudiante.name  + " " + estudiante.lastname
+					+ " "
+					+ estudiante.email}} </option>
+			</select>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" (click)="onCloseConfirm(modal)" class="btn btn-outline-primary m-1">Agregar</button>
+	</div>
+</ng-template>
+  <!-- VENTANA MODAL QUE SE DESPLEGA PARA CONFIRMAR LA ELIMINACIÓN DE UN DATO-->
+  <ng-template #complexityAnalysisModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Análisis de complejidad a entidad</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+		<div class="col-md-12">
+			<h3>{{ entityComplexity.entity }}</h3>
+			<table class="table">
+				<thead></thead>
+				<tbody>
+					  <tr>
+						  <td>Complejidad acumulada</td>
+						  <td>{{ entityComplexity.total }}</td>
+						</tr>
+					  <tr>
+						  <td>Media de complejidad</td>
+						  <td>{{ entityComplexity.mean }}</td>
+						</tr>
+						<tr>
+						  <td>Desviación est. complejidad</td>
+						  <td>{{ entityComplexity.sd }}</td>
+						</tr>
+					  <tr>
+						  <td>Maxima complejidad</td>
+						  <td>{{ entityComplexity.max }}</td>
+						</tr>
+				</tbody>
+			</table>
+		</div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded"
+        (click)="modal.dismiss('cancel')">Cerrar</button>
+    </div>
+  </ng-template>
+  
+    <!-- VENTANA MODAL QUE SE DESPLEGA PARA CONFIRMAR LA ELIMINACIÓN DE UN DATO-->
+	<ng-template #projectComplexityAnalisis let-modal>
+		<div class="modal-header">
+		  <h4 class="modal-title" id="modal-title">Análisis de complejidad a entidad</h4>
+		  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+			(click)="modal.dismiss('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			<div class="col-md-12">
+				<h3>{{ entityComplexity.entity }}</h3>
+				<form class="form-inline">
+					<div class="form-group hidden">
+					  <div class="input-group">
+						<input name="datepicker"
+							   class="form-control"
+							   ngbDatepicker
+							   #datepicker="ngbDatepicker"
+							   [autoClose]="'outside'"
+							   (dateSelect)="onDateSelection($event)"
+							   [displayMonths]="2"
+							   [dayTemplate]="t"
+							   outsideDays="hidden"
+							   [startDate]="fromDate!"
+							   tabindex="-1">
+						<ng-template #t let-date let-focused="focused">
+						  <span class="custom-day"
+								[class.focused]="focused"
+								[class.range]="isRange(date)"
+								[class.faded]="isHovered(date) || isInside(date)"
+								(mouseenter)="hoveredDate = date"
+								(mouseleave)="hoveredDate = null">
+							{{ date.day }}
+						  </span>
+						</ng-template>
+					  </div>
+					</div>
+					<div class="form-group">
+					  <div class="input-group">
+						<input #dpFromDate
+							   class="form-control" placeholder="yyyy-mm-dd"
+							   name="dpFromDate"
+							   [value]="formatter.format(fromDate)"
+							   (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+						<div class="input-group-append">
+						  <button class="btn btn-outline-secondary" (click)="datepicker.toggle()" type="button"><mat-icon>calendar_today</mat-icon></button>
+						</div>
+					  </div>
+					</div>
+					<div class="form-group ml-2">
+					  <div class="input-group">
+						<input #dpToDate
+							   class="form-control" placeholder="yyyy-mm-dd"
+							   name="dpToDate"
+							   [value]="formatter.format(toDate)"
+							   (input)="toDate = validateInput(toDate, dpToDate.value)">
+						<div class="input-group-append">
+						  <button class="btn btn-outline-secondary" (click)="datepicker.toggle()" type="button"><mat-icon>calendar_today</mat-icon></button>
+						</div>
+					  </div>
+					</div>
+				  </form>
+
+				<apx-chart
+					[series]="chartOptions.series"
+					[chart]="chartOptions.chart"
+					[xaxis]="chartOptions.xaxis"
+					[title]="chartOptions.title"
+		  		></apx-chart>
+			</div>
+		  
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-outline-secondary btn-rounded"
+			(click)="modal.dismiss('cancel')">Cerrar</button>
+		</div>
+	  </ng-template>
+	  <!-- VENTANA MODAL QUE SE DESPLEGA PARA CONFIRMAR LA ELIMINACIÓN DE UN DATO-->
+<ng-template #deleteConfirmModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Eliminación de usuario</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>¿Estas seguro de desenlazar este usuario?</strong></p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded"
+        (click)="modal.dismiss('cancel')">Cancelar</button>
+      <button type="button" ngbAutofocus class="btn btn-wide btn-danger btn-rounded"
+        (click)="modal.close('Ok')">Borrar</button>
+    </div>
+  </ng-template>

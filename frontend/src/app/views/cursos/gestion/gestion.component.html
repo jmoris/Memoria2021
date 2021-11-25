@@ -1,0 +1,119 @@
+<div class="breadcrumb">
+  <h1>Cursos</h1>
+  <ul>
+    <li>Administrar Cursos</li>
+  </ul>
+</div>
+<div class="separator-breadcrumb border-top"></div>
+<div class="module-loader" *ngIf="loading">
+  <div class="spinner spinner-bubble spinner-bubble-primary mr-3"></div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12">
+    <!-- CARD ICON -->
+    <div class="row">
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+            <div class="card-body text-center">
+                <i class="i-Add-User"></i>
+                <div class="content">
+                    <p class="text-muted mt-2 mb-0">Nuevo Curso</p>
+                    <button type="button"
+                        class="btn btn-primary btn-rounded m-1" (click)="openAddDialog()">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" matSortActive="name"
+      matSortDirection="asc" matSortDisableClear>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre del curso </th>
+        <td mat-cell *matCellDef="let element"> <a [routerLink]="['/cursos/gestion/', element.id]" >{{element.nombre}} </a> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Año del curso </th>
+        <td mat-cell *matCellDef="let element"> {{element.ano}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="semester">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Semestre del curso </th>
+        <td mat-cell *matCellDef="let element"> {{formatSemester(element.semestre)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Editar </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="warn" (click)="editCourse(element.id)">
+            <mat-icon svgIcon="edit" class="mat-18"></mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="warn" (click)="deleteCourse(element.id)">
+            <mat-icon svgIcon="delete" class="mat-18"></mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" class="mat-elevation-z8">
+    </mat-paginator>
+
+  </div>
+
+  <!-- VENTANA MODAL QUE SE DESPLEGA PARA CONFIRMAR LA ELIMINACIÓN DE UN DATO-->
+  <ng-template #deleteConfirmModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Eliminación de usuario</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>¿Estas seguro de querer eliminar este usuario?</strong></p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary btn-rounded" (click)="modal.dismiss('cancel')">Cancelar</button>
+      <button type="button" ngbAutofocus class="btn btn-danger btn-rounded" (click)="modal.close('Ok')">Borrar</button>
+    </div>
+  </ng-template>
+
+  <!-- VENTANA MODAL QUE SE DESPLEGA PARA CONFIRMAR LA ELIMINACIÓN DE UN DATO-->
+  <ng-template #deleteConfirmModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Eliminación de proyecto</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>¿Estas seguro de querer eliminar este proyecto?</strong></p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded"
+        (click)="modal.dismiss('cancel')">Cancelar</button>
+      <button type="button" ngbAutofocus class="btn btn-wide btn-danger btn-rounded"
+        (click)="modal.close('Ok')">Borrar</button>
+    </div>
+  </ng-template>
+
+
+
+
+
+
+
+
+</div>

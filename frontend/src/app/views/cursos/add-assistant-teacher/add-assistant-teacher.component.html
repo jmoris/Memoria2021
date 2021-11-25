@@ -1,0 +1,37 @@
+<div>
+    <h2 mat-dialog-title>{{title}}</h2>
+    <hr />
+    <mat-dialog-content>
+        <form [formGroup]="form">
+            <div class="container">
+                <mat-form-field appearance="standard" class="input">
+                    <mat-label>Profesor</mat-label>
+                    <mat-select formControlName="iduser">
+                        <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">
+                            {{ teacher.name + ' ' + teacher.surname }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="hasError('iduser', 'required')">Debe seleccionar un profesor
+                    </mat-error>
+                    <mat-hint></mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="container">
+                <mat-form-field appearance="standard" class="input">
+                    <mat-label>Curso</mat-label>
+                    <mat-select formControlName="idcourse">
+                        <mat-option *ngFor="let course of courses" [value]="course.id">{{ course.name }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="hasError('idcourse', 'required')">Debe seleccionar un curso
+                    </mat-error>
+                    <mat-hint></mat-hint>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions class="modal-footer">
+        <button class="btn btn-primary btn-rounded" mat-raised-button (click)="onCloseConfirm()"
+            [disabled]="form.invalid">Agregar</button>
+        <button class="btn btn-danger btn-rounded" mat-raised-button (click)="onCloseCancel()">Cancelar</button>
+    </mat-dialog-actions>
+</div>

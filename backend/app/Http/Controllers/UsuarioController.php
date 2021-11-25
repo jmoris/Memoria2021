@@ -1,0 +1,226 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Institucion;
+use App\Models\User;
+use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
+class UsuarioController extends Controller
+{
+    public function showAll(Request $request){
+        $usuarios = Institucion::find($request->institucion)->usuarios;
+        return $usuarios;
+    }
+
+    public function show(Request $request, $id){
+        $usuarios = Institucion::find($request->institucion)->usuarios()->find($id);;
+        return $usuarios;
+    }
+
+    public function showProfesores(Request $request){
+        $usuarios = Institucion::find($request->institucion);
+        $usuarios = $usuarios->usuarios()->wherePivot('role_id', 3)->get();
+        return $usuarios;
+    }
+
+    public function showEstudiantes(Request $request){
+        $usuarios = Institucion::find($request->institucion);
+        $usuarios = $usuarios->usuarios()->wherePivot('role_id', 4)->get();
+        return $usuarios;
+    }
+
+    public function create(Request $request){
+        try{
+            $validador = Validator::make($request->all(), [
+                'name' => 'required',
+                'lastname' => 'required',
+                'email' => 'required|unique:users',
+                'password' => '',
+                'role' => 'required',
+                'rut' => 'required|unique:users',
+                'institucion' => 'required'
+            ]);
+
+            if($validador->fails()){
+                return response()->json([
+                    'status' => 500,
+                    'message' => 'No se pudo validar los parametros',
+                    'error' => $validador->errors()
+                ]);
+            }
+
+            $user = new User();
+            $user->rut = $request->rut;
+            $user->email = $request->email;
+            $user->name = $request->name;
+            $user->lastname = $request->lastname;
+            $user->password = \bcrypt($request->password);
+            $user->save();
+            $user->instituciones()->attach($request->institucion, ['role_id' => $request->role]);
+            return response()->json([
+                'status' => 201,
+                'message' => 'User creada correctamente'
+            ]);
+        }catch(Exception $ex){
+            return response()->json([
+                'status' => 500,
+                'message' => 'Error al crear User',
+                'error' => $ex,
+            ]);
+        }
+    }
+
+    public function update(Request $request, $id){
+        try{
+            $validador = Validator::make($request->all(), [
+                'name' => 'required',
+                'lastname' => 'required',
+                'email' => 'required',
+                'password' => '',
+                'role' => 'required',
+                'rut' => 'required',
+                'institucion' => 'required'
+            ]);
+
+            if($validador->fails()){
+                return response()->json([
+                    'status' => 500,
+                    'message' => 'No se pudo validar los parametros',
+                    'error' => $validador->errors()
+                ]);
+            }
+
+            $user = User::findOrFail($id);
+            $user->rut = $request->rut;
+            $user->email = $request->email;
+            $user->name = $request->name;
+            $user->lastname = $request->lastname;
+            Institucion::findOrFail($request->institucion)->usuarios()->updateExistingPivot($id, ['role_id' => $request->role]);
+            if($request->password!='')
+                $user->password = \bcrypt($request->password);
+            $user->save();
+
+            return response()->json([
+                'status' => 201,
+                'message' => 'User modificada correctamente'
+            ]);
+        }catch(Exception $ex){
+            return response()->json([
+                'status' => 500,
+                'message' => 'Error al modificar User',
+                'error' => $ex,
+            ]);
+        }
+    }
+
+    public function delete(Request $request, $id){
+        try{
+            $user = User::findOrFail($id);
+            $user->active = $request->status;
+            $user->save();
+            return response()->json([
+                'status' => 200,
+                'message' => 'Usuario desactivado exitosamente.'
+            ]);
+        }catch(Exception $ex){
+            return response()->json([
+                'status' => 500,
+                'message' => 'Error al eliminar User',
+                'error' => $ex,
+            ]);
+        }
+    }
+
+    function uploadFile(Request $request){
+        $this->validate($request, [
+        'file'  => 'required|mimes:xls,xlsx'
+        ]);
+
+        try{
+
+            $path = $request->file('file')->getRealPath();
+
+            $spreadsheet = IOFactory::load($path);
+
+            $cellNombre = $email = $spreadsheet->getActiveSheet()->getCell('A1')->getValue();
+            $cellApellido = $email = $spreadsheet->getActiveSheet()->getCell('B1')->getValue();
+            $cellEmail = $email = $spreadsheet->getActiveSheet()->getCell('C1')->getValue();
+            if($cellNombre!='Nombre'&&$cellApellido!='Apellido(s)'&&$cellEmail!='Dirección de correo')
+                return response()->json([
+                    'success' => false,
+                    'msg' => 'El formato del archivo es incorrecto.'
+                ]);
+            $lectura = true;
+            $contador = 2;
+            $cargados = 0;
+            $errores = [
+                'inexistentes' => [],
+                'existentes' => []
+            ];
+
+            while($lectura){
+                $nombre = $spreadsheet->getActiveSheet()->getCell('A'.$contador)->getValue();
+                $apellido = $spreadsheet->getActiveSheet()->getCell('B'.$contador)->getValue();
+                $email = $spreadsheet->getActiveSheet()->getCell('C'.$contador)->getValue();
+                if($email==''||$email==null){
+                    $lectura = false;
+                    break;
+                }
+                $user = User::where('email', $email)->first();
+                if($user==null){
+                    $errores['inexistentes'][] = (string)$email;
+                    $usuario = new User();
+                    $usuario->name = $nombre;
+                    $usuario->surname = $apellido;
+                    $usuario->email = (string)$email;
+                    $password = Str::random(8);
+                    $usuario->password = bcrypt($password);
+                    $usuario->rut = "1-9";
+                    $usuario->profile = "student";
+                    $usuario->save();
+
+                    \App\Jobs\InvitarUsuario::dispatch((string)$email, ($nombre.' '.$apellido), $password)->onQueue('invitaciones');
+
+                }else{
+                    $exists = User::where('email', (string)$email)->count();
+                    if($exists>0){
+                        $errores['existentes'][] = (string)$email;
+                    }else{
+                        $cargados++;
+                    }
+                }
+                $contador++;
+            }
+
+            return response()->json([
+                'success' => true,
+                'msg' => "Carga masiva de usuarios finalizada.",
+                'stats' => [
+                    'cargados' => $cargados,
+                    'fallidos' => [
+                        'inexistentes' => [
+                            'cantidad' => count($errores['inexistentes']),
+                            'detalle' => $errores['inexistentes']
+                        ],
+                        'existentes' => [
+                            'cantidad' => count($errores['existentes']),
+                            'detalle' => $errores['existentes']
+                        ]
+                    ],
+                ]
+            ]);
+        }catch(Exception $ex){
+            return $ex;
+            return response()->json([
+                'success' => false,
+                'msg' => "Carga masiva de usuarios fallida.",
+                'error' => $ex->getMessage()
+            ]);
+        }
+    }
+}

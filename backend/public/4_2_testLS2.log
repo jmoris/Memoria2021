@@ -1,0 +1,1153 @@
+[b9472ca] Jesús Moris 2020-04-01 fix varios
+-	-	.DS_Store
+1	1	CasaMatriz/build/built-jar.properties
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+3	4	CasaMatriz/src/casamatriz/FXMLReportesController.java
+1	1	CasaMatriz/src/casamatriz/servidor/BaseDatos.java
+-	-	CasaMatriz/ultimainfo.ser
+3	3	Sucursal/src/sucursal/BaseDeDatos.java
+-	-	Surtidorr/.DS_Store
+1	1	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+-	-	Surtidorr/build/classes/surtidorr/Surtidorr.class
+3	3	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	4	Surtidorr/dist/Surtidorr.jnlp
+0	3958	Surtidorr/dist/web-files/dtjava.js
+-	-	Surtidorr/dist/web-files/error.png
+-	-	Surtidorr/dist/web-files/get_java.png
+-	-	Surtidorr/dist/web-files/get_javafx.png
+-	-	Surtidorr/dist/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/web-files/upgrade_java.png
+-	-	Surtidorr/dist/web-files/upgrade_javafx.png
+2	2	Surtidorr/src/surtidorr/Cliente.java
+1	3	Surtidorr/src/surtidorr/Surtidorr.java
+
+[10663a4] Jesús Moris 2020-04-01 Merge remote-tracking branch 'origin/master'
+[b0827de] Jesús Moris 2020-04-01 algunso fix
+1	1	CasaMatriz/build/built-jar.properties
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+3	1	CasaMatriz/src/casamatriz/servidor/Servidor.java
+1	0	CasaMatriz/src/casamatriz/servidor/Worker.java
+-	-	CasaMatriz/ultimainfo.ser
+
+[58d3758] rodrigo 2020-04-01 correciones transaccion
+4	3	Sucursal/src/sucursal/BaseDeDatos.java
+8	1	Sucursal/src/sucursal/Worker.java
+3	9	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[b7c809f] Jesús Moris 2020-04-01 se implementa enviar precios a surtidor luego de recibirlos en sucursal
+2	0	Sucursal/src/sucursal/Cliente.java
+11	4	Sucursal/src/sucursal/FXMLDocumentController.java
+49	0	Sucursal/src/sucursal/FileHandler.java
+4	0	Sucursal/src/sucursal/Servidor.java
+1	0	Sucursal/src/sucursal/Sucursal.java
+13	1	Sucursal/src/sucursal/Worker.java
+
+[d95f3f4] rodrigo 2020-04-01 Arreglos a fxml
+6	6	Sucursal/build/classes/sucursal/FXMLDocument.fxml
+6	6	Sucursal/src/sucursal/FXMLDocument.fxml
+8	8	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[a433d4f] Jesús Moris 2020-04-01 fix de todo
+1	1	CasaMatriz/build/built-jar.properties
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+2	2	CasaMatriz/src/casamatriz/Cliente.java
+2	2	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+2	2	CasaMatriz/src/casamatriz/FXMLReportesController.java
+1	1	CasaMatriz/src/casamatriz/FileHandler.java
+1	1	CasaMatriz/src/casamatriz/SharedInfo.java
+3	3	CasaMatriz/src/casamatriz/servidor/BaseDatos.java
+1	2	CasaMatriz/src/casamatriz/servidor/Worker.java
+1	1	Sucursal/build/built-jar.properties
+-	-	Sucursal/build/classes/sucursal/BaseDeDatos.class
+14	10	Sucursal/build/classes/sucursal/FXMLDocument.fxml
+-	-	Sucursal/build/classes/sucursal/FXMLDocumentController.class
+-	-	Sucursal/build/classes/sucursal/InfoSurtidor.class
+-	-	Sucursal/build/classes/sucursal/Servidor.class
+-	-	Sucursal/build/classes/sucursal/Sucursal.class
+-	-	Sucursal/build/classes/sucursal/Transaccion.class
+2	2	Sucursal/dist/Sucursal.html
+-	-	Sucursal/dist/Sucursal.jar
+1	1	Sucursal/dist/Sucursal.jnlp
+2	2	Sucursal/src/sucursal/Sucursal.java
+
+[31d190c] rodrigo 2020-04-01 Merge remote-tracking branch 'origin/master'
+[ee8b19b] rodrigo 2020-04-01 Boton conexion
+23	0	Sucursal/src/sucursal/BaseDeDatos.java
+15	3	Sucursal/src/sucursal/Cliente.java
+14	10	Sucursal/src/sucursal/FXMLDocument.fxml
+20	1	Sucursal/src/sucursal/FXMLDocumentController.java
+57	0	Sucursal/src/sucursal/Falla.java
+32	13	Sucursal/src/sucursal/Worker.java
+1	1	Surtidorr/src/surtidorr/Cliente.java
+
+[afca358] Jesús Moris 2020-04-01 fix surtidor
+-	-	.DS_Store
+4007	0	CasaMatriz/nbproject/jfx-impl_backup_3.xml
+1	1	CasaMatriz/src/{casamatriz/modelos => sucursal}/Informacion.java
+1	1	CasaMatriz/src/{casamatriz/modelos => sucursal}/Reporte.java
+1	1	CasaMatriz/src/{casamatriz/modelos => sucursal}/Sucursal.java
+1	1	CasaMatriz/src/{casamatriz/modelos => sucursal}/Transaccion.java
+4007	0	Sucursal/nbproject/jfx-impl_backup_3.xml
+-	-	Surtidorr/.DS_Store
+1	1	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/sucursal/Transaccion.class
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+8	7	Surtidorr/build/classes/surtidorr/FXMLDocument.fxml
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+-	-	Surtidorr/build/classes/surtidorr/SharedInfo.class
+1	1	Surtidorr/config.properties
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+1	1	Surtidorr/nbproject/UPDATED.TXT
+229	39	Surtidorr/nbproject/jfx-impl.xml
+4007	0	Surtidorr/nbproject/jfx-impl_backup_5.xml
+1	1	Surtidorr/nbproject/private/private.properties
+6	5	Surtidorr/nbproject/private/private.xml
+57	0	Surtidorr/src/sucursal/Falla.java
+25	14	Surtidorr/src/surtidorr/Cliente.java
+8	7	Surtidorr/src/surtidorr/FXMLDocument.fxml
+16	21	Surtidorr/src/surtidorr/FXMLDocumentController.java
+3	0	Surtidorr/src/surtidorr/SharedInfo.java
+
+[ef924fe] rodrigo 2020-04-01 se agrego id surtidor al fallo
+1	1	Sucursal/src/sucursal/BaseDeDatos.java
+3	15	Sucursal/src/sucursal/FXMLDocumentController.java
+4	4	Sucursal/src/sucursal/Transaccion.java
+10	2	Sucursal/src/sucursal/Worker.java
+4	4	Surtidorr/src/sucursal/Transaccion.java
+6	1	Surtidorr/src/surtidorr/Cliente.java
+4	4	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[a9a213a] Jesús Moris 2020-04-01 ip surtidor en properties
+1	3	Surtidorr/src/surtidorr/Cliente.java
+
+[6055bad] rodrigo 2020-04-01 Merge remote-tracking branch 'origin/master'
+[b08ac48] rodrigo 2020-04-01 se implementa registro de fallo en surtidor
+41	0	Sucursal/src/sucursal/BaseDeDatos.java
+6	0	Sucursal/src/sucursal/InfoSurtidor.java
+7	0	Sucursal/src/sucursal/Servidor.java
+12	2	Sucursal/src/sucursal/Worker.java
+1	1	Surtidorr/src/surtidorr/Cliente.java
+
+[b03b0a0] Jesús Moris 2020-04-01 se implemento archivo configuracion de id
+4	4	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+1	1	Surtidorr/build/classes/surtidorr/FXMLDocument.fxml
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+-	-	Surtidorr/build/classes/surtidorr/SharedInfo.class
+-	-	Surtidorr/build/classes/surtidorr/Surtidorr.class
+3	0	Surtidorr/config.properties
+17	17	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+18	18	Surtidorr/dist/Surtidorr.jnlp
+19	15	Surtidorr/dist/web-files/dtjava.js
+1	1	Surtidorr/src/surtidorr/Cliente.java
+1	1	Surtidorr/src/surtidorr/ClienteV0.java
+1	1	Surtidorr/src/surtidorr/FXMLDocument.fxml
+3	1	Surtidorr/src/surtidorr/FXMLDocumentController.java
+2	1	Surtidorr/src/surtidorr/SharedInfo.java
+33	1	Surtidorr/src/surtidorr/Surtidorr.java
+
+[6471c6c] Jesús Moris 2020-04-01 cambio nombre de paquete modelos
+2	2	CasaMatriz/src/casamatriz/Cliente.java
+2	2	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+2	2	CasaMatriz/src/casamatriz/FXMLReportesController.java
+1	1	CasaMatriz/src/casamatriz/FileHandler.java
+1	1	CasaMatriz/src/casamatriz/SharedInfo.java
+1	1	CasaMatriz/src/{sucursal => casamatriz/modelos}/Informacion.java
+1	1	CasaMatriz/src/{sucursal => casamatriz/modelos}/Reporte.java
+1	1	CasaMatriz/src/{sucursal => casamatriz/modelos}/Sucursal.java
+1	1	CasaMatriz/src/{sucursal => casamatriz/modelos}/Transaccion.java
+3	3	CasaMatriz/src/casamatriz/servidor/BaseDatos.java
+1	1	CasaMatriz/src/casamatriz/servidor/Worker.java
+
+[422214d] Jesús Moris 2020-04-01 se agrego archivo de configuracion para cambiar ip primaria, secundaria y nombre de sucursal
+1	1	Sucursal/build/built-jar.properties
+-	-	Sucursal/build/classes/sucursal/InfoSurtidor.class
+-	-	Sucursal/build/classes/sucursal/Sucursal.class
+4	0	Sucursal/config.properties
+2	2	Sucursal/dist/Sucursal.html
+-	-	Sucursal/dist/Sucursal.jar
+1	1	Sucursal/dist/Sucursal.jnlp
+11	5	Sucursal/src/sucursal/Cliente.java
+3	0	Sucursal/src/sucursal/InfoSurtidor.java
+17	3	Sucursal/src/sucursal/Sucursal.java
+
+[8f6f468] Jesús Moris 2020-04-01 se actualiza y se conecta a replica de casa matriz
+4	4	Sucursal/build/built-jar.properties
+-	-	Sucursal/build/classes/sucursal/BaseDeDatos.class
+-	-	Sucursal/build/classes/sucursal/InfoSurtidor.class
+-	-	Sucursal/build/classes/sucursal/Servidor.class
+-	-	Sucursal/build/classes/sucursal/Sucursal.class
+17	17	Sucursal/dist/Sucursal.html
+-	-	Sucursal/dist/Sucursal.jar
+19	19	Sucursal/dist/Sucursal.jnlp
+19	15	Sucursal/dist/web-files/dtjava.js
+4	5	Sucursal/src/sucursal/BaseDeDatos.java
+29	45	Sucursal/src/sucursal/Cliente.java
+1	0	Sucursal/src/sucursal/InfoSurtidor.java
+1	1	Sucursal/src/sucursal/Servidor.java
+8	3	Sucursal/src/sucursal/Sucursal.java
+
+[eda2146] Jesús Moris 2020-04-01 Merge remote-tracking branch 'origin/master'
+[e0c9b46] rodrigo 2020-04-01 Merge remote-tracking branch 'origin/master'
+[3ea2a61] rodrigo 2020-04-01 Arreglos sucursal surtidor
+4	4	Sucursal/build/built-jar.properties
+-	-	Sucursal/build/classes/sucursal/BaseDeDatos.class
+-	-	Sucursal/build/classes/sucursal/FXMLDocumentController.class
+-	-	Sucursal/build/classes/sucursal/Servidor.class
+17	17	Sucursal/dist/Sucursal.html
+-	-	Sucursal/dist/Sucursal.jar
+19	19	Sucursal/dist/Sucursal.jnlp
+-	-	Sucursal/dist/lib/sqlite-jdbc-3.30.1.jar
+0	45	Sucursal/dist/run1054097311/Sucursal.html
+-	-	Sucursal/dist/run1054097311/Sucursal.jar
+0	19	Sucursal/dist/run1054097311/Sucursal.jnlp
+-	-	Sucursal/dist/run1054097311/lib/sqlite-jdbc-3.30.1.jar
+0	3958	Sucursal/dist/run1054097311/web-files/dtjava.js
+-	-	Sucursal/dist/run1054097311/web-files/error.png
+-	-	Sucursal/dist/run1054097311/web-files/get_java.png
+-	-	Sucursal/dist/run1054097311/web-files/get_javafx.png
+-	-	Sucursal/dist/run1054097311/web-files/javafx-chrome.png
+-	-	Sucursal/dist/run1054097311/web-files/javafx-loading-100x100.gif
+-	-	Sucursal/dist/run1054097311/web-files/javafx-loading-25x25.gif
+-	-	Sucursal/dist/run1054097311/web-files/upgrade_java.png
+-	-	Sucursal/dist/run1054097311/web-files/upgrade_javafx.png
+0	45	Sucursal/dist/run2083541816/Sucursal.html
+-	-	Sucursal/dist/run2083541816/Sucursal.jar
+0	19	Sucursal/dist/run2083541816/Sucursal.jnlp
+-	-	Sucursal/dist/run2083541816/lib/sqlite-jdbc-3.30.1.jar
+0	3958	Sucursal/dist/run2083541816/web-files/dtjava.js
+-	-	Sucursal/dist/run2083541816/web-files/error.png
+-	-	Sucursal/dist/run2083541816/web-files/get_java.png
+-	-	Sucursal/dist/run2083541816/web-files/get_javafx.png
+-	-	Sucursal/dist/run2083541816/web-files/javafx-chrome.png
+-	-	Sucursal/dist/run2083541816/web-files/javafx-loading-100x100.gif
+-	-	Sucursal/dist/run2083541816/web-files/javafx-loading-25x25.gif
+-	-	Sucursal/dist/run2083541816/web-files/upgrade_java.png
+-	-	Sucursal/dist/run2083541816/web-files/upgrade_javafx.png
+15	19	Sucursal/dist/web-files/dtjava.js
+-	-	Sucursal/mysql-connector-java-5.1.47.jar
+131	131	Sucursal/nbproject/project.properties
+144	149	Sucursal/src/sucursal/BaseDeDatos.java
+41	38	Sucursal/src/sucursal/Worker.java
+4	4	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+15	8	Surtidorr/build/classes/surtidorr/FXMLDocument.fxml
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+17	17	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+18	18	Surtidorr/dist/Surtidorr.jnlp
+15	19	Surtidorr/dist/web-files/dtjava.js
+20	7	Surtidorr/src/surtidorr/Cliente.java
+15	8	Surtidorr/src/surtidorr/FXMLDocument.fxml
+13	6	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[e4d1082] Jesús Moris 2020-04-01 modificacion mensajes base de datos
+2	2	CasaMatriz/src/casamatriz/servidor/BaseDatos.java
+
+[a6ef4c4] Jesús Moris 2020-04-01 enviar precios cuando se abra la conexion con la sucursal
+1	1	CasaMatriz/build/built-jar.properties
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+1	0	CasaMatriz/src/casamatriz/servidor/Worker.java
+
+[d169629] Jesús Moris 2020-04-01 Se implemento impresion de reportes
+1	1	CasaMatriz/build/built-jar.properties
+-	-	CasaMatriz/build/classes/casamatriz/CasaMatriz.class
+1	1	CasaMatriz/build/classes/casamatriz/FXMLDocument.fxml
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+0	1	CasaMatriz/src/casamatriz/CasaMatriz.java
+15	1	CasaMatriz/src/casamatriz/FXMLReportes.fxml
+42	17	CasaMatriz/src/casamatriz/FXMLReportesController.java
+5	2	CasaMatriz/src/casamatriz/servidor/BaseDatos.java
+
+[b348154] Jesús Moris 2020-04-01 Merge remote-tracking branch 'origin/master'
+[e553459] Jesús Moris 2020-04-01 Se finalizan los reportes
+1	1	CasaMatriz/build/built-jar.properties
+-	-	CasaMatriz/build/classes/casamatriz/FXMLDocumentController.class
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+1	1	CasaMatriz/src/casamatriz/FXMLDocument.fxml
+0	1	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+24	24	CasaMatriz/src/casamatriz/FXMLReportesController.java
+42	0	CasaMatriz/src/casamatriz/servidor/BaseDatos.java
+64	0	CasaMatriz/src/sucursal/Reporte.java
+50	0	CasaMatriz/src/sucursal/Sucursal.java
+
+[a367d19] rodrigo 2020-04-01 Correciones sucursal y surtidor
+10	4	Sucursal/src/sucursal/Worker.java
+6	7	Surtidorr/src/surtidorr/Cliente.java
+
+[72f6273] rodrigo 2020-04-01 Merge remote-tracking branch 'origin/master'
+[3b0ae49] rodrigo 2020-04-01 merge modificacion worker
+1	1	CasaMatriz/build/built-jar.properties
+20	12	CasaMatriz/build/classes/casamatriz/FXMLDocument.fxml
+-	-	CasaMatriz/build/classes/casamatriz/FXMLDocumentController.class
+-	-	CasaMatriz/build/classes/sucursal/Informacion.class
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+20	12	CasaMatriz/src/casamatriz/FXMLDocument.fxml
+75	4	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+17	8	CasaMatriz/src/casamatriz/FXMLReportes.fxml
+61	4	CasaMatriz/src/casamatriz/FXMLReportesController.java
+163	1	CasaMatriz/src/casamatriz/servidor/BaseDatos.java
+6	1	CasaMatriz/src/casamatriz/servidor/Worker.java
+16	5	CasaMatriz/src/sucursal/Informacion.java
+-	-	CasaMatriz/ultimainfo.ser
+-	-	Surtidorr/build/.DS_Store
+2	2	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+-	-	Surtidorr/build/classes/surtidorr/Surtidorr.class
+45	45	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+0	45	Surtidorr/dist/run2133897384/Surtidorr.html
+-	-	Surtidorr/dist/run2133897384/Surtidorr.jar
+0	18	Surtidorr/dist/run2133897384/Surtidorr.jnlp
+0	3958	Surtidorr/dist/run2133897384/web-files/dtjava.js
+-	-	Surtidorr/dist/run2133897384/web-files/error.png
+-	-	Surtidorr/dist/run2133897384/web-files/get_java.png
+-	-	Surtidorr/dist/run2133897384/web-files/get_javafx.png
+-	-	Surtidorr/dist/run2133897384/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/run2133897384/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/run2133897384/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/run2133897384/web-files/upgrade_java.png
+-	-	Surtidorr/dist/run2133897384/web-files/upgrade_javafx.png
+147	160	Surtidorr/src/surtidorr/Cliente.java
+0	1	Surtidorr/src/surtidorr/FXMLDocumentController.java
+8	1	Surtidorr/src/surtidorr/Surtidorr.java
+
+[8473b71] rodrigo 2020-04-01 Modificacion worker sucursal
+30	24	Sucursal/src/sucursal/Worker.java
+
+[d2fb0d6] Jesús Moris 2020-04-01 actualizacion buenota
+1	1	CasaMatriz/build/built-jar.properties
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/src/casamatriz/servidor/Worker.java
+-	-	Surtidorr/build/.DS_Store
+2	2	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+-	-	Surtidorr/build/classes/surtidorr/Surtidorr.class
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+0	45	Surtidorr/dist/run2133897384/Surtidorr.html
+-	-	Surtidorr/dist/run2133897384/Surtidorr.jar
+0	18	Surtidorr/dist/run2133897384/Surtidorr.jnlp
+0	3958	Surtidorr/dist/run2133897384/web-files/dtjava.js
+-	-	Surtidorr/dist/run2133897384/web-files/error.png
+-	-	Surtidorr/dist/run2133897384/web-files/get_java.png
+-	-	Surtidorr/dist/run2133897384/web-files/get_javafx.png
+-	-	Surtidorr/dist/run2133897384/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/run2133897384/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/run2133897384/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/run2133897384/web-files/upgrade_java.png
+-	-	Surtidorr/dist/run2133897384/web-files/upgrade_javafx.png
+147	160	Surtidorr/src/surtidorr/Cliente.java
+0	1	Surtidorr/src/surtidorr/FXMLDocumentController.java
+8	1	Surtidorr/src/surtidorr/Surtidorr.java
+
+[f4c557c] Jesús Moris 2020-04-01 Merge remote-tracking branch 'origin/master'
+[54032b8] Jesús Moris 2020-04-01 se implementaron los reportes
+1	1	CasaMatriz/build/built-jar.properties
+20	12	CasaMatriz/build/classes/casamatriz/FXMLDocument.fxml
+-	-	CasaMatriz/build/classes/casamatriz/FXMLDocumentController.class
+-	-	CasaMatriz/build/classes/sucursal/Informacion.class
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+20	12	CasaMatriz/src/casamatriz/FXMLDocument.fxml
+75	4	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+17	8	CasaMatriz/src/casamatriz/FXMLReportes.fxml
+61	4	CasaMatriz/src/casamatriz/FXMLReportesController.java
+163	1	CasaMatriz/src/casamatriz/servidor/BaseDatos.java
+5	0	CasaMatriz/src/casamatriz/servidor/Worker.java
+16	5	CasaMatriz/src/sucursal/Informacion.java
+-	-	CasaMatriz/ultimainfo.ser
+
+[82ef49a] rodrigo 2020-04-01 Cosas varias
+4007	0	CasaMatriz/nbproject/jfx-impl_backup_2.xml
+4007	0	Sucursal/nbproject/jfx-impl_backup_2.xml
+38	4	Sucursal/src/sucursal/BaseDeDatos.java
+12	2	Sucursal/src/sucursal/Cliente.java
+3	1	Sucursal/src/sucursal/FXMLDocumentController.java
+6	6	Sucursal/src/sucursal/Servidor.java
+94	60	Sucursal/src/sucursal/Worker.java
+4007	0	Surtidorr/nbproject/jfx-impl_backup_4.xml
+81	34	Surtidorr/src/surtidorr/Cliente.java
+31	30	Surtidorr/src/surtidorr/FXMLDocumentController.java
+3	4	Surtidorr/src/surtidorr/Surtidorr.java
+
+[2288f2d] Jesús Moris 2020-04-01 Merge remote-tracking branch 'origin/master'
+[ded0957] Jesús Moris 2020-04-01 se implementaron nombres de sucursales.
+-	-	.DS_Store
+1	1	CasaMatriz/build/built-jar.properties
+-	-	CasaMatriz/build/classes/casamatriz/FXMLDocumentController.class
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+2	1	CasaMatriz/dist/CasaMatriz.jnlp
+-	-	CasaMatriz/mysql-connector-java-5.1.47.jar
+3	1	CasaMatriz/nbproject/project.properties
+6	3	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+109	0	CasaMatriz/src/casamatriz/servidor/BaseDatos.java
+27	16	CasaMatriz/src/casamatriz/servidor/Worker.java
+-	-	CasaMatriz/ultimainfo.ser
+
+[9a2e7ba] rodrigo 2020-04-01 Cambios cliente y servidor en sucursal y surtidor
+123	0	Sucursal/src/sucursal/Cliente.java
+5	2	Sucursal/src/sucursal/FXMLDocumentController.java
+37	83	Sucursal/src/sucursal/Servidor.java
+167	0	Sucursal/src/sucursal/Worker.java
+113	71	Surtidorr/src/surtidorr/Cliente.java
+69	0	Surtidorr/src/surtidorr/ClienteV0.java
+22	9	Surtidorr/src/surtidorr/FXMLDocumentController.java
+1	1	Surtidorr/src/surtidorr/Surtidorr.java
+
+[4787bf9] Jesús Moris 2020-03-31 se implemento estados de sucursales
+1	1	CasaMatriz/build/built-jar.properties
+-	-	CasaMatriz/build/classes/casamatriz/FXMLDocumentController.class
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+1	2	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+3	5	CasaMatriz/src/casamatriz/servidor/Servidor.java
+9	13	CasaMatriz/src/casamatriz/servidor/Worker.java
+
+[3af4998] Jesús Moris 2020-03-31 fUNCIONA DE PANITA todo
+2	2	CasaMatriz/build/built-jar.properties
+-	-	CasaMatriz/build/classes/casamatriz/CasaMatriz.class
+-	-	CasaMatriz/build/classes/casamatriz/FXMLDocumentController.class
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+6	5	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+0	5	CasaMatriz/src/casamatriz/servidor/Servidor.java
+14	22	CasaMatriz/src/casamatriz/servidor/Worker.java
+
+[53713f2] Jesús Moris 2020-03-31 Merge remote-tracking branch 'origin/Sepulveda'
+[bb333d8] Jesús Moris 2020-03-31 Actualizacion casa matriz
+-	-	.DS_Store
+2	0	CasaMatriz/iniciar_casamatriz.sh
+2	0	CasaMatriz/src/casamatriz/CasaMatriz.java
+15	8	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+8	2	CasaMatriz/src/casamatriz/servidor/Servidor.java
+8	0	CasaMatriz/src/casamatriz/servidor/Worker.java
+4	2	Surtidorr/src/surtidorr/Cliente.java
+
+[37e2890] Bastian 2020-03-31 Cambios kk
+1	1	CasaMatriz/build/built-jar.properties
+-	-	CasaMatriz/build/classes/casamatriz/CasaMatriz.class
+-	-	CasaMatriz/build/classes/casamatriz/FXMLDocumentController.class
+2	2	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+1	1	CasaMatriz/dist/CasaMatriz.jnlp
+1	1	CasaMatriz/src/casamatriz/CasaMatriz.java
+20	7	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+22	1	CasaMatriz/src/casamatriz/servidor/Worker.java
+
+[785cd39] Bastian 2020-03-31 Merge remote-tracking branch 'origin/master' into Sepulveda
+[b7cd7f5] Jesús Moris 2020-03-31 Se fuerza salida del servidor
+12	3	CasaMatriz/src/casamatriz/CasaMatriz.java
+8	1	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+13	3	CasaMatriz/src/casamatriz/servidor/Servidor.java
+
+[30fa908] Jesús Moris 2020-03-31 Merge remote-tracking branch 'origin/master'
+[91dd6d2] Jesús Moris 2020-03-31 casa matriz como servidor funcionando
+1	2	CasaMatriz/src/casamatriz/CasaMatriz.java
+20	22	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+49	0	CasaMatriz/src/casamatriz/FileHandler.java
+8	0	CasaMatriz/src/casamatriz/servidor/Servidor.java
+11	0	CasaMatriz/src/casamatriz/servidor/Worker.java
+-	-	CasaMatriz/ultimainfo.ser
+
+[f70529d] Bastian 2020-03-31 Interfaces
+4	0	CasaMatriz/build/built-jar.properties
+-	-	CasaMatriz/build/classes/casamatriz/CasaMatriz.class
+-	-	CasaMatriz/build/classes/casamatriz/Cliente.class
+92	0	CasaMatriz/build/classes/casamatriz/FXMLDocument.fxml
+-	-	CasaMatriz/build/classes/casamatriz/FXMLDocumentController.class
+-	-	CasaMatriz/build/classes/casamatriz/SharedInfo.class
+-	-	CasaMatriz/build/classes/sucursal/Informacion.class
+-	-	CasaMatriz/build/classes/sucursal/Transaccion.class
+45	0	CasaMatriz/dist/CasaMatriz.html
+-	-	CasaMatriz/dist/CasaMatriz.jar
+18	0	CasaMatriz/dist/CasaMatriz.jnlp
+3958	0	CasaMatriz/dist/web-files/dtjava.js
+-	-	CasaMatriz/dist/web-files/error.png
+-	-	CasaMatriz/dist/web-files/get_java.png
+-	-	CasaMatriz/dist/web-files/get_javafx.png
+-	-	CasaMatriz/dist/web-files/javafx-chrome.png
+-	-	CasaMatriz/dist/web-files/javafx-loading-100x100.gif
+-	-	CasaMatriz/dist/web-files/javafx-loading-25x25.gif
+-	-	CasaMatriz/dist/web-files/upgrade_java.png
+-	-	CasaMatriz/dist/web-files/upgrade_javafx.png
+2	0	CasaMatriz/nbproject/private/configs/Run_as_WebStart.properties
+2	0	CasaMatriz/nbproject/private/configs/Run_in_Browser.properties
+6	0	CasaMatriz/nbproject/private/private.properties
+13	0	CasaMatriz/nbproject/private/private.xml
+1	0	CasaMatriz/src/casamatriz/FXMLDocument.fxml
+21	1	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+25	0	CasaMatriz/src/casamatriz/FXMLReportes.fxml
+39	0	CasaMatriz/src/casamatriz/FXMLReportesController.java
+4	0	Sucursal/build/built-jar.properties
+-	-	Sucursal/build/classes/sucursal/BaseDeDatos.class
+62	0	Sucursal/build/classes/sucursal/FXMLDocument.fxml
+-	-	Sucursal/build/classes/sucursal/FXMLDocumentController.class
+-	-	Sucursal/build/classes/sucursal/InfoSurtidor.class
+-	-	Sucursal/build/classes/sucursal/Informacion.class
+-	-	Sucursal/build/classes/sucursal/Servidor.class
+-	-	Sucursal/build/classes/sucursal/Sucursal.class
+-	-	Sucursal/build/classes/sucursal/Transaccion.class
+45	0	Sucursal/dist/Sucursal.html
+-	-	Sucursal/dist/Sucursal.jar
+19	0	Sucursal/dist/Sucursal.jnlp
+-	-	Sucursal/dist/lib/sqlite-jdbc-3.30.1.jar
+45	0	Sucursal/dist/run1054097311/Sucursal.html
+-	-	Sucursal/dist/run1054097311/Sucursal.jar
+19	0	Sucursal/dist/run1054097311/Sucursal.jnlp
+-	-	Sucursal/dist/run1054097311/lib/sqlite-jdbc-3.30.1.jar
+3958	0	Sucursal/dist/run1054097311/web-files/dtjava.js
+-	-	Sucursal/dist/run1054097311/web-files/error.png
+-	-	Sucursal/dist/run1054097311/web-files/get_java.png
+-	-	Sucursal/dist/run1054097311/web-files/get_javafx.png
+-	-	Sucursal/dist/run1054097311/web-files/javafx-chrome.png
+-	-	Sucursal/dist/run1054097311/web-files/javafx-loading-100x100.gif
+-	-	Sucursal/dist/run1054097311/web-files/javafx-loading-25x25.gif
+-	-	Sucursal/dist/run1054097311/web-files/upgrade_java.png
+-	-	Sucursal/dist/run1054097311/web-files/upgrade_javafx.png
+45	0	Sucursal/dist/run2083541816/Sucursal.html
+-	-	Sucursal/dist/run2083541816/Sucursal.jar
+19	0	Sucursal/dist/run2083541816/Sucursal.jnlp
+-	-	Sucursal/dist/run2083541816/lib/sqlite-jdbc-3.30.1.jar
+3958	0	Sucursal/dist/run2083541816/web-files/dtjava.js
+-	-	Sucursal/dist/run2083541816/web-files/error.png
+-	-	Sucursal/dist/run2083541816/web-files/get_java.png
+-	-	Sucursal/dist/run2083541816/web-files/get_javafx.png
+-	-	Sucursal/dist/run2083541816/web-files/javafx-chrome.png
+-	-	Sucursal/dist/run2083541816/web-files/javafx-loading-100x100.gif
+-	-	Sucursal/dist/run2083541816/web-files/javafx-loading-25x25.gif
+-	-	Sucursal/dist/run2083541816/web-files/upgrade_java.png
+-	-	Sucursal/dist/run2083541816/web-files/upgrade_javafx.png
+3958	0	Sucursal/dist/web-files/dtjava.js
+-	-	Sucursal/dist/web-files/error.png
+-	-	Sucursal/dist/web-files/get_java.png
+-	-	Sucursal/dist/web-files/get_javafx.png
+-	-	Sucursal/dist/web-files/javafx-chrome.png
+-	-	Sucursal/dist/web-files/javafx-loading-100x100.gif
+-	-	Sucursal/dist/web-files/javafx-loading-25x25.gif
+-	-	Sucursal/dist/web-files/upgrade_java.png
+-	-	Sucursal/dist/web-files/upgrade_javafx.png
+2	0	Sucursal/nbproject/private/configs/Run_as_WebStart.properties
+4	0	Sucursal/nbproject/private/configs/Run_in_Browser.properties
+15	0	Sucursal/nbproject/private/private.xml
+-	-	Surtidorr/.DS_Store
+-	-	Surtidorr/build/.DS_Store
+1	1	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+-	-	Surtidorr/dist/.DS_Store
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+45	0	Surtidorr/dist/run2133897384/Surtidorr.html
+-	-	Surtidorr/dist/run2133897384/Surtidorr.jar
+18	0	Surtidorr/dist/run2133897384/Surtidorr.jnlp
+3958	0	Surtidorr/dist/run2133897384/web-files/dtjava.js
+-	-	Surtidorr/dist/run2133897384/web-files/error.png
+-	-	Surtidorr/dist/run2133897384/web-files/get_java.png
+-	-	Surtidorr/dist/run2133897384/web-files/get_javafx.png
+-	-	Surtidorr/dist/run2133897384/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/run2133897384/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/run2133897384/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/run2133897384/web-files/upgrade_java.png
+-	-	Surtidorr/dist/run2133897384/web-files/upgrade_javafx.png
+3958	0	Surtidorr/dist/web-files/dtjava.js
+-	-	Surtidorr/dist/web-files/error.png
+-	-	Surtidorr/dist/web-files/get_java.png
+-	-	Surtidorr/dist/web-files/get_javafx.png
+-	-	Surtidorr/dist/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/web-files/upgrade_java.png
+-	-	Surtidorr/dist/web-files/upgrade_javafx.png
+20	8	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[6c2d9c4] Bastian 2020-03-31 Merge branch 'master' into Sepulveda
+[923ee9b] Bastian 2020-03-31 Interfaces Actualizadas
+1	0	.gitignore
+1	1	CasaMatriz/nbproject/UPDATED.TXT
+39	229	CasaMatriz/nbproject/jfx-impl.xml
+4197	0	CasaMatriz/nbproject/jfx-impl_backup_1.xml
+1	0	CasaMatriz/src/casamatriz/Cliente.java
+47	1	CasaMatriz/src/casamatriz/FXMLDocument.fxml
+18	0	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+1	1	CasaMatriz/src/casamatriz/SharedInfo.java
+-	-	Sucursal/bencinera.db
+1	1	Sucursal/nbproject/UPDATED.TXT
+39	229	Sucursal/nbproject/jfx-impl.xml
+4197	0	Sucursal/nbproject/jfx-impl_backup_1.xml
+1	2	Sucursal/src/sucursal/BaseDeDatos.java
+8	8	Sucursal/src/sucursal/FXMLDocument.fxml
+2	3	Sucursal/src/sucursal/FXMLDocumentController.java
+2	2	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+70	45	Surtidorr/build/classes/surtidorr/FXMLDocument.fxml
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+-	-	Surtidorr/build/classes/surtidorr/SharedInfo.class
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+0	45	Surtidorr/dist/run1505351488/Surtidorr.html
+-	-	Surtidorr/dist/run1505351488/Surtidorr.jar
+0	15	Surtidorr/dist/run1505351488/Surtidorr.jnlp
+1	1	Surtidorr/nbproject/UPDATED.TXT
+39	229	Surtidorr/nbproject/jfx-impl.xml
+4197	0	Surtidorr/nbproject/jfx-impl_backup_3.xml
+1	1	Surtidorr/nbproject/private/private.properties
+5	1	Surtidorr/nbproject/private/private.xml
+70	45	Surtidorr/src/surtidorr/FXMLDocument.fxml
+106	11	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[3b50eaf] Jesús Moris 2020-03-31 Se implemento servidor multihilos
+4	5	CasaMatriz/src/casamatriz/CasaMatriz.java
+79	0	CasaMatriz/src/casamatriz/servidor/Servidor.java
+116	0	CasaMatriz/src/casamatriz/servidor/Worker.java
+
+[3c01448] Jesús Moris 2020-03-11 se agregan algunas cosas para configurar mas rapido la conexion en otros ambientes
+5	4	CasaMatriz/src/casamatriz/CasaMatriz.java
+11	4	CasaMatriz/src/casamatriz/Cliente.java
+25	15	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+4	0	CasaMatriz/src/casamatriz/SharedInfo.java
+1	1	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+1	1	Surtidorr/nbproject/UPDATED.TXT
+229	39	Surtidorr/nbproject/jfx-impl.xml
+4007	0	Surtidorr/nbproject/jfx-impl_backup_2.xml
+1	1	Surtidorr/nbproject/private/private.properties
+1	3	Surtidorr/nbproject/private/private.xml
+1	1	Surtidorr/src/surtidorr/Cliente.java
+2	0	Surtidorr/src/surtidorr/SharedInfo.java
+
+[d636dac] Jesús Moris 2020-03-10 margenes fix
+-	-	Sucursal/bencinera.db
+12	10	Sucursal/src/sucursal/BaseDeDatos.java
+2	2	Sucursal/src/sucursal/FXMLDocument.fxml
+29	14	Sucursal/src/sucursal/FXMLDocumentController.java
+1	0	Sucursal/src/sucursal/InfoSurtidor.java
+1	0	Sucursal/src/sucursal/Sucursal.java
+2	6	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+1	1	Surtidorr/src/surtidorr/Cliente.java
+
+[edb727b] Jesús Moris 2020-03-09 Merge remote-tracking branch 'origin/master'
+[541953e] Bastian 2020-03-09 cambios tiempo real
+-	-	Sucursal/bencinera.db
+2	0	Sucursal/src/sucursal/BaseDeDatos.java
+15	9	Sucursal/src/sucursal/FXMLDocumentController.java
+
+[a8aab65] Jesús Moris 2020-03-09 Merge remote-tracking branch 'origin/master'
+[821a3d3] Bastian 2020-03-09 cambios
+-	-	.DS_Store
+51	1	.gitignore
+-	-	Sucursal/bencinera.db
+24	0	Sucursal/src/sucursal/BaseDeDatos.java
+26	5	Sucursal/src/sucursal/FXMLDocument.fxml
+46	3	Sucursal/src/sucursal/FXMLDocumentController.java
+19	0	Sucursal/src/sucursal/Servidor.java
+1	0	Sucursal/src/sucursal/Sucursal.java
+2	0	Sucursal/src/sucursal/Transaccion.java
+2	2	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+3	3	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+4	1	Surtidorr/dist/Surtidorr.jnlp
+1	1	Surtidorr/nbproject/UPDATED.TXT
+39	229	Surtidorr/nbproject/jfx-impl.xml
+4197	0	Surtidorr/nbproject/jfx-impl_backup_1.xml
+1	1	Surtidorr/nbproject/private/private.properties
+1	1	Surtidorr/src/surtidorr/Cliente.java
+2	1	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[b7edc4f] Jesús Moris 2020-03-09 ultimos fix
+1	1	CasaMatriz/src/casamatriz/Cliente.java
+-	-	Sucursal/bencinera.db
+1	1	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+-	-	Surtidorr/dist/run1473876412/Surtidorr.jar
+0	15	Surtidorr/dist/run1473876412/Surtidorr.jnlp
+2	2	Surtidorr/dist/{run1473876412 => run1505351488}/Surtidorr.html
+-	-	Surtidorr/dist/{run1703130730 => run1505351488}/Surtidorr.jar
+1	1	Surtidorr/dist/{run1703130730 => run1505351488}/Surtidorr.jnlp
+0	45	Surtidorr/dist/run1703130730/Surtidorr.html
+0	45	Surtidorr/dist/run39319247/Surtidorr.html
+-	-	Surtidorr/dist/run39319247/Surtidorr.jar
+0	15	Surtidorr/dist/run39319247/Surtidorr.jnlp
+0	45	Surtidorr/dist/run719146672/Surtidorr.html
+-	-	Surtidorr/dist/run719146672/Surtidorr.jar
+0	15	Surtidorr/dist/run719146672/Surtidorr.jnlp
+0	45	Surtidorr/dist/run992465243/Surtidorr.html
+-	-	Surtidorr/dist/run992465243/Surtidorr.jar
+0	15	Surtidorr/dist/run992465243/Surtidorr.jnlp
+1	1	Surtidorr/src/surtidorr/Cliente.java
+
+[f147671] Jesús Moris 2020-03-09 utlimos fix
+1	1	CasaMatriz/src/casamatriz/Cliente.java
+-	-	Sucursal/bencinera.db
+3	2	Sucursal/src/sucursal/BaseDeDatos.java
+1	1	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+0	4	Surtidorr/nbproject/private/private.xml
+1	1	Surtidorr/src/surtidorr/Cliente.java
+1	1	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[abe5de1] Jesús Moris 2020-03-09 Se implemento la persistencia de precios en la base de datos y la persistencia de las transacciones
+-	-	.DS_Store
+4	0	CasaMatriz/src/casamatriz/CasaMatriz.java
+21	1	CasaMatriz/src/casamatriz/Cliente.java
+12	15	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+16	0	CasaMatriz/src/casamatriz/SharedInfo.java
+2	12	CasaMatriz/src/sucursal/Transaccion.java
+-	-	Sucursal/bencinera.db
+138	25	Sucursal/src/sucursal/BaseDeDatos.java
+1	1	Sucursal/src/sucursal/FXMLDocumentController.java
+1	0	Sucursal/src/sucursal/InfoSurtidor.java
+7	6	Sucursal/src/sucursal/Servidor.java
+4	0	Sucursal/src/sucursal/Sucursal.java
+2	12	Sucursal/src/sucursal/Transaccion.java
+1	1	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/sucursal/Transaccion.class
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+-	-	Surtidorr/dist/run1422971993/Surtidorr.jar
+2	2	Surtidorr/dist/{run1422971993 => run1473876412}/Surtidorr.html
+-	-	Surtidorr/dist/run1473876412/Surtidorr.jar
+1	1	Surtidorr/dist/{run1641911394 => run1473876412}/Surtidorr.jnlp
+-	-	Surtidorr/dist/run1641911394/Surtidorr.jar
+2	2	Surtidorr/dist/{run1816687839 => run1703130730}/Surtidorr.html
+-	-	Surtidorr/dist/run1703130730/Surtidorr.jar
+1	1	Surtidorr/dist/{run1816687839 => run1703130730}/Surtidorr.jnlp
+-	-	Surtidorr/dist/run1816687839/Surtidorr.jar
+-	-	Surtidorr/dist/run1866522280/Surtidorr.jar
+2	2	Surtidorr/dist/{run1866522280 => run39319247}/Surtidorr.html
+-	-	Surtidorr/dist/run39319247/Surtidorr.jar
+1	1	Surtidorr/dist/{run1422971993 => run39319247}/Surtidorr.jnlp
+0	45	Surtidorr/dist/run586715325/Surtidorr.html
+-	-	Surtidorr/dist/run586715325/Surtidorr.jar
+0	15	Surtidorr/dist/run586715325/Surtidorr.jnlp
+0	45	Surtidorr/dist/run610123790/Surtidorr.html
+-	-	Surtidorr/dist/run610123790/Surtidorr.jar
+0	15	Surtidorr/dist/run610123790/Surtidorr.jnlp
+0	45	Surtidorr/dist/run622683953/Surtidorr.html
+-	-	Surtidorr/dist/run622683953/Surtidorr.jar
+0	15	Surtidorr/dist/run622683953/Surtidorr.jnlp
+0	45	Surtidorr/dist/run661834463/Surtidorr.html
+-	-	Surtidorr/dist/run661834463/Surtidorr.jar
+0	15	Surtidorr/dist/run661834463/Surtidorr.jnlp
+0	45	Surtidorr/dist/run664086531/Surtidorr.html
+-	-	Surtidorr/dist/run664086531/Surtidorr.jar
+0	15	Surtidorr/dist/run664086531/Surtidorr.jnlp
+0	45	Surtidorr/dist/run718039953/Surtidorr.html
+-	-	Surtidorr/dist/run718039953/Surtidorr.jar
+0	15	Surtidorr/dist/run718039953/Surtidorr.jnlp
+2	2	Surtidorr/dist/{run1641911394 => run719146672}/Surtidorr.html
+-	-	Surtidorr/dist/run719146672/Surtidorr.jar
+1	1	Surtidorr/dist/{run1866522280 => run719146672}/Surtidorr.jnlp
+0	45	Surtidorr/dist/run814489707/Surtidorr.html
+-	-	Surtidorr/dist/run814489707/Surtidorr.jar
+0	15	Surtidorr/dist/run814489707/Surtidorr.jnlp
+0	45	Surtidorr/dist/run904673203/Surtidorr.html
+-	-	Surtidorr/dist/run904673203/Surtidorr.jar
+0	15	Surtidorr/dist/run904673203/Surtidorr.jnlp
+0	45	Surtidorr/dist/run919453216/Surtidorr.html
+-	-	Surtidorr/dist/run919453216/Surtidorr.jar
+0	15	Surtidorr/dist/run919453216/Surtidorr.jnlp
+0	45	Surtidorr/dist/run9514850/Surtidorr.html
+-	-	Surtidorr/dist/run9514850/Surtidorr.jar
+0	15	Surtidorr/dist/run9514850/Surtidorr.jnlp
+45	0	Surtidorr/dist/run992465243/Surtidorr.html
+-	-	Surtidorr/dist/run992465243/Surtidorr.jar
+15	0	Surtidorr/dist/run992465243/Surtidorr.jnlp
+20	11	Surtidorr/src/sucursal/Transaccion.java
+4	3	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[26aab3f] Rodrigo Letelier 2020-03-08 Se agrego el cambio de precios a los tipos que faltaban y mas cambios
+45	3	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+11	0	Sucursal/src/sucursal/FXMLDocumentController.java
+23	0	Sucursal/src/sucursal/InfoSurtidor.java
+26	0	Sucursal/src/sucursal/Servidor.java
+24	10	Surtidorr/build/classes/surtidorr/FXMLDocument.fxml
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+24	10	Surtidorr/src/surtidorr/FXMLDocument.fxml
+24	0	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[859de5f] Jesús Moris 2020-03-08 Se implemento cambio de precios en cascada, se implemento en servidor poder recibir comandos (ej: actualizar_precios)
+0	1	CasaMatriz/src/casamatriz/Cliente.java
+3	0	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+23	9	Sucursal/src/sucursal/Servidor.java
+1	1	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+-	-	Surtidorr/build/classes/surtidorr/SharedInfo.class
+-	-	Surtidorr/build/classes/surtidorr/Surtidorr.class
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+45	0	Surtidorr/dist/run1422971993/Surtidorr.html
+-	-	Surtidorr/dist/run1422971993/Surtidorr.jar
+15	0	Surtidorr/dist/run1422971993/Surtidorr.jnlp
+45	0	Surtidorr/dist/run1641911394/Surtidorr.html
+-	-	Surtidorr/dist/run1641911394/Surtidorr.jar
+15	0	Surtidorr/dist/run1641911394/Surtidorr.jnlp
+45	0	Surtidorr/dist/run1816687839/Surtidorr.html
+-	-	Surtidorr/dist/run1816687839/Surtidorr.jar
+15	0	Surtidorr/dist/run1816687839/Surtidorr.jnlp
+45	0	Surtidorr/dist/run1866522280/Surtidorr.html
+-	-	Surtidorr/dist/run1866522280/Surtidorr.jar
+15	0	Surtidorr/dist/run1866522280/Surtidorr.jnlp
+45	0	Surtidorr/dist/run622683953/Surtidorr.html
+-	-	Surtidorr/dist/run622683953/Surtidorr.jar
+15	0	Surtidorr/dist/run622683953/Surtidorr.jnlp
+45	0	Surtidorr/dist/run661834463/Surtidorr.html
+-	-	Surtidorr/dist/run661834463/Surtidorr.jar
+15	0	Surtidorr/dist/run661834463/Surtidorr.jnlp
+45	0	Surtidorr/dist/run664086531/Surtidorr.html
+-	-	Surtidorr/dist/run664086531/Surtidorr.jar
+15	0	Surtidorr/dist/run664086531/Surtidorr.jnlp
+45	0	Surtidorr/dist/run718039953/Surtidorr.html
+-	-	Surtidorr/dist/run718039953/Surtidorr.jar
+15	0	Surtidorr/dist/run718039953/Surtidorr.jnlp
+45	0	Surtidorr/dist/run814489707/Surtidorr.html
+-	-	Surtidorr/dist/run814489707/Surtidorr.jar
+15	0	Surtidorr/dist/run814489707/Surtidorr.jnlp
+45	0	Surtidorr/dist/run904673203/Surtidorr.html
+-	-	Surtidorr/dist/run904673203/Surtidorr.jar
+15	0	Surtidorr/dist/run904673203/Surtidorr.jnlp
+45	0	Surtidorr/dist/run919453216/Surtidorr.html
+-	-	Surtidorr/dist/run919453216/Surtidorr.jar
+15	0	Surtidorr/dist/run919453216/Surtidorr.jnlp
+15	0	Surtidorr/nbproject/private/private.xml
+20	11	Surtidorr/src/surtidorr/Cliente.java
+19	2	Surtidorr/src/surtidorr/FXMLDocumentController.java
+18	0	Surtidorr/src/surtidorr/SharedInfo.java
+6	0	Surtidorr/src/surtidorr/Surtidorr.java
+
+[919052f] Jesús Moris 2020-03-08 Se implemento nuevo objeto serializable Informacion para pasar los datos de precios combustible, se creo objeto Cliente que se conecta al servidor por medio de un hilo
+52	0	CasaMatriz/src/casamatriz/Cliente.java
+36	50	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+76	0	CasaMatriz/src/sucursal/Informacion.java
+20	1	CasaMatriz/src/sucursal/Transaccion.java
+-	-	Sucursal/{test.db => bencinera.db}
+98	56	Sucursal/src/sucursal/BaseDeDatos.java
+1	1	Sucursal/src/sucursal/FXMLDocument.fxml
+1	2	Sucursal/src/sucursal/FXMLDocumentController.java
+76	0	Sucursal/src/sucursal/Informacion.java
+25	12	Sucursal/src/sucursal/Servidor.java
+16	1	Sucursal/src/sucursal/Transaccion.java
+1	1	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/sucursal/Informacion.class
+-	-	Surtidorr/build/classes/surtidorr/Cliente.class
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+2	2	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+1	1	Surtidorr/dist/Surtidorr.jnlp
+45	0	Surtidorr/dist/run586715325/Surtidorr.html
+-	-	Surtidorr/dist/run586715325/Surtidorr.jar
+15	0	Surtidorr/dist/run586715325/Surtidorr.jnlp
+45	0	Surtidorr/dist/run610123790/Surtidorr.html
+-	-	Surtidorr/dist/run610123790/Surtidorr.jar
+15	0	Surtidorr/dist/run610123790/Surtidorr.jnlp
+45	0	Surtidorr/dist/run9514850/Surtidorr.html
+-	-	Surtidorr/dist/run9514850/Surtidorr.jar
+15	0	Surtidorr/dist/run9514850/Surtidorr.jnlp
+76	0	Surtidorr/src/sucursal/Informacion.java
+60	0	Surtidorr/src/surtidorr/Cliente.java
+9	31	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[c7a0a9b] Jesús Moris 2020-03-08 fix algunos problemas con los sockets
+1	1	Sucursal/src/sucursal/FXMLDocumentController.java
+4	4	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+17	17	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+15	18	Surtidorr/dist/Surtidorr.jnlp
+0	45	Surtidorr/dist/run1048555439/Surtidorr.html
+-	-	Surtidorr/dist/run1048555439/Surtidorr.jar
+0	18	Surtidorr/dist/run1048555439/Surtidorr.jnlp
+0	3958	Surtidorr/dist/run1048555439/web-files/dtjava.js
+-	-	Surtidorr/dist/run1048555439/web-files/error.png
+-	-	Surtidorr/dist/run1048555439/web-files/get_java.png
+-	-	Surtidorr/dist/run1048555439/web-files/get_javafx.png
+-	-	Surtidorr/dist/run1048555439/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/run1048555439/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/run1048555439/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/run1048555439/web-files/upgrade_java.png
+-	-	Surtidorr/dist/run1048555439/web-files/upgrade_javafx.png
+0	45	Surtidorr/dist/run1980735597/Surtidorr.html
+-	-	Surtidorr/dist/run1980735597/Surtidorr.jar
+0	18	Surtidorr/dist/run1980735597/Surtidorr.jnlp
+0	3958	Surtidorr/dist/run1980735597/web-files/dtjava.js
+-	-	Surtidorr/dist/run1980735597/web-files/error.png
+-	-	Surtidorr/dist/run1980735597/web-files/get_java.png
+-	-	Surtidorr/dist/run1980735597/web-files/get_javafx.png
+-	-	Surtidorr/dist/run1980735597/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/run1980735597/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/run1980735597/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/run1980735597/web-files/upgrade_java.png
+-	-	Surtidorr/dist/run1980735597/web-files/upgrade_javafx.png
+0	45	Surtidorr/dist/run2005729689/Surtidorr.html
+-	-	Surtidorr/dist/run2005729689/Surtidorr.jar
+0	18	Surtidorr/dist/run2005729689/Surtidorr.jnlp
+0	3958	Surtidorr/dist/run2005729689/web-files/dtjava.js
+-	-	Surtidorr/dist/run2005729689/web-files/error.png
+-	-	Surtidorr/dist/run2005729689/web-files/get_java.png
+-	-	Surtidorr/dist/run2005729689/web-files/get_javafx.png
+-	-	Surtidorr/dist/run2005729689/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/run2005729689/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/run2005729689/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/run2005729689/web-files/upgrade_java.png
+-	-	Surtidorr/dist/run2005729689/web-files/upgrade_javafx.png
+0	3958	Surtidorr/dist/web-files/dtjava.js
+-	-	Surtidorr/dist/web-files/error.png
+-	-	Surtidorr/dist/web-files/get_java.png
+-	-	Surtidorr/dist/web-files/get_javafx.png
+-	-	Surtidorr/dist/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/web-files/upgrade_java.png
+-	-	Surtidorr/dist/web-files/upgrade_javafx.png
+23	0	Surtidorr/nbproject/UPDATED.TXT
+1769	1421	Surtidorr/nbproject/build-impl.xml
+8	8	Surtidorr/nbproject/genfiles.properties
+183	35	Surtidorr/nbproject/jfx-impl.xml
+4049	0	Surtidorr/nbproject/jfx-impl_backup.xml
+6	6	Surtidorr/nbproject/private/private.properties
+125	113	Surtidorr/nbproject/project.properties
+4	1	Surtidorr/src/surtidorr/FXMLDocumentController.java
+
+[c17da80] Jesús Moris 2020-03-08 Merge remote-tracking branch 'origin/master'
+[2da7e6e] Jesús Moris 2020-03-08 Conexión con BD, algunas funciones para insertar y obtener informacion
+-	-	.DS_Store
+0	3	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+8	2	Sucursal/nbproject/project.properties
+-	-	Sucursal/sqlite-jdbc-3.30.1.jar
+147	0	Sucursal/src/sucursal/BaseDeDatos.java
+4	0	Sucursal/src/sucursal/FXMLDocumentController.java
+2	0	Sucursal/src/sucursal/Sucursal.java
+-	-	Sucursal/test.db
+
+[e36ff5e] Rodrigo Letelier 2020-03-08 Se agrega la clase surtidor para hacer recargas
+4	2	Sucursal/src/sucursal/Servidor.java
+53	0	Surtidorr/build.xml
+4	0	Surtidorr/build/built-jar.properties
+-	-	Surtidorr/build/classes/sucursal/Transaccion.class
+39	0	Surtidorr/build/classes/surtidorr/FXMLDocument.fxml
+-	-	Surtidorr/build/classes/surtidorr/FXMLDocumentController.class
+-	-	Surtidorr/build/classes/surtidorr/Surtidorr.class
+45	0	Surtidorr/dist/Surtidorr.html
+-	-	Surtidorr/dist/Surtidorr.jar
+18	0	Surtidorr/dist/Surtidorr.jnlp
+45	0	Surtidorr/dist/run1048555439/Surtidorr.html
+-	-	Surtidorr/dist/run1048555439/Surtidorr.jar
+18	0	Surtidorr/dist/run1048555439/Surtidorr.jnlp
+3958	0	Surtidorr/dist/run1048555439/web-files/dtjava.js
+-	-	Surtidorr/dist/run1048555439/web-files/error.png
+-	-	Surtidorr/dist/run1048555439/web-files/get_java.png
+-	-	Surtidorr/dist/run1048555439/web-files/get_javafx.png
+-	-	Surtidorr/dist/run1048555439/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/run1048555439/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/run1048555439/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/run1048555439/web-files/upgrade_java.png
+-	-	Surtidorr/dist/run1048555439/web-files/upgrade_javafx.png
+45	0	Surtidorr/dist/run1980735597/Surtidorr.html
+-	-	Surtidorr/dist/run1980735597/Surtidorr.jar
+18	0	Surtidorr/dist/run1980735597/Surtidorr.jnlp
+3958	0	Surtidorr/dist/run1980735597/web-files/dtjava.js
+-	-	Surtidorr/dist/run1980735597/web-files/error.png
+-	-	Surtidorr/dist/run1980735597/web-files/get_java.png
+-	-	Surtidorr/dist/run1980735597/web-files/get_javafx.png
+-	-	Surtidorr/dist/run1980735597/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/run1980735597/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/run1980735597/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/run1980735597/web-files/upgrade_java.png
+-	-	Surtidorr/dist/run1980735597/web-files/upgrade_javafx.png
+45	0	Surtidorr/dist/run2005729689/Surtidorr.html
+-	-	Surtidorr/dist/run2005729689/Surtidorr.jar
+18	0	Surtidorr/dist/run2005729689/Surtidorr.jnlp
+3958	0	Surtidorr/dist/run2005729689/web-files/dtjava.js
+-	-	Surtidorr/dist/run2005729689/web-files/error.png
+-	-	Surtidorr/dist/run2005729689/web-files/get_java.png
+-	-	Surtidorr/dist/run2005729689/web-files/get_javafx.png
+-	-	Surtidorr/dist/run2005729689/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/run2005729689/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/run2005729689/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/run2005729689/web-files/upgrade_java.png
+-	-	Surtidorr/dist/run2005729689/web-files/upgrade_javafx.png
+3958	0	Surtidorr/dist/web-files/dtjava.js
+-	-	Surtidorr/dist/web-files/error.png
+-	-	Surtidorr/dist/web-files/get_java.png
+-	-	Surtidorr/dist/web-files/get_javafx.png
+-	-	Surtidorr/dist/web-files/javafx-chrome.png
+-	-	Surtidorr/dist/web-files/javafx-loading-100x100.gif
+-	-	Surtidorr/dist/web-files/javafx-loading-25x25.gif
+-	-	Surtidorr/dist/web-files/upgrade_java.png
+-	-	Surtidorr/dist/web-files/upgrade_javafx.png
+3	0	Surtidorr/manifest.mf
+1421	0	Surtidorr/nbproject/build-impl.xml
+2	0	Surtidorr/nbproject/configs/Run_as_WebStart.properties
+2	0	Surtidorr/nbproject/configs/Run_in_Browser.properties
+8	0	Surtidorr/nbproject/genfiles.properties
+4049	0	Surtidorr/nbproject/jfx-impl.xml
+2	0	Surtidorr/nbproject/private/configs/Run_as_WebStart.properties
+2	0	Surtidorr/nbproject/private/configs/Run_in_Browser.properties
+6	0	Surtidorr/nbproject/private/private.properties
+113	0	Surtidorr/nbproject/project.properties
+25	0	Surtidorr/nbproject/project.xml
+82	0	Surtidorr/src/sucursal/Transaccion.java
+39	0	Surtidorr/src/surtidorr/FXMLDocument.fxml
+109	0	Surtidorr/src/surtidorr/FXMLDocumentController.java
+37	0	Surtidorr/src/surtidorr/Surtidorr.java
+
+[3a9ce34] Jesús Moris 2020-03-08 Se agrega hilo para servidor sucursal
+-	-	.DS_Store
+23	0	CasaMatriz/nbproject/UPDATED.TXT
+520	165	CasaMatriz/nbproject/build-impl.xml
+2	2	CasaMatriz/nbproject/genfiles.properties
+229	39	CasaMatriz/nbproject/jfx-impl.xml
+4007	0	CasaMatriz/nbproject/jfx-impl_backup.xml
+12	0	CasaMatriz/nbproject/project.properties
+23	0	Sucursal/nbproject/UPDATED.TXT
+520	165	Sucursal/nbproject/build-impl.xml
+2	2	Sucursal/nbproject/genfiles.properties
+229	39	Sucursal/nbproject/jfx-impl.xml
+4007	0	Sucursal/nbproject/jfx-impl_backup.xml
+12	0	Sucursal/nbproject/project.properties
+2	30	Sucursal/src/sucursal/FXMLDocumentController.java
+77	0	Sucursal/src/sucursal/Servidor.java
+
+[9caa674] Bastian 2020-03-07 Subida del dump sql
+156	0	sucursal_dump.sql
+
+[89fdc2f] Bastian 2020-03-07 Comunicacion exitosa tcp entre casa matriz y sucursal
+28	9	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+2	1	CasaMatriz/src/{casamatriz => sucursal}/Transaccion.java
+5	1	Sucursal/src/sucursal/BaseDeDatos.java
+21	4	Sucursal/src/sucursal/FXMLDocumentController.java
+5	0	Sucursal/src/sucursal/Transaccion.java
+
+[c88c339] Bastian 2020-03-07 Creacion clase para generar conexion con bd sqlite
+14	0	Sucursal/src/sucursal/BaseDeDatos.java
+
+[43a4268] Bastian 2020-03-07 cambios
+8	7	CasaMatriz/src/casamatriz/FXMLDocument.fxml
+50	0	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+81	0	CasaMatriz/src/casamatriz/Transaccion.java
+33	6	Sucursal/src/sucursal/FXMLDocument.fxml
+63	6	Sucursal/src/sucursal/FXMLDocumentController.java
+81	0	Sucursal/src/sucursal/Transaccion.java
+
+[dba430f] Bastian 2020-03-07 cambios
+5	1	.gitignore
+36	6	CasaMatriz/src/casamatriz/FXMLDocument.fxml
+51	6	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+
+[fd8b13f] Bastian 2020-03-06 Creacion de programas en javafx
+2	0	.gitignore
+53	0	CasaMatriz/build.xml
+3	0	CasaMatriz/manifest.mf
+1414	0	CasaMatriz/nbproject/build-impl.xml
+2	0	CasaMatriz/nbproject/configs/Run_as_WebStart.properties
+2	0	CasaMatriz/nbproject/configs/Run_in_Browser.properties
+8	0	CasaMatriz/nbproject/genfiles.properties
+4007	0	CasaMatriz/nbproject/jfx-impl.xml
+113	0	CasaMatriz/nbproject/project.properties
+25	0	CasaMatriz/nbproject/project.xml
+37	0	CasaMatriz/src/casamatriz/CasaMatriz.java
+14	0	CasaMatriz/src/casamatriz/FXMLDocument.fxml
+35	0	CasaMatriz/src/casamatriz/FXMLDocumentController.java
+53	0	Sucursal/build.xml
+3	0	Sucursal/manifest.mf
+1414	0	Sucursal/nbproject/build-impl.xml
+2	0	Sucursal/nbproject/configs/Run_as_WebStart.properties
+2	0	Sucursal/nbproject/configs/Run_in_Browser.properties
+8	0	Sucursal/nbproject/genfiles.properties
+4007	0	Sucursal/nbproject/jfx-impl.xml
+113	0	Sucursal/nbproject/project.properties
+25	0	Sucursal/nbproject/project.xml
+14	0	Sucursal/src/sucursal/FXMLDocument.fxml
+35	0	Sucursal/src/sucursal/FXMLDocumentController.java
+37	0	Sucursal/src/sucursal/Sucursal.java
+
+[1350997] Bastian 2020-03-06 Eliminacion de los programas en java
+-	-	.DS_Store
+0	73	Empresa/build.xml
+0	3	Empresa/manifest.mf
+0	1413	Empresa/nbproject/build-impl.xml
+0	8	Empresa/nbproject/genfiles.properties
+0	2	Empresa/nbproject/private/private.properties
+0	73	Empresa/nbproject/project.properties
+0	15	Empresa/nbproject/project.xml
+0	21	Empresa/src/empresa/Empresa.java
+0	1	README.md
+0	73	Sucursal/build.xml
+0	3	Sucursal/manifest.mf
+0	1413	Sucursal/nbproject/build-impl.xml
+0	8	Sucursal/nbproject/genfiles.properties
+0	2	Sucursal/nbproject/private/private.properties
+0	73	Sucursal/nbproject/project.properties
+0	15	Sucursal/nbproject/project.xml
+0	21	Sucursal/src/sucursal/Sucursal.java
+
+[5c1ed1f] Bastian 2020-03-03 Inicializacion de 2 proyectos en java
+73	0	Empresa/build.xml
+3	0	Empresa/manifest.mf
+1413	0	Empresa/nbproject/build-impl.xml
+8	0	Empresa/nbproject/genfiles.properties
+2	0	Empresa/nbproject/private/private.properties
+73	0	Empresa/nbproject/project.properties
+15	0	Empresa/nbproject/project.xml
+21	0	Empresa/src/empresa/Empresa.java
+73	0	Sucursal/build.xml
+3	0	Sucursal/manifest.mf
+1413	0	Sucursal/nbproject/build-impl.xml
+8	0	Sucursal/nbproject/genfiles.properties
+2	0	Sucursal/nbproject/private/private.properties
+73	0	Sucursal/nbproject/project.properties
+15	0	Sucursal/nbproject/project.xml
+21	0	Sucursal/src/sucursal/Sucursal.java
+
+[bd1e96d] Bastian 2020-03-03 Initial commit
+1	0	README.md

@@ -1,0 +1,40 @@
+<div class="card o-hidden" [@animate]="{value:'*',params:{y:'120px',opacity:'0',delay:'100ms', duration: '400ms'}}">
+  <div class="row">
+    <div class="col-md-6 text-center " style="background-size: cover;background-image: url(./assets/images/photo-long-3.jpg)">
+      <div class="pl-3 auth-right">
+        <div class="auth-logo text-center mt-4">
+          <img src="assets/images/logoghtracker.png" alt="">
+        </div>
+        <div class="flex-grow-2"></div>
+        <div style="text-align:center; width:100%;" class="w-100 mb-4">
+          <h3><b>Gracias por utilizar Github Tracker</b></h3>
+          <p>Para continuar necesitaremos algunos datos</p>
+        </div>
+        <div class="flex-grow-1"></div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="p-4">
+
+        <h1 class="mb-3 text-18">Completa tu Usuario</h1>
+        <!-- <p class="mb-4 text-muted font-small">Lorem ipsum dolor sit amet.</p> -->
+        <form [formGroup]="signinForm" (ngSubmit)="updateInfo()">
+          <div class="form-group">
+            <label for="rut">RUT</label>
+            <input id="rut" formControlName="rut" placeholder="11111111-1" (input)="checkRun()" class="form-control form-control-rounded" type="text">
+          </div>
+          <div class="form-group">
+            <label for="matricula">Número de Matrícula</label>
+            <input id="matricula" formControlName="enrollment" class="form-control form-control-rounded" type="text">
+          </div>
+          <div class="form-group">
+            <label for="password">Nueva Contraseña</label>
+            <input id="password" formControlName="password" class="form-control form-control-rounded" type="password">
+          </div>
+          <button class="btn btn-primary btn-block btn-rounded mt-3">Actualizar información</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+.container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container > * {
+    width: 100%;
+  }
+
+.form-div{
+  display: flex;
+  flex-direction: row;
+  }
+
+  .form-div > * {
+    width: 100%;
+  }
+
+.input{
+  width: 100%;
+  padding-left: 15px;
+}
+
+.position-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+.form-group.hidden {
+  width: 0;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+.custom-day {
+  text-align: center;
+  padding: 0.185rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+.custom-day.focused {
+  background-color: #e6e6e6;
+}
+.custom-day.range, .custom-day:hover {
+  background-color: rgb(2, 117, 216);
+  color: white;
+}
+.custom-day.faded {
+  background-color: rgba(2, 117, 216, 0.5);
+}
+
+.tablero{
+  border-collapse: collapse;
+  border: 1px solid gainsboro;
+  border-radius: 3px;
+  max-width: 200px;
+  word-break:break-all;
+  background: #002f4f;
+  color: white;
+  font-family: Arial;
+  font-size: 1em;
+}
+.tablero .left {
+  text-align: left;
+}
+.tablero .tarjeta {
+  border: 1px solid gainsboro;
+  text-align: left;
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+}
+.tablero .autor {
+  position: relative;
+  bottom: 0;
+  font-size: .5em;
+  text-align: right;
+}

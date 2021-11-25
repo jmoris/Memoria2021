@@ -1,0 +1,51 @@
+<div>
+    <h2 mat-dialog-title>Detalle proyectos</h2>
+    Resumen usuarios
+    <mat-list-item>
+        <div fxLayout="row" class="item">
+            <div fxFlex="50">
+                <b>Jefe profecto:</b>
+                {{ (data.project_manager)?(data.project_manager.name + " " + data.project_manager.surname):'No asignado'}}
+            </div>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div fxLayout="row" class="item">
+            <div fxFlex="50">
+                <b>Cantidad participantes:</b> {{ data.user_roles_count }}
+            </div>
+        </div>
+    </mat-list-item>
+    <hr>
+    Resumen proyecto
+    <mat-dialog-content>
+        <mat-list-item>
+            <div fxLayout="row" class="item">
+                <div fxFlex="50">
+                    <b>Nombre: </b>
+                    {{ data.name }}
+                </div>
+            </div>
+        </mat-list-item>
+        <mat-list-item>
+            <div fxLayout="row" class="item">
+                <div fxFlex="50">
+                    <b>Fecha creación:</b>
+                    {{ data.created_at }}
+                </div>
+            </div>
+        </mat-list-item>
+        <mat-list-item>
+            <div fxLayout="row" class="item">
+                <div fxFlex="50">
+                    <b>Fecha modificación:</b>
+                    {{ data.updated_at }}
+                </div>
+            </div>
+        </mat-list-item>
+    </mat-dialog-content>
+    <hr>
+
+    <mat-dialog-actions>
+        <button mat-raised-button (click)="onCloseCancel()">Cerrar</button>
+    </mat-dialog-actions>

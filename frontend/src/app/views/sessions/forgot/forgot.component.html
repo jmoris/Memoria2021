@@ -1,0 +1,31 @@
+<div class="card o-hidden" [@animate]="{value:'*',params:{y:'120px',opacity:'0',delay:'100ms', duration: '400ms'}}">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="p-4">
+          <div class="auth-logo text-center mb-4">
+            <img src="assets/images/logoghtracker.png" alt="">
+          </div>
+          <h1 class="mb-3 text-18">Olvidé mi Contraseña</h1>
+          <form action="">
+            <div class="form-group">
+              <label for="email">Correo Electrónico</label>
+              <input id="email" class="form-control form-control-rounded" type="email">
+            </div>
+            <button class="btn btn-primary btn-block btn-rounded mt-3">Reiniciar mi Contraseña</button>
+            
+          </form>
+          <div class="mt-3 text-center">
+            <a href="" class="text-muted" routerLink="/sessions/signin"><u>Volver Atrás</u></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 text-center " style="background-size: cover;background-image: url(./assets/images/pass_olvidada.png)">
+        <div class="pr-3 auth-right">
+          <h3><b>¿No puede restablecer la contraseña?</b></h3>
+          <h4><small>Póngase en Contacto con Nosotros</small></h4>
+          <p><b>Contacto para Recuperación:</b><br>
+            <a href="mailto:Github Tracker_password@info.universidad.cl">Github Tracker_password@info.universidad.cl</a></p>
+        </div>
+      </div>
+    </div>
+  </div>

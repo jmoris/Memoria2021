@@ -1,0 +1,104 @@
+<div class="breadcrumb">
+    <h1>Tu perfil</h1>
+    <ul>
+        <li>Administrar </li>
+    </ul>
+</div>
+<div class="separator-breadcrumb border-top"></div>
+
+<div class="row">
+    <div class="col-lg-8 col-md-12">
+        <!-- CARD ICON -->
+        <div class="row">
+
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="card card-icon mb-4">
+                    <div class="card-body text-center">
+                        <i class="i-Find-User"></i>
+                        <p class="text-muted mt-2 mb-2">Estudiantes</p>
+                        <p class="text-primary text-24 line-height-1 m-0">4021</p>
+                        <button _ngcontent-tkm-c169="" class="btn btn-primary btn-rounded">Ver detalles</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+              <div class="card card-icon mb-4">
+                  <div class="card-body text-center">
+                      <i class="i-Find-User"></i>
+                      <p class="text-muted mt-2 mb-2">Nuevo Usuario </p>
+                      <p class="text-primary text-24 line-height-1 m-0"> <br /> </p>
+                      <button _ngcontent-tkm-c169="" class="btn btn-primary btn-rounded" (click)="addUser(userAddConfirmModal, $event)" > Agregar </button>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+ <!-- VENTANA MODAL QUE SE DESPLEGA PARA AGREGAR UN USUARIO -->
+ <ng-template #userAddConfirmModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Agregar un usuario</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="addUserForm"  (ngSubmit)="addUserOnSubmit()" >
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Nombre:</td>
+              <td><input type="text" formControlName="name" ng-model="user.name" size="25" maxlength="100" required></td>
+            </tr>
+            <tr>
+              <td>Apellido:</td>
+              <td><input type="text" formControlName="surname" ng-model="email.text" size="25" maxlength="100" required></td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><input type="text" formControlName="email" ng-model="email.text" size="25" maxlength="100" required></td>
+            </tr>
+            <tr>
+              <td>Contraseña:</td>
+              <td><input type="password" formControlName="password" ng-model="email.text" size="25" maxlength="100" required></td>
+            </tr>
+            <tr>
+              <td>Rut:</td>
+              <td><input type="text" formControlName="rut" ng-model="email.text" size="25" maxlength="100" required></td>
+            </tr>
+            <tr>
+              <td>Matricula:</td>
+              <td><input type="text" formControlName="enrollment" ng-model="email.text" size="25" maxlength="100" required></td>
+            </tr>
+            <tr>
+              <td>Perfil:</td>
+              <td>
+                <div>
+                  <select class="form-control" id="UserType" formControlName="profile" required>
+                    <option value="" selected disabled> Seleccionar Opcion</option>
+                    <option value="admin"> Administrador</option>
+                    <option value="teacher"> Docente </option>
+                    <!--<option value="Ayudante"> Ayudante</option>-->
+                    <option value="student"> Estudiante </option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="!checked">
+            <label style="color:red;"><b>* Todos los campos deben ser completados.</b></label>
+        </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" ngbAutofocus class="btn btn-wide btn-primary btn-rounded"
+        (click)="((this.addUserForm.invalid)?checked=false:modal.close('Ok'))">Agregar </button>
+      <button type="button" class="btn btn-outline-danger btn-rounded"
+        (click)="modal.dismiss('cancel')">Cancelar</button>
+    </div>
+  </ng-template>
+
+</div>

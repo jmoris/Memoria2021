@@ -1,0 +1,82 @@
+<div class="">
+    <div class="row">
+        <div class="breadcrumb col-md-9">
+            <h1>Bienvenido</h1>
+            <ul>
+                <li><a href="">Administrador/a</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="separator-breadcrumb border-top"></div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title">Usuarios</div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="card card-icon mb-4">
+                                <div class="card-body text-center">
+                                    <i class="i-Administrator"></i>
+                                    <p class="text-muted mt-2 mb-2">Proyectos</p>
+                                    <p class="text-primary text-24 line-height-1 m-0">{{ info?.nusuarios }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="card card-icon mb-4">
+                                <div class="card-body text-center">
+                                    <i class="i-Business-Mens"></i>
+                                    <p class="text-muted mt-2 mb-2">Cursos</p>
+                                    <p class="text-primary text-24 line-height-1 m-0">{{ info?.ncursos }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="card card-icon mb-4">
+                                <div class="card-body text-center">
+                                    <i class="i-MaleFemale"></i>
+                                    <p class="text-muted mt-2 mb-2">Proyectos</p>
+                                    <p class="text-primary text-24 line-height-1 m-0">{{ info?.nproyectos }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title">Proyectos</div>
+                    <div style="max-height: 15em; overflow:scroll;">
+                        <table class="table">
+                            <thead><tr>
+                                <th>Nombre</th>
+                                <th>Año</th>
+                                <th>Semestre</th>
+                                <th>Nombre</th>
+                            </tr></thead>
+                            <tbody>
+                               <tr *ngFor="let proyecto of info.proyectos">
+                                   <td>{{proyecto.nombre}}</td>
+                                   <td>{{proyecto.ano}}</td>
+                                   <td>{{proyecto.semestre}}</td>
+                                   <td>{{proyecto.profesor}}</td>
+                               </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                     
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+

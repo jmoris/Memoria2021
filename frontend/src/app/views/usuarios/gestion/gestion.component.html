@@ -1,0 +1,160 @@
+<div class="breadcrumb">
+    <h1>Usuarios</h1>
+    <ul>
+        <li>Administrar Usuarios</li>
+    </ul>
+</div>
+<div class="separator-breadcrumb border-top"></div>
+<div class="module-loader" *ngIf="loading">
+    <div class="spinner spinner-bubble spinner-bubble-primary mr-3"></div>
+</div>
+<div class="row">
+    <!-- ICON BG -->
+    <div class="col-lg-2 col-md-6 col-sm-6">
+        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+            <div class="card-body text-center">
+                <i class="i-Add-User"></i>
+                <div class="content">
+                    <p class="text-muted mt-2 mb-0">Carga Masiva</p>
+                    <button *ngIf="userType=='Administrador'||userType=='teacher'" _ngcontent-tkm-c169=""
+                        class="btn btn-primary btn-rounded" (click)="fileInput.click();">Importar</button>
+                    <input #fileInput accept=".xlsx, .xls" type="file"
+                        (change)="handleFileInput($event.target.files, infoImportModal)" style="display:none;" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-6 col-sm-6">
+        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+            <div class="card-body text-center">
+                <i class="i-Add-User"></i>
+                <div class="content">
+                    <p class="text-muted mt-2 mb-0">Nuevo Usuario</p>
+                    <button *ngIf="userType=='Administrador'||userType=='teacher'" type="button"
+                        class="btn btn-primary btn-rounded m-1" (click)="openAddDialog()">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div fxFlex="50">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" matSortActive="run"
+        matSortDirection="asc" matSortDisableClear>
+        <ng-container matColumnDef="run">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> R.U.N </th>
+            <td mat-cell *matCellDef="let element"> {{element.rut}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+        <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Perfil </th>
+            <td mat-cell *matCellDef="let element"> {{formatRole(element.pivot.role_id)}} </td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef> Editar </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="warn" (click)="editUser(element.id)">
+                    <mat-icon svgIcon="edit" class="mat-18"></mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <!--En caso de querer habilitar eliminar usuario, descomentar código de abajo-->
+        <!--ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="warn" (click)="deleteUser(element.id)">
+                    <mat-icon svgIcon="delete" class="mat-18"></mat-icon>
+                </button>
+            </td>
+        </ng-container-->
+        <!-- toggle column -->
+        <ng-container matColumnDef="disable">
+            <th mat-header-cell *matHeaderCellDef> Activar<br />Desactivar </th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="element.pivot.role_id!=1; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock>
+                    <mat-slide-toggle color="primary" [(ngModel)]="element.active"
+                        (change)="activeUserToggle($event, element)">
+                    </mat-slide-toggle>
+                </ng-template>
+                <ng-template #elseBlock>
+                    <mat-slide-toggle color="primary" [(ngModel)]="element.active" [disabled]="true">
+                    </mat-slide-toggle>
+                </ng-template>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" class="mat-elevation-z8">
+    </mat-paginator>
+    <ng-template #infoImportModal let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">Estadisticas carga masiva de usuarios</h4>
+            <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-bordered table-sm" style="width:100%;">
+                <tr>
+                    <td width="60%">Usuarios cargados: </td>
+                    <td>{{ carga.stats.cargados }}</td>
+                </tr>
+                <tr>
+                    <td width="50%">Usuarios fallidos: </td>
+                    <td>{{ carga.stats.fallidos.inexistentes.cantidad }}</td>
+                </tr>
+                <tr>
+                    <td width="50%">Usuarios existentes: </td>
+                    <td>{{ carga.stats.fallidos.existentes.cantidad }}</td>
+                </tr>
+            </table>
+            <div style="height: 500px; width:100%; overflow:auto">
+                <table class="table table-bordered table-sm" style="width:100%">
+                    <thead>
+                        <tr>
+                            <td><b>Correos de usuarios</b></td>
+                            <td><b>Estado</b></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of carga.stats.fallidos.inexistentes.detalle">
+                            <td width="60%">{{ item}}</td>
+                            <td width="40%">
+                                <font color="red">Inexistente</font>
+                            </td>
+                        </tr>
+                        <tr *ngFor="let item of carga.stats.fallidos.existentes.detalle">
+                            <td width="60%">{{ item}}</td>
+                            <td width="40%">
+                                <font color="#ffcc00">Existente</font>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger btn-rounded"
+                (click)="modal.dismiss('cancel')">Cerrar</button>
+        </div>
+    </ng-template>
+</div>
