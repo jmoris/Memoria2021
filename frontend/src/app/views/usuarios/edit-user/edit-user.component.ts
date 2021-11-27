@@ -13,6 +13,7 @@ export class EditUserComponent implements OnInit {
   title: String;
   hide = true;
   loading: boolean;
+  roleId : any;
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -47,6 +48,7 @@ export class EditUserComponent implements OnInit {
         this.form.get('rut').setValue(result.rut);
         this.form.get('enrollment').setValue(result.enrollment);
         this.form.get('role').setValue(result.pivot.role_id.toString());
+        this.roleId = result.pivot.role_id.toString();
         this.loading = false;
       }, error: result => {
         console.log(result);

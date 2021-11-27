@@ -32,7 +32,6 @@ import { Identifiers } from '@angular/compiler/src/render3/r3_identifiers';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { getWeekYearWithOptions } from 'date-fns/fp';
-import { Console } from 'console';
 import { isThisISOWeek } from 'date-fns';
 export type ChartOptions = {
     series: ApexAxisChartSeries;
