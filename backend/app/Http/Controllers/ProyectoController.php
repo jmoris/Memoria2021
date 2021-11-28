@@ -23,7 +23,14 @@ class ProyectoController extends Controller
         $rol = $institucion->usuarios()->wherePivot('user_id', $user->id)->first()->pivot->role_id;
         $rol = Role::findOrFail($rol)->name;
         if($rol == 'Superadministrador'){
-            return Proyecto::all();
+            $proyectos_arr = [];
+            $proyectos = Proyecto::with('curso')->get();
+            foreach($proyectos as $proy){
+                $profesor = Curso::find($proy->curso_id)->profesor;
+                $proy->profesor = $profesor;
+                array_push($proyectos_arr, $proy);
+            }
+            return $proyectos_arr;
         }else if($rol == 'Administrador'){
             $cursos = Curso::where('institucion_id', $request->institucion)->get();
             $nproyectos = 0;

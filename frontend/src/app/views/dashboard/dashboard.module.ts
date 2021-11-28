@@ -8,6 +8,7 @@ import { TagInputModule } from 'ngx-chips';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboadDefaultComponent } from './dashboad-default/dashboad-default.component';
+import { DashboardSuperAdminComponent } from './dashboard-suparadmin/dashboad-superadmin.component';
 import { DashboadEstudianteComponent } from './dashboad-estudiante/dashboad-estudiante.component';
 import { DashboadDocenteComponent } from './dashboad-docente/dashboad-default.component';
 import { DashboadAyudanteComponent } from './dashboard-ayudante/dashboad-default.component';
@@ -29,6 +30,6 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     CustomFormsModule,
     TagInputModule
   ],
-  declarations: [DashboadDefaultComponent, DashboadEstudianteComponent, DashboadAyudanteComponent, DashboadDocenteComponent]
+  declarations: [DashboadDefaultComponent, DashboardSuperAdminComponent, DashboadEstudianteComponent, DashboadAyudanteComponent, DashboadDocenteComponent]
 })
 export class DashboardModule { }

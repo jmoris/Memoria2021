@@ -17,7 +17,24 @@ class DashboardController extends Controller
         $rol = $institucion->usuarios()->wherePivot('user_id', $user->id)->first()->pivot->role_id;
         $rol = Role::findOrFail($rol)->name;
         if($rol == 'Superadministrador'){
-            return 'asdf';
+            $cursos = Curso::where('institucion_id', $request->institucion)->get();
+            $nproyectos = 0;
+            $proyectos = [];
+            foreach($cursos as $curso){
+                $dproyectos = $curso->proyectos()->get();
+                foreach($dproyectos as $proy){
+                    $profesor = Curso::find($proy->curso_id)->profesor;
+                    $proy->profesor = $profesor->name . ' ' . $profesor->lastname;
+                    array_push($proyectos, $proy);
+                }
+                $nproyectos += $curso->proyectos()->count();
+            }
+            return response()->json([
+                'nusuarios' => count($institucion->usuarios),
+                'ncursos' => count($cursos),
+                'nproyectos' => $nproyectos,
+                'proyectos' => $proyectos
+            ]);
         }else if($rol == 'Administrador'){
             $cursos = Curso::where('institucion_id', $request->institucion)->get();
             $nproyectos = 0;

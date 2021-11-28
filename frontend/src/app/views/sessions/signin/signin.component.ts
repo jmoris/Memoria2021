@@ -80,6 +80,11 @@ export class SigninComponent implements OnInit {
                             .then(() => {
                                 window.location.reload();
                             });
+                        }else if(currentUser.role == 'Superadministrador'){
+                            this.router.navigate(['/dashboard/admin'])
+                            .then(() => {
+                                window.location.reload();
+                            });
                         }
                     }
                 },

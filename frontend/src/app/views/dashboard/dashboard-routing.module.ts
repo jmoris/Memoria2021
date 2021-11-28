@@ -5,6 +5,7 @@ import { DashboadEstudianteComponent } from './dashboad-estudiante/dashboad-estu
 import { DashboadAyudanteComponent } from './dashboard-ayudante/dashboad-default.component';
 import { DashboadDocenteComponent } from './dashboad-docente/dashboad-default.component';
 import { ProfileGuard } from 'src/app/_helpers/profile.guard';
+import { DashboardSuperAdminComponent } from './dashboard-suparadmin/dashboad-superadmin.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,11 @@ const routes: Routes = [
     path: 'v4',
     component: DashboadDocenteComponent,
     canActivate: [ProfileGuard]
+  },
+  {
+    path: 'admin',
+    component: DashboardSuperAdminComponent,
+  //  canActivate: [ProfileGuard]
   },
 ];
 

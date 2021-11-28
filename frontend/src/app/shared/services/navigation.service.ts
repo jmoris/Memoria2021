@@ -56,7 +56,41 @@ export class NavigationService {
         this.user = auth.currentUserValue;
         console.log('algo');
         console.log(this.user);
-        if(this.user.role == 'Administrador'){
+        if(this.user.role == 'Superadministrador'){
+            this.defaultMenu.push({
+                name: 'Home',
+                description: 'Página principal o dashboard',
+                type: 'link',
+                icon: 'i-Home1',
+                state: '/dashboard/admin'
+            },{
+                name: 'Instituciones',
+                description: 'Gestión de las instituciones',
+                type: 'link',
+                icon: 'i-Building',
+                state: '/instituciones/gestion'
+            },{
+                name: 'Usuarios',
+                description: 'Gestión de los usuarios',
+                type: 'link',
+                icon: 'i-Administrator',
+                state: '/usuarios/gestion'
+            },
+            {
+                name: 'Cursos',
+                description: 'Gestión de los cursos',
+                type: 'link',
+                icon: 'i-Library',
+                state: '/cursos/gestion'
+            },
+            {
+                name: 'Proyectos',
+                description: 'Gestión de los proyectos',
+                type: 'link',
+                icon: 'i-File-Clipboard-File--Text',
+                state: '/proyectos/gestion'
+            });
+        }else if(this.user.role == 'Administrador'){
             this.defaultMenu.push({
                 name: 'Home',
                 description: 'Página principal o dashboard',

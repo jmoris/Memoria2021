@@ -25,6 +25,10 @@ const adminRoutes: Routes = [
         path: 'cursos',
         loadChildren: () => import('./views/cursos/cursos.module').then(m => m.CursosModule)
     },
+    {
+      path: 'instituciones',
+      loadChildren: () => import('./views/instituciones/instituciones.module').then(m => m.InstitucionesModule)
+  },
   ];
 
 const routes: Routes = [
