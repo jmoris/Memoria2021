@@ -114,7 +114,7 @@
                 <div class="dropdown-header">
                     <i class="i-Lock-User mr-1"></i> Usuario
                 </div>
-                <button class="dropdown-item">Configuracion de cuenta</button>
+                <button class="dropdown-item" (click)="openPCAModal(complexityAnalysisModal)">Configuracion de cuenta</button>
                 <button class="dropdown-item" routerLink="/">Cerrar sesion</button>
             </div>
         </div>
@@ -122,3 +122,91 @@
     </div>
 
 </div>
+  <!-- VENTANA MODAL QUE SE DESPLEGA PARA CONFIRMAR LA ELIMINACIÓN DE UN DATO-->
+  <ng-template #complexityAnalysisModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Información del usuario</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+		<div class="col-md-12">
+            <form [formGroup]="form">
+
+                <div class="form-div">
+                    <mat-form-field appearance="standard" class="input">
+                        <mat-label>R.U.N</mat-label>
+                        <input matInput placeholder="11111111-1" formControlName="rut" readonly />
+                        <mat-hint></mat-hint>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="standard" class="input">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="" formControlName="name" maxlength="30" />
+                        <mat-hint></mat-hint>
+                    </mat-form-field>
+                </div>
+    
+                <div class="form-div">
+                    <mat-form-field appearance="standard" class="input">
+                        <mat-label>Apellido</mat-label>
+                        <input matInput placeholder="" formControlName="lastname" maxlength="30" />
+                        <mat-hint></mat-hint>
+    
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="standard" class="input">
+                        <mat-label>Matrícula</mat-label>
+                        <input matInput placeholder="" formControlName="enrollment" maxlength="15" />
+                        <mat-hint></mat-hint>
+    
+                    </mat-form-field>
+                </div>
+    
+                <div class="container">
+                    <mat-form-field appearance="standard">
+                        <mat-label>Correo electrónico</mat-label>
+                        <input matInput placeholder="ejemplo@dominio.cl" formControlName="email" maxlength="50" />
+    
+                        <mat-hint></mat-hint>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-div">
+                    <mat-form-field appearance="standard" class="input">
+                        <mat-label>Usuario GitHub</mat-label>
+                        <input matInput placeholder="" formControlName="gh_user" maxlength="30" />
+                        <mat-hint></mat-hint>
+    
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="standard" class="input">
+                        <mat-label>Token GitHub</mat-label>
+                        <input matInput placeholder="" formControlName="gh_token"  />
+                        <mat-hint></mat-hint>
+    
+                    </mat-form-field>
+                </div>
+    
+                <div class="container">
+                    <mat-form-field appearance="standard">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput placeholder=" Ingrese su contraseña" [type]="hide ? 'password' : 'text'"
+                            formControlName="password" maxlength="30" />
+                        <mat-icon matSuffix (click)="hide = !hide">{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+                        <mat-hint></mat-hint>
+                    </mat-form-field>
+                </div>
+            </form>
+		</div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-rounded" mat-raised-button (click)="onCloseConfirm()" [disabled]="form.invalid">Guardar</button>
+      <button type="button" class="btn btn-outline-secondary btn-rounded"
+        (click)="modal.dismiss('cancel')">Cerrar</button>
+    </div>
+  </ng-template>

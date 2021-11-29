@@ -1,19 +1,18 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ProductService } from 'src/app/shared/services/product.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { CursosService } from 'src/app/_services/cursos.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Course } from 'src/app/model-classes/course';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ConfirmationDialogComponent } from '../../core/confirmation-dialog/confirmation-dialog.component';
 import { Router } from '@angular/router';
 import { AddInstitucionComponent } from '../add-institucion/add-institucion.component';
 import { EditInstitucionComponent } from '../edit-institucion/edit-institucion.component';
+import { InstitucionService } from 'src/app/_services/institucion.service';
+import { Institucion } from 'src/app/model-classes/institucion';
 
 
 @Component({
@@ -22,30 +21,17 @@ import { EditInstitucionComponent } from '../edit-institucion/edit-institucion.c
   styleUrls: ['./gestion.component.scss']
 })
 export class GestionComponent implements OnInit {
-  cursos: any;
+  inst: any;
   checked = true;
   loading = false;
   dialogResult = "";
-  courses: Course[];
-  displayedColumns: string[] = ["name", "year", "semester", "edit", "delete"];
-  dataSource: MatTableDataSource<Course> = new MatTableDataSource<Course>();
-
+  instituciones : any = [];
+  displayedColumns: string[] = ["nombre", "razon_social", "edit", "delete"];
+  dataSource: MatTableDataSource<Institucion> = new MatTableDataSource<Institucion>();
 
   addCourseForm = this.fb.group({
-    name: ['', Validators.required],
-    year: ['', Validators.required],
-    semester: ['', Validators.required],
-    teacher: ['', Validators.required]
-  });
-
-  addGuestTeacherForm = this.fb.group({
-    course: ['', Validators.required],
-    guestTeacher: ['', Validators.required]
-  });
-
-  addHelperForm = this.fb.group({
-    course: ['', Validators.required],
-    helper: ['', Validators.required]
+    nombre: ['', Validators.required],
+    razon_social: ['', Validators.required],
   });
 
   constructor(
@@ -53,20 +39,20 @@ export class GestionComponent implements OnInit {
     private modalService: NgbModal,
     private toastr: ToastrService,
     private dialog: MatDialog,
-    private cursosService: CursosService,
+    private institucionService: InstitucionService,
     private fb: FormBuilder,
   ) { }
 
   getCourses() {
     this.loading = true;
-    this.cursosService.getAll().subscribe(
-      data => {
+    this.institucionService.getAll().subscribe(
+      (data:any) => {
         if (!data) {
           return;
         }
         console.log("datos", data);
-        this.courses = data;
-        this.dataSource.data = this.courses;
+        this.instituciones = data;
+        this.dataSource.data = this.instituciones;
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.loading = false;
@@ -79,9 +65,8 @@ export class GestionComponent implements OnInit {
 
   sortingCustomAccesor = (item, property) => {
     switch (property) {
-      case 'name': return item.name;
-      case 'year': return item.year;
-      case 'semester': return item.semester;
+      case 'nombre': return item.nombre;
+      case 'razon_social': return item.razon_social;
       default: return item[property];
     }
   };
@@ -99,11 +84,11 @@ export class GestionComponent implements OnInit {
     this.openDeletionConfirmationDialog().afterClosed().subscribe(confirmation => {
       console.log(confirmation);
       if (confirmation.confirmed) {
-        this.cursosService.delete(id).subscribe({
+        this.institucionService.delete(id).subscribe({
           next: result => {
             console.log(result);
             this.getCourses();
-            this.toastr.success('Curso eliminado correctamente', 'Notificación', { timeOut: 3000 });
+            this.toastr.success('Institucion eliminada correctamente', 'Notificación', { timeOut: 3000 });
           },
           error: result => {
             console.log(result);
@@ -115,7 +100,7 @@ export class GestionComponent implements OnInit {
 
   openDeletionConfirmationDialog() {
     var deletionDialogConfig = this.getDialogConfig();
-    deletionDialogConfig.data = { message: '¿Desea eliminar este curso?' };
+    deletionDialogConfig.data = { message: '¿Desea eliminar esta institución?' };
     return this.dialog.open(ConfirmationDialogComponent, deletionDialogConfig);
   }
 
@@ -133,11 +118,11 @@ export class GestionComponent implements OnInit {
 
   loadData() {
     this.loading = true;
-    this.cursosService.getAll().subscribe(
+    this.institucionService.getAll().subscribe(
       (resp: any) => {
-        this.cursos = resp;
+        this.inst = resp;
         this.loading = false;
-        console.log(this.cursos);
+        console.log(this.inst);
       }
     );
   }
@@ -148,12 +133,12 @@ export class GestionComponent implements OnInit {
       .result.then((result) => {
         this.checked = true;
         var frm = this.addCourseForm.value;
-        this.cursosService.insert(frm).subscribe((resp: any) => {
+        this.institucionService.insert(frm).subscribe((resp: any) => {
           if (resp.errors) {
-            this.toastr.error('No se puede insertar el curso en la base de datos.', 'Notificación de error', { timeOut: 3000 });
+            this.toastr.error('No se puede insertar la institución en la base de datos.', 'Notificación de error', { timeOut: 3000 });
             return;
           }
-          this.toastr.success('Curso insertado correctamente', 'Notificación de inserción', { timeOut: 3000 });
+          this.toastr.success('Institución insertada correctamente', 'Notificación de inserción', { timeOut: 3000 });
           this.cleanForm();
           this.loadData();
         }, (error: any) => {
@@ -165,22 +150,11 @@ export class GestionComponent implements OnInit {
 
   cleanForm() {
     this.addCourseForm = this.fb.group({
-      name: ['', Validators.required],
-      year: ['', Validators.required],
-      semester: ['', Validators.required],
-      teacher: ['', Validators.required]
+      nombre: ['', Validators.required],
+      razon_social: ['', Validators.required],
     });
   }
 
-  addGuestTeacher(modal, event) {
-    event.target.parentElement.parentElement.blur();
-    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', centered: true });
-  }
-
-  addHelper(modal, event) {
-    event.target.parentElement.parentElement.blur();
-    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', centered: true });
-  }
   openAddDialog(): void {
     let dialogRef = this.dialog.open(AddInstitucionComponent, {
       width: '850px',
@@ -193,7 +167,7 @@ export class GestionComponent implements OnInit {
       console.log(`Dialog closed: ${result}`);
       this.dialogResult = result;
       if (result == 'Confirm') {
-        this.toastr.success('Curso agregado exitosamente', 'Notificación', { timeOut: 3000 });
+        this.toastr.success('Institución agregada exitosamente', 'Notificación', { timeOut: 3000 });
         this.getCourses();
       }
     })
@@ -211,7 +185,7 @@ export class GestionComponent implements OnInit {
       console.log('The dialog was closed');
       if (result == 'Confirm') {
         this.getCourses();
-        this.toastr.success('Curso editado exitosamente', 'Notificación', { timeOut: 3000 });
+        this.toastr.success('Institución editada exitosamente', 'Notificación', { timeOut: 3000 });
       }
     });
   }
@@ -220,33 +194,12 @@ export class GestionComponent implements OnInit {
     event.target.parentElement.parentElement.blur();
     this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', centered: true })
       .result.then((result) => {
-        this.cursosService.delete(id)
+        this.institucionService.delete(id)
           .subscribe(res => {
-            this.toastr.success('Curso eliminado correctamente', 'Notificación de eliminación', { timeOut: 3000 });
+            this.toastr.success('Institución eliminada correctamente', 'Notificación de eliminación', { timeOut: 3000 });
             this.loadData();
           })
       }, (reason) => {
       });
   }
-
-  formatSemester(value) {
-    switch (value) {
-      case 1:
-        return 'Otoño';
-      case 2:
-        return 'Primavera';
-    }
-  }
-
-  formatProfile(value) {
-    switch (value) {
-      case 'teacher':
-        return 'Docente';
-      case 'student':
-        return 'Estudiante';
-      case 'admin':
-        return 'Administrador';
-    }
-  }
-
 }

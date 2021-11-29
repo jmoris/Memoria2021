@@ -17,6 +17,7 @@ class DashboardController extends Controller
         $rol = $institucion->usuarios()->wherePivot('user_id', $user->id)->first()->pivot->role_id;
         $rol = Role::findOrFail($rol)->name;
         if($rol == 'Superadministrador'){
+            $instituciones = Institucion::all();
             $cursos = Curso::where('institucion_id', $request->institucion)->get();
             $nproyectos = 0;
             $proyectos = [];
@@ -30,6 +31,7 @@ class DashboardController extends Controller
                 $nproyectos += $curso->proyectos()->count();
             }
             return response()->json([
+                'ninstituciones' => count($instituciones),
                 'nusuarios' => count($institucion->usuarios),
                 'ncursos' => count($cursos),
                 'nproyectos' => $nproyectos,

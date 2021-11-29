@@ -13,8 +13,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FooterComponent } from '../footer/footer.component';
 import { CustomizerComponent } from '../customizer/customizer.component';
 import { SharedDirectivesModule } from '../../directives/shared-directives.module';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/app/material.module';
 const components = [
     HeaderSidebarLargeComponent,
     SidebarLargeComponent,
@@ -30,10 +30,12 @@ const components = [
     NgbModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     SearchModule,
     SharedPipesModule,
     SharedDirectivesModule,
     PerfectScrollbarModule,
+    MaterialModule,
     CommonModule
   ],
   declarations: components,
