@@ -313,7 +313,7 @@ export class ProjectComponent implements AfterViewInit {
 
     generarReporte(){
         let currentUser = this.authService.currentUserValue;
-        if(currentUser.role == 'Administrador' || currentUser.role == 'Profesor'){
+        if(currentUser.role == 'Administrador' || currentUser.role == 'Profesor' || currentUser.role == 'Superadministrador'){
             this.reporteProyecto();
         }else{
             this.reporteUsuario(currentUser.user.id);
