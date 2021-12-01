@@ -23,6 +23,10 @@ export class UsuariosService {
         return this.http.get<any>(`${environment.apiUrl}/usuarios/` + id + `?institucion=` + idInst);
     }
 
+    testGithub(){
+        return this.http.get<any>(`${environment.apiUrl}/testgh`);
+    }
+
     updateUser(id, data) {
         console.log("DATOS EN SERVICE: ", data)
         data.institucion = this.auth.getInstitucion();

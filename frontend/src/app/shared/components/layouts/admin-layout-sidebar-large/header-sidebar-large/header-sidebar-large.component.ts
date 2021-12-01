@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { NavigationService } from '../../../../services/navigation.service';
 import { SearchService } from '../../../../services/search.service';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { UsuariosService } from 'src/app/_services/usuarios.service';
+import { EditUserComponent } from 'src/app/views/usuarios/edit-user/edit-user.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header-sidebar-large',
@@ -28,6 +31,8 @@ export class HeaderSidebarLargeComponent implements OnInit {
       gh_token: [''],
       role: [''],
     });
+    loadedUser: any;
+    dialogResult = "";
 
     constructor(
       private navService: NavigationService,
@@ -36,55 +41,11 @@ export class HeaderSidebarLargeComponent implements OnInit {
       private auth: AuthenticationService,
       private userService: UsuariosService,
       private fb: FormBuilder,
+      private dialog: MatDialog,
+      private toastr: ToastrService
     ) {
       this.user = this.auth.currentUserValue.user;
       this.getUserData(this.user.id);
-
-      this.notifications = [
-        {
-          icon: 'i-Speach-Bubble-6',
-          title: 'New message',
-          badge: '3',
-          text: 'James: Hey! are you busy?',
-          time: new Date(),
-          status: 'primary',
-          link: '/chat'
-        },
-        {
-          icon: 'i-Receipt-3',
-          title: 'New order received',
-          badge: '$4036',
-          text: '1 Headphone, 3 iPhone x',
-          time: new Date('11/11/2018'),
-          status: 'success',
-          link: '/tables/full'
-        },
-        {
-          icon: 'i-Empty-Box',
-          title: 'Product out of stock',
-          text: 'Headphone E67, R98, XL90, Q77',
-          time: new Date('11/10/2018'),
-          status: 'danger',
-          link: '/tables/list'
-        },
-        {
-          icon: 'i-Data-Power',
-          title: 'Server up!',
-          text: 'Server rebooted successfully',
-          time: new Date('11/08/2018'),
-          status: 'success',
-          link: '/dashboard/v2'
-        },
-        {
-          icon: 'i-Data-Block',
-          title: 'Server down!',
-          badge: 'Resolved',
-          text: 'Region 1: Server crashed!',
-          time: new Date('11/06/2018'),
-          status: 'danger',
-          link: '/dashboard/v3'
-        }
-      ];
     }
 
     openPCAModal(modal){
@@ -95,7 +56,7 @@ export class HeaderSidebarLargeComponent implements OnInit {
       this.loading = true;
       this.userService.getUserById(userid).subscribe({
         next: result => {
-          console.log(result);
+          this.loadedUser = result;
           this.form.get('name').setValue(result.name);
           this.form.get('lastname').setValue(result.lastname);
           this.form.get('email').setValue(result.email);
@@ -106,6 +67,7 @@ export class HeaderSidebarLargeComponent implements OnInit {
           this.form.get('enrollment').setValue(result.enrollment);
           this.form.get('role').setValue(result.pivot.role_id.toString());
           this.loading = false;
+          
         }, error: result => {
           console.log(result);
         }
@@ -152,11 +114,10 @@ export class HeaderSidebarLargeComponent implements OnInit {
   
       let userData = this.form.value;
   
-  
       this.userService.updateUser(this.user.id, userData).subscribe({
         next: result => {
           console.log(result);
-          
+          this.toastr.success('Usuario modificado correctamente, los cambios se veran reflejados en el siguiente inicio de sesión..', 'Notificación', { timeOut: 3000 });
         },
         error: result => {
           console.log(result);

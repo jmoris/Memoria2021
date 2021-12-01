@@ -34,6 +34,23 @@ class UsuarioController extends Controller
         return $usuarios;
     }
 
+    public function testGithub(){
+        try {
+            $user = auth()->user();
+            $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
+            $api->getCurrentUser();
+            return response()->json([
+                'status' => 200,
+                'msg' => 'Credenciales validas'
+            ]);
+        }catch(Exception $ex){
+            return response()->json([
+                'status' => 500,
+                'msg' => 'Credenciales invalidas'
+            ]);
+        }
+    }
+
     public function create(Request $request){
         try{
             $validador = Validator::make($request->all(), [
@@ -83,6 +100,8 @@ class UsuarioController extends Controller
                 'email' => 'required',
                 'password' => '',
                 'role' => 'required',
+                'gh_user' => '',
+                'gh_token' => '',
                 'rut' => 'required',
                 'institucion' => 'required'
             ]);
@@ -100,6 +119,8 @@ class UsuarioController extends Controller
             $user->email = $request->email;
             $user->name = $request->name;
             $user->lastname = $request->lastname;
+            $user->gh_user = $request->gh_user;
+            $user->gh_token = $request->gh_token;
             Institucion::findOrFail($request->institucion)->usuarios()->updateExistingPivot($id, ['role_id' => $request->role]);
             if($request->password!='')
                 $user->password = \bcrypt($request->password);
@@ -176,14 +197,13 @@ class UsuarioController extends Controller
                     $errores['inexistentes'][] = (string)$email;
                     $usuario = new User();
                     $usuario->name = $nombre;
-                    $usuario->surname = $apellido;
+                    $usuario->lastname = $apellido;
                     $usuario->email = (string)$email;
                     $password = Str::random(8);
                     $usuario->password = bcrypt($password);
                     $usuario->rut = "1-9";
-                    $usuario->profile = "student";
                     $usuario->save();
-
+                    $usuario->instituciones()->attach($request->institucion, ['role_id' => 4]);
                     \App\Jobs\InvitarUsuario::dispatch((string)$email, ($nombre.' '.$apellido), $password)->onQueue('invitaciones');
 
                 }else{

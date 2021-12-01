@@ -5,6 +5,7 @@ import { echartStyles } from '../../../shared/echart-styles';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UsuariosService } from 'src/app/_services/usuarios.service';
 import { DashboardsService } from 'src/app/_services/dashboards.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class DashboadEstudianteComponent implements OnInit {
     // '#62549c', '#7566b5', '#7d6cbb', '#8877bd', '#9181bd', '#6957af'
     // '#62549c', '#638eb0', '#6d9abd', '#799fbd', '#9181bd', '#6957af' Celeste
     // '#62549c', '#a69962', '#c2b16d', '#baad79', '#9181bd', '#6957af' Amarillo
-    constructor(private dsService: DashboardsService) {
+    constructor(private dsService: DashboardsService, private userService: UsuariosService, private toastr : ToastrService) {
 
         this.salesChartPie = {
             color: ['#263db5', '#d22346'],
@@ -76,7 +77,12 @@ export class DashboadEstudianteComponent implements OnInit {
             console.log(data);
             this.info = data;
         });
-
+        this.userService.testGithub().subscribe((data:any) => {
+            if(data.status == 500){
+                this.toastr.warning('Las credenciales de Github son invalidas.', 'Notificación', { timeOut: 3000 });
+            }
+            console.log(data);
+        });
     }
 
     ngOnInit() {

@@ -8,6 +8,8 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class CursoController extends Controller
 {
@@ -158,4 +160,96 @@ class CursoController extends Controller
             ]);
         }
     }
+
+    function uploadFile(Request $request, $id){
+        $this->validate($request, [
+        'file'  => 'required|mimes:xls,xlsx'
+        ]);
+
+        $curso = Curso::find($id);
+        try{
+
+        $path = $request->file('file')->getRealPath();
+
+        $spreadsheet = IOFactory::load($path);
+
+        $cellNombre = $email = $spreadsheet->getActiveSheet()->getCell('A1')->getValue();
+        $cellApellido = $email = $spreadsheet->getActiveSheet()->getCell('B1')->getValue();
+        $cellEmail = $email = $spreadsheet->getActiveSheet()->getCell('C1')->getValue();
+        if($cellNombre!='Nombre'&&$cellApellido!='Apellido(s)'&&$cellEmail!='Dirección de correo')
+            return response()->json([
+                'success' => false,
+                'msg' => 'El formato del archivo es incorrecto.'
+            ]);
+        $lectura = true;
+        $contador = 2;
+        $cargados = 0;
+        $errores = [
+            'inexistentes' => [],
+            'existentes' => []
+        ];
+
+        while($lectura){
+            $nombre = $spreadsheet->getActiveSheet()->getCell('A'.$contador)->getValue();
+            $apellido = $spreadsheet->getActiveSheet()->getCell('B'.$contador)->getValue();
+            $email = $spreadsheet->getActiveSheet()->getCell('C'.$contador)->getValue();
+            if($email==''||$email==null){
+                $lectura = false;
+                break;
+            }
+            $user = User::where('email', $email)->first();
+            if($user==null){
+                $errores['inexistentes'][] = (string)$email;
+                $usuario = new User();
+                $usuario->name = $nombre;
+                $usuario->surname = $apellido;
+                $usuario->email = (string)$email;
+                $password = Str::random(8);
+                $usuario->password = bcrypt($password);
+                $usuario->rut = "1-9";
+                $usuario->profile = "student";
+                $usuario->save();
+
+                \App\Jobs\InvitarUsuario::dispatch((string)$email, ($nombre.' '.$apellido), $password)->onQueue('invitaciones');
+
+                $curso->users()->sync($usuario, false);
+            }else{
+                $exists = $user->courses->contains($id);
+                if($exists){
+                    $errores['existentes'][] = (string)$email;
+                }else{
+                    $curso->users()->sync($user, false);
+                    $cargados++;
+                }
+            }
+            $contador++;
+        }
+
+        return response()->json([
+            'success' => true,
+            'msg' => "Carga masiva de usuarios finalizada.",
+            'stats' => [
+                'cargados' => $cargados,
+                'fallidos' => [
+                    'inexistentes' => [
+                        'cantidad' => count($errores['inexistentes']),
+                        'detalle' => $errores['inexistentes']
+                    ],
+                    'existentes' => [
+                        'cantidad' => count($errores['existentes']),
+                        'detalle' => $errores['existentes']
+                    ]
+                ],
+            ]
+        ]);
+        }catch(Exception $ex){
+            return $ex;
+            return response()->json([
+                'success' => false,
+                'msg' => "Carga masiva de usuarios fallida.",
+                'error' => $ex->getMessage()
+            ]);
+        }
+    }
+
 }

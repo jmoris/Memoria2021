@@ -50,6 +50,10 @@ export class ProjectsService {
     return this.http.post<any>(`${env.apiUrl}/proyectos/`+ project_id + `/desenlazar`, {user_id, gh_user});
   }
 
+  getUserActivity(project_id, gh_user, from_date, to_date){
+    return this.http.get<any>(`${env.apiUrl}/proyectos/reportes/actividad?project_id=` + project_id + `&gh_user=` + gh_user + `&from_date=` + from_date + `&to_date=` + to_date);
+  }
+
   getInfoProject(id){
     return this.http.get<any>(`${env.apiUrl}/git/infoproyecto?project_id=` + id);
   }

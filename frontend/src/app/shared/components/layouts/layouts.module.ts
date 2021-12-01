@@ -15,6 +15,7 @@ import { CustomizerComponent } from '../customizer/customizer.component';
 import { SharedDirectivesModule } from '../../directives/shared-directives.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
 const components = [
     HeaderSidebarLargeComponent,
     SidebarLargeComponent,
@@ -36,7 +37,8 @@ const components = [
     SharedDirectivesModule,
     PerfectScrollbarModule,
     MaterialModule,
-    CommonModule
+    CommonModule,
+    MatFormFieldModule,
   ],
   declarations: components,
   exports: components

@@ -92,7 +92,7 @@
 													<img class="avatar-md rounded mr-3"
 														src="{{ miembro.avatar }}" alt="">
 													<div class="flex-grow-1">
-														<p class="m-0 text-small text-muted">{{miembro.name}}</p>
+														<p class="m-0 text-small text-muted"><a [routerLink]="" (click)="openActivityModal(userActivityModal, miembro)">{{miembro.name}}</a></p>
 													</div>
 													<div *ngIf="!isAlumno" class="flex-grow-1">
 														<button *ngIf="!existColaborador(miembro.name)" (click)="addStudent(addStudentModal,miembro.name,$event)" class="m-1 float-right btn btn-outline-info">Enlazar usuario</button>
@@ -645,6 +645,89 @@
 					[chart]="chartOptions.chart"
 					[xaxis]="chartOptions.xaxis"
 					[title]="chartOptions.title"
+		  		></apx-chart>
+			</div>
+		  
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-outline-secondary btn-rounded"
+			(click)="modal.dismiss('cancel')">Cerrar</button>
+		</div>
+	  </ng-template>
+	  <!-- VENTANA MODAL QUE Se desplega para mostrar la acitivdad de un usuario-->
+	<ng-template #userActivityModal let-modal>
+		<div class="modal-header">
+		  <h4 class="modal-title" id="modal-title">Gráfico de actividad de un usuario</h4>
+		  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+			(click)="modal.dismiss('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			<div class="col-md-12">
+				<h3>{{ selectedUser.name }}</h3>
+				<form class="form-inline">
+					<div class="form-group hidden">
+					  <div class="input-group">
+						<input name="datepicker"
+							   class="form-control"
+							   ngbDatepicker
+							   #datepicker="ngbDatepicker"
+							   [autoClose]="'outside'"
+							   (dateSelect)="onUserDateSelection($event)"
+							   [displayMonths]="2"
+							   [dayTemplate]="t"
+							   outsideDays="hidden"
+							   [startDate]="fromDate!"
+							   tabindex="-1">
+						<ng-template #t let-date let-focused="focused">
+						  <span class="custom-day"
+								[class.focused]="focused"
+								[class.range]="isRange(date)"
+								[class.faded]="isHovered(date) || isInside(date)"
+								(mouseenter)="hoveredDate = date"
+								(mouseleave)="hoveredDate = null">
+							{{ date.day }}
+						  </span>
+						</ng-template>
+					  </div>
+					</div>
+					<div class="form-group">
+					  <div class="input-group">
+						<input #dpFromDate2
+							   class="form-control" placeholder="yyyy-mm-dd"
+							   name="dpFromDate"
+							   [value]="formatter.format(fromDate2)"
+							   (input)="fromDate2 = validateInput(fromDate2, dpFromDate2.value)">
+						<div class="input-group-append">
+						  <button class="btn btn-outline-secondary" (click)="datepicker.toggle()" type="button"><mat-icon>calendar_today</mat-icon></button>
+						</div>
+					  </div>
+					</div>
+					<div class="form-group ml-2">
+					  <div class="input-group">
+						<input #dpToDate2
+							   class="form-control" placeholder="yyyy-mm-dd"
+							   name="dpToDate"
+							   [value]="formatter.format(toDate2)"
+							   (input)="toDate2 = validateInput(toDate2, dpToDate2.value)">
+						<div class="input-group-append">
+						  <button class="btn btn-outline-secondary" (click)="datepicker.toggle()" type="button"><mat-icon>calendar_today</mat-icon></button>
+						</div>
+					  </div>
+					</div>
+				  </form>
+				  <apx-chart
+				  [series]="chartOptions3.series"
+				  [chart]="chartOptions3.chart"
+				  [xaxis]="chartOptions3.xaxis"
+				  [title]="chartOptions3.title"
+				></apx-chart>
+				<apx-chart
+					[series]="chartOptions2.series"
+					[chart]="chartOptions2.chart"
+					[xaxis]="chartOptions2.xaxis"
+					[title]="chartOptions2.title"
 		  		></apx-chart>
 			</div>
 		  

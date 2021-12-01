@@ -58,13 +58,16 @@ export class SigninComponent implements OnInit {
             .subscribe(
                 data => {
                     console.log(this.auth.currentUserValue);
+                    console.log("afsadf");
                     if(!data.success){
                         this.msgError = data.message;
                         this.check = false;
                         this.loading = false;
                     }else{
                         const currentUser = this.auth.currentUserValue;
-                        console.log(currentUser);
+                        if(currentUser.rut == '1-9'){
+                            this.router.navigate(['/session/fill/'+currentUser.id]);
+                        }
                         if(currentUser.role == 'Administrador'){
                             this.router.navigate(['/dashboard/v1'])
                             .then(() => {

@@ -35,8 +35,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('usuarios', [UsuarioController::class, 'create']);
     Route::put('usuarios/{id}', [UsuarioController::class, 'update']);
     Route::post('usuarios/{id}/disable', [UsuarioController::class, 'delete']);
+    Route::post('usuarios/uploadfile', [UsuarioController::class, 'uploadFile']);
+
     Route::get('profesores', [UsuarioController::class, 'showProfesores']);
     Route::get('estudiantes', [UsuarioController::class, 'showEstudiantes']);
+    Route::get('testgh', [UsuarioController::class, 'testGithub']);
     // RUTAS INSTITUCIONES
     Route::get('instituciones/{id}', [InstitucionController::class, 'show']);
     Route::post('instituciones', [InstitucionController::class, 'create']);
@@ -64,6 +67,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('proyectos/{id}/desenlazar', [ProyectoController::class, 'dettachUserFromProject']);
     Route::get('proyectos/reportes/repositorio', [ProyectoController::class, 'printReport']);
     Route::get('proyectos/reportes/usuario', [ProyectoController::class, 'printUserReport']);
+    Route::get('proyectos/reportes/actividad', [ProyectoController::class, 'getUserActivity']);
     // RUTAS REPOSITORIOS
     Route::get('repositorios', [RepositorioController::class, 'showAll']);
     Route::get('repositorios/{id}', [RepositorioController::class, 'show']);

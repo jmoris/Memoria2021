@@ -101,11 +101,17 @@ export class ProjectComponent implements AfterViewInit {
       
     @ViewChild("chart") chart: ChartComponent;
     public chartOptions: Partial<ChartOptions>;
-      
+
+    public chartOptions2: Partial<ChartOptions>;
+
+    public chartOptions3: Partial<ChartOptions>;
     hoveredDate: NgbDate | null = null;
 
     fromDate: NgbDate | null;
     toDate: NgbDate | null;
+
+    fromDate2: NgbDate | null;
+    toDate2: NgbDate | null;
 
     createdDate : any;
 
@@ -121,6 +127,7 @@ export class ProjectComponent implements AfterViewInit {
 
     currentUser : any;
     isAlumno : boolean = false;
+
     public constructor(
         private route: ActivatedRoute,
         private modalService: NgbModal,
@@ -142,6 +149,8 @@ export class ProjectComponent implements AfterViewInit {
         this.id = this.route.snapshot.params['id'];
         this.fromDate = calendar.getToday();
         this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+        this.fromDate2 = calendar.getToday();
+        this.toDate2 = calendar.getNext(calendar.getToday(), 'm', 1);
 
         let html = this.mdRender.render('');
         this.rendered = this.sanitizer.bypassSecurityTrustHtml(html);
@@ -168,6 +177,8 @@ export class ProjectComponent implements AfterViewInit {
             let fecha = moment(data.created_date).format('DD-MM-YYYY').split('-');
             this.createdDate = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
             this.fromDate = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
+            this.fromDate2 = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
+            this.toDate2 = calendar.getNext(this.fromDate2, 'm', 1);
         });
 
         proyectoService.getTableros(this.id).subscribe((data) => {
@@ -223,6 +234,46 @@ export class ProjectComponent implements AfterViewInit {
             },
             title: {
               text: "Grafico de complejidad"
+            },
+            xaxis: {
+              categories: []
+            }
+          };
+          this.chartOptions2 = {
+            series: [
+              {
+                name: "Commits",
+                data: []
+              }
+            ],
+            chart: {
+              height: 350,
+              type: "line"
+            },
+            title: {
+              text: "Grafico de commits"
+            },
+            xaxis: {
+              categories: []
+            }
+          };
+          this.chartOptions3 = {
+            series: [
+                {
+                    name: "Adiciones",
+                    data: []
+                },
+                {
+                    name: "Eliminaciones",
+                    data: []
+                }
+            ],
+            chart: {
+              height: 350,
+              type: "line"
+            },
+            title: {
+              text: "Grafico de actividad"
             },
             xaxis: {
               categories: []
@@ -345,6 +396,38 @@ export class ProjectComponent implements AfterViewInit {
             window.open(url, "_blank");
         });
     }
+
+    openActivityModal(modal, user){
+        this.selectedUser = user;
+        this.proyectoService.getUserActivity(this.id, user.name, this.formatDateNgb(this.createdDate), this.formatDateNgb(this.toDate2)).subscribe((data:any) => {
+            console.log(data);
+            this.chartOptions2.series = [{
+                name: 'Commits',
+                data: data.commits
+            }];
+            this.chartOptions3.series = [{
+                name: 'Adiciones',
+                data: data.additions
+            }, {
+                name: 'Eliminaciones',
+                data: data.deletions
+            }];
+            this.chartOptions2.xaxis = {
+                labels: {
+                    rotate: -90
+                },
+                categories: data.weeks
+            };
+            this.chartOptions3.xaxis = {
+                labels: {
+                    rotate: -90
+                },
+                categories: data.weeks
+            };
+        });
+        this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', centered: true, size: 'lg' });
+    }
+
 
     openPCAModal(modal, filename){
         this.chartOptions.series = [{
@@ -599,6 +682,45 @@ onDateSelection(date: NgbDate) {
     }
     if(this.fromDate != null && this.toDate != null){
         this.projectComplexityAnalysis(this.entityComplexity.entity, this.fromDate, this.toDate);
+    }
+  }
+
+  onUserDateSelection(date: NgbDate) {
+    if (!this.fromDate2 && !this.toDate2) {
+      this.fromDate2 = date;
+    } else if (this.fromDate2 && !this.toDate2 && date && date.after(this.fromDate2)) {
+      this.toDate2 = date;
+    } else {
+      this.toDate2 = null;
+      this.fromDate2 = date;
+    }
+    if(this.fromDate2 != null && this.toDate2 != null){
+        this.proyectoService.getUserActivity(this.id, this.selectedUser.name, this.formatDateNgb(this.fromDate2), this.formatDateNgb(this.toDate2)).subscribe((data:any) => {
+            console.log(data);
+            this.chartOptions2.series = [{
+                name: 'Commits',
+                data: data.commits
+            }];
+            this.chartOptions3.series = [{
+                name: 'Adiciones',
+                data: data.additions
+            }, {
+                name: 'Eliminaciones',
+                data: data.deletions
+            }];
+            this.chartOptions2.xaxis = {
+                labels: {
+                    rotate: -90
+                },
+                categories: data.weeks
+            };
+            this.chartOptions3.xaxis = {
+                labels: {
+                    rotate: -90
+                },
+                categories: data.weeks
+            };
+        });
     }
   }
 

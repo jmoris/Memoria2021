@@ -37,8 +37,8 @@ class InvitarUsuario implements ShouldQueue
             "Messages" => [
                   [
                      "From" => [
-                        "Email" => "no-reply@aprodesutal.tk",
-                        "Name" => "APRODES"
+                        "Email" => "no-reply@jesusmoris.cl",
+                        "Name" => "Github Tracker 3.0"
                      ],
                      "To" => [
                            [
@@ -48,7 +48,7 @@ class InvitarUsuario implements ShouldQueue
                         ],
                      "Subject" => "Creación de nuevo usuario",
                      "HTMLPart" => '<div style="width:500px">
-                     <p>Bienvenido al sistema de gestión <b>APRODES</b></br>
+                     <p>Bienvenido al sistema de gestión <b>Github Tracker 3.0</b></br>
                    Hemos detectado que tu usuario fue creado por carga masiva y necesitamos de algunosdatos tuyos para completar el registro.
                    A continuación está tu clave generada aleatoriamente para que puedas entrar al sistema y actualizar tu información.</p>
 
@@ -57,12 +57,12 @@ class InvitarUsuario implements ShouldQueue
                      '.$this->password.'
                    </div>
                    <div style="text-align:center">
-                   <a href="http://web.aprodesutal.tk/#/sessions/signin">Ingreso al sistema</a>
+                   <a href="http://memoria.jesusmoris.cl/#/sessions/signin">Ingreso al sistema</a>
                    </div>
 
                    <p>Correo enviado automaticamente.
                      Favor no contestar.</p>
-                    Equipo <b>APRODES</b>
+                    Equipo <b>Github Tracker 3.0</b>
                      </p>
                    </div>'
                   ]
