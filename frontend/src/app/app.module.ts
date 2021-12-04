@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { PrincipalComponent } from './views/principal/principal.component';
 import { ConfirmationDialogComponent } from './views/core/confirmation-dialog/confirmation-dialog.component';
 import { NotifierOptions, NotifierModule } from 'angular-notifier';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
@@ -70,7 +69,6 @@ const customNotifierOptions: NotifierOptions = {
 @NgModule({
   declarations: [
     AppComponent,
-    PrincipalComponent,
     ConfirmationDialogComponent
   ],
   imports: [
