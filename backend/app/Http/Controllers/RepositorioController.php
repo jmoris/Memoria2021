@@ -16,61 +16,71 @@ class RepositorioController extends Controller
 {
 
     public function getInfoProyecto(Request $request){
-        $user = $request->user();
-        $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
-
-        $usuario = $api->getCurrentUser();
-
-        $project = Proyecto::findOrFail($request->project_id);
-
-        $repositorio = Repositorio::find($project->repositorio_id);
-        $nombre = explode('/', $repositorio->nombre);
-        $repo = $api->getRepo($nombre[0], $nombre[1]);
-        $collab = $api->getCollaborators($nombre[0], $nombre[1]);
-        $issues = $api->getIssuesCount($nombre[0], $nombre[1], 2, 1);
-        $branches = $api->getBranches($nombre[0], $nombre[1]);
-        $commits = $api->getCommits($nombre[0], $nombre[1]);
-        $proyectos = $api->getProjects($nombre[0], $nombre[1]);// tableros
-        $ncommits = 0;
-        $arr = [];
-
         try{
-            if (($open = fopen(public_path($request->project_id.'_'.$project->repositorio_id.'_test.log'), "r")) !== FALSE) {
-            while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
-                $arr[] = $data;
+            $user = $request->user();
+            if($user->gh_token == ''){
+                throw new Exception("El usuario no tiene token de autorizacion.");
             }
-            fclose($open);
+            $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
+
+            $usuario = $api->getCurrentUser();
+
+            $project = Proyecto::findOrFail($request->project_id);
+
+            $repositorio = Repositorio::find($project->repositorio_id);
+            $nombre = explode('/', $repositorio->nombre);
+            $repo = $api->getRepo($nombre[0], $nombre[1]);
+            $collab = $api->getCollaborators($nombre[0], $nombre[1]);
+            $issues = $api->getIssuesCount($nombre[0], $nombre[1], 2, 1);
+            $branches = $api->getBranches($nombre[0], $nombre[1]);
+            $commits = $api->getCommits($nombre[0], $nombre[1]);
+            $proyectos = $api->getProjects($nombre[0], $nombre[1]);// tableros
+            $ncommits = 0;
+            $arr = [];
+
+            try{
+                if (($open = fopen(public_path($request->project_id.'_'.$project->repositorio_id.'_test.log'), "r")) !== FALSE) {
+                while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
+                    $arr[] = $data;
+                }
+                fclose($open);
+                }
+            }catch(Exception $ex){
+                $arr[1] = null;
             }
+
+            if($arr[1][1]!=null){
+                $ncommits = $arr[1][1];
+            }else{
+                $ncommits = count($commits);
+            }
+            /*foreach($stats as $stat){
+                $ncommits += $stat->total;
+            }*/
+            $collabs = [];
+            foreach($collab as $col){
+                array_push($collabs, ["name" => $col->login, "avatar" => $col->avatar_url]);
+            }
+            $data = [
+                "nombre" => $nombre[1],
+                "autor" => $nombre[0],
+                'collabs' => $collabs,
+                'issues' => $issues,
+                'branches' => count($branches),
+                'ncommits' => $ncommits,
+                'commits' => $commits,
+                'has_wiki' => $repo->has_wiki,
+                'proyectos' => count($proyectos),
+                'created_date' => $repo->created_at
+            ];
+
+            return response()->json($data);
         }catch(Exception $ex){
-            $arr[1] = null;
+            return response()->json([
+                'status' => 500,
+                'msg' => $ex->getMessage()
+            ]);
         }
-
-        if($arr[1][1]!=null){
-            $ncommits = $arr[1][1];
-        }else{
-            $ncommits = count($commits);
-        }
-        /*foreach($stats as $stat){
-            $ncommits += $stat->total;
-        }*/
-        $collabs = [];
-        foreach($collab as $col){
-            array_push($collabs, ["name" => $col->login, "avatar" => $col->avatar_url]);
-        }
-        $data = [
-            "nombre" => $nombre[1],
-            "autor" => $nombre[0],
-            'collabs' => $collabs,
-            'issues' => $issues,
-            'branches' => count($branches),
-            'ncommits' => $ncommits,
-            'commits' => $commits,
-            'has_wiki' => $repo->has_wiki,
-            'proyectos' => count($proyectos),
-            'created_date' => $repo->created_at
-        ];
-
-        return response()->json($data);
     }
 
     public function getInfoRepo(Request $request){
