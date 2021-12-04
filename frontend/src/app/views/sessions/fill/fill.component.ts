@@ -21,6 +21,7 @@ export class FillComponent implements OnInit {
     msgError: string;
     instituciones: [];
     id: any;
+    hide = true;
     user: any;
 
     form: FormGroup = this.fb.group({
