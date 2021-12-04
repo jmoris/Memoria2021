@@ -179,6 +179,7 @@ export class ProjectComponent implements AfterViewInit {
             this.fromDate = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
             this.fromDate2 = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
             this.toDate2 = calendar.getNext(this.fromDate2, 'm', 1);
+            this.loading = false
         });
 
         proyectoService.getTableros(this.id).subscribe((data) => {
@@ -219,7 +220,6 @@ export class ProjectComponent implements AfterViewInit {
         });
         proyectoService.getMaatReport(this.id).subscribe((data) => {
             this.maatReport = data;
-            this.loading = false
         });
         this.chartOptions = {
             series: [

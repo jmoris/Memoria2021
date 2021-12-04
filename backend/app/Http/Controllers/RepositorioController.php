@@ -447,6 +447,7 @@ class RepositorioController extends Controller
                 Log::info('se hace pull');
                 $str = 'cd '.$path_project.' && git pull --ff-only && git -C ./'.$nombre[1].' log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > '.$fileNames[0].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && python scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
                 $res = shell_exec($str);
+                Log::info($str);
             }
             // se clona la wiki, exista o no exista
             if(!is_dir($path.'/'.$nombre[1].'.wiki')){
