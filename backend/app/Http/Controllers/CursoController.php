@@ -211,13 +211,13 @@ class CursoController extends Controller
                 $usuario->instituciones()->attach($request->institucion, ['role_id' => 4]);
                 \App\Jobs\InvitarUsuario::dispatch((string)$email, ($nombre.' '.$apellido), $password)->onQueue('invitaciones');
 
-                $curso->users()->sync($usuario, false);
+                $curso->usuarios()->sync($usuario, false);
             }else{
                 $exists = $user->cursos->contains($id);
                 if($exists){
                     $errores['existentes'][] = (string)$email;
                 }else{
-                    $curso->users()->sync($user, false);
+                    $curso->usuarios()->sync($user, false);
                     $cargados++;
                 }
             }
