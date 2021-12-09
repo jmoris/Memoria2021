@@ -346,7 +346,6 @@ class ProyectoController extends Controller
         foreach($collabs as $collab){
             $grafico1 = shell_exec('cd '.$path.' && python2.7 grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
             $grafico2 = shell_exec('cd '.$path.' && python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
-            Log::info('cd '.$path.' && python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
             $graficos[$collab['name']] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
@@ -514,7 +513,7 @@ class ProyectoController extends Controller
       $mpdf = new \Mpdf\Mpdf();
         $mpdf->WriteHTML($html);
         $string = $mpdf->Output('filename.pdf', \Mpdf\Output\Destination::STRING_RETURN);
-
+        return $html;
         return response()->json(['pdf' => base64_encode($string)]);
     }
 
