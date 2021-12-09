@@ -10,6 +10,7 @@ use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use stdClass;
 
@@ -345,6 +346,7 @@ class ProyectoController extends Controller
         foreach($collabs as $collab){
             $grafico1 = shell_exec('cd '.$path.' && python2.7 grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
             $grafico2 = shell_exec('cd '.$path.' && python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
+            Log::info('cd '.$path.' && python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
             $graficos[$collab['name']] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
