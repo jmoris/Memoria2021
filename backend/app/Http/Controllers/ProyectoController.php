@@ -513,7 +513,6 @@ class ProyectoController extends Controller
       $mpdf = new \Mpdf\Mpdf();
         $mpdf->WriteHTML($html);
         $string = $mpdf->Output('filename.pdf', \Mpdf\Output\Destination::STRING_RETURN);
-        return $html;
         return response()->json(['pdf' => base64_encode($string)]);
     }
 
