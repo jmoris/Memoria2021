@@ -213,7 +213,7 @@ class CursoController extends Controller
 
                 $curso->users()->sync($usuario, false);
             }else{
-                $exists = $user->courses->contains($id);
+                $exists = $user->cursos->contains($id);
                 if($exists){
                     $errores['existentes'][] = (string)$email;
                 }else{
