@@ -21,7 +21,7 @@ class Curso extends Model
      * Usuarios de un curso, ya sean profesores, alumnos, ayudantes, etc.
      */
     public function proyectos(){
-        return $this->hasMany(Proyecto::class);
+        return $this->hasMany(Proyecto::class)->withCount('usuarios');
     }
 
     public function profesor(){

@@ -13,7 +13,7 @@ import { DetailsProjectComponent } from './details-project/details-project.compo
 import { ProjectsService } from 'src/app/_services/projects.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
-
+import * as moment from 'moment/moment';
 
 
 @Component({
@@ -105,6 +105,11 @@ export class GestionComponent implements OnInit {
             this.projects = projects;
             this.loading = false;
         });
+        
+    }
+
+    formatFecha(fecha){
+        return moment(fecha).format('DD-MM-YYYY hh:mm');
     }
 
     deleteData(id, modal, event) {

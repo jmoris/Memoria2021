@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  apiUrl: 'http://apimemoria.jesusmoris.cl/api'
-  //apiUrl: 'http://localhost:8000/api'
+  production: false,
+  //apiUrl: 'http://apimemoria.jesusmoris.cl/api'
+  apiUrl: 'http://localhost:8000/api'
 };
 
 /*

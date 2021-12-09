@@ -194,7 +194,7 @@ class ProyectoController extends Controller
             }
             $start_sha = $filtered[0]['sha'];
             $end_sha = $filtered[count($filtered)-1]['sha'];
-            $str = 'cd '.$path_project.' && python ../scripts/git_complexity_trend.py --end '.$start_sha.' --start '.$end_sha.' --file '.$entity;
+            $str = 'cd '.$path_project.' && python2.7 ../scripts/git_complexity_trend.py --end '.$start_sha.' --start '.$end_sha.' --file '.$entity;
             $res = shell_exec($str);
             $lines = explode(PHP_EOL, $res);
             $data = [
@@ -343,8 +343,8 @@ class ProyectoController extends Controller
         }
         $graficos = [];
         foreach($collabs as $collab){
-            $grafico1 = shell_exec('cd '.$path.' && python grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
-            $grafico2 = shell_exec('cd '.$path.' && python grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
+            $grafico1 = shell_exec('cd '.$path.' && python2.7 grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
+            $grafico2 = shell_exec('cd '.$path.' && python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
             $graficos[$collab['name']] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
@@ -366,7 +366,7 @@ class ProyectoController extends Controller
         $entity1 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[0]->entity, $repo->created_at);
         $entity2 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[1]->entity, $repo->created_at);
         $entity3 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[2]->entity, $repo->created_at);
-        $str = 'cd '.$path.' && python grafico.py ';
+        $str = 'cd '.$path.' && python2.7 grafico.py ';
         $grafico1 = shell_exec($str.implode(',',$entity1['x']).' '.implode(',',$entity1['y']));
         $grafico2 = shell_exec($str.implode(',',$entity2['x']).' '.implode(',',$entity2['y']));
         $grafico3 = shell_exec($str.implode(',',$entity3['x']).' '.implode(',',$entity3['y']));
@@ -564,8 +564,8 @@ class ProyectoController extends Controller
         }
         $graficos = [];
         foreach($collabs as $collab){
-            $grafico1 = shell_exec('cd '.$path.' && python grafico_usuario.py  \''.json_encode($data[$collab->pivot->gh_user]). '\'');
-            $grafico2 = shell_exec('cd '.$path.' && python grafico_usuario_commits.py  \''.json_encode($data[$collab->pivot->gh_user]). '\'');
+            $grafico1 = shell_exec('cd '.$path.' && python2.7 grafico_usuario.py  \''.json_encode($data[$collab->pivot->gh_user]). '\'');
+            $grafico2 = shell_exec('cd '.$path.' && python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab->pivot->gh_user]). '\'');
             $graficos[$collab->pivot->gh_user] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2

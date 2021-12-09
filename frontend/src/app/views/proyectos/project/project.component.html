@@ -115,7 +115,7 @@
 				</ng-template>
 			</li>
 			<li [ngbNavItem]="2">
-				<a ngbNavLink>Ultimos 30 commits</a>
+				<a ngbNavLink>Ultimos commits</a>
 				<ng-template ngbNavContent>
 					<div class="row">
 						<div class="col-md-12">
@@ -154,6 +154,15 @@
 													<ng-template let-value="value" let-row="row"
 														ngx-datatable-cell-template>
 														{{  row.commit.author.name }}
+													</ng-template>
+												</ngx-datatable-column>
+												<ngx-datatable-column name="commit.author.date" [flexGrow]="1">
+													<ng-template ngx-datatable-header-template>
+														Fecha
+													</ng-template>
+													<ng-template let-value="value" let-row="row"
+														ngx-datatable-cell-template>
+														{{  row.commit.author.date }}
 													</ng-template>
 												</ngx-datatable-column>
 												<ngx-datatable-column name="commit.message" [flexGrow]="3">

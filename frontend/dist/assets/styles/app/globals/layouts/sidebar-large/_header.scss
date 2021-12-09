@@ -55,10 +55,11 @@
         }
 
         .logo {
+            margin-left: 15px;
             width: $sidebar-left-width;
             img {
-                width: 60px;
-                height: 60px;
+                width: 200px;
+                height: auto;
                 margin: 0 auto;
                 display: block;
             }
