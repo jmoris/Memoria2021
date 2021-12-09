@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('active')->default(true);
-            $table->string('gh_user')->default("");
-            $table->string('gh_token')->default("");
+            $table->string('gh_user')->default("")->nullable();
+            $table->string('gh_token')->default("")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

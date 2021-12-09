@@ -119,8 +119,10 @@ class UsuarioController extends Controller
             $user->email = $request->email;
             $user->name = $request->name;
             $user->lastname = $request->lastname;
-            $user->gh_user = $request->gh_user;
-            $user->gh_token = $request->gh_token;
+            if($request->gh_user != null && $request->gh_token != null){
+                $user->gh_user = $request->gh_user;
+                $user->gh_token = $request->gh_token;
+            }
             Institucion::findOrFail($request->institucion)->usuarios()->updateExistingPivot($id, ['role_id' => $request->role]);
             if($request->password!='')
                 $user->password = \bcrypt($request->password);
