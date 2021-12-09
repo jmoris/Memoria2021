@@ -57,9 +57,10 @@ export class CursosService {
     }
 
     uploadFile(fileToUpload: File, id): Observable<boolean> {
+        let inst = this.auth.getInstitucion();
         const formData: FormData = new FormData();
         formData.append('file', fileToUpload, fileToUpload.name);
-
+        formData.append('institucion', inst.toString());
         return this.http.post<any>(`${environment.apiUrl}/cursos/uploadfile/` + id, formData);
     }
 

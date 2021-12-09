@@ -11,6 +11,7 @@ arr_x = sys.argv[1].split(',')
 arr_y = sys.argv[2].split(',')
 
 plt.plot(arr_x, arr_y)
+plt.xticks(rotation=90)
 plt.xlabel('Revisiones')
 plt.ylabel('Complejidad')
 #plt.show()

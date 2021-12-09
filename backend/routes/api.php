@@ -54,6 +54,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('cursos/{id}', [CursoController::class, 'delete']);
     Route::post('cursos/{id}/asignar', [CursoController::class, 'assignUser']);
     Route::get('cursos/listar/{id}', [CursoController::class, 'userList']);
+    Route::post('cursos/uploadfile/{id}', [CursoController::class, 'uploadFile']);
     // RUTAS PROYECTOS
     Route::get('proyectos', [ProyectoController::class, 'showAll']);
     Route::get('proyectos/{id}', [ProyectoController::class, 'show']);

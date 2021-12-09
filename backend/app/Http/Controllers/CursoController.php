@@ -202,14 +202,13 @@ class CursoController extends Controller
                 $errores['inexistentes'][] = (string)$email;
                 $usuario = new User();
                 $usuario->name = $nombre;
-                $usuario->surname = $apellido;
+                $usuario->lastname = $apellido;
                 $usuario->email = (string)$email;
                 $password = Str::random(8);
                 $usuario->password = bcrypt($password);
                 $usuario->rut = "1-9";
-                $usuario->profile = "student";
                 $usuario->save();
-
+                $usuario->instituciones()->attach($request->institucion, ['role_id' => 4]);
                 \App\Jobs\InvitarUsuario::dispatch((string)$email, ($nombre.' '.$apellido), $password)->onQueue('invitaciones');
 
                 $curso->users()->sync($usuario, false);
