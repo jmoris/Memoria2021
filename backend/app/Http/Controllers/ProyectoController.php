@@ -593,7 +593,8 @@ class ProyectoController extends Controller
           </tr>
         </table>
         <p><i>La información de métricas básicas podria variar con respecto a los graficos, debido a que la información de las métricas básicas es obtenido directamente del registro de eventos del proyecto, sin embargo, los gráficos son generadores con la información entregada por la API de Github.</i></p>';
-        foreach($graficos as $grafico){
+        foreach($graficos as $user => $grafico){
+            $html .= '<b>'.$user.'</b></br>';
             $html .= '<img src="data:image/png;base64,'.$grafico['activity'].'" style="width: 50%" border="0" /><img src="data:image/png;base64,'.$grafico['commits'].'" style="width: 50%" border="0" />';
         }
         $html .= '</div>';
