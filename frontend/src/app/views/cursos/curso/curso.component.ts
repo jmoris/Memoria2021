@@ -47,15 +47,23 @@ export class CursoComponent implements OnInit {
         //this.dataSource.sortingDataAccessor = this.sortingCustomAccesor;
         ////
         this.id = this.route.snapshot.params['id'];
+        this.stats = {
+            students: 0,
+            teachers: 1,
+            supports: 0
+        };
         this.cursoService.get(this.id).subscribe((data: any) => {
             this.curso = data[0];
+
+            this.users = this.users.concat(data.profesor);
             this.cursoService.usersList(this.id).subscribe((userData: any) => {
                 console.log("datos", userData);
+
                 this.users = this.users.concat(userData);
                 this.dataSource.data = this.users;
                 this.dataSource.sort = this.sort;
                 this.dataSource.paginator = this.paginator;
-                ////
+                this.stats.students = userData.length;
             })
         });
 

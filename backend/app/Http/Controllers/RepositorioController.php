@@ -76,6 +76,7 @@ class RepositorioController extends Controller
 
             return response()->json($data);
         }catch(Exception $ex){
+            return $ex;
             return response()->json([
                 'status' => 500,
                 'msg' => $ex->getMessage()
