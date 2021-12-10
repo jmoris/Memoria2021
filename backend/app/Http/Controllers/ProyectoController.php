@@ -523,7 +523,6 @@ class ProyectoController extends Controller
         $data = [];
         foreach($collabs as $collab){
             $issues += $api->getIssuesCount($nombre[0], $nombre[1], 2, 1, $collab->pivot->gh_user);
-            $commits += count(explode(PHP_EOL, shell_exec('cd '.$path.'/'.$nombre[1].' && git log --pretty=format:"%h;%an;%ad;%s" --author="'.$collab->pivot->gh_user.'" --date=short')));
             $data[$collab->pivot->gh_user] = [
                 'unix_weeks' => [],
                 'weeks' => [],
@@ -540,6 +539,7 @@ class ProyectoController extends Controller
                             array_push($data[$collab->pivot->gh_user]['additions'], $info->a);
                             array_push($data[$collab->pivot->gh_user]['deletions'], $info->d);
                             array_push($data[$collab->pivot->gh_user]['commits'], $info->c);
+                            $commits += $info->c;
                         }else{
                             break;
                         }
