@@ -37,26 +37,11 @@ class RepositorioController extends Controller
             $proyectos = $api->getProjects($nombre[0], $nombre[1]);// tableros
             $ncommits = 0;
             $arr = [];
+            $path = public_path();
+            $path = str_replace(' ', '\ ', $path);
+            $path_project = $path.'/'.$nombre[1];
 
-            try{
-                if (($open = fopen(public_path($request->project_id.'_'.$project->repositorio_id.'_test.log'), "r")) !== FALSE) {
-                while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
-                    $arr[] = $data;
-                }
-                fclose($open);
-                }
-            }catch(Exception $ex){
-                $arr[1] = null;
-            }
-            if($arr[1] != null){
-                if($arr[1][1]!=null){
-                    $ncommits = $arr[1][1];
-                }else{
-                    $ncommits = count($commits);
-                }
-            }else{
-                $ncommits = count($commits);
-            }
+            $ncommits = shell_exec('cd '.$path_project.' && git rev-list HEAD --count');
 
             /*foreach($stats as $stat){
                 $ncommits += $stat->total;
