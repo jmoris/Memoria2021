@@ -48,12 +48,16 @@ class RepositorioController extends Controller
             }catch(Exception $ex){
                 $arr[1] = null;
             }
-
-            if($arr[1][1]!=null){
-                $ncommits = $arr[1][1];
+            if($arr[1] != null){
+                if($arr[1][1]!=null){
+                    $ncommits = $arr[1][1];
+                }else{
+                    $ncommits = count($commits);
+                }
             }else{
                 $ncommits = count($commits);
             }
+
             /*foreach($stats as $stat){
                 $ncommits += $stat->total;
             }*/
