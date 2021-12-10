@@ -593,10 +593,13 @@ class ProyectoController extends Controller
           </tr>
         </table>
         <p><i>La información de métricas básicas podria variar con respecto a los graficos, debido a que la información de las métricas básicas es obtenido directamente del registro de eventos del proyecto, sin embargo, los gráficos son generadores con la información entregada por la API de Github.</i></p>';
-        foreach($graficos as $user => $grafico){
-            $html .= '<b>'.$user.'</b></br>';
-            $html .= '<img src="data:image/png;base64,'.$grafico['activity'].'" style="width: 50%" border="0" /><img src="data:image/png;base64,'.$grafico['commits'].'" style="width: 50%" border="0" />';
+        $html .= '<h4>Colaboradores</h4>
+        <table styke="width:100%;">';
+        foreach($graficos as $key => $value){
+        $html .= '<tr><td>'.$key.'</td></tr>';
+        $html .= '<tr><td><img src="data:image/png;base64,'.$value['activity'].'" style="width: 50%" border="0" /></td><td><img src="data:image/png;base64,'.$value['commits'].'" style="width: 50%" border="0" /></tr>';
         }
+        $html .= '</table>';
         $html .= '</div>';
       $mpdf = new \Mpdf\Mpdf();
         $mpdf->WriteHTML($html);
