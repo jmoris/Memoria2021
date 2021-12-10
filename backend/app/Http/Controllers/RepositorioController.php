@@ -450,7 +450,7 @@ class RepositorioController extends Controller
                 $res = shell_exec($str);
             }else{
                 Log::info('se hace pull');
-                $str = 'cd '.$path_project.' && sudo git pull --ff-only && git -c ./'.$nombre[1].' log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > '.$fileNames[0].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
+                $str = 'cd '.$path_project.' && sudo git pull --ff-only && cd '.$path.' && git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > '.$fileNames[0].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
                 $res = shell_exec($str);
                 Log::info($str);
             }
