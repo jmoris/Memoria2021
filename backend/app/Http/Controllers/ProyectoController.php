@@ -793,7 +793,7 @@ class ProyectoController extends Controller
             $proyecto->usuarios()->delete();
             foreach($request->students as $student){
                 $user = User::findOrFail($student['user_id']);
-                $proyecto->usuarios()->attach($user);
+                $proyecto->usuarios()->sync([$user->id], false);
             }
 
             return response()->json([
