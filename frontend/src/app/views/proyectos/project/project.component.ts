@@ -141,7 +141,8 @@ export class ProjectComponent implements AfterViewInit {
         public formatter: NgbDateParserFormatter,
         private sanitizer: DomSanitizer,
         private mdRender: MdRenderService,
-        private changeDetection: ChangeDetectorRef
+        private changeDetection: ChangeDetectorRef,
+        private router: Router
     ) {
         
         this.loading = true;
@@ -163,6 +164,14 @@ export class ProjectComponent implements AfterViewInit {
         if(this.currentUser.role == 'Alumno'){
             this.isAlumno = true;
         }
+
+        this.usersService.testGithub().subscribe((data:any) => {
+            if(data.status == 500){
+                this.toastr.warning('Las credenciales de Github son invalidas.', 'Notificación', { timeOut: 3000 });
+                this.router.navigateByUrl('proyectos/gestion');
+            }
+            console.log(data);
+        });
 
         proyectoService.getInfoProject(this.id).subscribe((data) => {
             this.proyecto = data.nombre;

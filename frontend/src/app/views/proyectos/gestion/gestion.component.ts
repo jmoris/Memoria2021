@@ -14,6 +14,7 @@ import { ProjectsService } from 'src/app/_services/projects.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import * as moment from 'moment/moment';
+import { EditProjectComponent } from '../edit-project/edit-project.component';
 
 
 @Component({
@@ -33,6 +34,8 @@ export class GestionComponent implements OnInit {
     step2Form: FormGroup;
     loading: boolean = false;
     user : any;
+    isAlumno : boolean = false;
+    currentUser : any;
 
     constructor(private modalService: NgbModal,
         private projectsService: ProjectsService,
@@ -44,6 +47,10 @@ export class GestionComponent implements OnInit {
         notifierService: NotifierService) {
         this.notifier = notifierService;
         this.user = this.authService.currentUserValue.user;
+        this.currentUser = authService.currentUserValue;
+        if(this.currentUser.role == 'Alumno'){
+            this.isAlumno = true;
+        }
     }
 
     ngOnInit() {
@@ -79,6 +86,22 @@ export class GestionComponent implements OnInit {
             this.dialogResult = result;
             if (result == 'Confirm') {
                 this.toastr.success('Proyecto agregado exitosamente', 'Notificación', { timeOut: 3000 });
+                this.loadProjects();
+            }
+        })
+    }
+    openEditDialog(id){
+        let dialogRef = this.dialog.open(EditProjectComponent, {
+            width: '850px',
+            data: id,
+            disableClose: true,
+            autoFocus: true
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog closed: ${result}`);
+            this.dialogResult = result;
+            if (result == 'Confirm') {
+                this.toastr.success('Proyecto modificado exitosamente', 'Notificación', { timeOut: 3000 });
                 this.loadProjects();
             }
         })

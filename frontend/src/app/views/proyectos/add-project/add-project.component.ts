@@ -89,24 +89,6 @@ export class AddProjectComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onCloseConfirm() {
-    if (this.form.invalid) {
-      (<any>Object).values(this.form.controls).forEach(control => {
-        control.markAsTouched();
-      });
-      return;
-    }
-    const projectData = this.form.value;
-    console.log('Info name: ' + projectData.name);
-    this.projectService.insert(projectData).subscribe({
-      next: result => {
-        console.log(result);
-
-      },
-      error: result => { }
-    });
-  }
-
   onCloseCancel() {
     this.dialogRef.close('Cancel');
   }

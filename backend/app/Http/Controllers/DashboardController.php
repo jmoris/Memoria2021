@@ -59,7 +59,13 @@ class DashboardController extends Controller
         }else if($rol == 'Profesor'){
             return '234';
         }else if($rol == 'Alumno'){
-            $proyectos = $user->proyectos;
+            $proyectos = [];
+            $dproyectos = $user->proyectos()->with('curso')->get();
+            foreach($dproyectos as $proy){
+                $profesor = Curso::find($proy->curso_id)->profesor;
+                $proy->profesor = $profesor->name . ' ' . $profesor->lastname;
+                array_push($proyectos, $proy);
+            }
             return response()->json([
                 'nproyectos' => count($proyectos),
                 'proyectos' => $proyectos

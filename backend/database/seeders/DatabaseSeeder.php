@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         $user->email = "jesus@soluciontotal.cl";
         $user->password = bcrypt('Moris234');
         $user->gh_user = "jmoris";
-        $user->gh_token = "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";
+        $user->gh_token = "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";
         $user->save();
 
         $user->instituciones()->attach(1, ['role_id' => 2]);

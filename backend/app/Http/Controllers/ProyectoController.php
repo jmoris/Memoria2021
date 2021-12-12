@@ -49,14 +49,20 @@ class ProyectoController extends Controller
         }else if($rol == 'Profesor'){
             return [];
         }else if($rol == 'Alumno'){
-            $proyectos = $user->proyectos;
+            $proyectos = [];
+            $dproyectos = $user->proyectos()->with('curso')->get();
+            foreach($dproyectos as $proy){
+                $profesor = Curso::find($proy->curso_id)->profesor;
+                $proy->profesor = $profesor;
+                array_push($proyectos, $proy);
+            }
             return $proyectos;
         }
     }
 
     public function show($id){
         // Dependiendo del rol podra ver los proyectos, dependiendo si esta asignado o no
-        return Proyecto::find($id);
+        return Proyecto::where('id', $id)->with('repositorio')->with('usuarios')->first();
     }
 
     public function userList(Request $request, $id){
@@ -755,9 +761,10 @@ class ProyectoController extends Controller
     public function update(Request $request, $id){
         try{
             $validador = Validator::make($request->all(), [
-                'nombre' => 'required',
-                'estado' => 'required',
-                'curso' => 'required',
+                'name' => 'required',
+                'course' => 'required',
+                'year' => 'required',
+                'semester' => 'required'
             ]);
 
             if($validador->fails()){
@@ -768,11 +775,26 @@ class ProyectoController extends Controller
                 ]);
             }
 
-            $curso = Proyecto::findOrFail($id);
-            $curso->nombre = $request->nombre;
-            $curso->estado = $request->estado;
-            $curso->curso_id = $request->curso;
-            $curso->save();
+            $proyecto = Proyecto::findOrFail($id);
+            $proyecto->nombre = $request->name;
+            $proyecto->estado = 0;
+            $proyecto->semestre = $request->semester;
+            $proyecto->ano = $request->year;
+            $proyecto->curso_id = $request->course;
+
+            $repo = Repositorio::findOrFail($proyecto->repositorio_id);
+            $nombre = str_replace('https://github.com/', '', $request->url);
+            $repo->nombre = $nombre;
+            $repo->url = $request->url;
+            $repo->save();
+
+            $proyecto->save();
+
+            $proyecto->usuarios()->delete();
+            foreach($request->students as $student){
+                $user = User::findOrFail($student['user_id']);
+                $proyecto->usuarios()->sync($user);
+            }
 
             return response()->json([
                 'success' => true,

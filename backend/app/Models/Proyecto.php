@@ -14,7 +14,7 @@ class Proyecto extends Model
     }
 
     public function repositorio(){
-        return $this->hasOne(Repositorio::class);
+        return $this->hasOne(Repositorio::class, 'id', 'repositorio_id');
     }
 
     /**

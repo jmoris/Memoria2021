@@ -13,7 +13,8 @@ export class CursosService {
     constructor(private http: HttpClient, private router: Router, private auth: AuthenticationService) { }
 
     getAll() {
-        return this.http.get<any>(`${environment.apiUrl}/cursos`);
+        let idInst = this.auth.getInstitucion();
+        return this.http.get<any>(`${environment.apiUrl}/cursos?institucion=` + idInst);
     }
 
     get(id) {

@@ -4,17 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Curso;
 use App\Models\Institucion;
+use App\Models\Proyecto;
+use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Reader\Xls\RC4;
 
 class CursoController extends Controller
 {
-    public function showAll(){
-        return Curso::with('usuarios')->with('profesor')->get();
+    public function showAll(Request $request){
+        $user = auth()->user();
+        $institucion = Institucion::findOrFail($request->institucion);
+        $rol = $institucion->usuarios()->wherePivot('user_id', $user->id)->first()->pivot->role_id;
+        $rol = Role::findOrFail($rol)->name;
+        if($rol == 'Administrador'||$rol == 'Superadministrador'){
+            return Curso::where('institucion_id', $request->institucion)->get();
+        }
+        return $user->cursosAsignados;
     }
 
     public function show($id){

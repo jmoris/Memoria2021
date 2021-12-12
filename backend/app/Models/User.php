@@ -56,7 +56,7 @@ class User extends Authenticatable
      */
     public function proyectos()
     {
-        return $this->belongsToMany(Proyecto::class, 'proyecto_user', 'user_id', 'proyecto_id');
+        return $this->belongsToMany(Proyecto::class, 'proyecto_user', 'user_id', 'proyecto_id')->withCount('usuarios');
     }
 
     /**
@@ -66,4 +66,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Curso::class, 'curso_user', 'user_id', 'curso_id');
     }
+
+    /**
+     * Relacion con cursos de profesor
+     */
+
+     public function cursosAsignados(){
+         return $this->hasMany(Curso::class, 'teacher_id', 'id');
+     }
 }

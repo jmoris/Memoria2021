@@ -18,6 +18,10 @@ export class ProjectsService {
     return this.http.post<any>(`${env.apiUrl}/proyectos`, data);
   }
 
+  update(data, id): Observable<boolean> {
+    return this.http.put<any>(`${env.apiUrl}/proyectos/` + id, data);
+  }
+
   addSingle(project_id, user_id){
     return this.http.post<any>(`${env.apiUrl}/proyectos/`+ project_id + `/asignar`, {user_id});
   }

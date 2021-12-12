@@ -1,0 +1,758 @@
+[6031c77] SrDeLorean 2021-06-25 Merge branch 'moris' into main
+[06fa30c] SrDeLorean 2021-06-25 a
+1	0	Intrucciones de ejecucion.txt
+
+[a081556] SrDeLorean 2021-06-25 intruccion de ejecucion
+40	0	Intrucciones de ejecucion.txt
+
+[7bb627f] SrDeLorean 2021-06-25 Merge remote-tracking branch 'origin/Ian-Garcia' into moris
+[53b1122] Ian García 2021-06-24 Merge remote-tracking branch 'origin/moris' into Ian-Garcia
+[fbdb0f7] Ian García 2021-06-24 bug
+2	0	Front/src/actions/auth.js
+8	2	Front/src/actions/transferencias.js
+7	1	Front/src/components/Clientes/TransferenciaExterna.js
+100	85	Front/src/components/Clientes/TransferenciaInterna.js
+
+[3da2200] Jesus Moris 2021-06-24 Documentacion
+6	2	Back/app/Http/Controllers/CuentasController.php
+15	4	Back/app/Http/Controllers/UsuarioController.php
+
+[fd1b02c] Jesus Moris 2021-06-24 Documentacion y fix
+8	6	Back/app/Http/Controllers/AuthController.php
+7	3	Back/app/Http/Controllers/CuentasController.php
+12	2	Back/app/Http/Controllers/TransferenciasController.php
+
+[6f5eeaa] Jesus Moris 2021-06-24 Merge branch 'Ian-Garcia' into moris
+[f4ff817] Jesus Moris 2021-06-24 Merge remote-tracking branch 'origin/Ian-Garcia' into Ian-Garcia
+[b89c583] Jesus Moris 2021-06-24 Se convierten los numeros a entero
+8	8	Back/app/Http/Controllers/TransferenciasController.php
+
+[00c54bd] Ian García 2021-06-24 documentación
+59	3	Front/src/actions/transferencias.js
+0	9	Front/src/actions/ui.js
+28	2	Front/src/actions/usuarios.js
+
+[7d07587] Ian García 2021-06-24 Saldo en el balance
+2	3	Front/src/actions/transferencias.js
+2	2	Front/src/pages/Clientes.js
+
+[b11b503] Jesus Moris 2021-06-24 implementacion
+2	2	Front/src/actions/transferencias.js
+
+[c821ad6] Ian García 2021-06-23 Merge remote-tracking branch 'origin/Ian-Garcia' into Ian-Garcia
+[b721e1e] Jesus Moris 2021-06-23 Implementacion saldo de destino en transferencia interna
+1	0	Back/app/Http/Controllers/TransferenciasController.php
+1	0	Back/database/migrations/2021_05_14_180721_create_transferencia_internas_table.php
+
+[cdc9ae6] Ian García 2021-06-23 Merge remote-tracking branch 'origin/Ian-Garcia' into Ian-Garcia
+[764ed31] Ian García 2021-06-23 comentando codigo
+216	213	Back/composer.lock
+11	17	Front/src/actions/cuentas.js
+0	36	Front/src/actions/transferencias.js
+8	9	Front/src/components/balances/BalanceCuenta.js
+
+[23e58e1] Jesus Moris 2021-06-23 Merge remote-tracking branch 'origin/Ian-Garcia' into Ian-Garcia
+[c0dd894] Jesus Moris 2021-06-23 Implementación saldo de destino en transferencia externa
+1	0	Back/app/Http/Controllers/TransferenciasController.php
+1	0	Back/database/migrations/2021_05_14_180748_create_transferencia_externas_table.php
+
+[4ff4ab2] Ian García 2021-06-23 Merge remote-tracking branch 'origin/Ian-Garcia' into Ian-Garcia
+[696802a] Ian García 2021-06-23 Comentado de codigo
+48	5	Front/src/actions/auth.js
+0	2	Front/src/actions/cuentas.js
+0	3	Front/src/actions/transferencias.js
+0	4	Front/src/actions/usuarios.js
+25	6	Front/src/components/Clientes/CrearCliente.js
+
+[672a7b8] Jesus Moris 2021-06-23 Merge remote-tracking branch 'origin/Ian-Garcia' into Ian-Garcia
+[d55e13c] Jesus Moris 2021-06-23 Integracion exportar balance
+1	0	Back/routes/api.php
+19	8	Front/src/components/balances/BalanceCuenta.js
+
+[cd19d86] Ian García 2021-06-23 Actualización de datos
+2	0	Front/src/actions/auth.js
+8	4	Front/src/actions/usuarios.js
+
+[19bf12d] Ian García 2021-06-23 Saldo disponible
+5	1	Front/src/components/balances/Balance.js
+67	71	Front/src/components/balances/BalanceCuenta.js
+
+[23ae8ff] Ian García 2021-06-23 Merge remote-tracking branch 'origin/Pinky' into Ian-Garcia
+[cd2ce6d] Ian García 2021-06-23 Ordenar balance
+0	1	Front/src/actions/cuentas.js
+15	5	Front/src/actions/transferencias.js
+6	8	Front/src/components/Clientes/CrearCliente.js
+
+[cf07542] Matias Pizarro 2021-06-23 Cambio pagina de inicio y comentarios
+1	1	Front/src/components/Navbar.js
+3	81	Front/src/components/balances/Balance.js
+46	43	Front/src/components/balances/BalanceCuenta.js
+2	3	Front/src/routers/HomeRoutes.js
+
+[f81479e] Matias Pizarro 2021-06-23 Comentarios y ordenado de código (solo cosas visuales)
+9	40	Front/src/components/Clientes/CrearCliente.js
+12	48	Front/src/components/Clientes/EditarCliente.js
+4	15	Front/src/components/Clientes/TransferenciaExterna.js
+8	16	Front/src/components/Clientes/TransferenciaInterna.js
+0	1	Front/src/components/Footer.js
+20	137	Front/src/components/Navbar.js
+7	13	Front/src/components/TablaClientes.js
+1	1	Front/src/constants/routes.js
+7	6	Front/src/pages/Clientes.js
+25	40	Front/src/pages/acceso/Signin.js
+11	27	Front/src/routers/HomeRoutes.js
+
+[46bd0c0] Matias Pizarro 2021-06-22 Arreglos visuales
+5	5	Front/src/components/Clientes/CrearCliente.js
+24	15	Front/src/components/Clientes/EditarCliente.js
+3	7	Front/src/components/Clientes/TransferenciaExterna.js
+8	13	Front/src/components/Clientes/TransferenciaInterna.js
+5	6	Front/src/components/Navbar.js
+25	85	Front/src/components/balances/Balance.js
+12	13	Front/src/components/balances/BalanceCuenta.js
+6	2	Front/src/pages/Inicio.js
+
+[e8dc9aa] Matias Pizarro 2021-06-22 (No hacer merge) Cambio visuales 2.0
+7	2	Front/src/components/Clientes/CrearCliente.js
+9	3	Front/src/components/Clientes/EditarCliente.js
+5	5	Front/src/components/Footer.js
+137	41	Front/src/components/Navbar.js
+7	4	Front/src/pages/acceso/Signin.js
+48	44	Front/src/routers/HomeRoutes.js
+
+[d3dbd28] Matias Pizarro 2021-06-17 Merge remote-tracking branch 'origin/Ian-Garcia' into Pinky
+[56cc678] Ian García 2021-06-16 Balance de cuenta
+3	3	Front/src/actions/auth.js
+10	238	Front/src/actions/cuentas.js
+49	13	Front/src/actions/transferencias.js
+42	13	Front/src/components/Clientes/TransferenciaExterna.js
+1	1	Front/src/components/Clientes/TransferenciaInterna.js
+6	6	Front/src/components/balances/Balance.js
+12	3	Front/src/components/balances/BalanceCuenta.js
+9	8	Front/src/pages/acceso/Signin.js
+
+[9b11378] Ian García 2021-06-14 Merge remote-tracking branch 'origin/moris' into Ian-Garcia
+[d74dbac] Ian García 2021-06-14 Merge remote-tracking branch 'origin/Pinky' into Ian-Garcia
+[a78887e] Jesus Moris 2021-06-12 Se cambia login a rut y clave
+53	7	Back/app/Http/Controllers/AuthController.php
+1	1	Back/database/migrations/2014_10_12_000000_create_users_table.php
+1	1	Back/routes/api.php
+
+[23b1f43] Jesus Moris 2021-06-12 Se implementa exportar balance
+75	0	Back/app/Http/Controllers/CuentasController.php
+1	0	Back/composer.json
+514	1	Back/composer.lock
+1	0	Back/routes/api.php
+-	-	Back/storage/ExcelTemplates/Balance.xlsx
+-	-	Back/storage/ExcelTemplates/~$Balance.xlsx
+
+[54f4e2a] Jesus Moris 2021-06-12 Se implementa columna saldo en transferencias para visualizacion balance
+2	0	Back/app/Http/Controllers/TransferenciasController.php
+1	0	Back/database/migrations/2021_05_14_180721_create_transferencia_internas_table.php
+1	0	Back/database/migrations/2021_05_14_180748_create_transferencia_externas_table.php
+
+[0c82a4c] Matias Pizarro 2021-06-10 Cambios visuales menores
+1	1	Front/src/components/Clientes/Balance.js
+4	6	Front/src/components/Clientes/TransferenciaInterna.js
+2	2	Front/src/components/Navbar.js
+2	9	Front/src/components/Sidebar.js
+7	13	Front/src/pages/Clientes.js
+
+[79347d7] Jesus Moris 2021-06-09 Se implemento metodo balance para cada cuenta
+52	0	Back/app/Http/Controllers/CuentasController.php
+1	1	Back/routes/api.php
+
+[729e242] Ian García 2021-06-09 Balance de cuentas
+3	0	Front/src/actions/auth.js
+88	8	Front/src/actions/transferencias.js
+0	210	Front/src/components/Clientes/Balance.js
+0	186	Front/src/components/Clientes/EditarCliente.js
+242	0	Front/src/components/balances/Balance.js
+71	0	Front/src/components/balances/BalanceCuenta.js
+2	0	Front/src/constants/types.js
+14	0	Front/src/reducers/transferenciasReducer.js
+2	6	Front/src/routers/HomeRoutes.js
+2	0	Front/src/store/store.js
+
+[758c787] Ian García 2021-06-07 Merge remote-tracking branch 'origin/Pinky' into Ian-Garcia
+[2b8fdab] Matias Pizarro 2021-06-03 Balance de Cuentas + Exportar
+210	0	Front/src/components/Clientes/Balance.js
+6	1	Front/src/components/Sidebar.js
+2	2	Front/src/constants/routes.js
+6	0	Front/src/routers/HomeRoutes.js
+
+[6ee8110] Ian García 2021-06-02 Transferencias externas
+28	3	Front/src/actions/transferencias.js
+374	0	Front/src/components/Clientes/TransferenciaExterna.js
+9	70	Front/src/components/Clientes/TransferenciaInterna.js
+
+[6715746] Ian García 2021-06-01 Merge remote-tracking branch 'origin/moris' into Ian-Garcia
+[b91b7b9] Jesus Moris 2021-06-01 Implementacion de transferencias externas
+86	1	Back/app/Http/Controllers/TransferenciasController.php
+4	0	Back/database/migrations/2021_05_14_180748_create_transferencia_externas_table.php
+2	1	Back/routes/api.php
+
+[f5e3d5a] Ian García 2021-05-27 Reparación de bug
+7	2	Front/src/actions/cuentas.js
+21	8	Front/src/components/Clientes/TransferenciaInterna.js
+
+[caab088] Ian García 2021-05-27 Implementación de transferencias internas
+17	7	Front/src/actions/auth.js
+5	19	Front/src/actions/cuentas.js
+48	0	Front/src/actions/transferencias.js
+15	8	Front/src/actions/usuarios.js
+6	2	Front/src/components/Clientes/CrearCliente.js
+374	164	Front/src/components/Clientes/TransferenciaInterna.js
+1	2	Front/src/components/TablaClientes.js
+1	0	Front/src/constants/api.js
+15	17	Front/src/pages/Clientes.js
+1	1	Front/src/reducers/cuentasReducer.js
+1	1	Front/src/reducers/usuarioReducer.js
+
+[bf7fa4a] Ian García 2021-05-25 Merge remote-tracking branch 'origin/moris' into Ian-Garcia
+[49565e0] Jesus Moris 2021-05-25 implementacion transfererencias internas
+30	32	Back/app/Http/Controllers/TransferenciasController.php
+0	2	Back/database/migrations/2021_05_14_180721_create_transferencia_internas_table.php
+
+[f1f4049] Jesus Moris 2021-05-25 Merge remote-tracking branch 'origin/main' into moris
+[772d8fc] Jesus Moris 2021-05-25 Implementacion getCuentas
+14	1	Back/app/Http/Controllers/CuentasController.php
+3	3	Back/app/Models/User.php
+3	0	Back/routes/api.php
+
+[0f6d2c5] SrDeLorean 2021-05-24 Elimine una ruta inecesaria
+0	1	Back/routes/api.php
+
+[4a265b4] SrDeLorean 2021-05-24 Merge remote-tracking branch 'origin/moris' into main
+[a76e6ee] SrDeLorean 2021-05-24 Merge remote-tracking branch 'origin/Pinky' into main
+[a50b5a4] Jesus Moris 2021-05-22 Implementacion
+5	0	Back/app/Http/Controllers/UsuarioController.php
+2	1	Back/app/Models/User.php
+4	0	Back/database/migrations/2014_10_12_000000_create_users_table.php
+1	1	Back/routes/api.php
+
+[e5a1b84] Jesus Moris 2021-05-22 Se implementa Softdelete en Usuarios y se repara middleware rutas
+28	0	Back/database/migrations/2021_05_16_042143_proyecto_user.php
+
+[53719f0] Jesus Moris 2021-05-22 Merge remote-tracking branch 'origin/main' into moris
+[eaa8ac3] Matias Pizarro 2021-05-20 Vista Transferencias a Terceros
+138	53	Front/src/components/Clientes/TransferenciaInterna.js
+
+[8601fa4] Matias Pizarro 2021-05-19 Merge remote-tracking branch 'origin/Ian-Garcia' into Pinky
+[a71645b] Ian García 2021-05-18 Reparación de editar cuenta
+13	5	Front/src/actions/auth.js
+20	9	Front/src/actions/cuentas.js
+
+[e5adb84] SrDeLorean 2021-05-18 Merge remote-tracking branch 'origin/Ian-Garcia' into main
+[82874c0] Ian García 2021-05-18 Eliminar cliente
+15	0	Front/src/actions/usuarios.js
+10	1	Front/src/components/TablaClientes.js
+
+[e885d1b] Ian García 2021-05-18 Editar cliente
+17	5	Front/src/actions/auth.js
+14	17	Front/src/actions/usuarios.js
+17	13	Front/src/components/Clientes/CrearCliente.js
+41	33	Front/src/components/Clientes/EditarCliente.js
+
+[f6d96b6] Ian García 2021-05-17 ver pantalla de editar cliente
+12	10	Front/src/actions/auth.js
+15	2	Front/src/actions/usuarios.js
+7	6	Front/src/components/Clientes/EditarCliente.js
+8	10	Front/src/components/TablaClientes.js
+21	10	Front/src/routers/HomeRoutes.js
+
+[4eaa46a] Ian García 2021-05-17 Arreglando Back
+1	1	Back/database/migrations/2021_05_13_192300_create_cuenta_corrientes_table.php
+1	1	Back/database/migrations/2021_05_13_192308_create_cuenta_creditos_table.php
+1	1	Back/database/migrations/2021_05_13_192320_create_cuenta_ahorros_table.php
+1	1	Back/database/migrations/2021_05_14_180721_create_transferencia_internas_table.php
+2	0	Back/database/seeders/UserSeeder.php
+
+[c5058ed] Ian García 2021-05-17 Merge remote-tracking branch 'origin/moris' into Ian-Garcia
+[48d0e55] Ian García 2021-05-17 Merge remote-tracking branch 'origin/Pinky' into Ian-Garcia
+[52c5f03] Jesus Moris 2021-05-14 Se modifico migracion usuario, se implemento cuentas y transferencias
+10	0	Back/app/Http/Controllers/CuentasController.php
+110	0	Back/app/Http/Controllers/TransferenciasController.php
+51	3	Back/app/Http/Controllers/UsuarioController.php
+11	0	Back/app/Models/CuentaAhorro.php
+11	0	Back/app/Models/CuentaCorriente.php
+11	0	Back/app/Models/CuentaCredito.php
+11	0	Back/app/Models/TransferenciaExterna.php
+11	0	Back/app/Models/TransferenciaInterna.php
+12	0	Back/app/Models/User.php
+1	0	Back/database/migrations/2014_10_12_000000_create_users_table.php
+34	0	Back/database/migrations/2021_05_13_192300_create_cuenta_corrientes_table.php
+34	0	Back/database/migrations/2021_05_13_192308_create_cuenta_creditos_table.php
+34	0	Back/database/migrations/2021_05_13_192320_create_cuenta_ahorros_table.php
+38	0	Back/database/migrations/2021_05_14_180721_create_transferencia_internas_table.php
+36	0	Back/database/migrations/2021_05_14_180748_create_transferencia_externas_table.php
+5	0	Back/routes/api.php
+
+[1227c05] Matias Pizarro 2021-05-13 Arreglos conexion backend
+12	27	Front/src/actions/auth.js
+3	2	Front/src/components/Clientes/CrearCliente.js
+6	5	Front/src/components/Sidebar.js
+6	5	Front/src/components/TablaClientes.js
+1	0	Front/src/constants/api.js
+0	3	Front/src/constants/routes.js
+28	9	Front/src/pages/Clientes.js
+12	9	Front/src/routers/HomeRoutes.js
+
+[90fd6a8] Matias Pizarro 2021-05-12 Merge remote-tracking branch 'origin/Ian-Garcia' into Pinky
+[e092814] Matias Pizarro 2021-05-12 Merge remote-tracking branch 'origin/MatiasParra' into Pinky
+[0a47182] Matias Pizarro 2021-05-12 Merge remote-tracking branch 'origin/Ian-Garcia' into Pinky
+[1f102f0] Matias Pizarro 2021-05-12 Merge remote-tracking branch 'origin/moris' into Pinky
+[6782231] Matias Pizarro 2021-05-12 fix merge
+0	0	{src => Front/src}/components/Clientes/TransferenciaInterna.js
+0	0	{src => Front/src}/pages/Inicio.js
+
+[60bc756] Matias Pizarro 2021-05-12 Merge remote-tracking branch 'origin/main' into Pinky
+[de9c533] Jesus Moris 2021-05-12 Se implementa CRUD de Usuarios
+112	0	Back/app/Http/Controllers/UsuarioController.php
+768	366	Back/composer.lock
+18	1	Back/routes/api.php
+25473	9	Front/package-lock.json
+851	872	Front/yarn.lock
+
+[56bbce1] Jesus Moris 2021-05-12 Merge remote-tracking branch 'origin/main' into moris
+[03d4567] Matias 2021-05-11 Primmer commit
+2	0	.gitignore
+
+[5f8d418] Ian García 2021-05-10 conectar con el backend
+17	0	Front/package-lock.json
+1	0	Front/package.json
+43	24	Front/src/actions/auth.js
+3	0	Front/src/constants/api.js
+0	1	Front/src/pages/acceso/Signin.js
+2	1	Front/src/reducers/authReducer.js
+8	43	Front/src/routers/AppRouter.js
+8	1	Front/yarn.lock
+
+[55c6a34] Ian García 2021-05-10 Re-direccionamiento
+25473	9	Front/package-lock.json
+18	5	Front/src/actions/auth.js
+12	14	Front/src/components/Navbar.js
+34	56	Front/src/components/Sidebar.js
+4	1	Front/src/constants/routes.js
+5	0	Front/src/pages/Inicio.js
+1	0	Front/src/reducers/authReducer.js
+10	10	Front/src/routers/AppRouter.js
+35	17	Front/src/routers/HomeRoutes.js
+1	1	Front/src/store/store.js
+851	872	Front/yarn.lock
+
+[7e4ca15] SrDeLorean 2021-05-08 Actualización del proyecto
+15	0	Back/.editorconfig
+49	0	Back/.env.example
+5	0	Back/.gitattributes
+13	0	Back/.gitignore
+13	0	Back/.styleci.yml
+1	0	Back/README.md
+41	0	Back/app/Console/Kernel.php
+40	0	Back/app/Exceptions/Handler.php
+162	0	Back/app/Http/Controllers/AuthController.php
+13	0	Back/app/Http/Controllers/Controller.php
+206	0	Back/app/Http/Controllers/ProductoController.php
+66	0	Back/app/Http/Kernel.php
+21	0	Back/app/Http/Middleware/Authenticate.php
+17	0	Back/app/Http/Middleware/EncryptCookies.php
+17	0	Back/app/Http/Middleware/PreventRequestsDuringMaintenance.php
+32	0	Back/app/Http/Middleware/RedirectIfAuthenticated.php
+18	0	Back/app/Http/Middleware/TrimStrings.php
+20	0	Back/app/Http/Middleware/TrustHosts.php
+23	0	Back/app/Http/Middleware/TrustProxies.php
+17	0	Back/app/Http/Middleware/VerifyCsrfToken.php
+20	0	Back/app/Models/Producto.php
+67	0	Back/app/Models/User.php
+28	0	Back/app/Providers/AppServiceProvider.php
+30	0	Back/app/Providers/AuthServiceProvider.php
+21	0	Back/app/Providers/BroadcastServiceProvider.php
+32	0	Back/app/Providers/EventServiceProvider.php
+63	0	Back/app/Providers/RouteServiceProvider.php
+53	0	Back/artisan
+55	0	Back/bootstrap/app.php
+2	0	Back/bootstrap/cache/.gitignore
+64	0	Back/composer.json
+7304	0	Back/composer.lock
+234	0	Back/config/app.php
+117	0	Back/config/auth.php
+64	0	Back/config/broadcasting.php
+106	0	Back/config/cache.php
+34	0	Back/config/cors.php
+147	0	Back/config/database.php
+72	0	Back/config/filesystems.php
+52	0	Back/config/hashing.php
+304	0	Back/config/jwt.php
+104	0	Back/config/logging.php
+110	0	Back/config/mail.php
+143	0	Back/config/permission.php
+89	0	Back/config/queue.php
+33	0	Back/config/services.php
+201	0	Back/config/session.php
+36	0	Back/config/view.php
+2	0	Back/database/.gitignore
+33	0	Back/database/factories/UserFactory.php
+37	0	Back/database/migrations/2014_10_12_000000_create_users_table.php
+32	0	Back/database/migrations/2014_10_12_100000_create_password_resets_table.php
+36	0	Back/database/migrations/2019_08_19_000000_create_failed_jobs_table.php
+36	0	Back/database/migrations/2019_08_19_000002_create_productos_table.php
+18	0	Back/database/seeders/DatabaseSeeder.php
+31	0	Back/database/seeders/UserSeeder.php
+74	0	Back/docker-compose.yml
+19	0	Back/package.json
+31	0	Back/phpunit.xml
+21	0	Back/public/.htaccess
+0	0	src/scss/volt/themes/_variables-dark.scss => Back/public/favicon.ico
+55	0	Back/public/index.php
+2	0	Back/public/robots.txt
+28	0	Back/public/web.config
+0	0	src/scss/volt/themes/_variables-light.scss => Back/resources/css/app.css
+1	0	Back/resources/js/app.js
+28	0	Back/resources/js/bootstrap.js
+20	0	Back/resources/lang/en/auth.php
+19	0	Back/resources/lang/en/pagination.php
+22	0	Back/resources/lang/en/passwords.php
+152	0	Back/resources/lang/en/validation.php
+20	0	Back/resources/lang/es/auth.php
+19	0	Back/resources/lang/es/pagination.php
+23	0	Back/resources/lang/es/passwords.php
+149	0	Back/resources/lang/es/validation.php
+132	0	Back/resources/views/welcome.blade.php
+33	0	Back/routes/api.php
+18	0	Back/routes/channels.php
+19	0	Back/routes/console.php
+18	0	Back/routes/web.php
+21	0	Back/server.php
+3	0	Back/storage/app/.gitignore
+2	0	Back/storage/app/public/.gitignore
+9	0	Back/storage/framework/.gitignore
+3	0	Back/storage/framework/cache/.gitignore
+2	0	Back/storage/framework/cache/data/.gitignore
+2	0	Back/storage/framework/sessions/.gitignore
+2	0	Back/storage/framework/testing/.gitignore
+2	0	Back/storage/framework/views/.gitignore
+2	0	Back/storage/logs/.gitignore
+22	0	Back/tests/CreatesApplication.php
+21	0	Back/tests/Feature/ExampleTest.php
+10	0	Back/tests/TestCase.php
+18	0	Back/tests/Unit/ExampleTest.php
+17	0	Back/webpack.mix.js
+0	0	.gitattributes => Front/.gitattributes
+0	0	.gitignore => Front/.gitignore
+0	0	LICENSE.md => Front/LICENSE.md
+0	0	README.md => Front/README.md
+0	0	package-lock.json => Front/package-lock.json
+0	0	package.json => Front/package.json
+-	-	{public => Front/public}/favicon.ico
+0	0	{public => Front/public}/index.html
+-	-	{public => Front/public}/logo192.png
+-	-	{public => Front/public}/logo512.png
+0	0	{public => Front/public}/manifest.json
+0	0	{public => Front/public}/robots.txt
+-	-	{src => Front/src}/.DS_Store
+0	0	{src => Front/src}/App.js
+0	0	{src => Front/src}/actions/auth.js
+0	0	{src => Front/src}/actions/cuentas.js
+0	0	{src => Front/src}/actions/ui.js
+0	0	{src => Front/src}/actions/usuarios.js
+0	0	{src => Front/src}/api/firebase-config-vacio.js
+-	-	{src => Front/src}/assets/.DS_Store
+-	-	{src => Front/src}/assets/img/.DS_Store
+-	-	{src => Front/src}/assets/img/Publicacion/Volt React Dashboard.pdf
+-	-	{src => Front/src}/assets/img/Publicacion/slide1.jpg
+-	-	{src => Front/src}/assets/img/Publicacion/slide2.jpg
+-	-	{src => Front/src}/assets/img/Publicacion/slide3.jpg
+-	-	{src => Front/src}/assets/img/Publicacion/star-empty.png
+-	-	{src => Front/src}/assets/img/Publicacion/star-full.png
+-	-	{src => Front/src}/assets/img/Publicacion/star-regular.png
+0	0	{src => Front/src}/assets/img/Publicacion/star-regular.svg
+-	-	{src => Front/src}/assets/img/Publicacion/star-solid.png
+0	0	{src => Front/src}/assets/img/Publicacion/star-solid.svg
+-	-	{src => Front/src}/assets/img/Publicacion/star-yellow.png
+-	-	{src => Front/src}/assets/img/Publicacion/user.png
+0	0	{src => Front/src}/assets/img/signin.svg
+0	0	{src => Front/src}/components/AccordionComponent.js
+0	0	{src => Front/src}/components/Arrow.js
+0	0	{src => Front/src}/components/Clientes/CrearCliente.js
+0	0	{src => Front/src}/components/Clientes/EditarCliente.js
+0	0	{src => Front/src}/components/Footer.js
+0	0	{src => Front/src}/components/Forms.js
+0	0	{src => Front/src}/components/Navbar.js
+0	0	{src => Front/src}/components/NumeratedCard.js
+0	0	{src => Front/src}/components/Preloader.js
+0	0	{src => Front/src}/components/Progress.js
+0	0	{src => Front/src}/components/Sidebar.js
+0	0	{src => Front/src}/components/TablaClientes.js
+0	0	{src => Front/src}/constants/routes.js
+0	0	{src => Front/src}/constants/types.js
+0	0	{src => Front/src}/hooks/useForm.js
+0	0	{src => Front/src}/index.js
+0	0	{src => Front/src}/pages/Clientes.js
+0	0	{src => Front/src}/pages/acceso/Signin.js
+0	0	{src => Front/src}/reducers/authReducer.js
+0	0	{src => Front/src}/reducers/cuentasReducer.js
+0	0	{src => Front/src}/reducers/uiReducer.js
+0	0	{src => Front/src}/reducers/usuarioReducer.js
+0	0	{src => Front/src}/routers/AppRouter.js
+0	0	{src => Front/src}/routers/AuthRouter.js
+0	0	{src => Front/src}/routers/HomeRoutes.js
+0	0	{src => Front/src}/routers/PrivateRoute.js
+0	0	{src => Front/src}/routers/PublicRoute.js
+0	0	{src => Front/src}/scss/myStyle.scss
+0	0	{src => Front/src}/scss/volt.scss
+0	0	{src => Front/src}/scss/volt/_components.scss
+0	0	{src => Front/src}/scss/volt/_functions.scss
+0	0	{src => Front/src}/scss/volt/_layout.scss
+0	0	{src => Front/src}/scss/volt/_mixins.scss
+0	0	{src => Front/src}/scss/volt/_reboot.scss
+0	0	{src => Front/src}/scss/volt/_utilities.scss
+0	0	{src => Front/src}/scss/volt/_variables.scss
+0	0	{src => Front/src}/scss/volt/_vendor.scss
+0	0	{src => Front/src}/scss/volt/components/_accordions.scss
+0	0	{src => Front/src}/scss/volt/components/_alerts.scss
+0	0	{src => Front/src}/scss/volt/components/_avatars.scss
+0	0	{src => Front/src}/scss/volt/components/_badge.scss
+0	0	{src => Front/src}/scss/volt/components/_blog-cards.scss
+0	0	{src => Front/src}/scss/volt/components/_breadcrumb.scss
+0	0	{src => Front/src}/scss/volt/components/_buttons.scss
+0	0	{src => Front/src}/scss/volt/components/_card.scss
+0	0	{src => Front/src}/scss/volt/components/_carousel.scss
+0	0	{src => Front/src}/scss/volt/components/_charts.scss
+0	0	{src => Front/src}/scss/volt/components/_close.scss
+0	0	{src => Front/src}/scss/volt/components/_counters.scss
+0	0	{src => Front/src}/scss/volt/components/_custom-forms.scss
+0	0	{src => Front/src}/scss/volt/components/_datepicker.scss
+0	0	{src => Front/src}/scss/volt/components/_dropdown.scss
+0	0	{src => Front/src}/scss/volt/components/_dropzone.scss
+0	0	{src => Front/src}/scss/volt/components/_forms.scss
+0	0	{src => Front/src}/scss/volt/components/_icon-box.scss
+0	0	{src => Front/src}/scss/volt/components/_images.scss
+0	0	{src => Front/src}/scss/volt/components/_input-group.scss
+0	0	{src => Front/src}/scss/volt/components/_list-group.scss
+0	0	{src => Front/src}/scss/volt/components/_modal.scss
+0	0	{src => Front/src}/scss/volt/components/_nav.scss
+0	0	{src => Front/src}/scss/volt/components/_pagination.scss
+0	0	{src => Front/src}/scss/volt/components/_popover.scss
+0	0	{src => Front/src}/scss/volt/components/_preloader.scss
+0	0	{src => Front/src}/scss/volt/components/_pricing-cards.scss
+0	0	{src => Front/src}/scss/volt/components/_progress.scss
+0	0	{src => Front/src}/scss/volt/components/_scrollbar.scss
+0	0	{src => Front/src}/scss/volt/components/_shapes.scss
+0	0	{src => Front/src}/scss/volt/components/_tables.scss
+0	0	{src => Front/src}/scss/volt/components/_timelines.scss
+0	0	{src => Front/src}/scss/volt/components/_tooltip.scss
+0	0	{src => Front/src}/scss/volt/components/_type.scss
+0	0	{src => Front/src}/scss/volt/layout/_footer.scss
+0	0	{src => Front/src}/scss/volt/layout/_navbar.scss
+0	0	{src => Front/src}/scss/volt/layout/_section.scss
+0	0	{src => Front/src}/scss/volt/layout/_sidebar.scss
+0	0	{src => Front/src}/scss/volt/layout/_sidenav.scss
+0	0	{src => Front/src}/scss/volt/mixins/_animations.scss
+0	0	{src => Front/src}/scss/volt/mixins/_background-variant.scss
+0	0	{src => Front/src}/scss/volt/mixins/_icon.scss
+0	0	{src => Front/src}/scss/volt/mixins/_modals.scss
+0	0	{src => Front/src}/scss/volt/mixins/_popover.scss
+0	0	{src => Front/src}/scss/volt/mixins/_transform.scss
+0	0	{src => Front/src}/scss/volt/mixins/_utilities.scss
+0	0	src/scss/volt/themes/_variables-sunset.scss => Front/src/scss/volt/themes/_variables-dark.scss
+0	0	src/utilities/borar.txt => Front/src/scss/volt/themes/_variables-light.scss
+0	0	Front/src/scss/volt/themes/_variables-sunset.scss
+0	0	{src => Front/src}/scss/volt/utilities/_animations.scss
+0	0	{src => Front/src}/scss/volt/utilities/_backgrounds.scss
+0	0	{src => Front/src}/scss/volt/utilities/_helper.scss
+0	0	{src => Front/src}/scss/volt/utilities/_position.scss
+0	0	{src => Front/src}/scss/volt/utilities/_shadows.scss
+0	0	{src => Front/src}/scss/volt/utilities/_sizing.scss
+0	0	{src => Front/src}/scss/volt/utilities/_text.scss
+0	0	{src => Front/src}/scss/volt/utilities/_transform.scss
+0	0	{src => Front/src}/scss/volt/vendor/_datepicker.scss
+0	0	{src => Front/src}/scss/volt/vendor/_headroom.scss
+0	0	{src => Front/src}/scss/volt/vendor/_prism.scss
+0	0	{src => Front/src}/scss/volt/vendor/chartist/_chartist.scss
+0	0	{src => Front/src}/scss/volt/vendor/chartist/settings/_chartist-settings.scss
+0	0	{src => Front/src}/scss/volt/vendor/wizard/_form.scss
+0	0	{src => Front/src}/scss/volt/vendor/wizard/_mixins.scss
+0	0	{src => Front/src}/scss/volt/vendor/wizard/_variables.scss
+0	0	{src => Front/src}/store/store.js
+0	0	Front/src/utilities/borar.txt
+0	0	yarn.lock => Front/yarn.lock
+
+[8012161] Matias Pizarro 2021-05-06 Fix merge con ian
+5	0	src/components/Sidebar.js
+
+[ea741b2] Matias Pizarro 2021-05-06 Merge remote-tracking branch 'origin/ian' into Pinky
+[eb6e6ff] Matias Pizarro 2021-05-06 Creacion vista transferencias internas
+82	0	src/components/Clientes/TransferenciaInterna.js
+16	0	src/components/Sidebar.js
+1	0	src/constants/routes.js
+5	11	src/routers/HomeRoutes.js
+
+[19d98ab] piremonte 2021-05-04 Re-direccionamiento
+25473	9	package-lock.json
+18	5	src/actions/auth.js
+12	14	src/components/Navbar.js
+34	56	src/components/Sidebar.js
+4	1	src/constants/routes.js
+5	0	src/pages/Inicio.js
+1	0	src/reducers/authReducer.js
+10	10	src/routers/AppRouter.js
+35	17	src/routers/HomeRoutes.js
+1	1	src/store/store.js
+851	872	yarn.lock
+
+[a05b614] SrDeLorean 2021-05-02 Cambios del dia jueves 29/04
+21	19	src/actions/auth.js
+273	0	src/actions/cuentas.js
+33	0	src/actions/usuarios.js
+23	31	src/components/Clientes/CrearCliente.js
+344	161	src/components/Clientes/EditarCliente.js
+21	49	src/components/TablaClientes.js
+1	1	src/constants/routes.js
+8	0	src/constants/types.js
+5	1	src/hooks/useForm.js
+5	1	src/pages/Clientes.js
+5	2	src/pages/acceso/Signin.js
+14	0	src/reducers/cuentasReducer.js
+22	13	src/reducers/usuarioReducer.js
+22	2	src/routers/AppRouter.js
+2	0	src/store/store.js
+
+[5e1bdd8] SrDeLorean 2021-05-02 Progreso del proyecto
+2	0	.gitattributes
+2	0	.gitignore
+7	0	LICENSE.md
+21342	0	package-lock.json
+72	0	package.json
+-	-	public/favicon.ico
+31	0	public/index.html
+-	-	public/logo192.png
+-	-	public/logo512.png
+25	0	public/manifest.json
+3	0	public/robots.txt
+-	-	src/.DS_Store
+13	0	src/App.js
+88	0	src/actions/auth.js
+17	0	src/actions/ui.js
+19	0	src/api/firebase-config-vacio.js
+-	-	src/assets/.DS_Store
+-	-	src/assets/img/.DS_Store
+-	-	src/assets/img/Publicacion/Volt React Dashboard.pdf
+-	-	src/assets/img/Publicacion/slide1.jpg
+-	-	src/assets/img/Publicacion/slide2.jpg
+-	-	src/assets/img/Publicacion/slide3.jpg
+-	-	src/assets/img/Publicacion/star-empty.png
+-	-	src/assets/img/Publicacion/star-full.png
+-	-	src/assets/img/Publicacion/star-regular.png
+1	0	src/assets/img/Publicacion/star-regular.svg
+-	-	src/assets/img/Publicacion/star-solid.png
+1	0	src/assets/img/Publicacion/star-solid.svg
+-	-	src/assets/img/Publicacion/star-yellow.png
+-	-	src/assets/img/Publicacion/user.png
+2332	0	src/assets/img/signin.svg
+33	0	src/components/AccordionComponent.js
+11	0	src/components/Arrow.js
+376	0	src/components/Clientes/CrearCliente.js
+227	0	src/components/Clientes/EditarCliente.js
+26	0	src/components/Footer.js
+167	0	src/components/Forms.js
+82	0	src/components/Navbar.js
+19	0	src/components/NumeratedCard.js
+22	0	src/components/Preloader.js
+23	0	src/components/Progress.js
+230	0	src/components/Sidebar.js
+114	0	src/components/TablaClientes.js
+8	0	src/constants/routes.js
+10	0	src/constants/types.js
+18	0	src/hooks/useForm.js
+28	0	src/index.js
+36	0	src/pages/Clientes.js
+101	0	src/pages/acceso/Signin.js
+17	0	src/reducers/authReducer.js
+37	0	src/reducers/uiReducer.js
+22	0	src/reducers/usuarioReducer.js
+58	0	src/routers/AppRouter.js
+20	0	src/routers/AuthRouter.js
+66	0	src/routers/HomeRoutes.js
+28	0	src/routers/PrivateRoute.js
+24	0	src/routers/PublicRoute.js
+87	0	src/scss/myStyle.scss
+46	0	src/scss/volt.scss
+33	0	src/scss/volt/_components.scss
+23	0	src/scss/volt/_functions.scss
+5	0	src/scss/volt/_layout.scss
+7	0	src/scss/volt/_mixins.scss
+30	0	src/scss/volt/_reboot.scss
+8	0	src/scss/volt/_utilities.scss
+1681	0	src/scss/volt/_variables.scss
+9	0	src/scss/volt/_vendor.scss
+38	0	src/scss/volt/components/_accordions.scss
+10	0	src/scss/volt/components/_alerts.scss
+99	0	src/scss/volt/components/_avatars.scss
+102	0	src/scss/volt/components/_badge.scss
+12	0	src/scss/volt/components/_blog-cards.scss
+65	0	src/scss/volt/components/_breadcrumb.scss
+75	0	src/scss/volt/components/_buttons.scss
+263	0	src/scss/volt/components/_card.scss
+52	0	src/scss/volt/components/_carousel.scss
+52	0	src/scss/volt/components/_charts.scss
+33	0	src/scss/volt/components/_close.scss
+14	0	src/scss/volt/components/_counters.scss
+103	0	src/scss/volt/components/_custom-forms.scss
+27	0	src/scss/volt/components/_datepicker.scss
+100	0	src/scss/volt/components/_dropdown.scss
+52	0	src/scss/volt/components/_dropzone.scss
+83	0	src/scss/volt/components/_forms.scss
+206	0	src/scss/volt/components/_icon-box.scss
+95	0	src/scss/volt/components/_images.scss
+51	0	src/scss/volt/components/_input-group.scss
+96	0	src/scss/volt/components/_list-group.scss
+31	0	src/scss/volt/components/_modal.scss
+226	0	src/scss/volt/components/_nav.scss
+16	0	src/scss/volt/components/_pagination.scss
+19	0	src/scss/volt/components/_popover.scss
+31	0	src/scss/volt/components/_preloader.scss
+42	0	src/scss/volt/components/_pricing-cards.scss
+117	0	src/scss/volt/components/_progress.scss
+227	0	src/scss/volt/components/_scrollbar.scss
+19	0	src/scss/volt/components/_shapes.scss
+434	0	src/scss/volt/components/_tables.scss
+23	0	src/scss/volt/components/_timelines.scss
+46	0	src/scss/volt/components/_tooltip.scss
+184	0	src/scss/volt/components/_type.scss
+105	0	src/scss/volt/layout/_footer.scss
+487	0	src/scss/volt/layout/_navbar.scss
+469	0	src/scss/volt/layout/_section.scss
+34	0	src/scss/volt/layout/_sidebar.scss
+258	0	src/scss/volt/layout/_sidenav.scss
+45	0	src/scss/volt/mixins/_animations.scss
+25	0	src/scss/volt/mixins/_background-variant.scss
+17	0	src/scss/volt/mixins/_icon.scss
+23	0	src/scss/volt/mixins/_modals.scss
+36	0	src/scss/volt/mixins/_popover.scss
+19	0	src/scss/volt/mixins/_transform.scss
+123	0	src/scss/volt/mixins/_utilities.scss
+0	0	src/scss/volt/themes/_variables-dark.scss
+0	0	src/scss/volt/themes/_variables-light.scss
+0	0	src/scss/volt/themes/_variables-sunset.scss
+230	0	src/scss/volt/utilities/_animations.scss
+41	0	src/scss/volt/utilities/_backgrounds.scss
+65	0	src/scss/volt/utilities/_helper.scss
+33	0	src/scss/volt/utilities/_position.scss
+17	0	src/scss/volt/utilities/_shadows.scss
+51	0	src/scss/volt/utilities/_sizing.scss
+52	0	src/scss/volt/utilities/_text.scss
+16	0	src/scss/volt/utilities/_transform.scss
+33	0	src/scss/volt/vendor/_datepicker.scss
+52	0	src/scss/volt/vendor/_headroom.scss
+145	0	src/scss/volt/vendor/_prism.scss
+252	0	src/scss/volt/vendor/chartist/_chartist.scss
+89	0	src/scss/volt/vendor/chartist/settings/_chartist-settings.scss
+279	0	src/scss/volt/vendor/wizard/_form.scss
+11	0	src/scss/volt/vendor/wizard/_mixins.scss
+32	0	src/scss/volt/vendor/wizard/_variables.scss
+22	0	src/store/store.js
+0	0	src/utilities/borar.txt
+14089	0	yarn.lock
+
+[361990e] SrDeLorean 2021-05-02 Initial commit
+1	0	README.md
