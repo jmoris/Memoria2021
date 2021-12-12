@@ -790,7 +790,7 @@ class ProyectoController extends Controller
 
             $proyecto->save();
 
-            $proyecto->usuarios()->dettach();
+            $proyecto->usuarios()->detach();
             foreach($request->students as $student){
                 $user = User::findOrFail($student['user_id']);
                 $proyecto->usuarios()->sync([$user->id], false);
