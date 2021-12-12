@@ -801,6 +801,7 @@ class ProyectoController extends Controller
                 'message' => 'Proyecto modificada correctamente'
             ]);
         }catch(Exception $ex){
+            Log::critical($ex);
             return response()->json([
                 'success' => false,
                 'message' => 'Error al modificar proyecto',
