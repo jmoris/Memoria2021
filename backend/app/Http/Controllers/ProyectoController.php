@@ -793,7 +793,7 @@ class ProyectoController extends Controller
             $proyecto->usuarios()->delete();
             foreach($request->students as $student){
                 $user = User::findOrFail($student['user_id']);
-                $proyecto->usuarios()->sync($user);
+                $proyecto->usuarios()->attach($user);
             }
 
             return response()->json([
@@ -803,7 +803,7 @@ class ProyectoController extends Controller
         }catch(Exception $ex){
             return response()->json([
                 'success' => false,
-                'message' => 'Error al modificar curso',
+                'message' => 'Error al modificar proyecto',
                 'error' => $ex,
             ]);
         }
