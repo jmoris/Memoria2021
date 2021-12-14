@@ -53,17 +53,17 @@
             <div class="container">
                 <label>Perfil:</label>
                 <mat-radio-group formControlName="role" class="profile-form">
-                    <div>
-                        <mat-radio-button value="0">Superadministrador</mat-radio-button>
+                    <div *ngIf="roleId=='Superadministrador'">
+                        <mat-radio-button value="1">Superadministrador</mat-radio-button>
                     </div>
                     <div>
-                        <mat-radio-button value="1">Administrador</mat-radio-button>
+                        <mat-radio-button value="2">Administrador</mat-radio-button>
                     </div>
                     <div>
-                        <mat-radio-button value="2">Profesor</mat-radio-button>
+                        <mat-radio-button value="3">Profesor</mat-radio-button>
                     </div>
                     <div>
-                        <mat-radio-button value="3">Alumno</mat-radio-button>
+                        <mat-radio-button value="4">Alumno</mat-radio-button>
                     </div>
                 </mat-radio-group>
             </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { UsuariosService } from 'src/app/_services/usuarios.service';
 
 @Component({
@@ -28,9 +29,14 @@ export class EditUserComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditUserComponent>,
     private userService: UsuariosService,
+    private authService: AuthenticationService,
     @Inject(MAT_DIALOG_DATA) private data) {
     this.title = "Editar usuario";
     this.getUserData();
+
+
+    var user = this.authService.currentUserValue;
+    this.roleId = user.role;
   }
 
   ngOnInit(): void {

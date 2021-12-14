@@ -55,7 +55,7 @@ export class CursoComponent implements OnInit {
         this.cursoService.get(this.id).subscribe((data: any) => {
             this.curso = data[0];
 
-            this.users = this.users.concat(data.profesor);
+            this.users = this.users.concat(data[0].profesor);
             this.cursoService.usersList(this.id).subscribe((userData: any) => {
                 console.log("datos", userData);
 
@@ -64,6 +64,8 @@ export class CursoComponent implements OnInit {
                 this.dataSource.sort = this.sort;
                 this.dataSource.paginator = this.paginator;
                 this.stats.students = userData.length;
+            console.log(this.users);
+
             })
         });
 

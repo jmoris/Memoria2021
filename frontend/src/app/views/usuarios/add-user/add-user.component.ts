@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { UsuariosService } from 'src/app/_services/usuarios.service';
 
 @Component({
@@ -14,10 +15,11 @@ export class AddUserComponent implements OnInit {
   hide = true;
   cargando = false;
   usuarios: any;
-
+  roleId : any;
   constructor(
     public dialogRef: MatDialogRef<AddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: String,
+    private authService: AuthenticationService,
     private usersService: UsuariosService) {
     this.form = new FormGroup({
       name: new FormControl("", [Validators.required]),
@@ -28,6 +30,8 @@ export class AddUserComponent implements OnInit {
       enrollment: new FormControl("", [Validators.required, Validators.pattern(/^\d+$/)]),
       role: new FormControl("", [Validators.required])
     });
+    var user = this.authService.currentUserValue;
+    this.roleId = user.role;
   }
 
   ngOnInit(): void {

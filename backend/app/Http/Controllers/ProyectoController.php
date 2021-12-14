@@ -47,7 +47,19 @@ class ProyectoController extends Controller
             }
             return $proyectos;
         }else if($rol == 'Profesor'){
-            return [];
+            $cursos = $user->cursosAsignados;
+            $nproyectos = 0;
+            $proyectos = [];
+            foreach($cursos as $curso){
+                $dproyectos = $curso->proyectos()->with('curso')->get();
+                foreach($dproyectos as $proy){
+                    $profesor = Curso::find($proy->curso_id)->profesor;
+                    $proy->profesor = $profesor;
+                    array_push($proyectos, $proy);
+                }
+                $nproyectos += $curso->proyectos()->count();
+            }
+            return $proyectos;
         }else if($rol == 'Alumno'){
             $proyectos = [];
             $dproyectos = $user->proyectos()->with('curso')->get();

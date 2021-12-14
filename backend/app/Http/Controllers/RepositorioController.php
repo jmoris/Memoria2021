@@ -287,7 +287,6 @@ class RepositorioController extends Controller
             $last_commit = shell_exec('cd '.$path.'/'.$nombre[1].' && git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
             $last_commit = addslashes($last_commit);
             $fecha = explode(';', $last_commit);
-            echo $api->getIssuesCount($nombre[0], $nombre[1], 2, 1, $request->user);
             $data = [
                 'unix_weeks' => [],
                 'weeks' => [],
