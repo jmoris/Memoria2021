@@ -94,11 +94,11 @@
 													<div class="flex-grow-1">
 														<p class="m-0 text-small text-muted"><a [routerLink]="" (click)="openActivityModal(userActivityModal, miembro)">{{miembro.name}}</a></p>
 													</div>
-													<div *ngIf="!isAlumno" class="flex-grow-1">
-														<button *ngIf="!existColaborador(miembro.name)" (click)="addStudent(addStudentModal,miembro.name,$event)" class="m-1 float-right btn btn-outline-info">Enlazar usuario</button>
-														<button *ngIf="existColaborador(miembro.name)" (click)="deleteStudent(deleteConfirmModal, miembro.name, $event)" type="button" class="float-right btn btn-outline-danger" style="transform: scale(.6);" (click)="console.log('hola')"><mat-icon>link_off</mat-icon></button>
-													</div>
 													<div class="flex-grow-1">
+														<div *ngIf="!isAlumno">
+															<button *ngIf="!existColaborador(miembro.name)" (click)="addStudent(addStudentModal,miembro.name,$event)" class="m-1 float-right btn btn-outline-info">Enlazar usuario</button>
+															<button *ngIf="existColaborador(miembro.name)" (click)="deleteStudent(deleteConfirmModal, miembro.name, $event)" type="button" class="float-right btn btn-outline-danger" style="transform: scale(.6);" (click)="console.log('hola')"><mat-icon>link_off</mat-icon></button>
+														</div>
 														<span *ngIf="existColaborador(miembro.name)" class="m-1 float-right">{{ getUserColaborador(miembro.name) }}</span>
 													</div>
 													<div>
