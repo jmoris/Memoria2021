@@ -350,8 +350,6 @@ class ProyectoController extends Controller
         foreach($collabs as $collab){
             $grafico1 = shell_exec('cd '.$path.' && /usr/bin/python2.7 grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
             $grafico2 = shell_exec('cd '.$path.' && /usr/bin/python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
-            Log::info("CLI Grafico: ".'cd '.$path.' && /usr/bin/python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
-            Log::info($grafico1);
             $graficos[$collab['name']] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
@@ -378,7 +376,7 @@ class ProyectoController extends Controller
         $grafico2 = shell_exec($str.implode(',',$entity2['x']).' '.implode(',',$entity2['y']));
         $grafico3 = shell_exec($str.implode(',',$entity3['x']).' '.implode(',',$entity3['y']));
         Log::info("IMPRESION DE GRAFICO");
-        Log::info($grafico1);
+        Log::info($str.implode(',',$entity1['x']).' '.implode(',',$entity1['y']));
         $html = '<style>
         @media print {
           .pagebreak { page-break-before: always; } /* page-break-after works, as well */
