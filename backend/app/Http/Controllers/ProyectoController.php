@@ -350,6 +350,7 @@ class ProyectoController extends Controller
         foreach($collabs as $collab){
             $grafico1 = shell_exec('cd '.$path.' && python grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
             $grafico2 = shell_exec('cd '.$path.' && python grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
+            Log::info("CLI Grafico: ".'cd '.$path.' && python grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
             $graficos[$collab['name']] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
