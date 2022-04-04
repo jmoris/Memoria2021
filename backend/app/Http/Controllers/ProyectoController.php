@@ -516,6 +516,7 @@ class ProyectoController extends Controller
       <img src="data:image/png;base64,'.$grafico3.'" style="width:50%;" alt="c3zdghyrf" border="0" />
       </div>';
       $mpdf = new \Mpdf\Mpdf();
+      $mpdf->showImageErrors = true;
         $mpdf->WriteHTML($html);
         $string = $mpdf->Output('filename.pdf', \Mpdf\Output\Destination::STRING_RETURN);
         return response()->json(['pdf' => base64_encode($string)]);
