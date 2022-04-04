@@ -377,6 +377,8 @@ class ProyectoController extends Controller
         $grafico1 = shell_exec($str.implode(',',$entity1['x']).' '.implode(',',$entity1['y']));
         $grafico2 = shell_exec($str.implode(',',$entity2['x']).' '.implode(',',$entity2['y']));
         $grafico3 = shell_exec($str.implode(',',$entity3['x']).' '.implode(',',$entity3['y']));
+        Log::info("IMPRESION DE GRAFICO");
+        Log::info($grafico1);
         $html = '<style>
         @media print {
           .pagebreak { page-break-before: always; } /* page-break-after works, as well */
@@ -616,8 +618,8 @@ class ProyectoController extends Controller
         $html .= '<h4>Colaboradores</h4>
         <table styke="width:100%;">';
         foreach($graficos as $key => $value){
-        $html .= '<tr><td>'.$key.'</td></tr>';
-        $html .= '<tr><td><img src="data:image/png;base64,'.$value['activity'].'" style="width: 50%" border="0" /></td><td><img src="data:image/png;base64,'.$value['commits'].'" style="width: 50%" border="0" /></tr>';
+            $html .= '<tr><td>'.$key.'</td></tr>';
+            $html .= '<tr><td><img src="data:image/png;base64,'.$value['activity'].'" style="width: 50%" border="0" /></td><td><img src="data:image/png;base64,'.$value['commits'].'" style="width: 50%" border="0" /></tr>';
         }
         $html .= '</table>';
         $html .= '</div>';
