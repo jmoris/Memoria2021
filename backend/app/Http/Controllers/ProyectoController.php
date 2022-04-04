@@ -351,6 +351,7 @@ class ProyectoController extends Controller
             $grafico1 = shell_exec('cd '.$path.' && /usr/bin/python2.7 grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
             $grafico2 = shell_exec('cd '.$path.' && /usr/bin/python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
             Log::info("CLI Grafico: ".'cd '.$path.' && /usr/bin/python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
+            Log::info($grafico1);
             $graficos[$collab['name']] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
