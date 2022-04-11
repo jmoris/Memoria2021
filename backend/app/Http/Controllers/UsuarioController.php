@@ -172,7 +172,7 @@ class UsuarioController extends Controller
 
             $cellNombre = $email = $spreadsheet->getActiveSheet()->getCell('A1')->getValue();
             $cellApellido = $email = $spreadsheet->getActiveSheet()->getCell('B1')->getValue();
-            $cellEmail = $email = $spreadsheet->getActiveSheet()->getCell('C1')->getValue();
+            $cellEmail = $email = $spreadsheet->getActiveSheet()->getCell('D1')->getValue();
             if($cellNombre!='Nombre'&&$cellApellido!='Apellido(s)'&&$cellEmail!='Dirección de correo')
                 return response()->json([
                     'success' => false,
@@ -189,7 +189,7 @@ class UsuarioController extends Controller
             while($lectura){
                 $nombre = $spreadsheet->getActiveSheet()->getCell('A'.$contador)->getValue();
                 $apellido = $spreadsheet->getActiveSheet()->getCell('B'.$contador)->getValue();
-                $email = $spreadsheet->getActiveSheet()->getCell('C'.$contador)->getValue();
+                $email = $spreadsheet->getActiveSheet()->getCell('D'.$contador)->getValue();
                 if($email==''||$email==null){
                     $lectura = false;
                     break;
