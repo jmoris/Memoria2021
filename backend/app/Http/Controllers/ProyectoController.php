@@ -209,7 +209,7 @@ class ProyectoController extends Controller
             });
             $filtered = array_values($filtered);
             if(empty($filtered)){
-                return response()->json([ 'x' => [], 'y' => [] ]);
+                return [ 'x' => [], 'y' => [] ];
             }
             $start_sha = $filtered[0]['sha'];
             $end_sha = $filtered[count($filtered)-1]['sha'];
