@@ -486,28 +486,32 @@ class RepositorioController extends Controller
     }
 
     public function getBranchesInfo(Request $request){
-        $user = $request->user();
-        $project = Proyecto::findOrFail($request->project_id);
-        $repositorio = Repositorio::find($project->repositorio_id);
-        $nombre = explode('/', $repositorio->nombre);
-        $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
-        $branches = $api->getBranches($nombre[0], $nombre[1]);
+        try{
+            $user = $request->user();
+            $project = Proyecto::findOrFail($request->project_id);
+            $repositorio = Repositorio::find($project->repositorio_id);
+            $nombre = explode('/', $repositorio->nombre);
+            $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
+            $branches = $api->getBranches($nombre[0], $nombre[1]);
 
-        $info = [];
-        foreach($branches as $branch){
-            if(!str_starts_with($branch->name,'dependabot')){
-                $commit = $api->getCommit($nombre[0], $nombre[1], $branch->commit->sha);
-                array_push($info, [
-                    'name' => $branch->name,
-                    'last_update' => $commit->commit->author->date,
-                    'author' => $commit->commit->author->name,
-                    'message' => $commit->commit->message
-                ]);
+            $info = [];
+            if(count($branches) > 0){
+                foreach($branches as $branch){
+                    if(!str_starts_with($branch->name,'dependabot')){
+                        $commit = $api->getCommit($nombre[0], $nombre[1], $branch->commit->sha);
+                        array_push($info, [
+                            'name' => $branch->name,
+                            'last_update' => $commit->commit->author->date,
+                            'author' => $commit->commit->author->name,
+                            'message' => $commit->commit->message
+                    ]);
+                    }
+                }
             }
+            return $info;
+        }catch(Exception $ex){
+            return $ex;
         }
-
-
-        return $info;
     }
 
     public function getRepositorios(Request $request){
