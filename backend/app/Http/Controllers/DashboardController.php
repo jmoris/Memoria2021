@@ -57,7 +57,24 @@ class DashboardController extends Controller
                 'proyectos' => $proyectos
             ]);
         }else if($rol == 'Profesor'){
-            return '234';
+            $cursos = Curso::where('institucion_id', $request->institucion)->get();
+            $nproyectos = 0;
+            $proyectos = [];
+            foreach($cursos as $curso){
+                $dproyectos = $curso->proyectos()->get();
+                foreach($dproyectos as $proy){
+                    $profesor = Curso::find($proy->curso_id)->profesor;
+                    $proy->profesor = $profesor->name . ' ' . $profesor->lastname;
+                    array_push($proyectos, $proy);
+                }
+                $nproyectos += $curso->proyectos()->count();
+            }
+            return response()->json([
+                'nusuarios' => count($institucion->usuarios),
+                'ncursos' => count($cursos),
+                'nproyectos' => $nproyectos,
+                'proyectos' => $proyectos
+            ]);
         }else if($rol == 'Alumno'){
             $proyectos = [];
             $dproyectos = $user->proyectos()->with('curso')->get();
