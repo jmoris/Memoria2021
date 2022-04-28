@@ -42,7 +42,7 @@ class RepositorioController extends Controller
             $path_project = $path.'/'.$nombre[1];
 
             $ncommits = shell_exec('sudo cd '.$path_project.' && git rev-list HEAD --count');
-
+            Log::info('sudo cd '.$path_project.' && git rev-list HEAD --count');
             /*foreach($stats as $stat){
                 $ncommits += $stat->total;
             }*/
