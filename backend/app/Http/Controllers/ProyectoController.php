@@ -298,7 +298,7 @@ class ProyectoController extends Controller
         $ncommits = 0;
         $arr = [];
 
-        $ncommits = shell_exec('cd '.$path.'/'.$nombre[1].' && git rev-list HEAD --count');
+        $ncommits = shell_exec('cd '.$path.'/'.$nombre[1].' && sudo git rev-list HEAD --count');
         $collabs = [];
         foreach($collab as $col){
             array_push($collabs, ["name" => $col->login, "avatar" => $col->avatar_url]);
