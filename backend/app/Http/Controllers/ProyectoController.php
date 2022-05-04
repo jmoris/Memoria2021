@@ -316,7 +316,7 @@ class ProyectoController extends Controller
         $kloc = $this->getKlocReport($request->project_id);
 
 
-        $last_commit = shell_exec('cd '.$path.'/'.$nombre[1].' && git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
+        $last_commit = shell_exec('cd '.$path.'/'.$nombre[1].' && sudo git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
         $last_commit = addslashes($last_commit);
         $fecha = explode(';', $last_commit);
         $data = [];
@@ -537,7 +537,7 @@ class ProyectoController extends Controller
         $stats = $api->getStats($nombre[0], $nombre[1], 'contributors');
         $path = public_path();
         $path = str_replace(' ', '\ ', $path);
-        $last_commit = shell_exec('cd '.$path.'/'.$nombre[1].' && git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
+        $last_commit = shell_exec('cd '.$path.'/'.$nombre[1].' && sudo git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
         $last_commit = addslashes($last_commit);
         $fecha = explode(';', $last_commit);
         $data = [];
