@@ -167,7 +167,7 @@ class RepositorioController extends Controller
             $path = public_path();
             $path = str_replace(' ', '\ ', $path);
             $path_project = $path.'/'.$nombre[1];
-            $str = 'cd '.$path.' && python2.7 scripts/complexity_analysis.py '.$nombre[1].'/'.$request->filename;
+            $str = 'cd '.$path.' && sudo python2.7 scripts/complexity_analysis.py '.$nombre[1].'/'.$request->filename;
             $res = shell_exec($str);
             $lines = explode(PHP_EOL, $res);
             $values = explode(',', $lines[1]);
