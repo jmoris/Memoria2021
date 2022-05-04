@@ -214,6 +214,7 @@ class ProyectoController extends Controller
             $start_sha = $filtered[0]['sha'];
             $end_sha = $filtered[count($filtered)-1]['sha'];
             $str = 'cd '.$path_project.' && sudo /usr/bin/python2.7 ../scripts/git_complexity_trend.py --end '.$start_sha.' --start '.$end_sha.' --file '.$entity;
+            Log::info($str);
             $res = shell_exec($str);
             $lines = explode(PHP_EOL, $res);
             $data = [
