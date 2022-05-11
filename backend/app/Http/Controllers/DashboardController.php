@@ -57,7 +57,8 @@ class DashboardController extends Controller
                 'proyectos' => $proyectos
             ]);
         }else if($rol == 'Profesor'){
-            $cursos = Curso::where('institucion_id', $request->institucion)->get();
+            $cursos = Curso::where('institucion_id', $request->institucion)->where('teacher_id', $user->id)->get();
+            $cursos_actuales = Curso::where('institucion_id', $request->institucion)->where('teacher_id', $user->id)->where('ano', date('Y'))->where('semestre', ((date('m')<=6)?1:2) )->get();
             $nproyectos = 0;
             $proyectos = [];
             foreach($cursos as $curso){
@@ -72,6 +73,7 @@ class DashboardController extends Controller
             return response()->json([
                 'nusuarios' => count($institucion->usuarios),
                 'ncursos' => count($cursos),
+                'ncursos_actuales' => count($cursos_actuales),
                 'nproyectos' => $nproyectos,
                 'proyectos' => $proyectos
             ]);
