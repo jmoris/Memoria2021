@@ -82,7 +82,7 @@ class CursoController extends Controller
                 'year' => 'required',
                 'teacher_id' => 'required',
                 'institucion' => 'required|exists:institucions,id',
-                'students' => 'array|required'
+                'students' => 'array'
             ]);
 
             if($validador->fails()){
