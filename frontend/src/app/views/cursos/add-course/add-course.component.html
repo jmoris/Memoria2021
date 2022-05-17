@@ -63,6 +63,12 @@
                 (onComplete)="onComplete($event)" style="width: 50vh!important;">
                 <form [formGroup]="seleccionarForm">
                     <div class="col-md-12">
+                        <mat-form-field style="width: 700px!important;" appearance="fill">
+                            <mat-label>Buscador de estudiantes</mat-label>
+                            <input matInput type="text" (keyup)="filtrarEstudiantes($event.target.value)" placeholder="Filtro de busqueda">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-12">
                         <table mat-table style="width:100%" [dataSource]="dataSource" #sort="matSort" matSort
                             class="mat-elevation-z8" matSortActive="run" matSortDirection="asc" matSortDisableClear>
                             <ng-container matColumnDef="select">
@@ -84,9 +90,9 @@
                                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                             </ng-container>
 
-                            <ng-container matColumnDef="surname">
+                            <ng-container matColumnDef="lastname">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
-                                <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="email">

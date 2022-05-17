@@ -26,6 +26,10 @@ export class ProjectsService {
     return this.http.post<any>(`${env.apiUrl}/proyectos/`+ project_id + `/asignar`, {user_id});
   }
 
+  endProject(project_id){
+    return this.http.post<any>(`${env.apiUrl}/proyectos/terminar`, {project_id});
+  }
+
   getAll(): Observable<Project[]> {
     let idInst = this.auth.getInstitucion();
     return this.http.get<any>(`${env.apiUrl}/proyectos?institucion=` + idInst)

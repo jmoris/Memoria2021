@@ -24,13 +24,13 @@ class UsuarioController extends Controller
 
     public function showProfesores(Request $request){
         $usuarios = Institucion::find($request->institucion);
-        $usuarios = $usuarios->usuarios()->wherePivot('role_id', 3)->get();
+        $usuarios = $usuarios->usuarios()->wherePivot('role_id', 3)->orderBy('lastname', 'desc')->get();
         return $usuarios;
     }
 
     public function showEstudiantes(Request $request){
         $usuarios = Institucion::find($request->institucion);
-        $usuarios = $usuarios->usuarios()->wherePivot('role_id', 4)->get();
+        $usuarios = $usuarios->usuarios()->wherePivot('role_id', 4)->orderBy('lastname', 'desc')->get();
         return $usuarios;
     }
 

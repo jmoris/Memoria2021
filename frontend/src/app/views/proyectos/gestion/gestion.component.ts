@@ -111,6 +111,12 @@ export class GestionComponent implements OnInit {
         this.router.navigateByUrl('/proyectos/gestion/' + id);
     }
 
+    terminarProyecto(id){
+        this.projectsService.endProject(id).subscribe((data:any) => {
+            console.log('proyecto terminado');
+        });
+    }
+
     openDetails(project): void {
         //recorrer arreglo de proyecto y obtener el proyecto seleccionado.
 

@@ -161,5 +161,8 @@ export class AddProjectComponent implements OnInit {
       role_id: new FormControl(searched.role_id, [Validators.required])
     }));
   }
-
+  
+  filtrarEstudiantes(value){
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
 }

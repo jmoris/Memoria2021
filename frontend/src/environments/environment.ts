@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiUrl: 'http://apimemoria.jesusmoris.cl/api'
-  apiUrl: 'http://localhost:8000/api'
+  apiUrl: 'http://apimemoria.jesusmoris.cl/api'
+  //apiUrl: 'http://localhost:8000/api'
 };
 
 /*

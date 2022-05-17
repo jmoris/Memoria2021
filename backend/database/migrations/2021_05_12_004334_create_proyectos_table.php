@@ -16,7 +16,7 @@ class CreateProyectosTable extends Migration
         Schema::create('proyectos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->smallInteger('estado');
+            $table->smallInteger('estado')->default(1);
             $table->smallInteger('semestre');
             $table->integer('ano');
             $table->bigInteger('curso_id')->unsigned();

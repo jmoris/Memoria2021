@@ -74,7 +74,7 @@ class ProyectoController extends Controller
 
     public function show($id){
         // Dependiendo del rol podra ver los proyectos, dependiendo si esta asignado o no
-        return Proyecto::where('id', $id)->with('repositorio')->with('usuarios')->first();
+        return Proyecto::where('id', $id)->where('estado', 1)->with('repositorio')->with('usuarios')->first();
     }
 
     public function userList(Request $request, $id){
@@ -747,7 +747,7 @@ class ProyectoController extends Controller
             $proyecto->curso_id = $request->course;
 
             $repo = new Repositorio();
-            $nombre = str_replace('https://github.com/', '', $request->url);
+            $nombre = str_replace('.git', '', str_replace('https://github.com/', '', $request->url));
             $repo->nombre = $nombre;
             $repo->url = $request->url;
             $repo->save();
@@ -832,7 +832,21 @@ class ProyectoController extends Controller
         }catch(Exception $ex){
             return response()->json([
                 'success' => false,
-                'message' => 'Error al eliminar curso',
+                'message' => 'Error al eliminar proyecto',
+                'error' => $ex,
+            ]);
+        }
+    }
+
+    public function endProject(Request $request){
+        try{
+            $proyecto = Proyecto::find($request->id);
+            $proyecto->estado = 0;
+            $proyecto->save();
+        }catch(Exception $ex){
+            return response()->json([
+                'success' => false,
+                'message' => 'Error terminar proyecto',
                 'error' => $ex,
             ]);
         }

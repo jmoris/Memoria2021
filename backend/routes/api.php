@@ -61,6 +61,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('proyectos', [ProyectoController::class, 'create']);
     Route::put('proyectos/{id}', [ProyectoController::class, 'update']);
     Route::delete('proyectos/{id}', [ProyectoController::class, 'delete']);
+    Route::post('proyectos/terminar', [ProyectoController::class, 'endProject']);
     Route::get('proyectos/listar/{id}', [ProyectoController::class, 'userList']);
     Route::get('proyectos/colaboradores/{id}', [ProyectoController::class, 'colaboradoresList']);
     Route::post('proyectos/{id}/asignar', [ProyectoController::class, 'assignUser']);
