@@ -25,7 +25,7 @@ class ProyectoController extends Controller
         $rol = Role::findOrFail($rol)->name;
         if($rol == 'Superadministrador'){
             $proyectos_arr = [];
-            $proyectos = Proyecto::with('curso')->get();
+            $proyectos = Proyecto::where('estado', 1)->with('curso')->get();
             foreach($proyectos as $proy){
                 $profesor = Curso::find($proy->curso_id)->profesor;
                 $proy->profesor = $profesor;
@@ -37,7 +37,7 @@ class ProyectoController extends Controller
             $nproyectos = 0;
             $proyectos = [];
             foreach($cursos as $curso){
-                $dproyectos = $curso->proyectos()->with('curso')->get();
+                $dproyectos = $curso->proyectos()->where('estado', 1)->with('curso')->get();
                 foreach($dproyectos as $proy){
                     $profesor = Curso::find($proy->curso_id)->profesor;
                     $proy->profesor = $profesor;
@@ -51,7 +51,7 @@ class ProyectoController extends Controller
             $nproyectos = 0;
             $proyectos = [];
             foreach($cursos as $curso){
-                $dproyectos = $curso->proyectos()->with('curso')->get();
+                $dproyectos = $curso->proyectos()->where('estado', 1)->with('curso')->get();
                 foreach($dproyectos as $proy){
                     $profesor = Curso::find($proy->curso_id)->profesor;
                     $proy->profesor = $profesor;
@@ -62,7 +62,7 @@ class ProyectoController extends Controller
             return $proyectos;
         }else if($rol == 'Alumno'){
             $proyectos = [];
-            $dproyectos = $user->proyectos()->with('curso')->get();
+            $dproyectos = $user->proyectos()->where('estado', 1)->with('curso')->get();
             foreach($dproyectos as $proy){
                 $profesor = Curso::find($proy->curso_id)->profesor;
                 $proy->profesor = $profesor;
