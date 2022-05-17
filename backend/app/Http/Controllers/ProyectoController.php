@@ -840,7 +840,7 @@ class ProyectoController extends Controller
 
     public function endProject(Request $request){
         try{
-            $proyecto = Proyecto::find($request->id);
+            $proyecto = Proyecto::find($request->project_id);
             $proyecto->estado = 0;
             $proyecto->save();
         }catch(Exception $ex){
