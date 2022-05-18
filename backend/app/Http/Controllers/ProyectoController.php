@@ -775,6 +775,7 @@ class ProyectoController extends Controller
             $proyecto->estado = 0;
             $proyecto->semestre = $request->semester;
             $proyecto->ano = $request->year;
+            $proyecto->estado = 1;
             $proyecto->curso_id = $request->course;
 
             $repo = new Repositorio();
@@ -788,7 +789,7 @@ class ProyectoController extends Controller
 
             foreach($request->students as $student){
                 $user = User::findOrFail($student['user_id']);
-                $proyecto->usuarios()->sync($user);
+                $proyecto->usuarios()->sync($user, false);
             }
 
             return response()->json([

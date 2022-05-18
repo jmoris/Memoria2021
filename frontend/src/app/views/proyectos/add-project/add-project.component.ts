@@ -31,8 +31,8 @@ export class AddProjectComponent implements OnInit {
   dataSource2: MatTableDataSource<any> = new MatTableDataSource<any>();
   isDataLoading: boolean;
   selected = [];
-  displayedColumns: string[] = ['select', 'name', 'surname', 'email'];
-  displayedColumns2: string[] = ['name', 'surname', 'email', 'rol'];
+  displayedColumns: string[] = ['select', 'name', 'lastname', 'email'];
+  displayedColumns2: string[] = ['name', 'lastname', 'email', 'rol'];
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
   selection = new SelectionModel<any>(true, []);
