@@ -57,7 +57,6 @@ export class GestionComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadProjects();
         this.step2Form = this.fb.group({
             experience: [2]
         });
@@ -66,6 +65,8 @@ export class GestionComponent implements OnInit {
             semester: new FormControl("", [Validators.required]),
             status: new FormControl("", [Validators.required]),
           });
+        this.loadProjects();
+
     }
 
     onStep1Next(e) { }
@@ -79,6 +80,11 @@ export class GestionComponent implements OnInit {
             semester: new FormControl("", [Validators.required]),
             status: new FormControl("", [Validators.required]),
           });
+          this.loadProjects();
+    }
+
+    onApplyClick(){
+        this.loadProjects();
     }
 
     open(content) {
@@ -154,7 +160,7 @@ export class GestionComponent implements OnInit {
     //Método que actualiza los proyectos.
     loadProjects() {
         this.loading = true;
-        this.projectsService.getAll().subscribe((projects:any) => {
+        this.projectsService.getAll(this.form.get('year').value, this.form.get('semester').value, this.form.get('status').value).subscribe((projects:any) => {
             this.projects = projects;
             this.loading = false;
         });
