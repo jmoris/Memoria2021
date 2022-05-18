@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { EChartOption } from 'echarts';
 import { echartStyles } from '../../../shared/echart-styles';
@@ -32,10 +32,13 @@ export class GestionComponent implements OnInit {
         email: ''
     };
     step2Form: FormGroup;
+
+    form: FormGroup;
     loading: boolean = false;
     user : any;
     isAlumno : boolean = false;
     currentUser : any;
+    anoActual:any = new Date().getFullYear();
 
     constructor(private modalService: NgbModal,
         private projectsService: ProjectsService,
@@ -58,12 +61,25 @@ export class GestionComponent implements OnInit {
         this.step2Form = this.fb.group({
             experience: [2]
         });
+        this.form = new FormGroup({
+            year: new FormControl(this.anoActual, [Validators.required]),
+            semester: new FormControl("", [Validators.required]),
+            status: new FormControl("", [Validators.required]),
+          });
     }
 
     onStep1Next(e) { }
     onStep2Next(e) { }
     onStep3Next(e) { }
     onComplete(e) { }
+
+    onCleanClick(){
+        this.form = new FormGroup({
+            year: new FormControl(this.anoActual, [Validators.required]),
+            semester: new FormControl("", [Validators.required]),
+            status: new FormControl("", [Validators.required]),
+          });
+    }
 
     open(content) {
         this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
@@ -111,10 +127,18 @@ export class GestionComponent implements OnInit {
         this.router.navigateByUrl('/proyectos/gestion/' + id);
     }
 
-    terminarProyecto(id){
-        this.projectsService.endProject(id).subscribe((data:any) => {
-            console.log('proyecto terminado');
-        });
+    terminarProyecto(id, modal, event){
+        event.target.parentElement.parentElement.blur();
+        this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', centered: true })
+            .result.then((result) => {
+                this.projectsService.endProject(id).subscribe((data:any) => {
+                    this.toastr.success('Proyecto eliminado correctamente', 'Notificación de eliminación', { timeOut: 3000 });
+                    this.loadProjects();
+                    console.log("proyecto terminado");
+                });
+            }, (reason) => {
+            });
+        
     }
 
     openDetails(project): void {

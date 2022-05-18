@@ -17,7 +17,48 @@
     </div>
 
     <div class="separator-breadcrumb border-top"></div>
+    <div class="offset-md-6 col-md-6 text-right mb-2">
+        <div ngbDropdown [autoClose]="false">
+            <button ngbDropdownToggle class="btn btn-primary"><i class="i-Filter-2"></i>&nbsp;&nbsp;Filtrar</button>
+            <div ngbDropdownMenu class="p-3" style="width: 250px">
+                <div class="d-flex flex-column">
+                    <form [formGroup]="form">
+                        <div class="form-group">
+                            Año
+                            <input formControlName="year" type="number" min="1969" [max]="anoActual" [value]="anoActual" class="form-control" placeholder="Enter your username">
+                        </div>
+                        <div class="form-group">
+                            Semestre
+                            <mat-select class="form-control" placeholder="Seleccione semestre" formControlName="semester">
+                                <mat-option [value]="1">
+                                    Primavera
+                                </mat-option>
+                                <mat-option [value]="2">
+                                    Otoño
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="form-group">
+                            Estado
+                            <mat-select class="form-control" placeholder="Seleccione estado" formControlName="status">
+                                <mat-option [value]="1">
+                                    Activo
+                                </mat-option>
+                                <mat-option [value]="0">
+                                    Inactivo
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="d-inline-block">
+                            <button class="btn btn-danger ml-3" (click)="onCleanClick()">Limpiar</button>
+                            <button class="btn btn-primary ml-5" (click)="onApplyClick()">Aplicar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
+        </div>
+    </div>
     <div class="row">
         <!-- ICON BG -->
         <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let item of projects; let i = index">
@@ -55,7 +96,7 @@
                             </div>
                           </div>
                         <!--<button style="margin: 3px;" class="btn btn-primary btn-rounded" (click)="openDetails(item)">Ver detalles</button>-->
-                        <button style="margin: 3px;" class="btn btn-danger btn-rounded" (click)="terminarProyecto(item.id)">Terminar</button>
+                        <button style="margin: 3px;" class="btn btn-danger btn-rounded" (click)="terminarProyecto(item.id, endConfirmModal, $event)">Terminar</button>
                         <button style="margin: 3px;" class="btn btn-primary btn-rounded" (click)="verProyecto(item.id)">Ver proyecto</button>
                     </div>
                 </div>
@@ -229,5 +270,23 @@
         (click)="modal.close('Ok')">Borrar</button>
     </div>
   </ng-template>
-
+<!-- VENTANA MODAL QUE SE DESPLEGA PARA CONFIRMAR LA ELIMINACIÓN DE UN DATO-->
+<ng-template #endConfirmModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Finalización de proyecto</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>¿Estas seguro de querer terminar este proyecto?</strong></p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded"
+        (click)="modal.dismiss('cancel')">Cancelar</button>
+      <button type="button" ngbAutofocus class="btn btn-wide btn-danger btn-rounded"
+        (click)="modal.close('Ok')">Terminar</button>
+    </div>
+  </ng-template>
 </div>

@@ -23,9 +23,19 @@ class ProyectoController extends Controller
         $user = auth()->user();
         $rol = $institucion->usuarios()->wherePivot('user_id', $user->id)->first()->pivot->role_id;
         $rol = Role::findOrFail($rol)->name;
+        $filtroAno = $request->ano;
+        $filtroSemestre = $request->semester;
+        $filtroEstado = $request->status;
         if($rol == 'Superadministrador'){
             $proyectos_arr = [];
-            $proyectos = Proyecto::where('estado', 1)->with('curso')->get();
+            $proyectos = Proyecto::where('estado', 1)->where('ano', $filtroAno)->with('curso');
+            if($filtroSemestre!=null){
+                $proyectos->where('semestre', $filtroSemestre);
+            }
+            if($filtroEstado!=null){
+                $proyectos->where('estado', $filtroEstado);
+            }
+            $proyectos = $proyectos->get();
             foreach($proyectos as $proy){
                 $profesor = Curso::find($proy->curso_id)->profesor;
                 $proy->profesor = $profesor;
@@ -37,7 +47,14 @@ class ProyectoController extends Controller
             $nproyectos = 0;
             $proyectos = [];
             foreach($cursos as $curso){
-                $dproyectos = $curso->proyectos()->where('estado', 1)->with('curso')->get();
+                $dproyectos = $curso->proyectos()->where('estado', 1)->where('ano', $filtroAno)->with('curso');
+                if($filtroSemestre!=null){
+                    $dproyectos->where('semestre', $filtroSemestre);
+                }
+                if($filtroEstado!=null){
+                    $dproyectos->where('estado', $filtroEstado);
+                }
+                $dproyectos = $dproyectos->get();
                 foreach($dproyectos as $proy){
                     $profesor = Curso::find($proy->curso_id)->profesor;
                     $proy->profesor = $profesor;
@@ -51,7 +68,14 @@ class ProyectoController extends Controller
             $nproyectos = 0;
             $proyectos = [];
             foreach($cursos as $curso){
-                $dproyectos = $curso->proyectos()->where('estado', 1)->with('curso')->get();
+                $dproyectos = $curso->proyectos()->where('estado', 1)->where('ano', $filtroAno)->with('curso');
+                if($filtroSemestre!=null){
+                    $dproyectos->where('semestre', $filtroSemestre);
+                }
+                if($filtroEstado!=null){
+                    $dproyectos->where('estado', $filtroEstado);
+                }
+                $dproyectos = $dproyectos->get();
                 foreach($dproyectos as $proy){
                     $profesor = Curso::find($proy->curso_id)->profesor;
                     $proy->profesor = $profesor;
@@ -62,7 +86,14 @@ class ProyectoController extends Controller
             return $proyectos;
         }else if($rol == 'Alumno'){
             $proyectos = [];
-            $dproyectos = $user->proyectos()->where('estado', 1)->with('curso')->get();
+            $dproyectos = $user->proyectos()->where('estado', 1)->where('ano', $filtroAno)->with('curso');
+            if($filtroSemestre!=null){
+                $dproyectos->where('semestre', $filtroSemestre);
+            }
+            if($filtroEstado!=null){
+                $dproyectos->where('estado', $filtroEstado);
+            }
+            $dproyectos = $dproyectos->get();
             foreach($dproyectos as $proy){
                 $profesor = Curso::find($proy->curso_id)->profesor;
                 $proy->profesor = $profesor;
