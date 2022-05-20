@@ -252,10 +252,16 @@ class RepositorioController extends Controller
                 $tarjetas = $api->getCards($columna->id);
                 $tablero[$columna->name] = [];
                 foreach($tarjetas as $tarjeta){
+                    $issue = null;
                     $tamanos[$columna->name] = count($tarjetas);
+                    if(isset($tarjeta->content_url)){
+                        $urlParse = explode('/', str_replace('https://api.github.com/repos/', '', $tarjeta->content_url));
+                        $issue = $api->getIssue($urlParse[0], $urlParse[1], $urlParse[3]);
+                    }
                     array_push($tablero[$columna->name], [
                         'nota' => $tarjeta->note,
-                        'autor' => $tarjeta->creator->login
+                        'autor' => $tarjeta->creator->login,
+                        'issue' => $issue->title
                     ]);
                 }
             }
