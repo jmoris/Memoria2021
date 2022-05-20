@@ -267,6 +267,7 @@ class RepositorioController extends Controller
             }
             return $tablero;
         }catch(Exception $ex){
+            return $ex;
             return response()->json([
                 'success' => false,
                 'message' => 'Error al obtener el tablero',
