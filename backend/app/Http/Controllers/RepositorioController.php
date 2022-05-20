@@ -261,7 +261,7 @@ class RepositorioController extends Controller
                     array_push($tablero[$columna->name], [
                         'nota' => $tarjeta->note,
                         'autor' => $tarjeta->creator->login,
-                        'issue' => $issue->title
+                        'issue' => ($issue!=null)?$issue->title:null,
                     ]);
                 }
             }
