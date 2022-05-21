@@ -302,9 +302,11 @@ export class ProjectComponent implements AfterViewInit {
     }
 
     changeBranch(){
-        console.log(this.branchForm.controls['branch'].value);
+        this.loading = true;
         this.proyectoService.getBranchCommits(this.id, this.branchForm.controls['branch'].value).subscribe((data:any) => {
-            console.log(data);
+            this.commits = data;
+            this.infocommits = data.length;
+            this.loading = false;
         });
     }
 

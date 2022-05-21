@@ -772,7 +772,6 @@ class ProyectoController extends Controller
 
             $proyecto = new Proyecto();
             $proyecto->nombre = $request->name;
-            $proyecto->estado = 0;
             $proyecto->semestre = $request->semester;
             $proyecto->ano = $request->year;
             $proyecto->estado = 1;
@@ -824,7 +823,7 @@ class ProyectoController extends Controller
 
             $proyecto = Proyecto::findOrFail($id);
             $proyecto->nombre = $request->name;
-            $proyecto->estado = 0;
+            $proyecto->estado = 1;
             $proyecto->semestre = $request->semester;
             $proyecto->ano = $request->year;
             $proyecto->curso_id = $request->course;

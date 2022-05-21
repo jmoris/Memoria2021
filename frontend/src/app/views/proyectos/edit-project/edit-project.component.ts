@@ -193,4 +193,7 @@ export class EditProjectComponent implements OnInit {
     }));
   }
 
+  filtrarEstudiantes(value){
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
 }
