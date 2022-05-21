@@ -320,12 +320,12 @@ class ProyectoController extends Controller
         $path = public_path();
         $path = str_replace(' ', '\ ', $path);
 
-        $stats = $api->getStats($nombre[0], $nombre[1], 'contributors');
         $repo = $api->getRepo($nombre[0], $nombre[1]);
         $collab = $api->getCollaborators($nombre[0], $nombre[1]);
         $issues = $api->getIssuesCount($nombre[0], $nombre[1], 2, 1);
         $branches = $api->getBranches($nombre[0], $nombre[1]);
         $commits = $api->getCommits($nombre[0], $nombre[1]);
+        $stats = $api->getStats($nombre[0], $nombre[1], 'contributors');
         $ncommits = 0;
         $arr = [];
 
