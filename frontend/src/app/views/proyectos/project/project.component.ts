@@ -301,8 +301,11 @@ export class ProjectComponent implements AfterViewInit {
         this.dataSource.paginator = this.paginator;
     }
 
-    changeBranch(branch){
-        console.log(branch);
+    changeBranch(){
+        console.log(this.branchForm.controls['sha'].value);
+        this.proyectoService.getBranchCommits(this.id, this.branchForm.controls['sha'].value).subscribe((data:any) => {
+            console.log(data);
+        });
     }
 
 

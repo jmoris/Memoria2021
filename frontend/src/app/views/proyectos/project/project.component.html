@@ -128,8 +128,8 @@
 											<div class="card-body text-center">
 												<div class="content">
 													<p class="m-0 text-small text-muted">Branch repositorio</p>
-													<form [formGroup]="form">
-														<mat-select class="form-control" placeholder="Seleccione branch" formControlName="sha">
+													<form [formGroup]="branchForm">
+														<mat-select class="form-control" placeholder="Seleccione branch" formControlName="sha" (selectionChange)="changeBranch()">
 															<mat-option *ngFor="let branch of branches" [value]="branch.sha">{{branch.name}}</mat-option>
 														</mat-select>
 													</form>
