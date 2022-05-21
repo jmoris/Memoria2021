@@ -127,6 +127,18 @@
 										<div class="card o-hidden mb-4 mt-4 ml-4">
 											<div class="card-body text-center">
 												<div class="content">
+													<p class="m-0 text-small text-muted">Branch repositorio</p>
+													<form [formGroup]="form">
+														<mat-select class="form-control" placeholder="Seleccione branch" formControlName="sha">
+															<mat-option *ngFor="let branch of branches" [value]="branch.sha">{{branch.name}}</mat-option>
+														</mat-select>
+													</form>
+												</div>
+											</div>
+										</div>
+										<div class="card o-hidden mb-4 mt-4 ml-4">
+											<div class="card-body text-center">
+												<div class="content">
 													<p class="m-0 text-small text-muted">Total de commits</p>
 													<p class="text-primary text-40 line-height-1 m-0">
 														{{ infocommits}}</p>
@@ -248,7 +260,7 @@
 												</thead>
 												<tbody>
 													<tr class="fila" *ngFor="let card of item.value">
-														<td class="celda tablero"><div class="tarjeta">{{ card.nota }}<div class="autor">Creado por: {{ card.autor }}</div></div></td>
+														<td class="celda tablero"><div class="tarjeta">{{ ((card.nota!=null)?card.nota:card.issue) }}<div class="autor">Creado por: {{ card.autor }}</div></div></td>
 													</tr>
 												</tbody>
 											</table>

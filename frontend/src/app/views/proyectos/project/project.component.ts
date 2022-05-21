@@ -124,6 +124,7 @@ export class ProjectComponent implements AfterViewInit {
     tablero: any;
     colTablero: any;
     form: FormGroup;
+    branchForm: FormGroup;
 
     currentUser : any;
     isAlumno : boolean = false;
@@ -158,7 +159,11 @@ export class ProjectComponent implements AfterViewInit {
 
         this.form = new FormGroup({
             tablero: new FormControl('', [Validators.required]),
-          });
+        });
+        
+        this.branchForm = new FormGroup({
+            sha: new FormControl('', [Validators.required]),
+        });
 
         this.currentUser = authService.currentUserValue;
         if(this.currentUser.role == 'Alumno'){
@@ -178,6 +183,8 @@ export class ProjectComponent implements AfterViewInit {
             this.repositorio = data.autor + '/' + data.nombre;
             this.infoissues = data.issues;
             this.infobranches = data.branches;
+            console.log("Branches");
+            console.log(data.branches);
             this.infocommits = data.ncommits;
             this.hasWiki = data.has_wiki;
             this.boards = data.proyectos;
@@ -292,6 +299,10 @@ export class ProjectComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         this.dataSource.paginator = this.paginator;
+    }
+
+    changeBranch(branch){
+        console.log(branch);
     }
 
 

@@ -127,32 +127,8 @@ export class ProjectsService {
       return this.http.post<any>(`${env.apiUrl}/proyectos`, data);
   }
 
-  saveSection(id, section, content){
-      return this.http.post<any>(`${env.apiUrl}/proyectos/` + id + '/documents', {section:section, content:content, project_id: id});
-  }
-
-  getSection(id, section){
-    return this.http.get<any>(`${env.apiUrl}/proyectos/` + id + '/documents?section=' + section + "&project_id=" + id);
-  }
-
-  docRequisitos(id){
-    return this.http.post<any>(`${env.apiUrl}/proyectos/` + id + '/documents/requisitos', {project_id: id});
-  }
-
-  docDiseno(id, completo){
-      console.log(completo);
-      if(completo)
-        return this.http.post<any>(`${env.apiUrl}/proyectos/` + id + '/documents/completodiseno', {project_id: id});
-      else
-        return this.http.post<any>(`${env.apiUrl}/proyectos/` + id + '/documents/diseno', {project_id: id});
-  }
-
-  docModulos(id){
-    return this.http.post<any>(`${env.apiUrl}/proyectos/` + id + '/documents/modulos', {project_id: id});
-  }
-
-  docCasoPrueba(id){
-    return this.http.post<any>(`${env.apiUrl}/proyectos/` + id + '/documents/casoprueba', {project_id: id});
+  getBranchCommits(project_id, sha){
+    return this.http.get<any>(`${env.apiUrl}/repositorio/branchcommits?project_id=` + project_id + `&sha=` + sha);
   }
 
   reporteProyecto(id){

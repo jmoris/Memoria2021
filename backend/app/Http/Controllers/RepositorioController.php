@@ -512,6 +512,7 @@ class RepositorioController extends Controller
                     if(!str_starts_with($branch->name,'dependabot')){
                         $commit = $api->getCommit($nombre[0], $nombre[1], $branch->commit->sha);
                         array_push($info, [
+                            'sha' => $branch->commit->sha,
                             'name' => $branch->name,
                             'last_update' => $commit->commit->author->date,
                             'author' => $commit->commit->author->name,
