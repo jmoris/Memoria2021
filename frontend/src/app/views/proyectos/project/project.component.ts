@@ -162,7 +162,7 @@ export class ProjectComponent implements AfterViewInit {
         });
         
         this.branchForm = new FormGroup({
-            sha: new FormControl('', [Validators.required]),
+            branch: new FormControl('', [Validators.required]),
         });
 
         this.currentUser = authService.currentUserValue;
@@ -302,8 +302,8 @@ export class ProjectComponent implements AfterViewInit {
     }
 
     changeBranch(){
-        console.log(this.branchForm.controls['sha'].value);
-        this.proyectoService.getBranchCommits(this.id, this.branchForm.controls['sha'].value).subscribe((data:any) => {
+        console.log(this.branchForm.controls['branch'].value);
+        this.proyectoService.getBranchCommits(this.id, this.branchForm.controls['branch'].value).subscribe((data:any) => {
             console.log(data);
         });
     }

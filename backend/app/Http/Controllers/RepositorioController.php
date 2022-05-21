@@ -535,7 +535,7 @@ class RepositorioController extends Controller
             $nombre = explode('/', $repositorio->nombre);
             $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
 
-            return $api->getCommit($nombre[0], $nombre[1], $request->sha);
+            return $api->getCommits($nombre[0], $nombre[1], $request->branch);
         }catch(Exception $ex){
             return $ex;
         }

@@ -129,8 +129,8 @@
 												<div class="content">
 													<p class="m-0 text-small text-muted">Branch repositorio</p>
 													<form [formGroup]="branchForm">
-														<mat-select class="form-control" placeholder="Seleccione branch" formControlName="sha" (selectionChange)="changeBranch()">
-															<mat-option *ngFor="let branch of branches" [value]="branch.sha">{{branch.name}}</mat-option>
+														<mat-select class="form-control" placeholder="Seleccione branch" formControlName="branch" (selectionChange)="changeBranch()">
+															<mat-option *ngFor="let branch of branches" [value]="branch.name">{{branch.name}}</mat-option>
 														</mat-select>
 													</form>
 												</div>

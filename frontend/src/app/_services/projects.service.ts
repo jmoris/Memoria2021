@@ -127,8 +127,8 @@ export class ProjectsService {
       return this.http.post<any>(`${env.apiUrl}/proyectos`, data);
   }
 
-  getBranchCommits(project_id, sha){
-    return this.http.get<any>(`${env.apiUrl}/repositorio/branchcommits?project_id=` + project_id + `&sha=` + sha);
+  getBranchCommits(project_id, branch){
+    return this.http.get<any>(`${env.apiUrl}/repositorio/branchcommits?project_id=` + project_id + `&branch=` + branch);
   }
 
   reporteProyecto(id){
