@@ -61,8 +61,12 @@ class DashboardController extends Controller
             $cursos_actuales = Curso::where('institucion_id', $request->institucion)->where('teacher_id', $user->id)->where('ano', date('Y'))->where('semestre', ((date('m')<=6)?1:2) )->get();
             $nproyectos = 0;
             $proyectos = [];
+            $proy_activos = 0;
+            $proy_inactivos = 0;
             foreach($cursos as $curso){
                 $dproyectos = $curso->proyectos()->get();
+                $proy_activos += $curso->proyectos()->where('estado', 1)->count();
+                $proy_inactivos += $curso->proyectos()->where('estado', 0)->count();
                 foreach($dproyectos as $proy){
                     $profesor = Curso::find($proy->curso_id)->profesor;
                     $proy->profesor = $profesor->name . ' ' . $profesor->lastname;
@@ -75,7 +79,15 @@ class DashboardController extends Controller
                 'ncursos' => count($cursos),
                 'ncursos_actuales' => count($cursos_actuales),
                 'nproyectos' => $nproyectos,
-                'proyectos' => $proyectos
+                'proyectos' => $proyectos,
+                'info_proyectos' => [
+                    'activos' => $proy_activos,
+                    'inactivos' =>$proy_inactivos
+                ],
+                'info_cursos' => [
+                    'activos' => count($cursos_actuales),
+                    'inactivos' => count($cursos)
+                ]
             ]);
         }else if($rol == 'Alumno'){
             $proyectos = [];

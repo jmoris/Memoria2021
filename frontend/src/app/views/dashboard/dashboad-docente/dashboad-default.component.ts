@@ -75,6 +75,22 @@ export class DashboadDocenteComponent implements OnInit {
         this.dsService.getDashboardInfo().subscribe((data) => {
             console.log(data);
             this.info = data;
+            this.dataProyectos = {
+                series: {
+                    data: [
+                        { value: this.info.info_proyectos.activos, name: 'Activo' },
+                        { value: this.info.info_proyectos.inactivos, name: 'Inactivo' }
+                    ]
+                }
+            };
+            this.dataCursos = {
+                series: {
+                    data: [
+                        { value: this.info.info_cursos.activos, name: 'Activo' },
+                        { value: this.info.info_cursos.inactivos, name: 'Inactivo' }
+                    ]
+                }
+            };
         });
         this.userService.testGithub().subscribe((data:any) => {
             if(data.status == 500){

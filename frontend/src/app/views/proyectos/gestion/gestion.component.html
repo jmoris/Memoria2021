@@ -96,7 +96,7 @@
                             </div>
                           </div>
                         <!--<button style="margin: 3px;" class="btn btn-primary btn-rounded" (click)="openDetails(item)">Ver detalles</button>-->
-                        <button style="margin: 3px;" class="btn btn-danger btn-rounded" (click)="terminarProyecto(item.id, endConfirmModal, $event)">Terminar</button>
+                        <button *ngIf="!isAlumno" style="margin: 3px;" class="btn btn-danger btn-rounded" (click)="terminarProyecto(item.id, endConfirmModal, $event)">Terminar</button>
                         <button style="margin: 3px;" class="btn btn-primary btn-rounded" (click)="verProyecto(item.id)">Ver proyecto</button>
                     </div>
                 </div>
