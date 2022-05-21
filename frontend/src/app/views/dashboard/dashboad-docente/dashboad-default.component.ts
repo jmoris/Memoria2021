@@ -17,6 +17,7 @@ export class DashboadDocenteComponent implements OnInit {
 
     info: any;
     salesChartPie: EChartOption;
+    salesChartPie2: EChartOption;
     dataProyectos: any;
     dataCursos: any;
     private timer: any;
@@ -72,25 +73,73 @@ export class DashboadDocenteComponent implements OnInit {
             ]
         };
 
+        this.salesChartPie2 = {
+            color: ['#263db5','#d22346'],
+            tooltip: {
+                show: true,
+                backgroundColor: 'rgba(0, 0, 0, .8)'
+            },
+
+            xAxis: [{
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                }
+            }
+
+            ],
+            yAxis: [{
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                }
+            }
+            ],
+            series: [{
+                name: 'Cursos',
+                type: 'pie',
+                radius: '75%',
+                center: ['50%', '50%'],
+                data: [
+                    { value: 0, name: 'Activo' },
+                    { value: 0, name: 'Inactivo' }
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+            ]
+        };
+
         this.dsService.getDashboardInfo().subscribe((data) => {
             console.log(data);
             this.info = data;
             this.dataProyectos = {
                 series: {
                     data: [
-                        { value: this.info.info_proyectos.activos, name: 'Activo' },
-                        { value: this.info.info_proyectos.inactivos, name: 'Inactivo' }
+                        { value: data.info_proyectos.activos, name: 'Activo' },
+                        { value: data.info_proyectos.inactivos, name: 'Inactivo' }
                     ]
                 }
             };
+            console.log(this.dataProyectos);
             this.dataCursos = {
                 series: {
                     data: [
-                        { value: this.info.info_cursos.activos, name: 'Activo' },
-                        { value: this.info.info_cursos.inactivos, name: 'Inactivo' }
+                        { value: data.info_cursos.activos, name: 'Activo' },
+                        { value: data.info_cursos.inactivos, name: 'Inactivo' }
                     ]
                 }
             };
+            console.log(this.dataCursos);
         });
         this.userService.testGithub().subscribe((data:any) => {
             if(data.status == 500){
