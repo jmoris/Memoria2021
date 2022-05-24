@@ -117,6 +117,7 @@ export class ProjectComponent implements AfterViewInit {
 
     source: string = "";
     rendered: SafeHtml;
+    git_tree: SafeHtml;
     wikiFiles: string[] = [];
     file:string;
     lastWikiFileUpdated:any;
@@ -196,6 +197,9 @@ export class ProjectComponent implements AfterViewInit {
             this.fromDate2 = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
             this.toDate2 = calendar.getNext(this.fromDate2, 'm', 1);
             this.loading = false
+        }, (error:any) => {
+            this.toastr.error('No se pudo obtener la información desde Github, vuelva a intentarlo mas tarde.', 'Notificación', { timeOut: 3000 });
+            this.router.navigateByUrl('proyectos/gestion');
         });
 
         proyectoService.getTableros(this.id).subscribe((data) => {
@@ -214,6 +218,10 @@ export class ProjectComponent implements AfterViewInit {
                 let html = this.mdRender.render('<h2>Sin contenido. </h2>');
                 this.rendered = this.sanitizer.bypassSecurityTrustHtml(html);
             }
+        });
+
+        proyectoService.getGitTree(this.id).subscribe((data:any) => {
+            this.git_tree = this.sanitizer.bypassSecurityTrustHtml(data);
         });
 
         proyectoService.getUsersFromProject(this.id).subscribe((data) => {
@@ -419,6 +427,9 @@ export class ProjectComponent implements AfterViewInit {
             //location.href = url;
             this.loading = false;
             window.open(url, "_blank");
+        }, (error:any) => {
+            this.loading = false;
+            this.toastr.error('No se pudo obtener la información desde Github, vuelva a intentarlo mas tarde.', 'Notificación', { timeOut: 3000 });
         });
     }
 

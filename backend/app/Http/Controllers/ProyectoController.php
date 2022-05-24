@@ -121,6 +121,11 @@ class ProyectoController extends Controller
         }
     }
 
+    public function getGitTree(Request $request){
+        $path = public_path('tree_'.$request->tree_id.'.txt');
+        return file_get_contents($path);
+    }
+
     public function colaboradoresList(Request $request, $id){
         $proyecto = Proyecto::find($id);
         if($proyecto!=null){

@@ -87,6 +87,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('repositorio/tablero', [RepositorioController::class, 'getTablero']);
     Route::get('repositorio/actividad', [RepositorioController::class, 'getUserActivity']);
     Route::get('repositorio/branchcommits', [RepositorioController::class, 'getBranchCommits']);
+    Route::get('repositorio/arbol', [ProyectoController::class, 'getGitTree']);
+
 
     Route::get('git/repositorios', [RepositorioController::class, 'getRepositorios']);
     Route::get('git/inforepo', [RepositorioController::class, 'getInfoRepo']);
