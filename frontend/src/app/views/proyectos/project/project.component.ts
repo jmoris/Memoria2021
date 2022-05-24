@@ -19,7 +19,6 @@ import { NotifierService } from 'angular-notifier';
 import { AddProjectComponent } from '../add-project/add-project.component';
 import { TestCaseService } from 'src/app/_services/testcases.service';
 import { EChartOption } from 'echarts';
-import { TaskComponent } from './tasks/tasks.component';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { ModuleService } from 'src/app/_services/module.service';
 import { UsuariosService } from 'src/app/_services/usuarios.service';
@@ -33,6 +32,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { getWeekYearWithOptions } from 'date-fns/fp';
 import { isThisISOWeek } from 'date-fns';
+import { IssuesComponent } from './issues/issues.component';
 export type ChartOptions = {
     series: ApexAxisChartSeries;
     chart: ApexChart;
@@ -99,7 +99,11 @@ export class ProjectComponent implements AfterViewInit {
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-      
+    displayedColumns2: string[] = ["title", "login", "created_at", "comments"];
+    dataSource2: MatTableDataSource<any> = new MatTableDataSource<any>();
+    @ViewChild(MatSort) sort2: MatSort;
+    @ViewChild(MatPaginator) paginator2: MatPaginator;
+
     @ViewChild("chart") chart: ChartComponent;
     public chartOptions: Partial<ChartOptions>;
 
@@ -126,6 +130,7 @@ export class ProjectComponent implements AfterViewInit {
     tablero: any;
     colTablero: any;
     form: FormGroup;
+    form2: FormGroup;
     branchForm: FormGroup;
 
     currentUser : any;
@@ -162,7 +167,9 @@ export class ProjectComponent implements AfterViewInit {
         this.form = new FormGroup({
             tablero: new FormControl('', [Validators.required]),
         });
-        
+        this.form2 = new FormGroup({
+            status: new FormControl(0, [Validators.required]),
+        });
         this.branchForm = new FormGroup({
             branch: new FormControl('', [Validators.required]),
         });
@@ -223,10 +230,6 @@ export class ProjectComponent implements AfterViewInit {
 
         proyectoService.getGitTree(this.id).subscribe((data) => {
             this.git_tree = data;
-        });
-
-        proyectoService.getIssues(this.id).subscribe((data) => {
-            this.issues = data;
         });
 
         proyectoService.getUsersFromProject(this.id).subscribe((data) => {
@@ -331,6 +334,17 @@ export class ProjectComponent implements AfterViewInit {
         });
     }
 
+    openIssuesDialog(){
+        let dialogRef = this.dialog.open(IssuesComponent, {
+            width: '900px',
+            data: this.id,
+            disableClose: true,
+            autoFocus: true
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog closed: ${result}`);
+        })
+    }
     onTableroChange(e){
         this.loading = true;
         this.proyectoService.getTablero(e.value).subscribe((data) => {
@@ -646,6 +660,13 @@ openBranchesModal(modal, event){
     this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', centered: true, size: 'lg' }).
     result.then((result) => {
         console.log("aweasd:" + this.estudianteAgregar);
+    });
+}
+
+openIssuesModal(modal, event){
+    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', centered: true, size: 'lg' }).
+    result.then((result) => {
+        console.log("issues:" + this.estudianteAgregar);
     });
 }
 

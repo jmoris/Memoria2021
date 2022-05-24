@@ -17,11 +17,11 @@ import { MaterialModule } from 'src/app/material.module';
 import { DetailsProjectComponent } from './gestion/details-project/details-project.component';
 import { ProjectComponent } from './project/project.component';
 import { FormWizardModule } from 'src/app/shared/components/form-wizard/form-wizard.module';
-import { TaskComponent } from './project/tasks/tasks.component';
 import {NgApexchartsModule} from 'ng-apexcharts';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
+import { IssuesComponent } from './project/issues/issues.component';
 
 @NgModule({
   imports: [
@@ -43,7 +43,7 @@ import { MdRenderModule } from '@nvxme/ngx-md-render';
     MatFormFieldModule,
     MdRenderModule
   ],
-  declarations: [GestionComponent, AddProjectComponent, DetailsProjectComponent,ProjectComponent,EditProjectComponent,TaskComponent]
+  declarations: [GestionComponent, AddProjectComponent, DetailsProjectComponent,ProjectComponent,EditProjectComponent,IssuesComponent]
 })
 export class ProyectoModule { }
 

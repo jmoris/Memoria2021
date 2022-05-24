@@ -56,7 +56,7 @@
 													<div class="card-body text-center">
 														<i class="i-Support"></i>
 														<p class="text-muted mt-2 mb-2">Issues</p>
-														<p class="text-primary text-21 line-height-1 m-0">{{ infoissues }}</p>
+														<p class="text-primary text-21 line-height-1 m-0"><a [routerLink]="" (click)="openIssuesDialog()">{{ infoissues }}</a></p>
 													</div>
 												</div>
 											</div>
@@ -545,6 +545,7 @@
 		<button type="button" (click)="modal.dismiss('Cross click')" class="btn btn-outline-danger m-1">Cerrar</button>
 	</div>
 </ng-template>
+
 <!-- VENTANA MODAL PARA AGREGAR ESTUDIANTES/COLABORADORES-->
 <ng-template #addStudentModal let-modal>
 	<div class="modal-header">
