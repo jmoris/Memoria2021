@@ -541,6 +541,20 @@ class RepositorioController extends Controller
         }
     }
 
+    public function getIssues(Request $request){
+        try{
+            $user = $request->user();
+            $project = Proyecto::findOrFail($request->project_id);
+            $repositorio = Repositorio::find($project->repositorio_id);
+            $nombre = explode('/', $repositorio->nombre);
+            $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
+
+            return $api->getIssues($nombre[0], $nombre[1], $request->status);
+        }catch(Exception $ex){
+            return $ex;
+        }
+    }
+
     public function getRepositorios(Request $request){
         $user = $request->user();
         $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);

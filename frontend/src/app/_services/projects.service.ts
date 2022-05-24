@@ -32,7 +32,7 @@ export class ProjectsService {
 
   getAll(ano,semestre,estado): Observable<Project[]> {
     let idInst = this.auth.getInstitucion();
-    return this.http.get<any>(`${env.apiUrl}/proyectos?institucion=` + idInst + ((ano)?'&ano='+ano+'':'') + ((semestre)?'&semester='+semestre+'':'') + ((estado)?'&status='+estado+'':'') )
+    return this.http.get<any>(`${env.apiUrl}/proyectos?institucion=` + idInst + ((ano)?'&ano='+ano:'') + ((semestre)?'&semester='+semestre:'') + '&status='+estado )
       .pipe(map(result => {
         console.log(result.msg);
         return result;
@@ -131,6 +131,10 @@ export class ProjectsService {
 
   insertComplete(data){
       return this.http.post<any>(`${env.apiUrl}/proyectos`, data);
+  }
+
+  getIssues(project_id, status = 0){
+    return this.http.get<any>(`${env.apiUrl}/repositorio/issues?project_id=` + project_id + `&status=` + status);
   }
 
   getBranchCommits(project_id, branch){

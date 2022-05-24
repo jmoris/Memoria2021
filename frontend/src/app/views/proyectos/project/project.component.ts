@@ -65,6 +65,7 @@ export class ProjectComponent implements AfterViewInit {
     repositorio: any = '-';
     equipo: any = [];
     commits: any = [];
+    issues: any = [];
     softreqs: any = [];
     testcases: any = [];
     roles: any = [];
@@ -222,6 +223,10 @@ export class ProjectComponent implements AfterViewInit {
 
         proyectoService.getGitTree(this.id).subscribe((data) => {
             this.git_tree = data;
+        });
+
+        proyectoService.getIssues(this.id).subscribe((data) => {
+            this.issues = data;
         });
 
         proyectoService.getUsersFromProject(this.id).subscribe((data) => {
