@@ -105,7 +105,9 @@ export class ProjectsService {
   }
 
   getGitTree(id){
-    return this.http.get<any>(`${env.apiUrl}/repositorio/arbol?tree_id=` + id);
+    return this.http.get(`${env.apiUrl}/repositorio/arbol?tree_id=` + id, {
+      responseType: 'text'
+    });
   }
 
   getWIKIFile(id, file){

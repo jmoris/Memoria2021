@@ -220,8 +220,8 @@ export class ProjectComponent implements AfterViewInit {
             }
         });
 
-        proyectoService.getGitTree(this.id).subscribe((data:any) => {
-            this.git_tree = this.sanitizer.bypassSecurityTrustHtml(data);
+        proyectoService.getGitTree(this.id).subscribe((data) => {
+            this.git_tree = data;
         });
 
         proyectoService.getUsersFromProject(this.id).subscribe((data) => {
@@ -510,7 +510,22 @@ export class ProjectComponent implements AfterViewInit {
         ].join('-');
       }
 
+    sortingCustomAccesor = (item, property) => {
+        switch (property) {
+            case 'name': return item.name;
+            case 'author': return item.author;
+            case 'last_update': return item.last_update;
+            case 'message': return item.message;
+            default: return item[property];
+        }
+    };
+    
+    public doFilter = (value: string) => {
+        this.dataSource.filter = value.trim().toLocaleLowerCase();
+    }
+    
     ngOnInit() {
+        this.dataSource.sortingDataAccessor = this.sortingCustomAccesor;
     }
 
     changeUsuarioModal(e){
@@ -620,20 +635,6 @@ deleteStudent(modal, gh_user, event){
             });
         }
     });
-}
-
-sortingCustomAccesor = (item, property) => {
-    switch (property) {
-        case 'name': return item.name;
-        case 'author': return item.author;
-        case 'last_update': return item.last_update;
-        case 'message': return item.message;
-        default: return item[property];
-    }
-};
-
-public doFilter = (value: string) => {
-    this.dataSource.filter = value.trim().toLocaleLowerCase();
 }
 
 openBranchesModal(modal, event){

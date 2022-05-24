@@ -251,7 +251,7 @@
 										</div>
 									</div>
 									<div class="col-md-12">
-										<div class="overflow-auto m-5">
+										<div class="overflow-auto m-5" style="width: auto; white-space: nowrap; overflow-x: scroll;">
 											<table class="d-inline tablero" *ngFor="let item of tablero | keyvalue: 0">
 												<thead>
 													<tr>
@@ -259,7 +259,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr class="fila" *ngFor="let card of item.value">
+													<tr style="white-space: normal;" class="fila" *ngFor="let card of item.value">
 														<td class="celda tablero"><div class="tarjeta">{{ ((card.nota!=null)?card.nota:card.issue) }}<div class="autor">Creado por: {{ card.autor }}</div></div></td>
 													</tr>
 												</tbody>
@@ -279,23 +279,12 @@
 						<div class="col-md-12">
 							<div class="card o-hidden m-4">
 								<div class="row">
-									<div class="col-md-8">
+									<div class="col-md-12">
 										<div class="card m-4">
-											<div class="m-2" [innerHtml]="git_tree"></div>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="card m-4">
-											<div class="card-body text-center">
-												<div class="content">
-													<ul style="list-style-type: none; text-align: left">
-														<li *ngFor="let file of wikiFiles" (click)="getMDFile(file)">{{ file.replaceAll('-', ' ').replaceAll('.md', '') }}</li>
-													</ul>
-													<p>Ult. Actualizacion: {{ lastWikiFileUpdated }}</p>
-												</div>
+											<div class="m-2">
+												<p style="font-size:12px; letter-spacing: 2px;" [innerText]="git_tree"></p>
 											</div>
 										</div>
-										
 									</div>
 								</div>
 							</div>
@@ -317,16 +306,6 @@
 													<p class="m-0 text-small text-muted">Total de entidades</p>
 													<p class="text-primary text-40 line-height-1 m-0">
 														{{ maatReport.length }}</p>
-												</div>
-											</div>
-										</div>
-										<div class="card o-hidden mb-4 mt-4 ml-4">
-											<div class="card-body text-center">
-												<div class="content">
-													<p class="m-0 text-small text-muted">Análisis de complejidad</p>
-													<button mat-icon-button color="primary" (click)="projectComplexityAnalisis(projectComplexityAnalysisModal)">
-														<mat-icon class="mat-18">search</mat-icon>
-													  </button> 
 												</div>
 											</div>
 										</div>
@@ -379,7 +358,7 @@
 				</ng-template>
 			</li>
 			<li [ngbNavItem]="4">
-				<a ngbNavLink>Informe KLOC</a>
+				<a ngbNavLink>Informe CLOC</a>
 				<ng-template ngbNavContent>
 					<div class="row">
 						<div class="col-md-12">
