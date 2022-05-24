@@ -124,7 +124,7 @@ class ProyectoController extends Controller
     public function getGitTree(Request $request){
         $path = public_path('tree_'.$request->tree_id.'.txt');
         $content = file_get_contents($path);
-        if(length($content) > 0){
+        if(strlen($content) > 0){
             return $content;
         }
         return 'No generado';
