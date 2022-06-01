@@ -433,6 +433,9 @@ export class ProjectComponent implements AfterViewInit {
             //location.href = url;
             this.loading = false;
             window.open(url, "_blank");
+        }, (error:any) => {
+            this.loading = false;
+            this.toastr.error('No se pudo obtener la información desde Github, vuelva a intentarlo mas tarde.', 'Notificación', { timeOut: 3000 });
         });
     }
 

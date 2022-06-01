@@ -260,4 +260,7 @@ export class GestionComponent implements OnInit {
         this.usuariosService.disableUser(element.id, element.active).subscribe((data) => { console.log(data) });
     }
   }
+  filtrarDatos(value){
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
 }

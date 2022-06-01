@@ -36,6 +36,23 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+            <div class="card-body">
+              <div class="col-md-12">
+                <div class="col-md-12">
+                  <p class="text-muted mb-0">Buscador de información</p>
+                </div>
+                <div class="col-md-12">
+                  <mat-form-field style="width: 100%!important;" appearance="fill">
+                    <mat-label>Ingrese el texto a buscar</mat-label>
+                    <input matInput type="text" (keyup)="filtrarDatos($event.target.value)">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div fxFlex="50">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" matSortActive="run"

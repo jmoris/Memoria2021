@@ -285,5 +285,9 @@ export class GestionComponent implements OnInit {
         return 'Administrador';
     }
   }
+  
+  filtrarDatos(value){
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
 
 }
