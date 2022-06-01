@@ -26,6 +26,7 @@ class ProyectoController extends Controller
         $filtroAno = $request->ano;
         $filtroSemestre = $request->semester;
         $filtroEstado = $request->status;
+        $filtroCurso = $request->curso;
         if($rol == 'Superadministrador'){
             $proyectos_arr = [];
             $proyectos = Proyecto::where('estado', 1)->where('ano', $filtroAno)->with('curso');
@@ -34,6 +35,9 @@ class ProyectoController extends Controller
             }
             if($filtroEstado!=null){
                 $proyectos->where('estado', $filtroEstado);
+            }
+            if($filtroCurso!=null){
+                $proyectos->where('curso_id', $filtroCurso);
             }
             $proyectos = $proyectos->get();
             foreach($proyectos as $proy){
@@ -53,6 +57,9 @@ class ProyectoController extends Controller
                 }
                 if($filtroEstado!=null){
                     $dproyectos->where('estado', $filtroEstado);
+                }
+                if($filtroCurso!=null){
+                    $dproyectos->where('curso_id', $filtroCurso);
                 }
                 $dproyectos = $dproyectos->get();
                 foreach($dproyectos as $proy){
@@ -75,6 +82,9 @@ class ProyectoController extends Controller
                 if($filtroEstado!=null){
                     $dproyectos->where('estado', $filtroEstado);
                 }
+                if($filtroCurso!=null){
+                    $dproyectos->where('curso_id', $filtroCurso);
+                }
                 $dproyectos = $dproyectos->get();
                 foreach($dproyectos as $proy){
                     $profesor = Curso::find($proy->curso_id)->profesor;
@@ -92,6 +102,9 @@ class ProyectoController extends Controller
             }
             if($filtroEstado!=null){
                 $dproyectos->where('estado', $filtroEstado);
+            }
+            if($filtroCurso!=null){
+                $dproyectos->where('curso_id', $filtroCurso);
             }
             $dproyectos = $dproyectos->get();
             foreach($dproyectos as $proy){

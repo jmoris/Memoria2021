@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import * as moment from 'moment/moment';
 import { EditProjectComponent } from '../edit-project/edit-project.component';
+import { CursosService } from 'src/app/_services/cursos.service';
 
 
 @Component({
@@ -36,12 +37,14 @@ export class GestionComponent implements OnInit {
     form: FormGroup;
     loading: boolean = false;
     user : any;
+    cursos: any = [];
     isAlumno : boolean = false;
     currentUser : any;
     anoActual:any = new Date().getFullYear();
 
     constructor(private modalService: NgbModal,
         private projectsService: ProjectsService,
+        private cursoService: CursosService,
         private toastr: ToastrService,
         private fb: FormBuilder,
         private authService: AuthenticationService,
@@ -64,6 +67,7 @@ export class GestionComponent implements OnInit {
             year: new FormControl(this.anoActual, [Validators.required]),
             semester: new FormControl("", [Validators.required]),
             status: new FormControl("", [Validators.required]),
+            curso: new FormControl("", [Validators.required])
           });
         this.loadProjects();
 
@@ -79,6 +83,7 @@ export class GestionComponent implements OnInit {
             year: new FormControl(this.anoActual, [Validators.required]),
             semester: new FormControl("", [Validators.required]),
             status: new FormControl("", [Validators.required]),
+            curso: new FormControl("", [Validators.required]),
           });
           this.loadProjects();
     }
@@ -160,7 +165,10 @@ export class GestionComponent implements OnInit {
     //Método que actualiza los proyectos.
     loadProjects() {
         this.loading = true;
-        this.projectsService.getAll(this.form.get('year').value, this.form.get('semester').value, this.form.get('status').value).subscribe((projects:any) => {
+        this.cursoService.getAll().subscribe((data:any) => {
+            this.cursos = data;
+        });
+        this.projectsService.getAll(this.form.get('year').value, this.form.get('semester').value, this.form.get('status').value, this.form.get('curso').value).subscribe((projects:any) => {
             this.projects = projects;
             this.loading = false;
         });

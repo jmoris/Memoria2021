@@ -49,6 +49,14 @@
                                 </mat-option>
                             </mat-select>
                         </div>
+                        <div class="form-group">
+                            Curso
+                            <mat-select class="form-control" placeholder="Seleccione curso" formControlName="curso">
+                                <mat-option *ngFor="let curso of cursos" [value]="curso.id">
+                                    {{ curso.nombre }}
+                                </mat-option>
+                            </mat-select>
+                        </div>
                         <div class="d-inline-block">
                             <button class="btn btn-danger ml-3" (click)="onCleanClick()">Limpiar</button>
                             <button class="btn btn-primary ml-5" (click)="onApplyClick()">Aplicar</button>

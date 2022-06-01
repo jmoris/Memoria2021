@@ -30,9 +30,9 @@ export class ProjectsService {
     return this.http.post<any>(`${env.apiUrl}/proyectos/terminar`, {project_id});
   }
 
-  getAll(ano,semestre,estado): Observable<Project[]> {
+  getAll(ano,semestre,estado,curso): Observable<Project[]> {
     let idInst = this.auth.getInstitucion();
-    return this.http.get<any>(`${env.apiUrl}/proyectos?institucion=` + idInst + ((ano)?'&ano='+ano:'') + ((semestre)?'&semester='+semestre:'') + '&status='+estado )
+    return this.http.get<any>(`${env.apiUrl}/proyectos?institucion=` + idInst + ((ano)?'&ano='+ano:'') + ((semestre)?'&semester='+semestre:'') + ((curso)?'&curso='+curso:'') + '&status='+estado )
       .pipe(map(result => {
         console.log(result.msg);
         return result;
