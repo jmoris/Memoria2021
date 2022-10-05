@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Institucion;
+use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -69,7 +70,7 @@ class InstitucionController extends Controller
             $institucion->save();
 
             $user = auth()->user();
-            $user->instituciones()->sync([$user->id => ['role_id' => $request->role_id]], false);
+            $user->instituciones()->sync([$user->id => ['role_id' => 1]], false);
 
             return response()->json([
                 'status' => 201,
