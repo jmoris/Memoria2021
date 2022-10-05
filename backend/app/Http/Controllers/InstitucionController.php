@@ -68,6 +68,9 @@ class InstitucionController extends Controller
             $institucion->razon_social = $request->razon_social;
             $institucion->save();
 
+            $user = auth()->user();
+            $user->instituciones()->sync([$user->id => ['role_id' => $request->role_id]], false);
+
             return response()->json([
                 'status' => 201,
                 'message' => 'Institucion creada correctamente'
