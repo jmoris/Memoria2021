@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://apimemoria.jesusmoris.cl/api'
+  apiUrl: 'http://api.ghtracker.site/api'
   //apiUrl: 'http://localhost:8000/api'
 };
 
