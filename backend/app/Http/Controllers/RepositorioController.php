@@ -439,6 +439,7 @@ class RepositorioController extends Controller
                 Log::info('se clona');
                 // revisar script por que genera mal el log
                 $str = 'cd '.$path.' && sudo git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' && sudo git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ && sudo java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && sudo perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && sudo java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && sudo python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
+                Log::info("CLI CLONE: ". $str);
                 $res = shell_exec($str);
                 shell_exec('cd '.$path_project. ' && sudo git log --graph --full-history --all --pretty=format:"[%h][%cn]%d%x20%s" > ../tree_'.$project->repositorio_id.'.txt');
                 Log::info($res);
