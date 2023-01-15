@@ -7,8 +7,8 @@ import io
 import base64
 import sys
 
-arr_x = sys.argv[1].split(',')
-arr_y = sys.argv[2].split(',')
+arr_x = map(int, sys.argv[1].split(','))
+arr_y = map(int, sys.argv[2].split(','))
 
 plt.plot(arr_x, arr_y)
 plt.xticks(rotation=90)
