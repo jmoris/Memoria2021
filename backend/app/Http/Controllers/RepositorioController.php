@@ -439,22 +439,22 @@ class RepositorioController extends Controller
                 Log::info('se clona');
                 // revisar script por que genera mal el log
                 //$str = 'cd '.$path.' && sudo git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' && sudo git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ && sudo java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && sudo perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && sudo java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && sudo python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
-                $str = 'cd '.$path.' &&  git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' &&  git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ &&  java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' &&  perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' &&  java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' &&  python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
+                $str = 'cd '.$path.' && git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' &&  git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ &&  java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' &&  perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' &&  java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' &&  python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
                 Log::info("CLI CLONE: ". $str);
                 $res = shell_exec($str);
-                shell_exec('cd '.$path_project. ' && sudo git log --graph --full-history --all --pretty=format:"[%h][%cn]%d%x20%s" > ../tree_'.$project->repositorio_id.'.txt');
+                shell_exec('cd '.$path_project. ' && git log --graph --full-history --all --pretty=format:"[%h][%cn]%d%x20%s" > ../tree_'.$project->repositorio_id.'.txt');
                 Log::info($res);
                 if($res != ''){
                     $repo_cli = true;
                 }
             }else{
                 Log::info('se hace pull(rm dir y clone)');
-                $str = 'cd '.$path.' && sudo rm -Rf '.$nombre[1].' && sudo git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' && sudo git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ && sudo java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && sudo perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && sudo java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && sudo python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
+                $str = 'cd '.$path.' && rm -Rf '.$nombre[1].' && git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' && git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
                 Log::info($str);
                 //$str = 'cd '.$path_project.' && sudo git pull --ff-only && git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
                 $res = shell_exec($str);
                 Log::info($res);
-                shell_exec('cd '.$path_project. ' && sudo git log --graph --full-history --all --pretty=format:"[%h][%cn]%d%x20%s" > ../tree_'.$project->repositorio_id.'.txt');
+                shell_exec('cd '.$path_project. ' && git log --graph --full-history --all --pretty=format:"[%h][%cn]%d%x20%s" > ../tree_'.$project->repositorio_id.'.txt');
 
                 if($res != ''){
                     $repo_cli = true;
@@ -462,7 +462,7 @@ class RepositorioController extends Controller
             }
             // se clona la wiki, exista o no exista
             if(!is_dir($path.'/'.$nombre[1].'.wiki')){
-                $str = 'cd '.$path.' && sudo git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.wiki.git';
+                $str = 'cd '.$path.' && git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.wiki.git';
                 $res = shell_exec($str);
             }else{
                 $str = 'cd '.$path.'/'.$nombre[1].'.wiki && git pull';
