@@ -402,9 +402,9 @@ class ProyectoController extends Controller
         }
         $graficos = [];
         foreach($collabs as $collab){
-            $grafico1 = shell_exec('cd '.$path.' &&  /usr/bin/python2.7 grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
+            $grafico1 = shell_exec('cd '.$path.' && python2.7 grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
             Log::info($grafico1);
-            $grafico2 = shell_exec('cd '.$path.' &&  /usr/bin/python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
+            $grafico2 = shell_exec('cd '.$path.' && python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
             $graficos[$collab['name']] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
@@ -426,7 +426,7 @@ class ProyectoController extends Controller
         $entity1 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[0]->entity, $repo->created_at);
         $entity2 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[1]->entity, $repo->created_at);
         $entity3 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[2]->entity, $repo->created_at);
-        $str = 'cd '.$path.' &&  /usr/bin/python2.7 grafico.py ';
+        $str = 'cd '.$path.' && python2.7 grafico.py ';
         $grafico1 = shell_exec($str.implode(',',$entity1['x']).' '.implode(',',$entity1['y']));
         $grafico2 = shell_exec($str.implode(',',$entity2['x']).' '.implode(',',$entity2['y']));
         $grafico3 = shell_exec($str.implode(',',$entity3['x']).' '.implode(',',$entity3['y']));
@@ -592,7 +592,7 @@ class ProyectoController extends Controller
         $stats = $api->getStats($nombre[0], $nombre[1], 'contributors');
         $path = public_path();
         $path = str_replace(' ', '\ ', $path);
-        $last_commit = shell_exec('cd '.$path.'/'.$nombre[1].' &&  git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
+        $last_commit = shell_exec('cd '.$path.'/'.$nombre[1].' && git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
         $last_commit = addslashes($last_commit);
         $fecha = explode(';', $last_commit);
         $data = [];
@@ -625,8 +625,8 @@ class ProyectoController extends Controller
         }
         $graficos = [];
         foreach($collabs as $collab){
-            $grafico1 = shell_exec('cd '.$path.' &&  /usr/bin/python2.7 grafico_usuario.py  \''.json_encode($data[$collab->pivot->gh_user]). '\'');
-            $grafico2 = shell_exec('cd '.$path.' &&  /usr/bin/python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab->pivot->gh_user]). '\'');
+            $grafico1 = shell_exec('cd '.$path.' && python2.7 grafico_usuario.py  \''.json_encode($data[$collab->pivot->gh_user]). '\'');
+            $grafico2 = shell_exec('cd '.$path.' && python2.7 grafico_usuario_commits.py  \''.json_encode($data[$collab->pivot->gh_user]). '\'');
             $graficos[$collab->pivot->gh_user] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
