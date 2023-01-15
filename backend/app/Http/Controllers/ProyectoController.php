@@ -306,6 +306,7 @@ class ProyectoController extends Controller
                     'deletions' => [],
                     'commits' => []
                 ];
+                Log::info($stats);
                 foreach($stats as $stat){
                     if($stat->author->login == $request->gh_user){
                         foreach($stat->weeks as $info){
