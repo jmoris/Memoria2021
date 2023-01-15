@@ -427,7 +427,7 @@ class ProyectoController extends Controller
         $entity2 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[1]->entity, $repo->created_at);
         $entity3 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[2]->entity, $repo->created_at);
         $str = 'cd '.$path.' && /usr/bin/python2 grafico.py ';
-        $grafico1 = shell_exec($str.implode(',',$entity1['x']).' '.implode(',',$entity1['y']));
+        $grafico1 = shell_exec($str.implode(',',$entity1['y']).' '.implode(',',$entity1['x']));
         $grafico2 = shell_exec($str.implode(',',$entity2['x']).' '.implode(',',$entity2['y']));
         $grafico3 = shell_exec($str.implode(',',$entity3['x']).' '.implode(',',$entity3['y']));
         Log::info("IMPRESION DE GRAFICO");
