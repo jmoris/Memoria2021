@@ -266,7 +266,7 @@ class ProyectoController extends Controller
             }
             $start_sha = $filtered[0]['sha'];
             $end_sha = $filtered[count($filtered)-1]['sha'];
-            $str = 'cd '.$path_project.' && /usr/bin/python2 ../scripts/git_complexity_trend.py --end '.$start_sha.' --start '.$end_sha.' --file '.$entity;
+            $str = 'cd '.$path_project.' && python2 ../scripts/git_complexity_trend.py --end '.$start_sha.' --start '.$end_sha.' --file '.$entity;
             Log::info($str);
             $res = shell_exec($str);
             $lines = explode(PHP_EOL, $res);
@@ -403,7 +403,6 @@ class ProyectoController extends Controller
         $graficos = [];
         foreach($collabs as $collab){
             $grafico1 = shell_exec('cd '.$path.' && python2 grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
-            Log::info('cd '.$path.' && python2 grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
             $grafico2 = shell_exec('cd '.$path.' && python2 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
             $graficos[$collab['name']] = [
                 'activity' => $grafico1,
