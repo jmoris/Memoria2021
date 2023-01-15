@@ -41,8 +41,8 @@ class RepositorioController extends Controller
             $path = str_replace(' ', '\ ', $path);
             $path_project = $path.'/'.$nombre[1];
 
-            $ncommits = shell_exec('cd '.$path_project.' && sudo git rev-list HEAD --count');
-            Log::info('cd '.$path_project.' && sudo git rev-list HEAD --count');
+            $ncommits = shell_exec('cd '.$path_project.' && git rev-list HEAD --count');
+            Log::info('cd '.$path_project.' && git rev-list HEAD --count');
             /*foreach($stats as $stat){
                 $ncommits += $stat->total;
             }*/
@@ -138,7 +138,7 @@ class RepositorioController extends Controller
             }
             $start_sha = $filtered[0]['sha'];
             $end_sha = $filtered[count($filtered)-1]['sha'];
-            $str = 'cd '.$path_project.' && sudo /usr/bin/python2.7 ../scripts/git_complexity_trend.py --end '.$start_sha.' --start '.$end_sha.' --file '.$request->filename;
+            $str = 'cd '.$path_project.' && /usr/bin/python2.7 ../scripts/git_complexity_trend.py --end '.$start_sha.' --start '.$end_sha.' --file '.$request->filename;
             $res = shell_exec($str);
             $lines = explode(PHP_EOL, $res);
             $data = [
@@ -167,7 +167,7 @@ class RepositorioController extends Controller
             $path = public_path();
             $path = str_replace(' ', '\ ', $path);
             $path_project = $path.'/'.$nombre[1];
-            $str = 'cd '.$path.' && sudo python2.7 scripts/complexity_analysis.py '.$nombre[1].'/'.$request->filename;
+            $str = 'cd '.$path.' && python2.7 scripts/complexity_analysis.py '.$nombre[1].'/'.$request->filename;
             $res = shell_exec($str);
             $lines = explode(PHP_EOL, $res);
             $values = explode(',', $lines[1]);
