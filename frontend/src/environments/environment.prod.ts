@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://api.ghtracker.site/api'
+  apiUrl: 'https://api.ghtracker.site/api'
 };

@@ -8002,7 +8002,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var environment = {
       production: false,
-      apiUrl: 'http://api.ghtracker.site/api' //apiUrl: 'http://localhost:8000/api'
+      apiUrl: 'https://api.ghtracker.site/api' //apiUrl: 'http://localhost:8000/api'
 
     };
     /*
