@@ -22,9 +22,9 @@ class CursoController extends Controller
         $rol = $institucion->usuarios()->wherePivot('user_id', $user->id)->first()->pivot->role_id;
         $rol = Role::findOrFail($rol)->name;
         if($rol == 'Administrador'||$rol == 'Superadministrador'){
-            return Curso::where('institucion_id', $request->institucion)->get();
+            return Curso::where('institucion_id', $request->institucion)->where('estado', $request->estado)->get();
         }
-        return $user->cursosAsignados;
+        return $user->cursosAsignados()->where('estado', $request->estado)->get();
     }
 
     public function show($id){
@@ -161,11 +161,26 @@ class CursoController extends Controller
     public function delete($id){
         try{
             $curso = Curso::findOrFail($id);
-            $curso->delete();
+            $curso->estado = 0;
+            $curso->save();
         }catch(Exception $ex){
             return response()->json([
                 'status' => 500,
                 'message' => 'Error al eliminar curso',
+                'error' => $ex,
+            ]);
+        }
+    }
+
+    public function recovery($id){
+        try{
+            $curso = Curso::findOrFail($id);
+            $curso->estado = 1;
+            $curso->save();
+        }catch(Exception $ex){
+            return response()->json([
+                'status' => 500,
+                'message' => 'Error al recuperar curso',
                 'error' => $ex,
             ]);
         }

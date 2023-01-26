@@ -66,9 +66,10 @@ export class GestionComponent implements OnInit {
         this.form = new FormGroup({
             year: new FormControl(this.anoActual, [Validators.required]),
             semester: new FormControl("", [Validators.required]),
-            status: new FormControl("", [Validators.required]),
+            status: new FormControl(1, [Validators.required]),
             curso: new FormControl("", [Validators.required])
           });
+          console.log(this.form.get('status').value);
         this.loadProjects();
 
     }
@@ -82,7 +83,7 @@ export class GestionComponent implements OnInit {
         this.form = new FormGroup({
             year: new FormControl(this.anoActual, [Validators.required]),
             semester: new FormControl("", [Validators.required]),
-            status: new FormControl("", [Validators.required]),
+            status: new FormControl(1, [Validators.required]),
             curso: new FormControl("", [Validators.required]),
           });
           this.loadProjects();
@@ -165,7 +166,7 @@ export class GestionComponent implements OnInit {
     //Método que actualiza los proyectos.
     loadProjects() {
         this.loading = true;
-        this.cursoService.getAll().subscribe((data:any) => {
+        this.cursoService.getAll(1).subscribe((data:any) => {
             this.cursos = data;
         });
         this.projectsService.getAll(this.form.get('year').value, this.form.get('semester').value, this.form.get('status').value, this.form.get('curso').value).subscribe((projects:any) => {

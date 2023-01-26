@@ -38,23 +38,36 @@ class DashboardController extends Controller
                 'proyectos' => $proyectos
             ]);
         }else if($rol == 'Administrador'){
-            $cursos = Curso::where('institucion_id', $request->institucion)->get();
-            $nproyectos = 0;
-            $proyectos = [];
+            $cursos = Curso::where('institucion_id', $request->institucion)->where('estado', 1)->get();
+            $nproyectos_act = 0;
+            $proyectos_act = [];
+            $nproyectos_inact = 0;
+            $proyectos_inact = [];
+
             foreach($cursos as $curso){
-                $dproyectos = $curso->proyectos()->get();
+                $dproyectos = $curso->proyectos()->where('estado', 1)->get();
                 foreach($dproyectos as $proy){
                     $profesor = Curso::find($proy->curso_id)->profesor;
                     $proy->profesor = $profesor->name . ' ' . $profesor->lastname;
-                    array_push($proyectos, $proy);
+                    array_push($proyectos_act, $proy);
                 }
-                $nproyectos += $curso->proyectos()->count();
+                $nproyectos_act += $curso->proyectos()->where('estado', 1)->count();
+
+                $dproyectos = $curso->proyectos()->where('estado', 0)->get();
+                foreach($dproyectos as $proy){
+                    $profesor = Curso::find($proy->curso_id)->profesor;
+                    $proy->profesor = $profesor->name . ' ' . $profesor->lastname;
+                    array_push($proyectos_inact, $proy);
+                }
+                $nproyectos_inact += $curso->proyectos()->where('estado', 0)->count();
             }
             return response()->json([
                 'nusuarios' => count($institucion->usuarios),
                 'ncursos' => count($cursos),
-                'nproyectos' => $nproyectos,
-                'proyectos' => $proyectos
+                'nproyectos_act' => $nproyectos_act,
+                'proyectos_act' => $proyectos_act,
+                'nproyectos_inact' => $nproyectos_inact,
+                'proyectos_inact' => $proyectos_inact
             ]);
         }else if($rol == 'Profesor'){
             $cursos = Curso::where('institucion_id', $request->institucion)->where('teacher_id', $user->id)->get();

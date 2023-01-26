@@ -30,9 +30,9 @@ class CursosService {
         this.router = router;
         this.auth = auth;
     }
-    getAll() {
+    getAll(estado) {
         let idInst = this.auth.getInstitucion();
-        return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl}/cursos?institucion=` + idInst);
+        return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl}/cursos?estado=` + estado + `&institucion=` + idInst);
     }
     get(id) {
         return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl}/cursos/` + id);
@@ -42,6 +42,9 @@ class CursosService {
     }
     delete(id) {
         return this.http.delete(`${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl}/cursos/` + id);
+    }
+    recovery(id) {
+        return this.http.delete(`${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl}/cursos/recuperar/` + id);
     }
     agregarProfeAcurso(data) {
         console.log("datos en service: ", data);

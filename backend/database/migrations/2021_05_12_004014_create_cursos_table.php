@@ -18,6 +18,7 @@ class CreateCursosTable extends Migration
             $table->string('nombre');
             $table->smallInteger('semestre');
             $table->smallInteger('ano');
+            $table->smallInteger('estado')->default(1);
             $table->integer('teacher_id')->unsigned();
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('institucion_id')->unsigned();

@@ -75,6 +75,7 @@ class DatabaseSeeder extends Seeder
         $curso->nombre = "Taller de desarollo";
         $curso->semestre = 1;
         $curso->ano = 2021;
+        $curso->estado = 1;
         $curso->teacher_id = 2;
         $curso->institucion_id = $institucion->id;
         $curso->save();

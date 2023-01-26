@@ -75,7 +75,10 @@
                             <mat-error *ngIf="hasError('url', 'required')">Debe ingresar una url para el
                                 proyecto
                             </mat-error>
-                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="hasError('url', 'pattern')">Debe ingresar una url valida para el
+                                proyecto
+                            </mat-error>
+                            <mat-hint>La URL del repositorio debe ser con el formato HTTPS.<br>Ej: https://github.com/usuario/repositorio.git</mat-hint>
                         </mat-form-field>
                     </div>
                 </form>

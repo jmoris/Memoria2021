@@ -69,7 +69,7 @@ export class AddProjectComponent implements OnInit {
     this.projectService.getRoles().subscribe((data) => {
       this.roles = data;
     });
-    this.cursosService.getAll().subscribe((data) => {
+    this.cursosService.getAll(1).subscribe((data) => {
       this.cursos = data;
     });
     this.form = new FormGroup({
@@ -77,7 +77,7 @@ export class AddProjectComponent implements OnInit {
       description: new FormControl('', [Validators.required]),
       year: new FormControl(this.currentYear, [Validators.required]),
       semester: new FormControl("", [Validators.required]),
-      url: new FormControl("", [Validators.required]),
+      url: new FormControl("", [Validators.required, Validators.pattern('(https:\/\/)github.com[:/](.*).git')]),
       course: new FormControl("", [Validators.required]),
     });
     this.seleccionarForm = new FormGroup({

@@ -16,22 +16,28 @@ export class AddUserComponent implements OnInit {
   cargando = false;
   usuarios: any;
   roleId : any;
+  seleccionRol = true;
+
   constructor(
     public dialogRef: MatDialogRef<AddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: String,
     private authService: AuthenticationService,
     private usersService: UsuariosService) {
+
+    var user = this.authService.currentUserValue;
+    this.roleId = user.role;
+    this.seleccionRol = (this.roleId=='Administrador'||this.roleId=='Superadministrador') ? true : false;
+    console.log(this.roleId);
     this.form = new FormGroup({
       name: new FormControl("", [Validators.required]),
       lastname: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("", [Validators.required]),
-      rut: new FormControl("", [Validators.required, Validators.pattern(/^\d{1,2}\d{3}\d{3}[-][0-9kK]{1}$/), this.checkVerificatorDigit]),
-      enrollment: new FormControl("", [Validators.required, Validators.pattern(/^\d+$/)]),
-      role: new FormControl("", [Validators.required])
+      rut: new FormControl("", [Validators.pattern(/^\d{1,2}\d{3}\d{3}[-][0-9kK]{1}$/), this.checkVerificatorDigit]),
+      matricula: new FormControl("", [Validators.pattern(/^\d+$/)]),
+      role: new FormControl((!this.seleccionRol)?'4':'', [Validators.required])
     });
-    var user = this.authService.currentUserValue;
-    this.roleId = user.role;
+    console.log(this.form.value);
   }
 
   ngOnInit(): void {

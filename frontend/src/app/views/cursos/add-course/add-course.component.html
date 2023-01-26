@@ -24,7 +24,7 @@
                         </mat-form-field>
                         <mat-form-field appearance="standard" class="input">
                             <mat-label>Profesor a cargo</mat-label>
-                                <mat-select formControlName="teacher_id">
+                                <mat-select [disabled]="userRole != 'Administrador'" formControlName="teacher_id">
                                     <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">{{ teacher.name + ' ' + teacher.lastname }}</mat-option>
                                 </mat-select>
                             <mat-error *ngIf="hasError('teacher_id', 'required')">Debe ingresar un profesor para el

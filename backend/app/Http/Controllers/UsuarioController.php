@@ -59,7 +59,8 @@ class UsuarioController extends Controller
                 'email' => 'required|unique:users',
                 'password' => '',
                 'role' => 'required',
-                'rut' => 'required|unique:users',
+                'rut' => '',
+                'matricula' => '',
                 'institucion' => 'required'
             ]);
 
@@ -76,6 +77,7 @@ class UsuarioController extends Controller
             $user->email = $request->email;
             $user->name = $request->name;
             $user->lastname = $request->lastname;
+            $user->matricula = $request->matricula;
             $user->password = \bcrypt($request->password);
             $user->save();
             $user->instituciones()->attach($request->institucion, ['role_id' => $request->role]);
@@ -102,7 +104,8 @@ class UsuarioController extends Controller
                 'role' => 'required',
                 'gh_user' => '',
                 'gh_token' => '',
-                'rut' => 'required',
+                'rut' => '',
+                'matricula' => '',
                 'institucion' => 'required'
             ]);
 
@@ -119,6 +122,7 @@ class UsuarioController extends Controller
             $user->email = $request->email;
             $user->name = $request->name;
             $user->lastname = $request->lastname;
+            $user->matricula = $request->matricula;
             if($request->gh_user != null && $request->gh_token != null){
                 $user->gh_user = $request->gh_user;
                 $user->gh_token = $request->gh_token;

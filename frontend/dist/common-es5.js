@@ -68,9 +68,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(CursosService, [{
         key: "getAll",
-        value: function getAll() {
+        value: function getAll(estado) {
           var idInst = this.auth.getInstitucion();
-          return this.http.get("".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl, "/cursos?institucion=") + idInst);
+          return this.http.get("".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl, "/cursos?estado=") + estado + "&institucion=" + idInst);
         }
       }, {
         key: "get",
@@ -86,6 +86,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "delete",
         value: function _delete(id) {
           return this.http["delete"]("".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl, "/cursos/") + id);
+        }
+      }, {
+        key: "recovery",
+        value: function recovery(id) {
+          return this.http["delete"]("".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl, "/cursos/recuperar/") + id);
         }
       }, {
         key: "agregarProfeAcurso",

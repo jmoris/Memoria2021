@@ -22,7 +22,7 @@ export class EditUserComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl("", []),
     rut: new FormControl(''),
-    enrollment: new FormControl('', []),
+    matricula: new FormControl('', []),
     role: new FormControl('', [Validators.required])
   });
 
@@ -52,7 +52,7 @@ export class EditUserComponent implements OnInit {
         this.form.get('email').setValue(result.email);
         this.form.get('password').setValue("");
         this.form.get('rut').setValue(result.rut);
-        this.form.get('enrollment').setValue(result.enrollment);
+        this.form.get('matricula').setValue(result.matricula);
         this.form.get('role').setValue(result.pivot.role_id.toString());
         this.roleId = result.pivot.role_id.toString();
         this.loading = false;

@@ -52,6 +52,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('cursos', [CursoController::class, 'create']);
     Route::put('cursos/{id}', [CursoController::class, 'update']);
     Route::delete('cursos/{id}', [CursoController::class, 'delete']);
+    Route::delete('cursos/recuperar/{id}', [CursoController::class, 'recovery']);
     Route::post('cursos/{id}/asignar', [CursoController::class, 'assignUser']);
     Route::get('cursos/listar/{id}', [CursoController::class, 'userList']);
     Route::post('cursos/uploadfile/{id}', [CursoController::class, 'uploadFile']);

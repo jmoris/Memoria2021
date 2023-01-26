@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CursosService } from 'src/app/_services/cursos.service';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
 
 @Component({
   selector: 'app-add-course',
@@ -34,6 +35,9 @@ export class AddCourseComponent implements OnInit {
   SelectionType = SelectionType;
   selection = new SelectionModel<any>(true, []);
   teachers: any = [];
+  userRole = null;
+  userId = null;
+
   @ViewChild('sort1') sort: MatSort;
   @ViewChild('sort2') sort2: MatSort;
   @ViewChild('paginator') paginator: MatPaginator;
@@ -44,9 +48,11 @@ export class AddCourseComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: String,
     private cursosService: CursosService,
     private userService: UsuariosService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthenticationService
   ) {
-
+    this.userRole = this.authService.getUserType();
+    this.userId = this.authService.currentUserValue.user.id;
     this.userService.getStudents().subscribe((data) => {
       if (!data) {
         return;
@@ -67,7 +73,7 @@ export class AddCourseComponent implements OnInit {
     });
     this.form = new FormGroup({
       name: new FormControl("", [Validators.required]),
-      teacher_id: new FormControl("", [Validators.required]),
+      teacher_id: new FormControl(this.userId, [Validators.required]),
       year: new FormControl(this.currentYear, [Validators.required]),
       semester: new FormControl("", [Validators.required]),
     });

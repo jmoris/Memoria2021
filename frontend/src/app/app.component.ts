@@ -12,7 +12,8 @@ export class AppComponent {
 
   customIcons = [
     {name: 'edit', url: "../assets/icons/editCRUD.svg"},
-    {name: 'delete', url: "../assets/icons/deleteCRUD.svg"}
+    {name: 'delete', url: "../assets/icons/deleteCRUD.svg"},
+    {name: 'undo', url: "../assets/icons/undoCRUD.svg"}
   ];
 
   constructor(

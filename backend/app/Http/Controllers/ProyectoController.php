@@ -29,7 +29,7 @@ class ProyectoController extends Controller
         $filtroCurso = $request->curso;
         if($rol == 'Superadministrador'){
             $proyectos_arr = [];
-            $proyectos = Proyecto::where('estado', 1)->where('ano', $filtroAno)->with('curso');
+            $proyectos = Proyecto::where('ano', $filtroAno)->with('curso');
             if($filtroSemestre!=null){
                 $proyectos->where('semestre', $filtroSemestre);
             }
@@ -51,7 +51,7 @@ class ProyectoController extends Controller
             $nproyectos = 0;
             $proyectos = [];
             foreach($cursos as $curso){
-                $dproyectos = $curso->proyectos()->where('estado', 1)->where('ano', $filtroAno)->with('curso');
+                $dproyectos = $curso->proyectos()->where('ano', $filtroAno)->with('curso');
                 if($filtroSemestre!=null){
                     $dproyectos->where('semestre', $filtroSemestre);
                 }
@@ -75,7 +75,7 @@ class ProyectoController extends Controller
             $nproyectos = 0;
             $proyectos = [];
             foreach($cursos as $curso){
-                $dproyectos = $curso->proyectos()->where('estado', 1)->where('ano', $filtroAno)->with('curso');
+                $dproyectos = $curso->proyectos()->where('ano', $filtroAno)->with('curso');
                 if($filtroSemestre!=null){
                     $dproyectos->where('semestre', $filtroSemestre);
                 }
@@ -96,7 +96,7 @@ class ProyectoController extends Controller
             return $proyectos;
         }else if($rol == 'Alumno'){
             $proyectos = [];
-            $dproyectos = $user->proyectos()->where('estado', 1)->where('ano', $filtroAno)->with('curso');
+            $dproyectos = $user->proyectos()->where('ano', $filtroAno)->with('curso');
             if($filtroSemestre!=null){
                 $dproyectos->where('semestre', $filtroSemestre);
             }

@@ -110,7 +110,7 @@ export class EditProjectComponent implements OnInit {
     this.projectService.getRoles().subscribe((data) => {
       this.roles = data;
     });
-    this.cursosService.getAll().subscribe((data) => {
+    this.cursosService.getAll(1).subscribe((data) => {
       this.cursos = data;
     });
   }

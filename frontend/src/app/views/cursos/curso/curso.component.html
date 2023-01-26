@@ -2,6 +2,7 @@
     <h1>Cursos</h1>
     <ul>
         <li>{{ curso?.nombre + ' ' + curso?.ano + '-' + curso?.semestre}}</li>
+        <li><span style="color:red">{{ (curso?.estado == 0) ? 'Eliminado': ''}}</span></li>
     </ul>
 </div>
 <div class="separator-breadcrumb border-top"></div>
@@ -25,6 +26,7 @@
                                     (change)="handleFileInput($event.target.files, infoImportModal)"
                                     style="display:none;" />
                             </div>
+                            <p class="text-center" style="margin:0;padding:0;font-size:smaller;"><a href="#">Descargar plantilla</a></p>
                         </div>
                     </div>
                     <div class="card o-hidden mb-4 ml-4 mt-4">
@@ -34,7 +36,19 @@
                                 <p class="text-muted mt-2 mb-0">Agregar Estudiante
                                 </p>
                                 <button class="btn btn-primary btn-rounded"
-                                    (click)="addStudent(addStudentModal,$event)">Agregar </button>
+                                    (click)="openAddDialog()">Agregar </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card o-hidden mb-4 ml-4 mt-4">
+                        <div class="card-body text-center">
+                            <i class="i-Add-User"></i>
+                            <div class="content">
+                                <p class="text-muted mt-2 mb-0">Enlazar Estudiante
+                                </p>
+                                <button class="btn btn-primary btn-rounded"
+                                    (click)="addStudent(addStudentModal,$event)">Enlazar </button>
 
                             </div>
                         </div>

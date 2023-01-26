@@ -12,9 +12,9 @@ export class CursosService {
 
     constructor(private http: HttpClient, private router: Router, private auth: AuthenticationService) { }
 
-    getAll() {
+    getAll(estado) {
         let idInst = this.auth.getInstitucion();
-        return this.http.get<any>(`${environment.apiUrl}/cursos?institucion=` + idInst);
+        return this.http.get<any>(`${environment.apiUrl}/cursos?estado=`+ estado + `&institucion=` + idInst);
     }
 
     get(id) {
@@ -27,6 +27,10 @@ export class CursosService {
 
     delete(id) {
         return this.http.delete<any>(`${environment.apiUrl}/cursos/` + id);
+    }
+
+    recovery(id) {
+        return this.http.delete<any>(`${environment.apiUrl}/cursos/recuperar/` + id);
     }
 
     agregarProfeAcurso(data) {

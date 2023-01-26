@@ -29,6 +29,7 @@ export class GestionComponent implements OnInit {
   loading = false;
   dialogResult = "";
   courses: Course[];
+  estado = 1;
   displayedColumns: string[] = ["name", "year", "semester", "edit", "delete"];
   dataSource: MatTableDataSource<Course> = new MatTableDataSource<Course>();
 
@@ -61,7 +62,7 @@ export class GestionComponent implements OnInit {
 
   getCourses() {
     this.loading = true;
-    this.cursosService.getAll().subscribe(
+    this.cursosService.getAll(this.estado).subscribe(
       data => {
         if (!data) {
           return;
@@ -98,27 +99,51 @@ export class GestionComponent implements OnInit {
   }
 
   deleteCourse(id: string) {
-    this.openDeletionConfirmationDialog().afterClosed().subscribe(confirmation => {
-      console.log(confirmation);
-      if (confirmation.confirmed) {
-        this.cursosService.delete(id).subscribe({
-          next: result => {
-            console.log(result);
-            this.getCourses();
-            this.toastr.success('Curso eliminado correctamente', 'Notificación', { timeOut: 3000 });
-          },
-          error: result => {
-            console.log(result);
-          }
-        });
-      }
-    });
+    if(this.estado == 1){
+      this.openDeletionConfirmationDialog().afterClosed().subscribe(confirmation => {
+        console.log(confirmation);
+        if (confirmation.confirmed) {
+          this.cursosService.delete(id).subscribe({
+            next: result => {
+              console.log(result);
+              this.getCourses();
+              this.toastr.success('Curso eliminado correctamente', 'Notificación', { timeOut: 3000 });
+            },
+            error: result => {
+              console.log(result);
+            }
+          });
+        }
+      });
+    }else{
+      this.openRecoveryConfirmationDialog().afterClosed().subscribe(confirmation => {
+        console.log(confirmation);
+        if (confirmation.confirmed) {
+          this.cursosService.recovery(id).subscribe({
+            next: result => {
+              console.log(result);
+              this.getCourses();
+              this.toastr.success('Curso recuperado correctamente', 'Notificación', { timeOut: 3000 });
+            },
+            error: result => {
+              console.log(result);
+            }
+          });
+        }
+      });
+    }
+    
   }
 
   openDeletionConfirmationDialog() {
     var deletionDialogConfig = this.getDialogConfig();
     deletionDialogConfig.data = { message: '¿Desea eliminar este curso?' };
     return this.dialog.open(ConfirmationDialogComponent, deletionDialogConfig);
+  }
+  openRecoveryConfirmationDialog() {
+    var recoveryDialogConfig = this.getDialogConfig();
+    recoveryDialogConfig.data = { message: '¿Desea recuperar este curso?' };
+    return this.dialog.open(ConfirmationDialogComponent, recoveryDialogConfig);
   }
 
   getDialogConfig() {
@@ -135,7 +160,7 @@ export class GestionComponent implements OnInit {
 
   loadData() {
     this.loading = true;
-    this.cursosService.getAll().subscribe(
+    this.cursosService.getAll(this.estado).subscribe(
       (resp: any) => {
         this.cursos = resp;
         this.loading = false;
@@ -288,6 +313,11 @@ export class GestionComponent implements OnInit {
   
   filtrarDatos(value){
     this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  cambiarEstado(value){
+    this.estado = value;
+    this.getCourses();
   }
 
 }

@@ -36,7 +36,7 @@ export class AddAssistantStudentComponent implements OnInit {
   }
 
   loadCourse() {
-    this.cursosService.getAll().subscribe((data) => {
+    this.cursosService.getAll(1).subscribe((data) => {
       console.log(data);
       this.courses = data;
     });

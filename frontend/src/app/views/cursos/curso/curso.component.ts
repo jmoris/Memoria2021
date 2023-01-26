@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { AddUserComponent } from '../../usuarios/add-user/add-user.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-curso',
@@ -26,6 +28,7 @@ export class CursoComponent implements OnInit {
     addStudentModal;
     estudiantes: any = [];
     estudianteAgregar: any;
+    dialogResult = "";
 
     @ViewChild('infoImportModal') modalRef: TemplateRef<any>;
     stats: any = {
@@ -40,6 +43,7 @@ export class CursoComponent implements OnInit {
         private route: ActivatedRoute,
         private cursoService: CursosService,
         private modalService: NgbModal,
+        private dialog: MatDialog,
         private toastr: ToastrService,
         private usuariosService: UsuariosService,
     ) {
@@ -168,6 +172,23 @@ export class CursoComponent implements OnInit {
             console.log(this.estudianteAgregar);
         });
     }
+
+    openAddDialog(): void {
+        let dialogRef = this.dialog.open(AddUserComponent, {
+          width: '600px',
+          data: 'This text is passed into the dialog',
+          disableClose: true,
+          autoFocus: true
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(`Dialog closed: ${result}`);
+          this.dialogResult = result;
+          if (result == 'Confirm') {
+            this.toastr.success('Usuario agregado exitosamente', 'Notificación', { timeOut: 3000 });
+            this.loadData();
+          }
+        })
+      }
 
     onCloseConfirm(modal){
         console.log(this.estudianteAgregar);
