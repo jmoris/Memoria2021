@@ -9,6 +9,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { AddUserComponent } from '../../usuarios/add-user/add-user.component';
 import { MatDialog } from '@angular/material/dialog';
+import { environment } from '../../../../environments/environment';
+
 
 @Component({
     selector: 'app-curso',
@@ -29,6 +31,8 @@ export class CursoComponent implements OnInit {
     estudiantes: any = [];
     estudianteAgregar: any;
     dialogResult = "";
+    url = `${environment.apiUrl.replace('api', '')}plantilla/formato_masivo.xlsx`;
+
 
     @ViewChild('infoImportModal') modalRef: TemplateRef<any>;
     stats: any = {

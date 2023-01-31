@@ -15,7 +15,7 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { User } from 'src/_models/user';
-
+import { environment } from '../../../../environments/environment';
 
 
 
@@ -40,6 +40,7 @@ export class GestionComponent implements OnInit {
   carga: any;
   fileToUpload: File = null;
   @ViewChild('infoImportModal') modalRef: TemplateRef<any>;
+  url = `${environment.apiUrl.replace('api', '')}plantilla/formato_masivo.xlsx`;
 
   addUserForm = this.fb.group({
     name: ['', Validators.required],

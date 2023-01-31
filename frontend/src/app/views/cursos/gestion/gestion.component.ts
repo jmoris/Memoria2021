@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 import { EditCourseComponent } from '../edit-course/edit-course.component';
 import { AddAssistantTeacherComponent } from '../add-assistant-teacher/add-assistant-teacher.component';
 import { AddAssistantStudentComponent } from '../add-assistant-student/add-assistant-student.component';
-
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-gestion',
@@ -32,7 +32,7 @@ export class GestionComponent implements OnInit {
   estado = 1;
   displayedColumns: string[] = ["name", "year", "semester", "edit", "delete"];
   dataSource: MatTableDataSource<Course> = new MatTableDataSource<Course>();
-
+  url = `${environment.apiUrl}/plantilla/formato_masivo.xlsx`;
 
   addCourseForm = this.fb.group({
     name: ['', Validators.required],
