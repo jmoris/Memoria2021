@@ -40,7 +40,7 @@ export class GestionComponent implements OnInit {
   carga: any;
   fileToUpload: File = null;
   @ViewChild('infoImportModal') modalRef: TemplateRef<any>;
-  url = `${environment.apiUrl.replace('api', '')}plantilla/formato_masivo.xlsx`;
+  url = `${environment.apiUrl.slice(0, -3)}plantilla/formato_masivo.xlsx`;
 
   addUserForm = this.fb.group({
     name: ['', Validators.required],

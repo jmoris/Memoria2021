@@ -1959,7 +1959,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_7__["MatTableDataSource"]();
         this.dialogResult = "";
         this.fileToUpload = null;
-        this.url = "".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_13__["environment"].apiUrl.replace('api', ''), "plantilla/formato_masivo.xlsx");
+        this.url = "".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_13__["environment"].apiUrl.slice(0, -3), "plantilla/formato_masivo.xlsx");
         this.addUserForm = this.fb.group({
           name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
           lastname: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],

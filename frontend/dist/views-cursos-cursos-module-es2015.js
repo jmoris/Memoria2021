@@ -1156,7 +1156,7 @@ class CursoComponent {
         this.fileToUpload = null;
         this.estudiantes = [];
         this.dialogResult = "";
-        this.url = `${_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].apiUrl.replace('api', '')}plantilla/formato_masivo.xlsx`;
+        this.url = `${_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].apiUrl.slice(0, -3)}plantilla/formato_masivo.xlsx`;
         this.stats = {
             students: 0,
             teachers: 1,

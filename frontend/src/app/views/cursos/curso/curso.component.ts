@@ -31,7 +31,7 @@ export class CursoComponent implements OnInit {
     estudiantes: any = [];
     estudianteAgregar: any;
     dialogResult = "";
-    url = `${environment.apiUrl.replace('api', '')}plantilla/formato_masivo.xlsx`;
+    url = `${environment.apiUrl.slice(0, -3)}plantilla/formato_masivo.xlsx`;
 
 
     @ViewChild('infoImportModal') modalRef: TemplateRef<any>;
