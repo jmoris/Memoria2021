@@ -4555,8 +4555,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    //apiUrl: 'https://api.ghtracker.site/api'
-    apiUrl: 'http://localhost:8000/api'
+    apiUrl: 'https://api.ghtracker.site/api'
+    //apiUrl: 'http://localhost:8000/api'
 };
 /*
  * For easier debugging in development mode, you can import the following file
