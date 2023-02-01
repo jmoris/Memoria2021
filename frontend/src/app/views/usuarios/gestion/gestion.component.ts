@@ -209,6 +209,8 @@ export class GestionComponent implements OnInit {
   }
 
   handleFileInput(files: FileList, modal) {
+    this.loading = true;
+    this.toastr.info('Se inicia la carga masiva de usuarios.', 'Notificación de información', { timeOut: 5000 });
     this.fileToUpload = files.item(0);
     this.usuariosService.uploadFile(this.fileToUpload).subscribe((data: any) => {
       this.fileToUpload = null;
@@ -216,6 +218,7 @@ export class GestionComponent implements OnInit {
         this.toastr.error(data.msg, 'Notificación de error', { timeOut: 3000 });
         return;
       }
+      this.loading = false;
       this.toastr.success(data.msg, 'Notificación de exito', { timeOut: 3000 });
       this.carga = data;
       this.modalService.open(this.modalRef, { backdropClass: 'light-blue-backdrop' });

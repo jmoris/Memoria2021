@@ -66,7 +66,7 @@ class CursosService {
         return this.http.put(`${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl}/cursos/` + id, data);
     }
     addSingleUser(iduser, idcurso) {
-        return this.http.post(`${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl}/cursos/` + idcurso + `/asignar`, { user_id: iduser });
+        return this.http.post(`${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl}/cursos/` + idcurso + `/asignar`, iduser);
     }
     uploadFile(fileToUpload, id) {
         let inst = this.auth.getInstitucion();

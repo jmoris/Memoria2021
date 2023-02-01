@@ -124,9 +124,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addSingleUser",
         value: function addSingleUser(iduser, idcurso) {
-          return this.http.post("".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl, "/cursos/") + idcurso + "/asignar", {
-            user_id: iduser
-          });
+          return this.http.post("".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl, "/cursos/") + idcurso + "/asignar", iduser);
         }
       }, {
         key: "uploadFile",

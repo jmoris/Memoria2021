@@ -58,7 +58,7 @@ export class CursosService {
     }
 
     addSingleUser(iduser, idcurso){
-        return this.http.post<any>(`${environment.apiUrl}/cursos/` + idcurso + `/asignar`, {user_id: iduser});
+        return this.http.post<any>(`${environment.apiUrl}/cursos/` + idcurso + `/asignar`, iduser);
     }
 
     uploadFile(fileToUpload: File, id): Observable<boolean> {

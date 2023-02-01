@@ -10,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { AddUserComponent } from '../../usuarios/add-user/add-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../../environments/environment';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class CursoComponent implements OnInit {
     estudianteAgregar: any;
     dialogResult = "";
     url = `${environment.apiUrl.slice(0, -3)}plantilla/formato_masivo.xlsx`;
-
+    form : FormGroup;
 
     @ViewChild('infoImportModal') modalRef: TemplateRef<any>;
     stats: any = {
@@ -71,7 +72,16 @@ export class CursoComponent implements OnInit {
                 this.dataSource.data = this.users;
                 this.dataSource.sort = this.sort;
                 this.dataSource.paginator = this.paginator;
-                this.stats.students = userData.length;
+                userData.forEach(e => {
+                    if(e.pivot.perfil == 0){
+                        this.stats.students++;
+                    }else if(e.pivot.perfil == 1){
+                        this.stats.supports++;
+                    }else if(e.pivot.perfil == 2){
+                        this.stats.teachers++;
+                    }
+                });
+
             console.log(this.users);
 
             })
@@ -87,6 +97,10 @@ export class CursoComponent implements OnInit {
             }
             
         );
+        this.form = new FormGroup({
+            user_id: new FormControl("", [Validators.required]),
+            perfil: new FormControl(0, [Validators.required]),
+          });
         this.loading = false;
         
     }
@@ -122,13 +136,22 @@ export class CursoComponent implements OnInit {
             supports: 0
         };
         console.log(this.curso);
+        this.users = this.users.concat(this.curso.profesor);
         this.cursoService.usersList(this.id).subscribe((userData: any) => {
             this.users = this.users.concat(userData);
             this.dataSource.data = this.users;
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
             ////
-            this.stats.students = userData.length;
+            userData.forEach(e => {
+                if(e.pivot.perfil == 0){
+                    this.stats.students++;
+                }else if(e.pivot.perfil == 1){
+                    this.stats.supports++;
+                }else if(e.pivot.perfil == 2){
+                    this.stats.teachers++;
+                }
+            });
             //this.users.push(this.curso.user);
             //this.users = this.users.concat(userData);
         })
@@ -156,14 +179,12 @@ export class CursoComponent implements OnInit {
 
     formatRol(value) {
         switch (value) {
-            case 1:
-                return 'Superadministrador';
-            case 2:
-                return 'Administrador';
-            case 3:
-                return 'Profesor';
-            case 4:
+            case 0:
                 return 'Estudiante';
+            case 1:
+                return 'Ayudante';
+            case 2:
+                return 'Profesor invitado';
         }
     }
 
@@ -195,21 +216,8 @@ export class CursoComponent implements OnInit {
       }
 
     onCloseConfirm(modal){
-        console.log(this.estudianteAgregar);
-
-        var splitted = this.estudianteAgregar.split(" "); 
-        var correo = splitted[splitted.length - 1];
-        console.log(correo);
-        var idEstudiante;
-        for (let estudiante of this.estudiantes) {
-            if(estudiante.email==correo)
-            {
-                idEstudiante = estudiante.id;
-            }
-        }
-
-        console.log(idEstudiante);
-        this.cursoService.addSingleUser(idEstudiante,this.id).subscribe( (data) => { 
+        console.log(this.form.value);
+        this.cursoService.addSingleUser(this.form.value,this.id).subscribe( (data) => { 
             this.loadData();
             modal.close();
         });

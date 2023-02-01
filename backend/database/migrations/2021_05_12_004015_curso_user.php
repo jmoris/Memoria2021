@@ -16,6 +16,7 @@ class CursoUser extends Migration
         Schema::create('curso_user', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('curso_id')->unsigned();
+            $table->integer('perfil')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
         });

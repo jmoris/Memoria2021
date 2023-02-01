@@ -14,7 +14,7 @@ class Curso extends Model
      * Usuarios de un curso, ya sean profesores, alumnos, ayudantes, etc.
      */
     public function usuarios(){
-        return $this->belongsToMany(User::class, 'curso_user', 'curso_id', 'user_id');
+        return $this->belongsToMany(User::class, 'curso_user', 'curso_id', 'user_id')->withPivot('perfil');
     }
 
     /**

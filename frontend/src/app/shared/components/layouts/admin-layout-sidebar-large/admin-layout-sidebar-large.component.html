@@ -14,6 +14,9 @@
         <div class="module-loader" *ngIf="moduleLoading">
             <div class="spinner spinner-bubble spinner-bubble-primary mr-3"></div>
         </div>
+        <div *ngIf="moduleLoading">
+            <h1>Espere porfavor...</h1>
+        </div>
     </div>
 </div>
 <app-search *ngIf="searchService.searchOpen"></app-search>

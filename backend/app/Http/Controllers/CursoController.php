@@ -34,9 +34,9 @@ class CursoController extends Controller
     public function userList(Request $request, $id){
         $curso = Curso::find($id);
         if($curso!=null){
-            $usuarios = $curso->usuarios()->pluck('id');
-            $lista = Institucion::find($request->institucion)->usuarios()->whereIn('id', $usuarios)->get();
-            return response()->json($lista);
+            $usuarios = $curso->usuarios;
+           //$lista = Institucion::find($request->institucion)->usuarios()->whereIn('id', $usuarios)->get();
+            return response()->json($usuarios);
         }else{
             return response()->json([
                 'msg' => 'El curso no existe'
@@ -48,6 +48,7 @@ class CursoController extends Controller
         try{
             $validador = Validator::make($request->all(), [
                 'user_id' => 'required|exists:users,id',
+                'perfil' => 'required'
             ]);
 
             if($validador->fails()){
@@ -60,7 +61,7 @@ class CursoController extends Controller
 
             $user = User::findOrFail($request->user_id);
             $curso = Curso::findOrFail($id);
-            $curso->usuarios()->sync($user, false);
+            $curso->usuarios()->sync([$request->user_id => ['perfil' => $request->perfil]], false);
             return response()->json([
                 'status' => 200,
                 'message' => 'El usuario fue asignado correctamente.'

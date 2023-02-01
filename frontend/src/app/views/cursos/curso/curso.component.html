@@ -105,7 +105,7 @@
                             </ng-container>
                             <ng-container matColumnDef="rol">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol </th>
-                                <td mat-cell *matCellDef="let element"> {{(element.pivot)?formatRol(element.pivot.role_id):'Profesor'}} </td>
+                                <td mat-cell *matCellDef="let element"> {{ (element.pivot)?formatRol(element?.pivot.perfil):'Profesor' }} </td>
                             </ng-container>
                             
 
@@ -185,21 +185,34 @@
 
     <ng-template #addStudentModal let-modal>
         <div class="modal-header">
-            <h4 class="modal-title" id="modal-title">Agregar Estudiante</h4>
+            <h4 class="modal-title" id="modal-title">Enlazar Estudiante al curso</h4>
             <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
                 (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
+            <form [formGroup]="form">
+            <div class="container">
+                <label>Perfil:</label>
+                <mat-radio-group formControlName="perfil" class="profile-form">
+                    <div>
+                        <mat-radio-button [value]="0">Estudiante</mat-radio-button>
+                    </div>
+                    <div>
+                        <mat-radio-button [value]="1">Ayudante</mat-radio-button>
+                    </div>
+                </mat-radio-group>
+            </div>
             <div class="col-md-12 form-group mb-3">
                 <label for="picker1">Estudiante a agregar </label>
-                <select [(ngModel)]="estudianteAgregar" class="form-control">
-                    <option *ngFor="let estudiante of estudiantes"  > {{estudiante.name  + " " + estudiante.lastname
+                <select formControlName="user_id" class="form-control">
+                    <option *ngFor="let estudiante of estudiantes" [value]="estudiante.id" > {{estudiante.name  + " " + estudiante.lastname
                         + " "
                         + estudiante.email}} </option>
                 </select>
             </div>
+        </form>
         </div>
         <div class="modal-footer">
             <button type="button" (click)="onCloseConfirm(modal)" class="btn btn-outline-primary m-1">Agregar</button>
