@@ -1,0 +1,134 @@
+* [56b04e0][Jesus Moris] (HEAD -> main, origin/main, origin/HEAD) fix
+* [aed8c8f][Jesus Moris] algunas implementaciones, requisitos restantes
+* [545b032][Jesus Moris] fix url plantilla
+* [cbc154e][Jesus Moris] implementacion plantilla xlsx
+* [0283984][Jesus Moris] update requisitos administrador
+* [07b35b4][Jesus Moris] se implementa https
+* [1dbad18][Jesus Moris] se imprime registro de evento colaboradores en log
+* [3388252][Jesus Moris] fix se borran proyectos locales
+* [258b8ba][Jesus Moris] prueba python sin path completo
+* [a57eda5][Jesus Moris] test de lista string a int python
+* [319235a][Jesus Moris] a
+* [1af9c2d][Jesus Moris] test x y cmbiads
+* [15724ab][Jesus Moris] prueba fix graficos
+* [ea697f0][Jesus Moris] se imprim en el log el grarfico 1 de l reporte
+* [a516701][Jesus Moris] fix python
+* [7290802][Jesus Moris] fix
+* [896f56e][Jesus Moris] prueba
+* [5cdae9b][Jesus Moris] prueba fix graficos
+* [7e3d77e][Jesus Moris] log graficoss
+* [bf19d50][Jesus Moris] mas fix de sudoers
+* [4cc0c68][Jesus Moris] se quitan todo los sudo
+* [a41c4af][Jesus Moris] fix sudoers
+* [14a2570][Jesus Moris] test sin sudo
+* [f290eeb][Jesus Moris] FIX
+* [7ff065b][Jesus Moris] cambio enviroment nuevo
+* [93460a8][Jesus Moris] change enviroment
+* [99223a3][Jesus Moris] fix
+* [13766c8][Jesus Moris] se asigna usuario que crea institucion
+* [20dd80d][Jesus Moris] se repara grafico de complejidad en reporte
+* [2802e9d][Jesus Moris] se llama bien a metodo para grafico de complejidad
+* [4ac1d33][Jesus Moris] se repara metodo para grafico complejidad en fichero especifico
+* [6a36c25][Jesus Moris] Se implementa filtros globales para Usuarios y Cursos
+* [4a89f42][Jesus Moris] se implementa filtro cursos
+* [ae65065][Jesus Moris] se implementa filtro de cursos en proyectos
+* [5c46a7a][Jesus Moris] se implementa lista de issues y aumenta attemtps limit
+* [5048c20][Jesus Moris] se obtienen issues del repositorio
+* [d0fca5e][Jesus Moris] fix metodo que no existe
+* [eff2633][Jesus Moris] algunos fix al mostrar el arbol
+* [6b0ed23][Jesus Moris] se implementa arbol git
+* [08030f1][Jesus Moris] test cambiar luego peticion stats contributors
+* [eb392ff][Jesus Moris] test cambios diff en cursos actuales y no actuales
+* [57e6dfd][Jesus Moris] se completa dashboard docente
+* [7f1ad71][Jesus Moris] fix estado de proyectos
+* [6b30f2b][Jesus Moris] se mejora el metodo ya que tenia problemas
+* [195bcfb][Jesus Moris] se implementa metodo para obtener commits de branch
+* [d2b6272][Jesus Moris] se implementa obtención de commits de un branch especifico
+* [b076e4e][Jesus Moris] condicion al null de variable issue para no obtener title de null
+* [8a761bc][Jesus Moris] verbose al exception del metodo anterior
+* [2a35903][Jesus Moris] Se implementan issues en tablero
+* [af4ddb8][Jesus Moris] fix menores al crear proyecto
+* [8a99750][Jesus Moris] se modifica formato arbol git
+* [76084ee][Jesus Moris] se implementa creacion de arbol git cuando se actualice proyecto
+* [8c9231f][Jesus Moris] (origin/version_filtros) se implementan los filtros en backend proyectos
+* [a38609b][Jesus Moris] (origin/version_base2) solo se muestran proyectos con estado 1 (activo)
+* [5dd2954][Jesus Moris] se cambia nombre variable
+* [9d1ac43][Jesus Moris] Se implementan cambios en el backend
+* [dfb2226][Jesus Moris] (origin/version_base) se permite crear cursos sin alumnos
+* [9f56f94][Jesus Moris] se modifica dashboard docente
+* [9bff88f][Jesus Moris] fix numero commits en reporte
+* [8d8ef80][Jesus Moris] fix analisis complejidad individual
+* [74be505][Jesus Moris] log del script cli para analisis de complejidad
+* [81dbe34][Jesus Moris] fix para analisis de complejidad sudo a python
+* [399f8c7][Jesus Moris] fix sudo en reportes
+* [4bdb5f7][Jesus Moris] se modifica path del cli para no tener errores al eliminar dir
+* [4e80c72][Jesus Moris] fix ubicacion log
+* [570e8d5][Jesus Moris] directorio no existe en pull, se arregla script cli
+* [06e7ab2][Jesus Moris] faltaban && en script cli
+* [655f7a6][Jesus Moris] fix script cli analisis
+* [92d30f8][Jesus Moris] se agrega sudo a cli de analitica
+* [41ed8df][Jesus Moris] log cli git para archivos algoritmos
+* [b085c19][Jesus Moris] probamos fix para actualizar repos
+* [be56aca][Jesus Moris] fix real ncommits, anterior me equivoque
+* [b5594ad][Jesus Moris] fix ncommits
+* [d28b768][Jesus Moris] log al cli
+* [60da73c][Jesus Moris] algunos cambios para fix
+* [663012c][Jesus Moris] Se implementa dashboard profesor y muestra info
+* [4a2557e][Jesus Moris] Se modifica migracion, rut no es unique por el 1-9
+* [8812c7a][Jesus Moris] Se modifica controlador carga masiva de usuarios
+* [252a2ff][Jesus Moris] fix error respuesta json complexity report
+* [8bc98d6][Jesus Moris] try-catch e if no hay branches
+* [6339192][Jesus Moris] se llama como root a git para obtener respuesta
+* [6866a85][Jesus Moris] log grafico1 porque no sei mprime
+* [1146250][Jesus Moris] se imprimen graficos que no aparecen
+* [de1f549][Jesus Moris] se quitan errores de imagenes, ya se sabe causa
+* [28d87c0][Jesus Moris] se imprime resultado cli
+* [c5528c4][Jesus Moris] se utiliza path completo de python
+* [73b9fde][Jesus Moris] debug imagenes ya que se generan bien pero no se ven
+* [522bd43][Jesus Moris] se imprime comando cli para ver salida
+* [25199af][Jesus Moris] fix python shell cli
+* [f6d8aee][Jesus Moris] fix de cors
+* [9427f45][Jesus Moris] se implementan cambios menores
+* [2c7e561][Jesus Moris] fix escribi mal un metodo :(
+* [029ea4f][Jesus Moris] se imprime log al retornar excepcion
+* [7e144da][Jesus Moris] fix a linea que estaba eliminando los usuarios
+* [a2fba56][Jesus Moris] fix metodo sin dettach
+* [732f5fb][Jesus Moris] se cambia metodo de asignacion por attach
+* [5830da0][Jesus Moris] se implementan multiples fix y update proyectos
+* [4752fa8][Jesus Moris] se muestran en tabla mejor para que cuadren en informe
+* [62a3e95][Jesus Moris] se agrega nombre del contribuyente al grafico
+* [92b1c5f][Jesus Moris] otro fix para contar bien commits en info proyecto
+* [2406226][Jesus Moris] fix a algunas estadisticas
+* [7a07c43][Jesus Moris] log del resultado de la shell
+* [8a81ef6][Jesus Moris] fix repo cli con estado
+* [2ec1844][Jesus Moris] nuevo fix para implementar bien el cli
+* [c3b8ea7][Jesus Moris] cli no hace bien llamado a scripts de analisis
+* [6c02aab][Jesus Moris] mini fix a comando cli
+* [670305a][Jesus Moris] cambios en script cli
+* [83aa5d4][Jesus Moris] se cambian comandos cli a sudo para no tener problemas de permisos
+* [137dc4c][Jesus Moris] fix menor para evitar errores si no se ha clonado el proyecto
+* [e560896][Jesus Moris] fix menores
+* [c4f1dc8][Jesus Moris] fix variable en uplaodfile de cursos
+* [46a3e92][Jesus Moris] fix uploadfile usuario contiene cursos
+* [8deccd4][Jesus Moris] se implementa uploadfile en cursos
+* [da47ea7][Jesus Moris] se soluciona problema graficos
+* [d69538e][Jesus Moris] test retorno html para chequear imagenes
+* [d88c20f][Jesus Moris] se agrega cmd al log para corroborar funcionamiento
+* [7897cf7][Jesus Moris] se modifica migracion gh user
+* [72026dd][Jesus Moris] se implementa graficos solo en python2.7 y test gh
+* [f2a0632][Jesus Moris] se modifica comando git
+* [8a7836e][Jesus Moris] se modifica ambiente del proyecto
+* [f0e3655][Jesus Moris] variable que faltaba en component para completar datos
+* [c269617][Jesus Moris] fix de component eliminado para generar build
+* [836ac8a][Jesus Moris] se hace log del script para analisis
+* [51e8e42][Jesus Moris] Se implementa try catch de info project
+* [69aa2b2][Jesus Moris] se implementan cambios
+* [dbc0ad2][Jesus Moris] se agrega superadmin al reporte de proyecto
+* [931f5dc][Jesus Moris] se cambia environment a prod
+* [3a9a4a8][Jesus Moris] Se implementa superadmin, instituciones y form usuarios
+* [cdb0903][Jesus Moris] se ejecuta scripts python con python 3
+* [0f407e3][Jesus Moris] se implementa cors
+* [c671403][Jesus Moris] se implementan cambios para subir al servidor
+* [7631b3f][Jesus Moris] se quita un import incorrecto y se agrega condicion para superadmin
+* [65869a0][Jesus Moris] Primer commit con ambos proyectos
+* [95ac93a][GitHub] Initial commit

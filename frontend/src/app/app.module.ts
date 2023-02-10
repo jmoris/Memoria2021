@@ -8,7 +8,6 @@ import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConfirmationDialogComponent } from './views/core/confirmation-dialog/confirmation-dialog.component';
 import { NotifierOptions, NotifierModule } from 'angular-notifier';
@@ -16,9 +15,10 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { getSpanishPaginatorIntl } from './spanish-paginator-intl';
-import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MomentDateFormatter } from './_helpers/momentdate.formatter';
-import { CommonModule } from '@angular/common';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { DatetimerangepickerModule } from "angular-datetimerangepicker";
 
 /**
  * Custom angular notifier options
@@ -78,10 +78,15 @@ const customNotifierOptions: NotifierOptions = {
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
+    NgbModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxDaterangepickerMd.forRoot(),
     NotifierModule.withConfig(customNotifierOptions),
+  ],
+  exports: [
+    MaterialModule
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() },

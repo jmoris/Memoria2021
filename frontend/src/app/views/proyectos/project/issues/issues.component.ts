@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ProjectsService } from 'src/app/_services/projects.service';
 import * as moment from 'moment/moment';
 import { isThisISOWeek } from 'date-fns';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-issues',
@@ -17,7 +18,7 @@ export class IssuesComponent implements OnInit {
 
   idProyecto: any;
   issues: any = [];
-  displayedColumns2: string[] = ["title", "login", "created_at", "comments"];
+  displayedColumns2: string[] = ["title", "login", "created_at", "comments", 'assignees'];
   dataSource2: MatTableDataSource<any> = new MatTableDataSource<any>();
   @ViewChild(MatSort) sort2: MatSort;
   @ViewChild(MatPaginator) paginator2: MatPaginator;
@@ -36,7 +37,9 @@ export class IssuesComponent implements OnInit {
     this.form2 = new FormGroup({
       status: new FormControl(0, [Validators.required]),
     });
+    
     this.proyectoService.getIssues(this.idProyecto).subscribe(data => {
+      console.log(data[0].assignees.map(x=>x.login).join(","));
       this.issues = data;
       this.dataSource2.data = this.issues;
       this.dataSource2.sort = this.sort2;
@@ -45,6 +48,9 @@ export class IssuesComponent implements OnInit {
     });
   }
 
+  getAsignados(data){
+    return data.map(x=>x.login).join(",");
+  }
 
   ngOnInit(): void {
   
@@ -53,6 +59,7 @@ export class IssuesComponent implements OnInit {
   onIssuesStatusChange(e){
     this.loading = true;
     this.proyectoService.getIssues(this.id, e.value).subscribe((data) => {
+        
         this.issues = data;
         this.dataSource2.data = this.issues;
         this.dataSource2.sort = this.sort2;

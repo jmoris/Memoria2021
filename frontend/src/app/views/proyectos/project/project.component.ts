@@ -1,38 +1,27 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { SharedAnimations } from 'src/app/shared/animations/shared-animations';
-import { echartStyles } from 'src/app/shared/echart-styles';
 import { NgbCalendar, NgbDate, NgbDateParserFormatter, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DataLayerService } from 'src/app/shared/services/data-layer.service';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/_services/projects.service';
 import { MatDialogConfig } from '@angular/material/dialog';
-import { UserRequirementService } from 'src/app/_services/userrequirements.service';
-import { IncrementService } from 'src/app/_services/increments.service';
 import * as moment from 'moment/moment';
-import { SoftwareRequirementsService } from 'src/app/_services/softwarerequirements.service';
 import { ConfirmationDialogComponent } from '../../core/confirmation-dialog/confirmation-dialog.component';
 import { EditProjectComponent } from '../edit-project/edit-project.component';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { NotifierService } from 'angular-notifier';
-import { AddProjectComponent } from '../add-project/add-project.component';
-import { TestCaseService } from 'src/app/_services/testcases.service';
-import { EChartOption } from 'echarts';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
-import { ModuleService } from 'src/app/_services/module.service';
 import { UsuariosService } from 'src/app/_services/usuarios.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ChartComponent, ApexAxisChartSeries, ApexChart, ApexXAxis, ApexTitleSubtitle } from "ng-apexcharts";
-import { AlertsComponent } from '../../ui-kits/alerts/alerts.component';
-import { Identifiers } from '@angular/compiler/src/render3/r3_identifiers';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MdRenderService } from '@nvxme/ngx-md-render';
-import { getWeekYearWithOptions } from 'date-fns/fp';
-import { isThisISOWeek } from 'date-fns';
 import { IssuesComponent } from './issues/issues.component';
+import { UserActivityComponent } from './user-activity/user-activity.component';
+
 export type ChartOptions = {
     series: ApexAxisChartSeries;
     chart: ApexChart;
@@ -112,13 +101,13 @@ export class ProjectComponent implements AfterViewInit {
     public chartOptions3: Partial<ChartOptions>;
     hoveredDate: NgbDate | null = null;
 
-    fromDate: NgbDate | null;
-    toDate: NgbDate | null;
+    
 
     fromDate2: NgbDate | null;
     toDate2: NgbDate | null;
 
     createdDate : any;
+    fchCreacion: any;
 
     source: string = "";
     rendered: SafeHtml;
@@ -135,6 +124,11 @@ export class ProjectComponent implements AfterViewInit {
 
     currentUser : any;
     isAlumno : boolean = false;
+
+    range = new FormGroup({
+        start: new FormControl(),
+        end: new FormControl()
+      });
 
     public constructor(
         private route: ActivatedRoute,
@@ -156,8 +150,6 @@ export class ProjectComponent implements AfterViewInit {
         this.loading = true;
         this.wikiFiles = [];
         this.id = this.route.snapshot.params['id'];
-        this.fromDate = calendar.getToday();
-        this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
         this.fromDate2 = calendar.getToday();
         this.toDate2 = calendar.getNext(calendar.getToday(), 'm', 1);
 
@@ -199,9 +191,9 @@ export class ProjectComponent implements AfterViewInit {
             this.boards = data.proyectos;
             this.equipo = data.collabs;
             this.commits = data.commits;
+            this.fchCreacion = data.created_date;
             let fecha = moment(data.created_date).format('DD-MM-YYYY').split('-');
             this.createdDate = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
-            this.fromDate = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
             this.fromDate2 = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
             this.toDate2 = calendar.getNext(this.fromDate2, 'm', 1);
             this.loading = false
@@ -210,6 +202,10 @@ export class ProjectComponent implements AfterViewInit {
             this.router.navigateByUrl('proyectos/gestion');
         });
 
+        proyectoService.getMaatReport(this.id).subscribe((data) => {
+            this.maatReport = data;
+        });
+        
         proyectoService.getTableros(this.id).subscribe((data) => {
             this.tableros = data;
         });
@@ -250,9 +246,7 @@ export class ProjectComponent implements AfterViewInit {
             this.klocReport = data.data;
             this.klocResumen = data.resumen;
         });
-        proyectoService.getMaatReport(this.id).subscribe((data) => {
-            this.maatReport = data;
-        });
+
         this.chartOptions = {
             series: [
               {
@@ -338,6 +332,17 @@ export class ProjectComponent implements AfterViewInit {
         let dialogRef = this.dialog.open(IssuesComponent, {
             width: '900px',
             data: this.id,
+            disableClose: true,
+            autoFocus: true
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog closed: ${result}`);
+        })
+    }
+    openUserActivityDialog(miembro){
+        let dialogRef = this.dialog.open(UserActivityComponent, {
+            width: '900px',
+            data: {id:this.id, miembro:miembro},
             disableClose: true,
             autoFocus: true
         });
@@ -484,40 +489,6 @@ export class ProjectComponent implements AfterViewInit {
             };
         });
         this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', centered: true, size: 'lg' });
-    }
-
-
-    openPCAModal(modal, filename){
-        this.chartOptions.series = [{
-            name: 'Complejidad',
-            data: []
-        }];
-        this.fromDate = this.createdDate;
-        this.toDate = this.calendar.getNext(this.calendar.getToday(), 'd', 10);
-        this.chartOptions.xaxis.categories = [];
-        console.log(filename);
-        if(filename!=undefined)
-            this.entityComplexity.entity = filename;
-        this.projectComplexityAnalysis(this.entityComplexity.entity, this.fromDate, this.toDate);
-        this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', centered: true, size: 'lg' });
-    }
-
-    projectComplexityAnalysis(filename, from_date, to_date){
-        this.loading = true;
-        let desde = this.formatDateNgb(from_date);
-        let hasta = this.formatDateNgb(to_date);
-        this.proyectoService.getProjectComplexityAnalysis(this.id, filename, desde, hasta).subscribe((data) => {
-            this.entityComplexity = data;
-            this.entityComplexity.entity = filename;
-            this.chartOptions.series = [{
-                name: 'Complejidad',
-                data: data.y
-            }];
-            this.chartOptions.xaxis.categories = data.x;
-            
-            this.loading = false;
-        });
-
     }
 
     formatDateNgb(d: NgbDate): string {
@@ -737,19 +708,7 @@ formatUrgency(value) {
     }
 }
 
-onDateSelection(date: NgbDate) {
-    if (!this.fromDate && !this.toDate) {
-      this.fromDate = date;
-    } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
-      this.toDate = date;
-    } else {
-      this.toDate = null;
-      this.fromDate = date;
-    }
-    if(this.fromDate != null && this.toDate != null){
-        this.projectComplexityAnalysis(this.entityComplexity.entity, this.fromDate, this.toDate);
-    }
-  }
+
 
   onUserDateSelection(date: NgbDate) {
     if (!this.fromDate2 && !this.toDate2) {
@@ -790,21 +749,9 @@ onDateSelection(date: NgbDate) {
     }
   }
 
-  isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
-  }
-
-  isInside(date: NgbDate) {
-    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
-  }
-
-  isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
-  }
-
-  validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
-    const parsed = this.formatter.parse(input);
-    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
+  onLoadingChange(event){
+    this.loading = event;
+    console.log(event);
   }
 }
 
