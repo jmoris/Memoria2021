@@ -26,8 +26,6 @@ import { UserActivityComponent } from './project/user-activity/user-activity.com
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
-import { DatetimerangepickerModule } from 'angular-datetimerangepicker';
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
