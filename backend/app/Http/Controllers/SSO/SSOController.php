@@ -95,7 +95,7 @@ class SSOController extends Controller
         $role = Role::find($rolePivot->pivot->role_id);
         $tokenResult = $user->createToken('authToken')->plainTextToken;
 
-        return redirect("http://localhost:4200/#/sessions/oauth2/signin?" . http_build_query([
+        return redirect("http://ghtracker.site/#/sessions/oauth2/signin?" . http_build_query([
             'success' => true,
             'token' => $tokenResult,
             'role' => $role->name,
