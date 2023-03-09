@@ -36,7 +36,6 @@ const routes: Routes = [
     redirectTo: 'sessions/signin',
     pathMatch: 'full'
   },
-
   {
         path: '',
         component: AuthLayoutComponent,

@@ -130,4 +130,9 @@ export class HeaderSidebarLargeComponent implements OnInit {
       return this.form.get(controlName).hasError(errorName);
     };
 
+    salir(){
+      this.auth.logout();
+      location.href = "http://localhost:8000/home"
+    }
+
 }

@@ -27,6 +27,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     MdRenderModule,
     MatFormFieldModule,
+    NgxDaterangepickerMd,
     MatNativeDateModule
   ],
   declarations: [GestionComponent, AddProjectComponent, DetailsProjectComponent,ProjectComponent,EditProjectComponent,IssuesComponent, InformeMaatComponent, InformeClocComponent, UserActivityComponent]

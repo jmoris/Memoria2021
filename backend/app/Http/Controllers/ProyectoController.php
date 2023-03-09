@@ -12,11 +12,13 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use SolucionTotal\APIGit\API;
 use stdClass;
 
 class ProyectoController extends Controller
 {
-    public function showAll(Request $request){
+    public function showAll(Request $request)
+    {
         // Dependiendo del ROL debera mostrar distintos proyectos, por ej, si es profesor podra ver todos lso proyectos de alumnos
         // si es alumno podra ver solo los proyectos en los que estr asociado, si es admin, podra verlos todos
         $institucion = Institucion::findOrFail($request->institucion);
@@ -27,42 +29,42 @@ class ProyectoController extends Controller
         $filtroSemestre = $request->semester;
         $filtroEstado = $request->status;
         $filtroCurso = $request->curso;
-        if($rol == 'Superadministrador'){
+        if ($rol == 'Superadministrador') {
             $proyectos_arr = [];
             $proyectos = Proyecto::where('ano', $filtroAno)->with('curso');
-            if($filtroSemestre!=null){
+            if ($filtroSemestre != null) {
                 $proyectos->where('semestre', $filtroSemestre);
             }
-            if($filtroEstado!=null){
+            if ($filtroEstado != null) {
                 $proyectos->where('estado', $filtroEstado);
             }
-            if($filtroCurso!=null){
+            if ($filtroCurso != null) {
                 $proyectos->where('curso_id', $filtroCurso);
             }
             $proyectos = $proyectos->get();
-            foreach($proyectos as $proy){
+            foreach ($proyectos as $proy) {
                 $profesor = Curso::find($proy->curso_id)->profesor;
                 $proy->profesor = $profesor;
                 array_push($proyectos_arr, $proy);
             }
             return $proyectos_arr;
-        }else if($rol == 'Administrador'){
+        } else if ($rol == 'Administrador') {
             $cursos = Curso::where('institucion_id', $request->institucion)->get();
             $nproyectos = 0;
             $proyectos = [];
-            foreach($cursos as $curso){
+            foreach ($cursos as $curso) {
                 $dproyectos = $curso->proyectos()->where('ano', $filtroAno)->with('curso');
-                if($filtroSemestre!=null){
+                if ($filtroSemestre != null) {
                     $dproyectos->where('semestre', $filtroSemestre);
                 }
-                if($filtroEstado!=null){
+                if ($filtroEstado != null) {
                     $dproyectos->where('estado', $filtroEstado);
                 }
-                if($filtroCurso!=null){
+                if ($filtroCurso != null) {
                     $dproyectos->where('curso_id', $filtroCurso);
                 }
                 $dproyectos = $dproyectos->get();
-                foreach($dproyectos as $proy){
+                foreach ($dproyectos as $proy) {
                     $profesor = Curso::find($proy->curso_id)->profesor;
                     $proy->profesor = $profesor;
                     array_push($proyectos, $proy);
@@ -70,23 +72,23 @@ class ProyectoController extends Controller
                 $nproyectos += $curso->proyectos()->count();
             }
             return $proyectos;
-        }else if($rol == 'Profesor'){
+        } else if ($rol == 'Profesor') {
             $cursos = $user->cursosAsignados;
             $nproyectos = 0;
             $proyectos = [];
-            foreach($cursos as $curso){
+            foreach ($cursos as $curso) {
                 $dproyectos = $curso->proyectos()->where('ano', $filtroAno)->with('curso');
-                if($filtroSemestre!=null){
+                if ($filtroSemestre != null) {
                     $dproyectos->where('semestre', $filtroSemestre);
                 }
-                if($filtroEstado!=null){
+                if ($filtroEstado != null) {
                     $dproyectos->where('estado', $filtroEstado);
                 }
-                if($filtroCurso!=null){
+                if ($filtroCurso != null) {
                     $dproyectos->where('curso_id', $filtroCurso);
                 }
                 $dproyectos = $dproyectos->get();
-                foreach($dproyectos as $proy){
+                foreach ($dproyectos as $proy) {
                     $profesor = Curso::find($proy->curso_id)->profesor;
                     $proy->profesor = $profesor;
                     array_push($proyectos, $proy);
@@ -94,20 +96,20 @@ class ProyectoController extends Controller
                 $nproyectos += $curso->proyectos()->count();
             }
             return $proyectos;
-        }else if($rol == 'Alumno'){
+        } else if ($rol == 'Alumno') {
             $proyectos = [];
             $dproyectos = $user->proyectos()->where('ano', $filtroAno)->with('curso');
-            if($filtroSemestre!=null){
+            if ($filtroSemestre != null) {
                 $dproyectos->where('semestre', $filtroSemestre);
             }
-            if($filtroEstado!=null){
+            if ($filtroEstado != null) {
                 $dproyectos->where('estado', $filtroEstado);
             }
-            if($filtroCurso!=null){
+            if ($filtroCurso != null) {
                 $dproyectos->where('curso_id', $filtroCurso);
             }
             $dproyectos = $dproyectos->get();
-            foreach($dproyectos as $proy){
+            foreach ($dproyectos as $proy) {
                 $profesor = Curso::find($proy->curso_id)->profesor;
                 $proy->profesor = $profesor;
                 array_push($proyectos, $proy);
@@ -116,39 +118,43 @@ class ProyectoController extends Controller
         }
     }
 
-    public function show($id){
+    public function show($id)
+    {
         // Dependiendo del rol podra ver los proyectos, dependiendo si esta asignado o no
         return Proyecto::where('id', $id)->where('estado', 1)->with('repositorio')->with('usuarios')->first();
     }
 
-    public function userList(Request $request, $id){
+    public function userList(Request $request, $id)
+    {
         $proyecto = Proyecto::find($id);
-        if($proyecto!=null){
+        if ($proyecto != null) {
             $usuarios = $proyecto->usuarios()->pluck('id');
             $lista = Institucion::find($request->institucion)->usuarios()->whereIn('id', $usuarios)->get();
             return response()->json($lista);
-        }else{
+        } else {
             return response()->json([
                 'msg' => 'El proyecto no existe'
             ], 500);
         }
     }
 
-    public function getGitTree(Request $request){
-        $path = public_path('tree_'.$request->tree_id.'.txt');
+    public function getGitTree(Request $request)
+    {
+        $path = public_path('tree_' . $request->tree_id . '.txt');
         $content = file_get_contents($path);
-        if(strlen($content) > 0){
+        if (strlen($content) > 0) {
             return $content;
         }
         return 'No generado';
     }
 
-    public function colaboradoresList(Request $request, $id){
+    public function colaboradoresList(Request $request, $id)
+    {
         $proyecto = Proyecto::find($id);
-        if($proyecto!=null){
+        if ($proyecto != null) {
             $usuarios = $proyecto->colaboradores()->withPivot('gh_user')->get();
             return response()->json($usuarios);
-        }else{
+        } else {
             return response()->json([
                 'msg' => 'El proyecto no existe'
             ], 500);
@@ -156,24 +162,25 @@ class ProyectoController extends Controller
     }
 
 
-    private function getMaatReport($project_id){
-        try{
+    private function getMaatReport($project_id)
+    {
+        try {
             $fila = 1;
             $data = [];
             $project = Proyecto::findOrFail($project_id);
             $repositorio = Repositorio::find($project->repositorio_id);
-            if (($gestor = fopen(public_path($project_id.'_'.$project->repositorio_id.'_hib_freqs.csv'), "r")) !== FALSE) {
+            if (($gestor = fopen(public_path($project_id . '_' . $project->repositorio_id . '_hib_freqs.csv'), "r")) !== FALSE) {
                 while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
                     $numero = count($datos);
                     //echo "<p> $numero de campos en la línea $fila: <br /></p>\n";
                     $fila++;
                     $obj = new stdClass();
-                    if($datos[0] == 'entity' || $datos[1] == 'n-revs'){
+                    if ($datos[0] == 'entity' || $datos[1] == 'n-revs') {
                         continue;
                     }
-                    for ($c=0; $c < $numero; $c++) {
+                    for ($c = 0; $c < $numero; $c++) {
                         $col[$c] = $datos[$c];
-                        if($c == 0)
+                        if ($c == 0)
                             $obj->entity = $datos[$c];
                         else
                             $obj->nrevs = $datos[$c];
@@ -182,35 +189,36 @@ class ProyectoController extends Controller
                 }
                 fclose($gestor);
             }
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return [];
         }
         return $data;
     }
 
-    private function getKlocReport($project_id){
-        try{
+    private function getKlocReport($project_id)
+    {
+        try {
             $fila = 1;
             $data = [];
             $resumen = [];
             $project = Proyecto::findOrFail($project_id);
             $repositorio = Repositorio::find($project->repositorio_id);
-            if (($gestor = fopen(public_path($project_id.'_'.$project->repositorio_id.'_hib_lines.csv'), "r")) !== FALSE) {
+            if (($gestor = fopen(public_path($project_id . '_' . $project->repositorio_id . '_hib_lines.csv'), "r")) !== FALSE) {
                 while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
                     $numero = count($datos);
                     //echo "<p> $numero de campos en la línea $fila: <br /></p>\n";
                     $fila++;
                     $obj = new stdClass();
-                    if($datos[0] == 'language' || $datos[1] == 'filename'){
+                    if ($datos[0] == 'language' || $datos[1] == 'filename') {
                         continue;
                     }
-                    if($datos[0] == 'SUM'){
+                    if ($datos[0] == 'SUM') {
                         $resumen = [
                             'blank' => $datos[2],
                             'comment' => $datos[3],
                             'code' => $datos[4]
                         ];
-                    }else{
+                    } else {
                         $obj->language = $datos[0];
                         $obj->file = $datos[1];
                         $obj->blank = $datos[2];
@@ -221,31 +229,32 @@ class ProyectoController extends Controller
                 }
                 fclose($gestor);
             }
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return [];
         }
         return ['resumen' => $resumen, 'data' => $data];
     }
 
-    private function getFileRangeComplexityAnalysis($project_id, $entity, $desde){
-        try{
+    private function getFileRangeComplexityAnalysis($project_id, $entity, $desde)
+    {
+        try {
             $project = Proyecto::findOrFail($project_id);
 
             $repositorio = Repositorio::find($project->repositorio_id);
             $nombre = explode('/', $repositorio->nombre);
             $path = public_path();
             $path = str_replace(' ', '\ ', $path);
-            $path_project = $path.'/'.$nombre[1];
+            $path_project = $path . '/' . $nombre[1];
             /** AQUI BUSCAR COMO OBTENER LOS HASH SEGUN FECHA */
 
-            $file = file_get_contents(public_path($project_id.'_'.$project->repositorio_id.'_testLS2.log'));
+            $file = file_get_contents(public_path($project_id . '_' . $project->repositorio_id . '_testLS2.log'));
             $lines = explode(PHP_EOL, $file);
             $commits = [];
-            foreach($lines as $line){
-                if(str_starts_with($line, '[')){
+            foreach ($lines as $line) {
+                if (str_starts_with($line, '[')) {
                     preg_match("/\d{4}-\d{2}-\d{2}/", $line, $match, PREG_OFFSET_CAPTURE);
                     $index = $match[0][1];
-                    $msg = substr($line, $index+11, strlen($line)-1);
+                    $msg = substr($line, $index + 11, strlen($line) - 1);
                     preg_match('/\[(.*?)\]/', $line, $matches); // Outputs 1
                     array_push($commits, [
                         'sha' => $matches[1],
@@ -256,17 +265,17 @@ class ProyectoController extends Controller
             }
             $rangeEnd = strtotime('today');
             $rangeStart = strtotime($desde);
-            $filtered = array_filter($commits, function($e) use ($rangeEnd, $rangeStart){
+            $filtered = array_filter($commits, function ($e) use ($rangeEnd, $rangeStart) {
                 $utime = strtotime($e['fecha']);
                 return $utime <= $rangeEnd && $utime >= $rangeStart;
             });
             $filtered = array_values($filtered);
-            if(empty($filtered)){
-                return [ 'x' => [], 'y' => [] ];
+            if (empty($filtered)) {
+                return ['x' => [], 'y' => []];
             }
             $start_sha = $filtered[0]['sha'];
-            $end_sha = $filtered[count($filtered)-1]['sha'];
-            $str = 'cd '.$path_project.' && python2 ../scripts/git_complexity_trend.py --end '.$start_sha.' --start '.$end_sha.' --file '.$entity;
+            $end_sha = $filtered[count($filtered) - 1]['sha'];
+            $str = 'cd ' . $path_project . ' && python2 ../scripts/git_complexity_trend.py --end ' . $start_sha . ' --start ' . $end_sha . ' --file ' . $entity;
             Log::info($str);
             $res = shell_exec($str);
             $lines = explode(PHP_EOL, $res);
@@ -274,65 +283,85 @@ class ProyectoController extends Controller
                 'x' => [],
                 'y' => []
             ];
-            for($i = 1; $i < count($lines)-1; $i++){
+            for ($i = 1; $i < count($lines) - 1; $i++) {
                 $values = explode(',', $lines[$i]);
                 array_push($data['x'], $i);
                 array_push($data['y'], $values[1]);
             }
             return $data;
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return $ex;
         }
-
     }
 
-    public function getUserActivity(Request $request){
-        try{
+    public function getUserActivity(Request $request)
+    {
+        try {
             $user = auth()->user();
-            $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
+            $api = new \SolucionTotal\APIGit\API($user->gh_user, $user->gh_token);
 
             $project = Proyecto::findOrFail($request->project_id);
             $collabs = $project->colaboradores()->where('user_id', $request->user)->withPivot('gh_user')->get();
             $repositorio = Repositorio::find($project->repositorio_id);
             $nombre = explode('/', $repositorio->nombre);
             $stats = $api->getStats($nombre[0], $nombre[1], 'contributors');
+            $issues = $api->getIssues($nombre[0], $nombre[1], API::ISSUES_ALL);
+            Log::info("Issues\r\n".print_r($issues, true));
             $desde = strtotime($request->from_date);
             $hasta = strtotime($request->to_date);
             $data = [];
-                $data = [
-                    'unix_weeks' => [],
-                    'weeks' => [],
-                    'additions' => [],
-                    'deletions' => [],
-                    'commits' => []
-                ];
-                Log::info($stats);
-                foreach($stats as $stat){
-                    if($stat->author->login == $request->gh_user){
-                        foreach($stat->weeks as $info){
-                            if($info->w >= $desde && $info->w <= $hasta){
-                                array_push($data['unix_weeks'], $info->w);
-                                array_push($data['weeks'], date('d/m/Y', $info->w));
-                                array_push($data['additions'], $info->a);
-                                array_push($data['deletions'], $info->d);
-                                array_push($data['commits'], $info->c);
-                            }else{
-                                break;
-                            }
-                        }
-                        break;
+            $data = [
+                'unix_weeks' => [],
+                'weeks' => [],
+                'additions' => [],
+                'deletions' => [],
+                'commits' => [],
+                'open_issues' => 0,
+                'closed_issues' => 0,
+                'total_issues' => count($issues)
+            ];
+            foreach($issues as $issue){
+                if($issue->user->login == $request->gh_user||self::userIsAsigneed($request->gh_user, $issue)){
+                    if($issue->state == 'open'){
+                        $data['open_issues'] += 1;
+                    }else if($issue->state == 'closed'){
+                        $data['closed_issues'] += 1;
                     }
                 }
+            }
+            foreach ($stats as $stat) {
+                if ($stat->author->login == $request->gh_user) {
+                    foreach ($stat->weeks as $info) {
+                        Log::info('Semana:  ' . date('d-m-Y', $info->w) . ' Adiciones:' . $info->a . 'Eliminaciones:' . $info->d . ' Commits:' . $info->c);
+                        if ($info->w >= $desde && $info->w <= $hasta) {
+                            array_push($data['unix_weeks'], $info->w);
+                            array_push($data['weeks'], date('d/m/Y', $info->w));
+                            array_push($data['additions'], $info->a);
+                            array_push($data['deletions'], $info->d);
+                            array_push($data['commits'], $info->c);
+                        }
+                    }
+                }
+            }
             return $data;
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return $ex;
         }
-
     }
 
-    public function printReport(Request $request){
+    private function userIsAsigneed($gh_user, $issue){
+        foreach($issue->assignees as $user){
+            if($user->login == $gh_user){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function printReport(Request $request)
+    {
         $user = $request->user();
-        $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
+        $api = new \SolucionTotal\APIGit\API($user->gh_user, $user->gh_token);
 
         $usuario = $api->getCurrentUser();
 
@@ -352,9 +381,9 @@ class ProyectoController extends Controller
         $ncommits = 0;
         $arr = [];
 
-        $ncommits = shell_exec('cd '.$path.'/'.$nombre[1].' &&  git rev-list HEAD --count');
+        $ncommits = shell_exec('cd ' . $path . '/' . $nombre[1] . ' &&  git rev-list HEAD --count');
         $collabs = [];
-        foreach($collab as $col){
+        foreach ($collab as $col) {
             array_push($collabs, ["name" => $col->login, "avatar" => $col->avatar_url]);
         }
         $basicas = [
@@ -371,11 +400,11 @@ class ProyectoController extends Controller
         $kloc = $this->getKlocReport($request->project_id);
 
 
-        $last_commit = shell_exec('cd '.$path.'/'.$nombre[1].' &&  git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
+        $last_commit = shell_exec('cd ' . $path . '/' . $nombre[1] . ' &&  git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
         $last_commit = addslashes($last_commit);
         $fecha = explode(';', $last_commit);
         $data = [];
-        foreach($collabs as $collab){
+        foreach ($collabs as $collab) {
             $data[$collab['name']] = [
                 'unix_weeks' => [],
                 'weeks' => [],
@@ -384,16 +413,16 @@ class ProyectoController extends Controller
                 'commits' => []
             ];
 
-            foreach($stats as $stat){
-                if($stat->author->login == $collab['name']){
-                    foreach($stat->weeks as $info){
-                        if($info->w <= strtotime($fecha[2])){
+            foreach ($stats as $stat) {
+                if ($stat->author->login == $collab['name']) {
+                    foreach ($stat->weeks as $info) {
+                        if ($info->w <= strtotime($fecha[2])) {
                             array_push($data[$collab['name']]['unix_weeks'], $info->w);
                             array_push($data[$collab['name']]['weeks'], date('d/m/Y', $info->w));
                             array_push($data[$collab['name']]['additions'], $info->a);
                             array_push($data[$collab['name']]['deletions'], $info->d);
                             array_push($data[$collab['name']]['commits'], $info->c);
-                        }else{
+                        } else {
                             break;
                         }
                     }
@@ -402,17 +431,17 @@ class ProyectoController extends Controller
             }
         }
         $graficos = [];
-        foreach($collabs as $collab){
-            $grafico1 = shell_exec('cd '.$path.' && python2 grafico_usuario.py  \''.json_encode($data[$collab['name']]). '\'');
-            $grafico2 = shell_exec('cd '.$path.' && python2 grafico_usuario_commits.py  \''.json_encode($data[$collab['name']]). '\'');
+        foreach ($collabs as $collab) {
+            $grafico1 = shell_exec('cd ' . $path . ' && python2 grafico_usuario.py  \'' . json_encode($data[$collab['name']]) . '\'');
+            $grafico2 = shell_exec('cd ' . $path . ' && python2 grafico_usuario_commits.py  \'' . json_encode($data[$collab['name']]) . '\'');
             $graficos[$collab['name']] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
             ];
         }
         $info = [];
-        foreach($branches as $branch){
-            if(!str_starts_with($branch->name,'dependabot')){
+        foreach ($branches as $branch) {
+            if (!str_starts_with($branch->name, 'dependabot')) {
                 $commit = $api->getCommit($nombre[0], $nombre[1], $branch->commit->sha);
                 array_push($info, [
                     'name' => $branch->name,
@@ -426,12 +455,12 @@ class ProyectoController extends Controller
         $entity1 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[0]->entity, $repo->created_at);
         $entity2 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[1]->entity, $repo->created_at);
         $entity3 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[2]->entity, $repo->created_at);
-        $str = 'cd '.$path.' && /usr/bin/python2 grafico.py ';
-        $grafico1 = shell_exec($str.implode(',',$entity1['x']).' '.implode(',',$entity1['y']));
-        $grafico2 = shell_exec($str.implode(',',$entity2['x']).' '.implode(',',$entity2['y']));
-        $grafico3 = shell_exec($str.implode(',',$entity3['x']).' '.implode(',',$entity3['y']));
+        $str = 'cd ' . $path . ' && /usr/bin/python2 grafico.py ';
+        $grafico1 = shell_exec($str . implode(',', $entity1['x']) . ' ' . implode(',', $entity1['y']));
+        $grafico2 = shell_exec($str . implode(',', $entity2['x']) . ' ' . implode(',', $entity2['y']));
+        $grafico3 = shell_exec($str . implode(',', $entity3['x']) . ' ' . implode(',', $entity3['y']));
         Log::info("IMPRESION DE GRAFICO");
-        Log::info($str.implode(',',$entity1['x']).' '.implode(',',$entity1['y']));
+        Log::info($str . implode(',', $entity1['x']) . ' ' . implode(',', $entity1['y']));
         $html = '<style>
         @media print {
           .pagebreak { page-break-before: always; } /* page-break-after works, as well */
@@ -463,33 +492,33 @@ class ProyectoController extends Controller
 
       <div>
         <h2 class="centro">Reporte de proyecto</h2>
-        <p class="centro subtitulo"><i>'.$basicas['nombre'].'</i></p>
+        <p class="centro subtitulo"><i>' . $basicas['nombre'] . '</i></p>
         </br>
         <h3>1.- Métricas básicas</h3>
         <table>
           <tr>
             <td>Cantidad de commits:</td>
-            <td>'.$basicas['ncommits'].'</td>
+            <td>' . $basicas['ncommits'] . '</td>
           </tr>
           <tr>
             <td>Cantidad de issues:</td>
-            <td>'.$basicas['issues'].'</td>
+            <td>' . $basicas['issues'] . '</td>
           </tr>
           <tr>
             <td>Cantidad de colaboradores:</td>
-            <td>'.count($basicas['collabs']).'</td>
+            <td>' . count($basicas['collabs']) . '</td>
           </tr>
           <tr>
             <td>Cantidad de branchs:</td>
-            <td>'.$basicas['branches'].'</td>
+            <td>' . $basicas['branches'] . '</td>
           </tr>
         </table>
         <p><i>La información de métricas básicas podria variar con respecto a los graficos, debido a que la información de las métricas básicas es obtenido directamente del registro de eventos del proyecto, sin embargo, los gráficos son generadores con la información entregada por la API de Github.</i></p>';
         $html .= '<h3>2.- Colaboradores</h3>
                     <table styke="width:100%;">';
-        foreach($graficos as $key => $value){
-            $html .= '<tr><td>'.$key.'</td></tr>';
-            $html .= '<tr><td><img src="data:image/png;base64,'.$value['activity'].'" style="width: 50%" border="0" /></td><td><img src="data:image/png;base64,'.$value['commits'].'" style="width: 50%" border="0" /></tr>';
+        foreach ($graficos as $key => $value) {
+            $html .= '<tr><td>' . $key . '</td></tr>';
+            $html .= '<tr><td><img src="data:image/png;base64,' . $value['activity'] . '" style="width: 50%" border="0" /></td><td><img src="data:image/png;base64,' . $value['commits'] . '" style="width: 50%" border="0" /></tr>';
         }
         $html .= '</table>';
         $html .= '<h3>3.- Branches</h3>
@@ -504,12 +533,12 @@ class ProyectoController extends Controller
                     </thead>
                     <tbody>
                     ';
-        foreach($info as $branch){
+        foreach ($info as $branch) {
             $html .= '<tr>';
-            $html .= '<td>'.$branch['name'].'</td>';
-            $html .= '<td>'.date('d/m/Y', strtotime($branch['last_update'])).'</td>';
-            $html .= '<td>'.$branch['author'].'</td>';
-            $html .= '<td>'.$branch['message'].'</td>';
+            $html .= '<td>' . $branch['name'] . '</td>';
+            $html .= '<td>' . date('d/m/Y', strtotime($branch['last_update'])) . '</td>';
+            $html .= '<td>' . $branch['author'] . '</td>';
+            $html .= '<td>' . $branch['message'] . '</td>';
             $html .= '<tr>';
         }
         $html .= '</tbody></table>';
@@ -520,19 +549,19 @@ class ProyectoController extends Controller
             <table>
             <tr>
                 <td>Cantidad de archivos:</td>
-                <td>'.count($kloc['data']).'</td>
+                <td>' . count($kloc['data']) . '</td>
             </tr>
             <tr>
                 <td>Lineas en blanco:</td>
-                <td>'.$kloc['resumen']['blank'].'</td>
+                <td>' . $kloc['resumen']['blank'] . '</td>
             </tr>
             <tr>
                 <td>Lineas comentadas:</td>
-                <td>'.$kloc['resumen']['comment'].'</td>
+                <td>' . $kloc['resumen']['comment'] . '</td>
             </tr>
             <tr>
                 <td>Lineas de codigo:</td>
-                <td>'.$kloc['resumen']['code'].'</td>
+                <td>' . $kloc['resumen']['code'] . '</td>
             </tr>
             </table>
         </div>
@@ -547,16 +576,16 @@ class ProyectoController extends Controller
           </thead>
           <tbody>
             <tr>
-              <td>'.$maat[0]->entity.'</td>
-              <td>'.$maat[0]->nrevs.'</td>
+              <td>' . $maat[0]->entity . '</td>
+              <td>' . $maat[0]->nrevs . '</td>
             <tr/>
             <tr>
-            <td>'.$maat[1]->entity.'</td>
-            <td>'.$maat[1]->nrevs.'</td>
+            <td>' . $maat[1]->entity . '</td>
+            <td>' . $maat[1]->nrevs . '</td>
             <tr/>
             <tr>
-            <td>'.$maat[2]->entity.'</td>
-            <td>'.$maat[2]->nrevs.'</td>
+            <td>' . $maat[2]->entity . '</td>
+            <td>' . $maat[2]->nrevs . '</td>
             <tr/>
           </tbody>
         </table>
@@ -564,22 +593,23 @@ class ProyectoController extends Controller
         <p>Para el analisis de las entidades con mas revisiones listadas anteriormente, se utilizara el siguiente criterio:</p>
       <img src="https://i.ibb.co/jk1VtMy/Captura-de-Pantalla-2021-10-19-a-la-s-02-26-27.png" alt="Captura-de-Pantalla-2021-10-19-a-la-s-02-26-27" border="0"></a>
       <div class="pagebreak"> </div>
-      <p>'.$maat[0]->entity.'</p>
-      <img src="data:image/png;base64,'.$grafico1.'" style="width:50%;" alt="stvgstn5" border="0" />
-      <p>'.$maat[1]->entity.'</p>
-      <img src="data:image/png;base64,'.$grafico2.'" style="width:50%;" alt="c3zdghyrf" border="0" />
-      <p>'.$maat[2]->entity.'</p>
-      <img src="data:image/png;base64,'.$grafico3.'" style="width:50%;" alt="c3zdghyrf" border="0" />
+      <p>' . $maat[0]->entity . '</p>
+      <img src="data:image/png;base64,' . $grafico1 . '" style="width:50%;" alt="stvgstn5" border="0" />
+      <p>' . $maat[1]->entity . '</p>
+      <img src="data:image/png;base64,' . $grafico2 . '" style="width:50%;" alt="c3zdghyrf" border="0" />
+      <p>' . $maat[2]->entity . '</p>
+      <img src="data:image/png;base64,' . $grafico3 . '" style="width:50%;" alt="c3zdghyrf" border="0" />
       </div>';
-      $mpdf = new \Mpdf\Mpdf();
+        $mpdf = new \Mpdf\Mpdf();
         $mpdf->WriteHTML($html);
         $string = $mpdf->Output('filename.pdf', \Mpdf\Output\Destination::STRING_RETURN);
         return response()->json(['pdf' => base64_encode($string)]);
     }
 
-    public function printUserReport(Request $request){
+    public function printUserReport(Request $request)
+    {
         $user = User::find($request->user);
-        $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
+        $api = new \SolucionTotal\APIGit\API($user->gh_user, $user->gh_token);
 
         $usuario = $api->getCurrentUser();
 
@@ -592,11 +622,11 @@ class ProyectoController extends Controller
         $stats = $api->getStats($nombre[0], $nombre[1], 'contributors');
         $path = public_path();
         $path = str_replace(' ', '\ ', $path);
-        $last_commit = shell_exec('cd '.$path.'/'.$nombre[1].' && git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
+        $last_commit = shell_exec('cd ' . $path . '/' . $nombre[1] . ' && git log --pretty=format:"%h;%an;%ad;%s" --date=iso -n 1');
         $last_commit = addslashes($last_commit);
         $fecha = explode(';', $last_commit);
         $data = [];
-        foreach($collabs as $collab){
+        foreach ($collabs as $collab) {
             $issues += $api->getIssuesCount($nombre[0], $nombre[1], 2, 1, $collab->pivot->gh_user);
             $data[$collab->pivot->gh_user] = [
                 'unix_weeks' => [],
@@ -605,17 +635,17 @@ class ProyectoController extends Controller
                 'deletions' => [],
                 'commits' => []
             ];
-            foreach($stats as $stat){
-                if($stat->author->login == $collab->pivot->gh_user){
-                    foreach($stat->weeks as $info){
-                        if($info->w <= strtotime($fecha[2])){
+            foreach ($stats as $stat) {
+                if ($stat->author->login == $collab->pivot->gh_user) {
+                    foreach ($stat->weeks as $info) {
+                        if ($info->w <= strtotime($fecha[2])) {
                             array_push($data[$collab->pivot->gh_user]['unix_weeks'], $info->w);
                             array_push($data[$collab->pivot->gh_user]['weeks'], date('d/m/Y', $info->w));
                             array_push($data[$collab->pivot->gh_user]['additions'], $info->a);
                             array_push($data[$collab->pivot->gh_user]['deletions'], $info->d);
                             array_push($data[$collab->pivot->gh_user]['commits'], $info->c);
                             $commits += $info->c;
-                        }else{
+                        } else {
                             break;
                         }
                     }
@@ -624,9 +654,9 @@ class ProyectoController extends Controller
             }
         }
         $graficos = [];
-        foreach($collabs as $collab){
-            $grafico1 = shell_exec('cd '.$path.' && python2 grafico_usuario.py  \''.json_encode($data[$collab->pivot->gh_user]). '\'');
-            $grafico2 = shell_exec('cd '.$path.' && python2 grafico_usuario_commits.py  \''.json_encode($data[$collab->pivot->gh_user]). '\'');
+        foreach ($collabs as $collab) {
+            $grafico1 = shell_exec('cd ' . $path . ' && python2 grafico_usuario.py  \'' . json_encode($data[$collab->pivot->gh_user]) . '\'');
+            $grafico2 = shell_exec('cd ' . $path . ' && python2 grafico_usuario_commits.py  \'' . json_encode($data[$collab->pivot->gh_user]) . '\'');
             $graficos[$collab->pivot->gh_user] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
@@ -653,43 +683,44 @@ class ProyectoController extends Controller
 
       <div>
         <h2 class="centro">Reporte de usuario</h2>
-        <p class="centro subtitulo"><i>'.$nombre[1].'</i></p>
-        <p class="centro subtitulo"><i>'.$user->name.' '.$user->lastname.'</i></p>
+        <p class="centro subtitulo"><i>' . $nombre[1] . '</i></p>
+        <p class="centro subtitulo"><i>' . $user->name . ' ' . $user->lastname . '</i></p>
         </br>
         <h3>1.- Métricas básicas</h3>
         <table>
           <tr>
             <td>Cantidad de commits:</td>
-            <td>'.$commits.'</td>
+            <td>' . $commits . '</td>
           </tr>
           <tr>
             <td>Cantidad de issues:</td>
-            <td>'.$issues.'</td>
+            <td>' . $issues . '</td>
           </tr>
         </table>
         <p><i>La información de métricas básicas podria variar con respecto a los graficos, debido a que la información de las métricas básicas es obtenido directamente del registro de eventos del proyecto, sin embargo, los gráficos son generadores con la información entregada por la API de Github.</i></p>';
         $html .= '<h4>Colaboradores</h4>
         <table styke="width:100%;">';
-        foreach($graficos as $key => $value){
-            $html .= '<tr><td>'.$key.'</td></tr>';
-            $html .= '<tr><td><img src="data:image/png;base64,'.$value['activity'].'" style="width: 50%" border="0" /></td><td><img src="data:image/png;base64,'.$value['commits'].'" style="width: 50%" border="0" /></tr>';
+        foreach ($graficos as $key => $value) {
+            $html .= '<tr><td>' . $key . '</td></tr>';
+            $html .= '<tr><td><img src="data:image/png;base64,' . $value['activity'] . '" style="width: 50%" border="0" /></td><td><img src="data:image/png;base64,' . $value['commits'] . '" style="width: 50%" border="0" /></tr>';
         }
         $html .= '</table>';
         $html .= '</div>';
-      $mpdf = new \Mpdf\Mpdf();
+        $mpdf = new \Mpdf\Mpdf();
         $mpdf->WriteHTML($html);
         $string = $mpdf->Output('filename.pdf', \Mpdf\Output\Destination::STRING_RETURN);
 
         return response()->json(['pdf' => base64_encode($string)]);
     }
 
-    public function assignUser(Request $request, $id){
-        try{
+    public function assignUser(Request $request, $id)
+    {
+        try {
             $validador = Validator::make($request->all(), [
                 'user_id' => 'required|exists:users,id',
             ]);
 
-            if($validador->fails()){
+            if ($validador->fails()) {
                 return response()->json([
                     'status' => 500,
                     'message' => 'No se pudo validar los parametros',
@@ -704,7 +735,7 @@ class ProyectoController extends Controller
                 'status' => 200,
                 'message' => 'El usuario fue asignado correctamente.'
             ]);
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return response()->json([
                 'status' => 500,
                 'message' => 'Error al asignar un usuario al proyecto',
@@ -713,14 +744,15 @@ class ProyectoController extends Controller
         }
     }
 
-    public function dettachUserFromProject(Request $request, $id){
-        try{
+    public function dettachUserFromProject(Request $request, $id)
+    {
+        try {
             $validador = Validator::make($request->all(), [
                 'user_id' => 'required|exists:users,id',
                 'gh_user' => 'required'
             ]);
 
-            if($validador->fails()){
+            if ($validador->fails()) {
                 return response()->json([
                     'status' => 500,
                     'message' => 'No se pudo validar los parametros',
@@ -735,7 +767,7 @@ class ProyectoController extends Controller
                 'status' => 200,
                 'message' => 'El colaborador fue eliminado correctamente.'
             ]);
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return $ex;
             return response()->json([
                 'status' => 500,
@@ -745,14 +777,15 @@ class ProyectoController extends Controller
         }
     }
 
-    public function attachUserToProject(Request $request, $id){
-        try{
+    public function attachUserToProject(Request $request, $id)
+    {
+        try {
             $validador = Validator::make($request->all(), [
                 'user_id' => 'required|exists:users,id',
                 'gh_user' => 'required'
             ]);
 
-            if($validador->fails()){
+            if ($validador->fails()) {
                 return response()->json([
                     'status' => 500,
                     'message' => 'No se pudo validar los parametros',
@@ -767,7 +800,7 @@ class ProyectoController extends Controller
                 'status' => 200,
                 'message' => 'El colaborador fue asignado correctamente.'
             ]);
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return response()->json([
                 'status' => 500,
                 'message' => 'Error al asignar un colaborador al proyecto',
@@ -776,8 +809,9 @@ class ProyectoController extends Controller
         }
     }
 
-    public function create(Request $request){
-        try{
+    public function create(Request $request)
+    {
+        try {
             $validador = Validator::make($request->all(), [
                 'name' => 'required',
                 'course' => 'required',
@@ -785,7 +819,7 @@ class ProyectoController extends Controller
                 'semester' => 'required'
             ]);
 
-            if($validador->fails()){
+            if ($validador->fails()) {
                 return response()->json([
                     'success' => false,
                     'message' => 'No se pudo validar los parametros',
@@ -809,7 +843,20 @@ class ProyectoController extends Controller
             $proyecto->repositorio_id = $repo->id;
             $proyecto->save();
 
-            foreach($request->students as $student){
+            $user = $request->user();
+            if($user->gh_token == ''){
+                throw new Exception("El usuario no tiene token de autorizacion.");
+            }
+
+            $api = new \SolucionTotal\APIGit\API($user->gh_user,$user->gh_token);
+
+            $nombre = explode('/', $repo->nombre);
+            $repositorio = $api->getRepo($nombre[0], $nombre[1]);
+            $repo->created_at = $repositorio->created_at;
+            $repo->save();
+
+
+            foreach ($request->students as $student) {
                 $user = User::findOrFail($student['user_id']);
                 $proyecto->usuarios()->sync($user, false);
             }
@@ -818,7 +865,7 @@ class ProyectoController extends Controller
                 'success' => true,
                 'message' => 'Proyecto creada correctamente'
             ]);
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return response()->json([
                 'success' => false,
                 'message' => 'Error al crear proyecto',
@@ -827,8 +874,9 @@ class ProyectoController extends Controller
         }
     }
 
-    public function update(Request $request, $id){
-        try{
+    public function update(Request $request, $id)
+    {
+        try {
             $validador = Validator::make($request->all(), [
                 'name' => 'required',
                 'course' => 'required',
@@ -836,7 +884,7 @@ class ProyectoController extends Controller
                 'semester' => 'required'
             ]);
 
-            if($validador->fails()){
+            if ($validador->fails()) {
                 return response()->json([
                     'success' => false,
                     'message' => 'No se pudo validar los parametros',
@@ -860,7 +908,7 @@ class ProyectoController extends Controller
             $proyecto->save();
 
             $proyecto->usuarios()->detach();
-            foreach($request->students as $student){
+            foreach ($request->students as $student) {
                 $user = User::findOrFail($student['user_id']);
                 $proyecto->usuarios()->sync([$user->id], false);
             }
@@ -869,7 +917,7 @@ class ProyectoController extends Controller
                 'success' => true,
                 'message' => 'Proyecto modificada correctamente'
             ]);
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             Log::critical($ex);
             return response()->json([
                 'success' => false,
@@ -879,11 +927,12 @@ class ProyectoController extends Controller
         }
     }
 
-    public function delete($id){
-        try{
+    public function delete($id)
+    {
+        try {
             $curso = Proyecto::findOrFail($id);
             $curso->delete();
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return response()->json([
                 'success' => false,
                 'message' => 'Error al eliminar proyecto',
@@ -892,12 +941,13 @@ class ProyectoController extends Controller
         }
     }
 
-    public function endProject(Request $request){
-        try{
+    public function endProject(Request $request)
+    {
+        try {
             $proyecto = Proyecto::find($request->project_id);
             $proyecto->estado = 0;
             $proyecto->save();
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return response()->json([
                 'success' => false,
                 'message' => 'Error terminar proyecto',

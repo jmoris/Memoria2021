@@ -1,3 +1,23 @@
-<div>
-
+<div mat-dialog-title>
+  <h4>Graficos de actividad - {{miembroProyecto?.name}}</h4>
+  <form [formGroup]="form" class="col-md-12">
+    <mat-form-field appearance="standard" class="input" style="width:100%">
+      <mat-label>Rango de fechas</mat-label>
+      <input type="text" matInput ngxDaterangepickerMd formControlName="selected" placeholder="Seleccione el rango"
+        (change)="change($event)" [linkedCalendars]="false"
+        [showDropdowns]="true" [locale]="locale" [lockStartDate]="false" />
+    </mat-form-field>
+  </form>
 </div>
+<mat-dialog-content style="height:750px">
+
+  <apx-chart [series]="chartOptions3.series" [chart]="chartOptions3.chart" [xaxis]="chartOptions3.xaxis"
+    [title]="chartOptions3.title"></apx-chart>
+  <apx-chart [series]="chartOptions2.series" [chart]="chartOptions2.chart" [xaxis]="chartOptions2.xaxis"
+    [title]="chartOptions2.title"></apx-chart>
+  <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels"
+    [title]="chartOptions.title"></apx-chart>
+</mat-dialog-content>
+<mat-dialog-actions style="height:50px" align="end">
+  <button mat-flat-button color="warn" mat-dialog-close tabindex="-1">Cerrar</button>
+</mat-dialog-actions>

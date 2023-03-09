@@ -4,6 +4,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { FillComponent } from './fill/fill.component';
+import { OauthComponent } from './oauth/oauth.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
     path: 'fill',
     component: FillComponent
   },
+  {
+    path: 'oauth2/signin',
+    component: OauthComponent
+  }
 ];
 
 @NgModule({

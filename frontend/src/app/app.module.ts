@@ -17,6 +17,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { getSpanishPaginatorIntl } from './spanish-paginator-intl';
 import { NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MomentDateFormatter } from './_helpers/momentdate.formatter';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 /**
  * Custom angular notifier options
@@ -80,6 +81,7 @@ const customNotifierOptions: NotifierOptions = {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxDaterangepickerMd.forRoot(),
     NotifierModule.withConfig(customNotifierOptions),
   ],
   exports: [

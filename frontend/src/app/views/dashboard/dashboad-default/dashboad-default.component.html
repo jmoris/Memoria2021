@@ -60,7 +60,7 @@
                                 <th>Nombre</th>
                             </tr></thead>
                             <tbody>
-                               <tr *ngFor="let proyecto of info.proyectos_act">
+                               <tr *ngFor="let proyecto of info?.proyectos_act">
                                    <td>{{proyecto.nombre}}</td>
                                    <td>{{proyecto.ano}}</td>
                                    <td>{{proyecto.semestre}}</td>
@@ -87,7 +87,7 @@
                                 <th>Nombre</th>
                             </tr></thead>
                             <tbody>
-                               <tr *ngFor="let proyecto of info.proyectos_inact">
+                               <tr *ngFor="let proyecto of info?.proyectos_inact">
                                    <td>{{proyecto.nombre}}</td>
                                    <td>{{proyecto.ano}}</td>
                                    <td>{{proyecto.semestre}}</td>

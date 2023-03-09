@@ -27,6 +27,9 @@ export class SigninComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        setTimeout(function(){
+            location.href = "http://localhost:8000";
+          },2000);
         this.router.events.subscribe(event => {
             if (event instanceof RouteConfigLoadStart || event instanceof ResolveStart) {
                 this.loadingText = 'Cargando modulos...';

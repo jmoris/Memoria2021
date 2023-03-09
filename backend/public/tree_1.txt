@@ -1,0 +1,830 @@
+* [32b055e][jmoris] (HEAD -> master, origin/master, origin/HEAD, origin/8767557) last deploy
+* [457727d][jmoris] fix migration
+* [90adeb6][jmoris] hot fix
+* [34e5661][jmoris] fix diseño
+* [62428fd][jmoris] hotfix
+* [40afc7c][jmoris] Auto stash before merge of "master" and "origin/master"
+*   [58dd15a][jmoris] Merge remote-tracking branch 'origin/master'
+|\  
+| * [2cc8545][Matías] deploy
+| * [f78d408][Matías] Merge branch 'MatiasP'
+|/| 
+| * [1af0e53][Matías] (origin/MatiasP) fix tamaño matricula
+| * [ae97d6f][Matías] fix matrícula
+* | [dbf4dbd][jmoris] last deploy
+* | [62c8b53][jmoris] Merge remote-tracking branch 'origin/MatiasP'
+|\| 
+| * [8cfdf80][Matías] fix disable user + validar rut inicio sesión por primera vez
+| *   [14c07a1][Matías] Merge remote-tracking branch 'origin/Sepulveda' into MatiasP
+| |\  
+| * \   [7161ef0][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| |\ \  
+* | | | [af8b079][jmoris] deploy final
+* | | |   [a61e7f7][jmoris] Merge remote-tracking branch 'origin/Sepulveda'
+|\ \ \ \  
+| * | | | [9e26762][BastianIgnacio] (origin/Sepulveda) Se muestran los nombres en la tabla, RU y RS
+| | |_|/  
+| |/| |   
+| * | | [e4e7ebf][BastianIgnacio] Modificacion increment controller
+* | | | [642dc47][jmoris] Solucion de bugs
+|/ / /  
+* | | [603923b][jmoris] deploy de cambios
+* | |   [2528af0][jmoris] Merge remote-tracking branch 'origin/Sepulveda'
+|\ \ \  
+| * | | [2b53ca6][BastianIgnacio] Solucion bugs
+| * | |   [095c7e0][BastianIgnacio] Merge remote-tracking branch 'origin/master' into Sepulveda
+| |\ \ \  
+| * | | | [2951444][BastianIgnacio] Cambios curso
+* | | | | [4e59bd0][jmoris] se implemento doc diseño completo
+| |/ / /  
+|/| | |   
+* | | | [27590f9][jmoris] documentos simplificados listos
+* | | | [0886f7a][jmoris] deploy con ultimos cambios y modo prod
+* | | | [c388c1a][jmoris] deploy
+* | | | [9680194][jmoris] algunos fix documento historico simplificado
+* | | | [860c715][jmoris] Deploy en environment prod para pruebas de velocidad y bugs
+* | | | [62f113c][jmoris] Fix de mas errores
+* | | | [3084dbf][jmoris] Se resuelven muchos bugs
+| | | | * [861dafc][GitHub] (origin/dependabot/npm_and_yarn/backend/lodash-4.17.19) Bump lodash from 4.17.15 to 4.17.19 in /backend
+| |_|_|/  
+|/| | |   
+* | | | [65624e9][jmoris] Cambios menores, se arreglan algunos fix
+* | | | [f1ecd99][jmoris] (tag: 0.4) rix
+* | | | [1bd9cd0][jmoris] fix falla
+* | | |   [78002c6][jmoris] Merge branch 'Moris'
+|\ \ \ \  
+| * | | | [ebd7afe][jmoris] (origin/Moris) build deploy
+| * | | | [a5c13b2][jmoris] deplot prod environment
+| * | | | [98e8271][jmoris] deploy finalesss
+| | |_|/  
+| |/| |   
+| * | | [2e04e6a][jmoris] Merge remote-tracking branch 'origin/Sepulveda' into Moris
+| |\| | 
+| | * | [2794a65][BastianIgnacio] Eliminar un usuario de un proyecto
+| | * |   [7083a0e][BastianIgnacio] Merge remote-tracking branch 'origin/Moris' into Sepulveda
+| | |\ \  
+| | * | | [17b3357][BastianIgnacio] Cambios en project y cursos
+| | * | |   [194c974][BastianIgnacio] Merge remote-tracking branch 'origin/Moris' into Sepulveda
+| | |\ \ \  
+| | * | | | [ada9f74][BastianIgnacio] Edicion agregar un estudiante a un curso
+| | * | | |   [864e2b6][BastianIgnacio] Merge remote-tracking branch 'origin/MatiasP' into Sepulveda
+| | |\ \ \ \  
+| * | \ \ \ \   [a1763d7][jmoris] Merge remote-tracking branch 'origin/MatiasP' into Moris
+| |\ \ \ \ \ \  
+| | | |_|_|_|/  
+| | |/| | | |   
+| | * | | | |   [ad69393][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \  
+| | | | |_|_|/  
+| | | |/| | |   
+| | * | | | | [fb9093a][Matías] Modulos ok
+| * | | | | | [c27f097][jmoris] ultimos cambios
+| | |/ / / /  
+| |/| | | |   
+| * | | | | [0187087][jmoris] emnviroment
+| * | | | | [269a83b][jmoris] fix generales
+| * | | | | [3b5552f][jmoris] fix permisos visibilidad
+| * | | | | [4d8a157][jmoris] permisos en back agrupados
+| * | | | | [245ab5d][jmoris] deploy con environment prod
+| * | | | | [b9284bb][jmoris] deploy de ultimos cambios
+| * | | | | [baef699][jmoris] fix detach cursos y proyectos
+| * | | | | [192d7cd][jmoris] se implementan detalles y se quitan bugs
+| * | | | | [fe39b3a][jmoris] Merge remote-tracking branch 'origin/MatiasP' into Moris
+| |\| | | | 
+| | * | | | [bef95ca][Matías] fix
+| | * | | | [0146cc5][Matías] Avance modulos
+| | | |/ /  
+| | |/| |   
+| | * | |   [373c213][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \  
+| | * \ \ \   [afee868][Matías] Merge remote-tracking branch 'origin/MatiasP' into MatiasP
+| | |\ \ \ \  
+| | | * | | | [94f82cf][Matías] Fixs
+| | * | | | |   [80cfc35][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \  
+| | | |/ / / /  
+| | |/| | | |   
+| | * | | | |   [f7d2e2a][Matías] Merge remote-tracking branch 'origin/Sepulveda' into MatiasP
+| | |\ \ \ \ \  
+| | | | |_|/ /  
+| | | |/| | |   
+| | | * | | | [82448a2][BastianIgnacio] Modificacion archivos .ts de componentes de RU Y RS
+| | * | | | |   [0202451][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \  
+| | * \ \ \ \ \   [0175fea][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \  
+| | * | | | | | | [03ac9a5][Matías] Fix
+| | * | | | | | | [d593edd][Matías] Avance
+| * | | | | | | | [a7c6ca1][jmoris] fix de prbolemas por sieño
+| * | | | | | | | [7360128][jmoris] mini fix
+| | |_|_|_|_|_|/  
+| |/| | | | | |   
+| * | | | | | | [e928f19][jmoris] fix menores
+| * | | | | | | [9235571][jmoris] faltaba projectid en modulos
+| * | | | | | | [0cee39a][jmoris] fixx
+| * | | | | | | [1bf0b5d][jmoris] fixxx
+| * | | | | | | [4a34004][jmoris] fix menores
+| * | | | | | | [7487b32][jmoris] fix
+| * | | | | | | [e573e15][jmoris] mini fix parche para migraciones
+| * | | | | | | [7979112][jmoris] avance total
+| | |_|_|_|_|/  
+| |/| | | | |   
+| * | | | | | [dbb5281][jmoris] Se implementan rutas para el crud modulos
+| * | | | | | [c7f19c4][jmoris] implementacion crud y migracion modulos
+| | |_|_|_|/  
+| |/| | | |   
+| * | | | | [67d48fb][jmoris] fix migration user req
+| * | | | | [0cc9ea7][jmoris] fixx
+| * | | | | [f9311bb][jmoris] fix api requisitos
+| | |_|/ /  
+| |/| | |   
+| * | | | [88fc9a1][jmoris] fix tabulaciones y permisos documentos
+| * | | | [9cde285][jmoris] fix active user
+| * | | | [5107679][jmoris] fix menor
+| | |/ /  
+| |/| |   
+| * | | [f874e0b][jmoris] fix menores
+| * | | [935380f][jmoris] Merge remote-tracking branch 'origin/MatiasP' into Moris
+| |\| | 
+| | * |   [b79f7dd][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \  
+| | |/ /  
+| |/| |   
+| * | | [abf19d8][jmoris] fix asignar ayudante
+| * | |   [11f17b3][jmoris] Merge remote-tracking branch 'origin/MatiasP' into Moris
+| |\ \ \  
+| * | | | [5ffd56e][jmoris] fix columna
+| * | | | [c12ae0a][jmoris] fix menor
+| * | | | [8a2f70f][jmoris] deploy environment produccion
+| * | | | [a6f205b][jmoris] Deploy de ultimso cambios
+| | | * | [73a1eac][Matías] Merge remote-tracking branch 'origin/Sepulveda' into MatiasP
+| | | |\| 
+| | | | * [ab9dadf][BastianIgnacio] Modificación modal de RU y RS
+| | | | * [1ba8c0f][BastianIgnacio] Editan detalles de los iconos
+| | | * | [69de6ff][Matías] Avance
+| | |/ /  
+| | * |   [4224694][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \  
+| | |/ /  
+| |/| |   
+| * | | [194e645][jmoris] Avance perfiles y permisos
+| | * | [0bd506f][Matías] Avance asignar ayudante curso
+| | * |   [1583ba9][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \  
+| | |/ /  
+| |/| |   
+| * | | [d03b130][jmoris] Metodo para activar/desactivar usuarios
+| * | |   [54ae47e][jmoris] Merge remote-tracking branch 'origin/MatiasP' into Moris
+| |\ \ \  
+| * | | | [a1a2046][jmoris] Avance T50, T52, T53: Se implemento docs, matriz de trazado, permisos
+| | | * | [e3a9644][Matías] Avance activar/desactivar + agregar ayudante
+| | |/ /  
+| | * | [58caa17][Matías] fix merge
+| | * | [8ce78a2][Matías] Merge remote-tracking branch 'origin/Sepulveda' into MatiasP
+| | |\| 
+| | | * [f0389f9][BastianIgnacio] Creacion de el componento de Modulos y modificacion en tareas
+| | | * [2cd8dee][BastianIgnacio] T46: Tareas (Avance)
+| | * |   [518b30d][Matías] Merge remote-tracking branch 'origin/Rojas' into MatiasP
+| | |\ \  
+| | | * | [40aec83][Thitsugaya1] (origin/Rojas) T51 Avance fixes
+| | | * |   [2358122][Thitsugaya1] Merge remote-tracking branch 'origin/Moris' into Rojas
+| | | |\ \  
+| | |_|/ /  
+| |/| | |   
+| * | | | [22f9931][jmoris] #49 Avance T50: Se implemento generar documentos PDF
+| * | | | [1276fd3][jmoris] deploy ultimos cambios de documentos
+| * | | | [6e71c9e][jmoris] #48 T35: Se implementa la carga de seccion y guardado seccion.
+| * | | | [3f5d2bb][jmoris] #48 Avance T35: Se implementa carga de seccion
+| * | | | [c5161e0][jmoris] #48 Avance T35: Se implementa backend y servicio
+| | | * | [f9aed25][Thitsugaya1] T51 Avance
+| | | * |   [3532b71][Thitsugaya1] Merge remote-tracking branch 'origin/Moris' into Rojas
+| | | |\ \  
+| | |_|/ /  
+| |/| | |   
+| * | | | [e5460b1][jmoris] Fix environment deploy
+| * | | | [e51d8a5][jmoris] Ultimo deploy
+| * | | | [9b5ec1b][jmoris] #47 T25: Se habilita los permisos en front
+| * | | | [25e98e0][jmoris] Deploy de front
+| | * | |   [6ff2c77][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \  
+| | |/ / /  
+| |/| | |   
+| * | | | [7ae2c5f][jmoris] Fix muestra nombre de usuario en barra superior
+| * | | | [2363bd4][jmoris] Si usuario no esta activo, no permite ingreso
+| * | | | [0a6ba81][jmoris] fix menor en migracion
+| * | | | [85c8188][jmoris] deploy del proyecto front
+| * | | |   [5c5ed17][jmoris] Merge remote-tracking branch 'origin/Rojas' into Moris
+| |\ \ \ \  
+| | | |/ /  
+| | |/| |   
+| | * | | [45c7c82][Thitsugaya1] #30 T24
+| * | | |   [f532871][jmoris] Merge remote-tracking branch 'origin/EliasA' into Moris
+| |\ \ \ \  
+| | * | | | [ec3a983][Elías Avendaño Núñez] (origin/EliasA) #40 T46: Cambio de Imagenes a Perfiles Genéricos
+| | * | | |   [691b995][Elías Avendaño Núñez] Merge remote-tracking branch 'origin/Sepulveda' into EliasA
+| | |\ \ \ \  
+| * | \ \ \ \   [2d58239][jmoris] Merge remote-tracking branch 'origin/Mauricio' into Moris
+| |\ \ \ \ \ \  
+| | * | | | | | [b06c61e][mhmorales95] (origin/Mauricio) #37 T37: Avance en deshabilitar un usuario
+| | * | | | | |   [e59bc6f][mhmorales95] Merge remote-tracking branch 'origin/MatiasP' into Mauricio
+| | |\ \ \ \ \ \  
+| | | | |_|_|/ /  
+| | | |/| | | |   
+| | | * | | | | [58d2b9a][Matías] Fix merge
+| | * | | | | | [07330a2][Mauricio Herrera] Merge remote-tracking branch 'origin/MatiasP' into Mauricio
+| | |\| | | | | 
+| | | * | | | |   [62ac72c][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | | |\ \ \ \ \  
+| | | * | | | | | [0d67d00][Matías] #38 T38 - habilitar añadir profesor huésped
+| | | * | | | | |   [2466c36][Matías] Merge remote-tracking branch 'origin/Sepulveda' into MatiasP
+| | | |\ \ \ \ \ \  
+| | | * | | | | | | [434f333][Matías] Avance
+| | | * | | | | | |   [a2a357f][Matías] Merge remote-tracking branch 'origin/Sepulveda' into MatiasP
+| | | |\ \ \ \ \ \ \  
+| | | | | |_|_|/ / /  
+| | | | |/| | | | |   
+| | * | | | | | | |   [5f78aff][Mauricio Herrera] Merge remote-tracking branch 'origin/EliasA' into Mauricio
+| | |\ \ \ \ \ \ \ \  
+| * | | | | | | | | | [7db43dc][jmoris] #47 T25: Cada usuario a su dashboard segun perfil
+| * | | | | | | | | |   [a61ad4a][jmoris] Merge remote-tracking branch 'origin/Moris' into Moris
+| |\ \ \ \ \ \ \ \ \ \  
+| | * | | | | | | | | | [982a9e2][jmoris] #46 T44: Se completa tarea modo simplificado y completo
+| * | | | | | | | | | | [f5e0993][jmoris] #47 T25: Se habilitan los permisos en el backend.
+| * | | | | | | | | | | [d896715][jmoris] #46 T44: Se completa tarea modo simplificado y completo
+| |/ / / / / / / / / /  
+| * | | | | | | | | |   [7fff284][jmoris] Merge remote-tracking branch 'origin/Sepulveda' into Moris
+| |\ \ \ \ \ \ \ \ \ \  
+| | |_|_|_|_|_|/ / / /  
+| |/| | | | | | | | /   
+| | | |_|_|_|_|_|_|/    
+| | |/| | | | | | |     
+| | * | | | | | | | [df3df6b][BastianIgnacio] Implementacion de la interfaz y guardado de docuementos (avence)
+| | | |_|_|_|/ / /  
+| | |/| | | | | |   
+| | * | | | | | | [47f4626][BastianIgnacio] Separación del creador de documentos en un componente aparte
+| | | |_|_|/ / /  
+| | |/| | | | |   
+| | * | | | | | [5e1523a][BastianIgnacio] Solucion de problemas de compilacion al integrar
+| | * | | | | |   [b38e7e4][BastianIgnacio] Merge remote-tracking branch 'origin/Moris' into Sepulveda
+| | |\ \ \ \ \ \  
+| | * \ \ \ \ \ \   [94eb393][BastianIgnacio] Merge remote-tracking branch 'origin/MatiasP' into Sepulveda
+| | |\ \ \ \ \ \ \  
+| | | | |_|_|/ / /  
+| | | |/| | | | |   
+| | | * | | | | | [4e61a0d][Matías] #38 T25: Habilitar Permisos Según Usuario
+| | | * | | | | |   [02a082a][Matías] Merge remote-tracking branch 'origin/Sepulveda' into MatiasP
+| | | |\ \ \ \ \ \  
+| | | |/ / / / / /  
+| | |/| | | | | |   
+| | * | | | | | | [c8f783e][BastianIgnacio] T32: Prepara interfaz grafica documentos
+| | | * | | | | |   [1428232][Matías] Merge remote-tracking branch 'origin/Rojas' into MatiasP
+| | | |\ \ \ \ \ \  
+| | | | | |_|_|_|/  
+| | | | |/| | | |   
+| | | | * | | | |   [278bb56][Thitsugaya1] Merge remote-tracking branch 'origin/Sepulveda' into Rojas
+| | | | |\ \ \ \ \  
+| | | |_|/ / / / /  
+| | |/| | | | | |   
+| | * | | | | | |   [b2ef1c6][BastianIgnacio] Merge remote-tracking branch 'origin/Moris' into Sepulveda
+| | |\ \ \ \ \ \ \  
+| | | | | * \ \ \ \   [a30ce52][Thitsugaya1] Merge remote-tracking branch 'origin/MatiasP' into Rojas
+| | | | | |\ \ \ \ \  
+| | | | | |/ / / / /  
+| | | | |/| | | | |   
+| | | | * | | | | |   [a11ec19][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | | | |\ \ \ \ \ \  
+| | | | |/ / / / / /  
+| | | |/| | | | | |   
+| | | | * | | | | |   [b3e86c0][Matías] Merge remote-tracking branch 'origin/EliasA' into MatiasP
+| | | | |\ \ \ \ \ \  
+| | | | | | |_|_|_|/  
+| | | | | |/| | | |   
+| | | | * | | | | | [49f68d1][Matías] #34 T16: Permitir ediciones de información
+| | | | * | | | | | [f214f65][Matías] T16: Avance
+| | | | | | * | | |   [38bc541][Thitsugaya1] Merge remote-tracking branch 'origin/EliasA' into Rojas
+| | | | | | |\ \ \ \  
+| | | | | | |/ / / /  
+| | | | | |/| | | |   
+| | | | | * | | | | [26bc883][Elías Avendaño Núñez] #36 T40: Cambios Interfaz Gráfica Principal
+| | | | | * | | | |   [123ce7e][Elías Avendaño Núñez] Merge remote-tracking branch 'origin/Moris' into EliasA
+| | | | | |\ \ \ \ \  
+| | | | | | | * | | | [4a2d89f][Thitsugaya1] Merge remote-tracking branch 'origin/Moris' into Rojas
+| | | |_|_|_|/| | | | 
+| | |/| | | |/ / / /  
+| | | | |_|/| | | |   
+| | | |/| | | | | |   
+| | * | | | | | | | [bcba8bb][BastianIgnacio] T42: Correcciones Git con nico
+| | * | | | | | | |   [a063058][BastianIgnacio] Merge remote-tracking branch 'origin/Rojas' into Sepulveda
+| | |\ \ \ \ \ \ \ \  
+| | | |_|_|_|/ / / /  
+| | |/| | | | | | |   
+| | | * | | | | | | [46d8bc2][Thitsugaya1] T16: Permitir Ediciones de Información (Avance)
+| | | * | | | | | | [9f5b214][Thitsugaya1] T16: Permitir Ediciones de Información (Avance)
+| | | * | | | | | | [2d5fd46][Thitsugaya1] T20-2 | T21-2 | T22-2: Habilitar (RU-RS-CP) y T18: Corrección de Rutas
+| | | * | | | | | |   [ab844e9][Elías Avendaño Núñez] Merge branch 'EliasA' into Rojas
+| | | |\ \ \ \ \ \ \  
+| * | | | | | | | | | [6c0e368][jmoris] #45 T47: Proyectos pertenecen a un curso y algunos fix base de datos
+| * | | | | | | | | | [0a4ce45][jmoris] #41 T36: Se implementa carga masiva de estudiantes en Usuarios
+| | |_|_|_|_|_|/ / /  
+| |/| | | | | | | |   
+| * | | | | | | | | [7857710][jmoris] #37 T31-2: Se permite la creacion de cursos solo con el profesor
+| * | | | | | | | | [7530d31][jmoris] T22: Se implemento completamente los casos de prueba
+| | |_|_|/ / / / /  
+| |/| | | | | | |   
+| * | | | | | | | [f76b147][jmoris] Avance T22: Se implemento controlador y front casos de prueba
+| |/ / / / / / /  
+| * | | | | | | [1d1c21b][jmoris] Se cambia environment para el deploy
+| * | | | | | | [e758363][jmoris] T30: Se termino de implementar carga masiva y actualizacion de datos
+| * | | | | | | [c9681b6][jmoris] Avance T30: Se implemento carga masiva estudiantes y registro via correo
+| * | | | | | |   [0bd2a41][jmoris] Merge remote-tracking branch 'origin/EliasA' into Moris
+| |\ \ \ \ \ \ \  
+| | | |_|_|/ / /  
+| | |/| | | | |   
+| | * | | | | | [e6673a1][Elías Avendaño Núñez] #30 T24
+| | * | | | | | [7db184b][Elías Avendaño Núñez] T24: Dashboard por Rol | Admin y Docente
+| | * | | | | |   [5f8f3be][Elías Avendaño Núñez] Merge branch 'master' into EliasA
+| | |\ \ \ \ \ \  
+| | | * \ \ \ \ \   [338576d][Elías Avendaño Núñez] Integración con el Master Presentación Unidad 3
+| | | |\ \ \ \ \ \  
+| | | |/ / / / / /  
+| | |/| | | | | |   
+| | * | | | | | |   [2eae3d2][Elías Avendaño Núñez] Merge branch 'MatiasP' into EliasA
+| | |\ \ \ \ \ \ \  
+| | | | |_|_|/ / /  
+| | | |/| | | | |   
+| | | * | | | | | [980d643][Matías] T16: Permitir Ediciones de Información
+| | | * | | | | |   [1725eb3][Matías] Merge remote-tracking branch 'origin/EliasA' into MatiasP
+| | | |\ \ \ \ \ \  
+| | | | | |_|_|_|/  
+| | | | |/| | | |   
+| | | * | | | | |   [db5b10d][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | | |\ \ \ \ \ \  
+| | |_|/ / / / / /  
+| |/| | | | | | |   
+| | * | | | | | | [4738ad6][Elías Avendaño Núñez] T24: Dashboard por Rol | Avance Ayudante
+| | | |/ / / / /  
+| | |/| | | | |   
+| | * | | | | | [4a8926f][Elías Avendaño Núñez] T30 | Interfaz Gráfica para Nuevo Usuario
+| | * | | | | |   [c17880a][Elías Avendaño Núñez] Merge branch 'Moris' into EliasA
+| | |\ \ \ \ \ \  
+| | |/ / / / / /  
+| |/| | | | | |   
+| * | | | | | | [44869b0][jmoris] fix en deploy
+| * | | | | | |   [7a7ee08][jmoris] Merge remote-tracking branch 'origin/MatiasP' into Moris
+| |\ \ \ \ \ \ \  
+| | | |/ / / / /  
+| | |/| | | | |   
+| | * | | | | | [7c78282][Matías] Fix
+| | * | | | | |   [787165a][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \  
+| | |/ / / / / /  
+| |/| | | | | |   
+| * | | | | | | [3c6f198][jmoris] Cambio environment de API
+| * | | | | | | [9af9b2b][jmoris] T20, T21 y T29: Se habilitan reqs. usuario, software e incrementos.
+| | * | | | | |   [d8d0add][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \  
+| | |/ / / / / /  
+| |/| | | | | |   
+| * | | | | | | [9613d9e][jmoris] Avance T20, T21 y T29:Implementacion y funcionamiento, faltan fix
+| | * | | | | |   [64c2b7e][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \  
+| | |/ / / / / /  
+| |/| | | | | |   
+| * | | | | | |   [60d5059][jmoris] Merge remote-tracking branch 'origin/EliasA' into Moris
+| |\ \ \ \ \ \ \  
+| | | |/ / / / /  
+| | |/| | | | |   
+| | * | | | | | [e7bb795][Elías Avendaño Núñez] T24: Dashboard por Rol | Avance Estudiante
+| | * | | | | |   [5205932][Elías Avendaño Núñez] Merge remote-tracking branch 'origin/Sepulveda' into EliasA
+| | |\ \ \ \ \ \  
+| | * | | | | | | [bcd2ffe][Elías Avendaño Núñez] T21-2 | T20-2 Estabilidad y Prioridad
+| | | |_|_|_|/ /  
+| | |/| | | | |   
+| | * | | | | |   [58e9013][Elías Avendaño Núñez] (origin/integraciones) Merge branch 'Moris' into EliasA
+| | |\ \ \ \ \ \  
+| | * \ \ \ \ \ \   [2bb2879][Elías Avendaño Núñez] Merge branch 'Rojas' into EliasA
+| | |\ \ \ \ \ \ \  
+| | | | |_|_|_|/ /  
+| | | |/| | | | |   
+| | * | | | | | |   [f04e75c][Elías Avendaño Núñez] Merge branch 'Sepulveda' into EliasA
+| | |\ \ \ \ \ \ \  
+| * | | | | | | | | [0e736db][jmoris] Fix conflictos merge
+| * | | | | | | | |   [3de09e4][jmoris] Merge remote-tracking branch 'origin/MatiasP' into Moris
+| |\ \ \ \ \ \ \ \ \  
+| | | |_|_|_|_|/ / /  
+| | |/| | | | | | |   
+| | * | | | | | | | [d4aeacd][Matías] T28: Corregir Tablas
+| | * | | | | | | | [cc1a221][Matías] T17: Corrección errores gráficos + T16: Editar info usuarios
+| | * | | | | | | |   [35e7e3a][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \ \ \  
+| | | | |_|_|/ / / /  
+| | | |/| | | | | |   
+| | * | | | | | | |   [6ce7d85][Matías] Merge remote-tracking branch 'origin/Sepulveda' into MatiasP
+| | |\ \ \ \ \ \ \ \  
+| | | | |_|/ / / / /  
+| | | |/| | | | | |   
+| | * | | | | | | |   [7ea6553][Matías] Merge remote-tracking branch 'origin/Rojas' into MatiasP
+| | |\ \ \ \ \ \ \ \  
+| | | * | | | | | | | [481beaf][Thitsugaya1] T18: Corrección de Rutas (Avance)
+| | | * | | | | | | |   [0eb59b4][Thitsugaya1] Merge remote-tracking branch 'origin/Moris' into Rojas
+| | | |\ \ \ \ \ \ \ \  
+| | | | |_|_|_|/ / / /  
+| | | |/| | | | | | |   
+| | | * | | | | | | | [4404e7a][Thitsugaya1] T18: Corrección de Rutas (Avance)
+| | | * | | | | | | |   [e94bdb4][Thitsugaya1] Merge remote-tracking branch 'origin/Moris' into Rojas
+| | | |\ \ \ \ \ \ \ \  
+| | * | \ \ \ \ \ \ \ \   [3be966b][Matías] Merge remote-tracking branch 'origin/EliasA' into MatiasP
+| | |\ \ \ \ \ \ \ \ \ \  
+| | | | |_|_|_|_|/ / / /  
+| | | |/| | | | | | | |   
+| | | * | | | | | | | | [c434e84][Elías Avendaño Núñez] T17:3 3|4 Arreglos gráficos Landing
+| | | * | | | | | | | |   [91fae80][Elías Avendaño Núñez] Merge branch 'Moris' into EliasA
+| | | |\ \ \ \ \ \ \ \ \  
+| | | | | |/ / / / / / /  
+| | | | |/| | | | | | |   
+| | * | | | | | | | | |   [41dfe18][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \ \ \ \ \  
+| | | | |/ / / / / / / /  
+| | | |/| | | | | | | |   
+| | * | | | | | | | | |   [3d19235][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \ \ \ \ \  
+| | * \ \ \ \ \ \ \ \ \ \   [1076b24][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \ \ \ \ \ \  
+| * | \ \ \ \ \ \ \ \ \ \ \   [7eb70db][jmoris] Merge remote-tracking branch 'origin/Sepulveda' into Moris
+| |\ \ \ \ \ \ \ \ \ \ \ \ \  
+| | * | | | | | | | | | | | | [c70833f][BastianIgnacio] T29: Habitilitar increments (Avance)
+| | | |_|_|_|_|_|_|_|_|/ / /  
+| | |/| | | | | | | | | | |   
+| | * | | | | | | | | | | | [c0189db][BastianIgnacio] T21: Habilitar Requisitos de Software (Avance )
+| | * | | | | | | | | | | |   [8be8294][BastianIgnacio] Merge remote-tracking branch 'origin/Moris' into Sepulveda
+| | |\ \ \ \ \ \ \ \ \ \ \ \  
+| | | |_|_|_|_|_|_|_|/ / / /  
+| | |/| | | | | | | | | | |   
+| | * | | | | | | | | | | | [5bb88b5][BastianIgnacio] T08: (Avance)Controladores Frontend [Sprint 3]
+| |/ / / / / / / / / / / /  
+|/| | | | | | | | | | | |   
+| * | | | | | | | | | | | [9752477][jmoris] Avance T20: Se implemento editar requisitos de usuarios y stats
+| * | | | | | | | | | | | [1bd07f3][jmoris] Fix menores T19: Se muestran mensajes Toastr
+| * | | | | | | | | | | | [a42c45d][jmoris] T19: Permitir Subir Masivamente Alumnos
+| * | | | | | | | | | | | [0a95199][jmoris] Avance T20-3: Se implementa service y backend increments
+| * | | | | | | | | | | | [577f2a4][jmoris] Avance T20-3: Se integro con front
+| * | | | | | | | | | | | [9e9ddfe][jmoris] Avance T20-3: Habilitar Requisitos de Usuario
+| |/ / / / / / / / / / /  
+| * | | | | | | | / / / [f271d28][jmoris] T20-3: Se implementa CRUD requisitos de usuarios
+| | |_|_|_|_|_|_|/ / /  
+| |/| | | | | | | | |   
+| * | | | | | | | | | [5e01693][jmoris] Nuevo deploy, cambio environment
+| * | | | | | | | | | [b4d1ac2][jmoris] Deploy proyecto
+| | |_|_|_|_|_|/ / /  
+| |/| | | | | | | |   
+| * | | | | | | | | [bdd4272][jmoris] T15 y T17: Se finalizan tareas
+| | |_|_|/ / / / /  
+| |/| | | | | | |   
+| * | | | | | | | [247b848][jmoris] Deploy web
+| | | | | | | | | * [449b6d7][GitHub] (origin/dependabot/npm_and_yarn/backend/elliptic-6.5.3) Bump elliptic from 6.5.2 to 6.5.3 in /backend
+| |_|_|_|_|_|_|_|/  
+|/| | | | | | | |   
+* | | | | | | | | [2610efe][jmoris] (tag: 0.3, tag: 0.1) Merge branch 'Moris'
+|\| | | | | | | | 
+| * | | | | | | | [b2d0346][jmoris] T10:Fix dashboard after merge
+| | | | | | | | | * [d34c658][GitHub] (origin/dependabot/npm_and_yarn/backend/websocket-extensions-0.1.4) Bump websocket-extensions from 0.1.3 to 0.1.4 in /backend
+| |_|_|_|_|_|_|_|/  
+|/| | | | | | | |   
+* | | | | | | | | [ef008dc][jmoris] Merge remote-tracking branch 'origin/Moris'
+|\| | | | | | | | 
+| * | | | | | | | [1218055][jmoris] Deploy para release
+| * | | | | | | |   [81b5638][jmoris] Merge remote-tracking branch 'origin/Sepulveda' into Moris
+| |\ \ \ \ \ \ \ \  
+| | * | | | | | | | [f9bf911][BastianIgnacio] T10-11-12: Modificacion de dashboard
+| * | | | | | | | | [a1f2e15][jmoris] Ultimos fix antes del release
+| * | | | | | | | | [571c305][jmoris] T8,T10,T11,T12: Full fix e integracion de proycto
+| * | | | | | | | | [3021ceb][jmoris] Merge remote-tracking branch 'origin/Sepulveda' into Moris
+| |\| | | | | | | | 
+| | * | | | | | | | [716896d][BastianIgnacio] T10-11-12: INTEGRACION Y MEJORA
+| | * | | | | | | | [7c56e27][BastianIgnacio] Auto stash before merge of "Sepulveda" and "origin/Moris"
+| | * | | | | | | |   [3a95bfd][BastianIgnacio] Merge remote-tracking branch 'origin/Moris' into Sepulveda
+| | |\ \ \ \ \ \ \ \  
+| | |/ / / / / / / /  
+| |/| | | | | | | |   
+| * | | | | | | | | [1a60bdd][jmoris] T10: Fix seeder
+| * | | | | | | | | [6b7fb18][jmoris] T10: Dashboard con back y detalles proyectos
+| * | | | | | | | | [22fe268][jmoris] T10: Integracion ver proyecto
+| * | | | | | | | | [f00e7ff][jmoris] T10: Se implemento carga por wizard cursos en backend y lista estudiante
+| | |_|_|/ / / / /  
+| |/| | | | | | |   
+| * | | | | | | | [c6524e7][jmoris] Deploy de proyecto para cargarlo
+| | * | | | | | | [a2afdf4][BastianIgnacio] Creacion e implementacion (incompleto) de componente add-course
+| | * | | | | | | [a59c5aa][BastianIgnacio] Cambios visuales en el form wizard de agregar proyecto
+| | * | | | | | |   [1e75c47][BastianIgnacio] Merge remote-tracking branch 'origin/Moris' into Sepulveda
+| | |\ \ \ \ \ \ \  
+| | |/ / / / / / /  
+| |/| | | | | | |   
+| * | | | | | | | [5ddb6ab][jmoris] fix environment
+| | |_|/ / / / /  
+| |/| | | | | |   
+| * | | | | | | [00b4e72][jmoris] T10: Avance integracion, se eliminan componentes con errores
+| * | | | | | |   [02200cd][jmoris] Merge remote-tracking branch 'origin/MatiasP' into Moris
+| |\ \ \ \ \ \ \  
+| * | | | | | | | [4ffaba0][jmoris] T08: Se implementa loading
+| * | | | | | | | [20a6585][jmoris] T08: Fix seleccionar todo
+| * | | | | | | | [191b477][jmoris] T8,T10,T11,T12: Se implementó wizard para crear proyectos.
+| | | * | | | | |   [6c79f65][BastianIgnacio] Merge remote-tracking branch 'origin/MatiasP' into Sepulveda
+| | | |\ \ \ \ \ \  
+| | | |/ / / / / /  
+| | |/| | | | | |   
+| | * | | | | | |   [1d03e57][Matías] Merge remote-tracking branch 'origin/MatiasP' into MatiasP
+| | |\ \ \ \ \ \ \  
+| | | |_|/ / / / /  
+| | |/| | | | | |   
+| | | * | | | | | [c2bea87][Matías] Merge remote-tracking branch 'origin/Sepulveda' into MatiasP
+| | | |\| | | | | 
+| | | * | | | | |   [bff5f21][Matías] Merge remote-tracking branch 'origin/Rojas' into MatiasP
+| | | |\ \ \ \ \ \  
+| | | | | |_|/ / /  
+| | | | |/| | | |   
+| | | * | | | | |   [527a964][Matías] Merge remote-tracking branch 'origin/Cristobal' into MatiasP
+| | | |\ \ \ \ \ \  
+| | | | * | | | | | [eab1523][Crist0ba1] (origin/Cristobal) modifique add-cursos.ts, sigue sin funcionar
+| | | | * | | | | |   [5ef05f6][Crist0ba1] Merge remote-tracking branch 'origin/Moris' into Cristobal
+| | | | |\ \ \ \ \ \  
+| | |_|_|/ / / / / /  
+| |/| | | | | | | |   
+| | | | * | | | | | [50ed0d3][Crist0ba1] Add-curso separado y cambios pequeños en vistas
+| | | | * | | | | |   [4653b46][Crist0ba1] Merge remote-tracking branch 'origin/MatiasP' into Cristobal
+| | | | |\ \ \ \ \ \  
+| | | | |/ / / / / /  
+| | | |/| | | | | |   
+| | | | * | | | | | [23f3fa7][Crist0ba1] Arreglo botones
+| | | | * | | | | |   [ebdf70d][Crist0ba1] Merge remote-tracking branch 'origin/MatiasP' into Cristobal
+| | | | |\ \ \ \ \ \  
+| | | | * \ \ \ \ \ \   [4dc9f27][Crist0ba1] Merge remote-tracking branch 'origin/Moris' into Cristobal
+| | | | |\ \ \ \ \ \ \  
+| | * | | \ \ \ \ \ \ \   [dec6e09][Matías] Merge ramas sin errores
+| | |\ \ \ \ \ \ \ \ \ \  
+| | | | |_|_|_|_|/ / / /  
+| | | |/| | | | | | | |   
+| | | * | | | | | | | | [0a1eefd][BastianIgnacio] (Avance) Modificación de los modal que gestionan un proyecto
+| | | * | | | | | | | | [b5689ee][BastianIgnacio] Creación de los modal que gestionan un proyecto
+| | * | | | | | | | | |   [6071cd4][Matías] Merge remote-tracking branch 'origin/Rojas' into MatiasP
+| | |\ \ \ \ \ \ \ \ \ \  
+| | | | |_|_|_|_|/ / / /  
+| | | |/| | | | | | | |   
+| | | * | | | | | | | | [58a1a4c][Thitsugaya1] T11: Vistas
+| | | * | | | | | | | |   [3fd655d][Thitsugaya1] Merge remote-tracking branch 'origin/Moris' into Rojas
+| | | |\ \ \ \ \ \ \ \ \  
+| | | | | |_|_|/ / / / /  
+| | | | |/| | | | | | |   
+| | | * | | | | | | | |   [ac36921][Thitsugaya1] Merge remote-tracking branch 'origin/Moris' into Rojas
+| | | |\ \ \ \ \ \ \ \ \  
+| | * | \ \ \ \ \ \ \ \ \   [aab3090][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \ \ \ \ \ \  
+| | |/ / / / / / / / / / /  
+| |/| | | | | / / / / / /   
+| | | |_|_|_|/ / / / / /    
+| | |/| | | | | | | | |     
+| * | | | | | | | | | | [3156393][jmoris] T8,T10,T11,T12: Avance agregar proyecto con wizard
+| * | | | | | | | | | | [0afd1f0][jmoris] Merge remote-tracking branch 'origin/MatiasP' into Moris
+| |\| | | | | | | | | | 
+| | |_|_|/ / / / / / /  
+| |/| | | | | | | | |   
+| | * | | | | | | | | [a839fd1][Matías] T11-05: Fix menores
+| | * | | | | | | | |   [74264ed][Matías] Merge remote-tracking branch 'origin/Mauricio' into MatiasP
+| | |\ \ \ \ \ \ \ \ \  
+| | | |_|_|_|_|/ / / /  
+| | |/| | | | | | | /   
+| | | | |_|_|_|_|_|/    
+| | | |/| | | | | |     
+| | | * | | | | | | [8122c76][Mauricio Herrera] T11-05: Nueva vista principal utilizando paleta de colores
+| | |/ / / / / / /  
+| | * | | | | | |   [92ebb37][Matías] Merge remote-tracking branch 'origin/Sepulveda' into MatiasP
+| | |\ \ \ \ \ \ \  
+| | | | |_|/ / / /  
+| | | |/| | | | |   
+| | | * | | | | |   [50d969b][BastianIgnacio] Avance del componente que gestiona un proyecto
+| | | |\ \ \ \ \ \  
+| | | | * | | | | | [ffc3ef3][BastianIgnacio] Creación del modulo que gestiona un proyecto
+| | | * | | | | | | [1eabfc7][BastianIgnacio] Avance del componente que gestiona un proyecto
+| | | * | | | | | | [829b8ba][BastianIgnacio] Creación del componente que gestiona un proyecto
+| | | |/ / / / / /  
+| | | * | | | | |   [99e6246][BastianIgnacio] Merge remote-tracking branch 'origin/Moris' into Sepulveda
+| | | |\ \ \ \ \ \  
+| | |_|/ / / / / /  
+| |/| | | | | | |   
+| | * | | | | | |   [7b1e201][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \ \  
+| | |/ / / / / / /  
+| |/| | | | | | |   
+| * | | | | | | | [5519984][jmoris] Fix barra superior deploy
+| * | | | | | | | [1468f0b][jmoris] Deploy a produccion para subir a la instancia aws
+| | |_|_|/ / / /  
+| |/| | | | | |   
+| | * | | | | | [43c4294][Matías] Cambios varios
+| | * | | | | |   [dd65c4b][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \  
+| | |/ / / / / /  
+| |/| / / / / /   
+| | |/ / / / /    
+| * | | | | | [963fba5][jmoris] T11 y T12: Fix eliminar proyecto y barra de carga tablas.
+| * | | | | | [be974b4][jmoris] T11 y T12: Se implementa eliminacion en proyectos y fix en back.
+| * | | | | | [b3c19df][jmoris] T11: Se implementa carga de proyectos
+| * | | | | | [dc866e5][jmoris] T11 y T12: Se limpio un poco el proyecto front y se hizo fix a var.
+| * | | | | | [1701e50][jmoris] T12: Se implemento dos metodos faltantes de curso
+| * | | | | | [424cd5f][jmoris] T12: Se replanteo logica y volvio a crear controladores.
+| * | | | | | [46a87bb][jmoris] Fix T12: Arreglo menor en variable
+| * | | | | | [d6e3fb8][jmoris] Avance T11 y T12: Se crea hace fix en back y se crea servicio cursos.
+| * | | | | | [10a1549][jmoris] T12: Se crean rutas para cursos
+| | * | | | |   [16926c0][Matías] Merge remote-tracking branch 'origin/MatiasP' into MatiasP
+| | |\ \ \ \ \  
+| | | * | | | | [37504a2][Matías] Vista detalle proyectos (avance)
+| | * | | | | |   [e20391b][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | |\ \ \ \ \ \  
+| | |/ / / / / /  
+| |/| / / / / /   
+| | |/ / / / /    
+| * | | | | | [b57a3c6][jmoris] Integracion de todas las ramas
+| * | | | | |   [442c80f][jmoris] Merge remote-tracking branch 'origin/Rojas' into Moris
+| |\ \ \ \ \ \  
+| | | |/ / / /  
+| | |/| | | |   
+| | * | | | | [75c4aaf][Thitsugaya1] Vista Home
+| | * | | | |   [df810ce][Thitsugaya1] Merge remote-tracking branch 'origin/Sepulveda' into Rojas
+| | |\ \ \ \ \  
+| | * \ \ \ \ \   [853d0ad][Thitsugaya1] Merge branch 'betaTest' into Rojas
+| | |\ \ \ \ \ \  
+| * | \ \ \ \ \ \   [77d8ab2][jmoris] Merge remote-tracking branch 'origin/Cristobal' into Moris
+| |\ \ \ \ \ \ \ \  
+| | | |_|_|_|/ / /  
+| | |/| | | | | |   
+| | * | | | | | | [f1977d2][Crist0ba1] T11-04 Vista creacion proyectos avance
+| * | | | | | | |   [cf21062][jmoris] Merge remote-tracking branch 'origin/EliasA' into Moris
+| |\ \ \ \ \ \ \ \  
+| | | |_|_|_|_|/ /  
+| | |/| | | | | |   
+| | * | | | | | | [bb3c758][Elías Avendaño Núñez] Corrección Logo en Distintas partes
+| | * | | | | | | [28084ec][Elías Avendaño Núñez] Cambio Fondo página Entrada
+| | * | | | | | | [3dedfb9][Elías Avendaño Núñez] Merge branch 'Cristobal' into EliasA
+| | |\| | | | | | 
+| | | * | | | | |   [c65b012][Crist0ba1] Merge remote-tracking branch 'origin/Sepulveda' into Cristobal
+| | | |\ \ \ \ \ \  
+| | | | | |_|/ / /  
+| | | | |/| | | |   
+| | | * | | | | | [6c03863][Cristobal] T06-5 Vista principal update
+| | | * | | | | | [7e03c15][Cristobal] T06-4 Vista principal
+| | | * | | | | |   [6e84a94][Cristobal] Merge remote-tracking branch 'origin/Moris' into Cristobal
+| | | |\ \ \ \ \ \  
+| | | * \ \ \ \ \ \   [2af9e0c][Cristobal] Merge remote-tracking branch 'origin/Mauricio' into Cristobal
+| | | |\ \ \ \ \ \ \  
+| | | * \ \ \ \ \ \ \   [ab52523][Cristobal] Merge remote-tracking branch 'origin/Mauricio' into Cristobal
+| | | |\ \ \ \ \ \ \ \  
+| | * | \ \ \ \ \ \ \ \   [5099298][Elías Avendaño Núñez] Merge remote-tracking branch 'origin/Sepulveda' into EliasA
+| | |\ \ \ \ \ \ \ \ \ \  
+| | | | |_|_|_|/ / / / /  
+| | | |/| | | | | | | |   
+| * | | | | | | | | | |   [42d67ab][jmoris] Merge remote-tracking branch 'origin/Sepulveda' into Moris
+| |\ \ \ \ \ \ \ \ \ \ \  
+| | * | | | | | | | | | | [3081feb][BastianIgnacio] Creación de modulo base para configuracionUsuario
+| | | |/ / / / / / / / /  
+| | |/| | | | | | | | |   
+| | * | | | | | | | | | [589ff07][BastianIgnacio] T11:  VISTAS (avance)
+| | * | | | | | | | | | [48578ff][Bastian] T08: creacion de los controlares de cursos (avances)
+| |/ / / / / / / / / /  
+| * | | | | | | | | |   [73867d2][jmoris] Merge branch 'betaTest' into Moris
+| |\ \ \ \ \ \ \ \ \ \  
+| | |_|_|_|_|/ / / / /  
+| |/| | | | | | / / /   
+| | | |_|_|_|_|/ / /    
+| | |/| | | | | | |     
+| | * | | | | | | | [f7e743a][jmoris] (origin/betaTest) T12: Se publico rutas para gestion de proyectos y se modifico pequeñas cosas
+| | | | | | | | * | [c85240a][Matías] T11-03: Vista creación proyectos avance
+| | | | | | | | * | [b17473c][Matías] T11-03: Vista creación proyectos avance
+| | | |_|_|_|_|/ /  
+| | |/| | | | | |   
+| | * | | | | | |   [e508e0b][GitHub] Merge pull request #17 from lgsilvestre/Moris
+| | |\ \ \ \ \ \ \  
+| | |/ / / / / / /  
+| |/| | | | | | |   
+| * | | | | | | | [38cbc2b][Jesus Moris] T11 y T12: Ultimos fix para poder pasar al betatest
+| * | | | | | | |   [31336ad][Jesus Moris] Merge remote-tracking branch 'origin/Sepulveda' into Moris
+| |\ \ \ \ \ \ \ \  
+| | * | | | | | | | [649ff45][Bastian] T10: Se integra el formGroup para ingresar un usuario (Incompleta)
+| * | | | | | | | | [2fd2d09][Jesus Moris] T11 y T12: Cambios simples en vista y back
+| |/ / / / / / / /  
+| * | | | | | | | [ea21aaa][Jesus Moris] T10: Se integro e implemento lista de usuarios y eliminacion
+| * | | | | | | |   [f6e8cc8][Jesus Moris] Merge remote-tracking branch 'origin/Moris' into Moris
+| |\ \ \ \ \ \ \ \  
+| | * | | | | | | | [b7cab7a][Jesus Moris] T10: Se integra parcialmente
+| * | | | | | | | | [793c1ea][Jesus Moris] T10: Se integra parcialmente
+| |/ / / / / / / /  
+| * | | | | | | |   [3364c13][Jesus Moris] Merge remote-tracking branch 'origin/Rojas' into Moris
+| |\ \ \ \ \ \ \ \  
+| | | |_|_|_|_|/ /  
+| | |/| | | | | |   
+| | * | | | | | | [7e7430a][Thitsugaya1] T06-3: Vistas Gestiones
+| * | | | | | | |   [3224b0d][Jesus Moris] Merge remote-tracking branch 'origin/Mauricio' into Moris
+| |\ \ \ \ \ \ \ \  
+| | | |_|_|_|_|/ /  
+| | |/| | | | | |   
+| | * | | | | | | [406d933][Mauricio Herrera] T06-2: Corrección de rutas en vista principal, direcciona hacia el login
+| | | |_|_|_|/ /  
+| | |/| | | | |   
+| | * | | | | | [005b663][Mauricio Herrera] T06-2: Creación de ventana principal
+| | * | | | | | [1818c68][Mauricio Herrera] Merge remote-tracking branch 'origin/Rojas' into Mauricio
+| | |\| | | | | 
+| | | * | | | | [5b35eb2][Thitsugaya1] T06-3: Vistas Gestiones
+| | | * | | | |   [ea4961f][Thitsugaya1] Merge remote-tracking branch 'origin/Cristobal' into Rojas
+| | | |\ \ \ \ \  
+| | | | | |_|/ /  
+| | | | |/| | |   
+| | | | * | | | [66ccfed][Cristobal] T06-3:Vistas de gestiones
+| | | | * | | |   [8472d8e][Cristobal] Merge remote-tracking branch 'origin/Mauricio' into Cristobal
+| | | | |\ \ \ \  
+| | | | * | | | | [f4609fc][Cristobal] Nab-bar
+| | | | | |_|_|/  
+| | | | |/| | |   
+| | | * | | | |   [bfeb19b][Thitsugaya1] Merge remote-tracking branch 'origin/Mauricio' into Rojas
+| | | |\ \ \ \ \  
+| | | | | |/ / /  
+| | | | |/| | |   
+| | | * | | | | [544b487][Thitsugaya1] T04: Bosquejar Modelo de Clases
+| | | * | | | | [f79420f][Thitsugaya1] T02 Definir y Bosquejar Arquitectura Lógica
+| | | * | | | | [8f2c271][Thitsugaya1] T03 Definir y Bosquejar Arquitectura Física
+| | | | |/ / /  
+| | | |/| | |   
+| | * | | | |   [250fb23][Mauricio Herrera] Merge remote-tracking branch 'origin/MatiasP' into Mauricio
+| | |\ \ \ \ \  
+| | | |_|/ / /  
+| | |/| | | |   
+| | | * | | | [bc9d174][Matías] Avance t06-4: Avance en Vista General
+| | | * | | |   [dbdba5d][Matías] Merge remote-tracking branch 'origin/Moris' into MatiasP
+| | | |\ \ \ \  
+| | | * \ \ \ \   [098c0dc][Matías] Merge branch 'Mauricio' into MatiasP
+| | | |\ \ \ \ \  
+| | | |/ / / / /  
+| | |/| | | | |   
+| * | | | | | | [1fe2765][Jesus Moris] T08: Mensaje por datos incorrectos
+| * | | | | | | [d12f57f][Jesus Moris] T10 y T08: Terminar implementar Log-in e Integracion
+| * | | | | | |   [d870ae0][Jesus Moris] Merge remote-tracking branch 'origin/Sepulveda' into Moris
+| |\ \ \ \ \ \ \  
+| | * | | | | | | [414ad54][Bastian] T-07: Avance de la implementacion en metodos de adminController
+| | * | | | | | |   [f1e801a][Bastian] Merge remote-tracking branch 'origin/Moris' into Sepulveda
+| | |\ \ \ \ \ \ \  
+| | * | | | | | | | [441a5c8][Bastian] T:07 - Avance de los metodos de un docente
+| * | | | | | | | |   [0a623bc][Jesus Moris] Merge remote-tracking branch 'origin/EliasA' into Moris
+| |\ \ \ \ \ \ \ \ \  
+| | |_|/ / / / / / /  
+| |/| | | | | | | /   
+| | | |_|_|_|_|_|/    
+| | |/| | | | | |     
+| | * | | | | | | [1bd8032][Elías Avendaño Núñez] T08-1: C. Frontend - Avance Log-In
+| | * | | | | | |   [feb532f][Elías Avendaño Núñez] Merge remote-tracking branch 'origin/Moris' into EliasA
+| | |\ \ \ \ \ \ \  
+| | |/ / / / / / /  
+| |/| | | | | | |   
+| * | | | | | | | [a312c16][Jesús Moris] T07: Se implementaron algunos metodos que podrian utilizarse prontamente en la vistas. @BastianIgnacio
+| * | | | | | | | [5477735][Jesús Moris] T07-1: Se modifico atributos que se cambiaron al implementer el mucho a muchos triples para los roles en proyectos.
+| * | | | | | | | [871c30c][Jesús Moris] T07-1: Fix menor en modelo y validacion de login
+| | |/ / / / / /  
+| |/| | | | | |   
+| * | | | | | | [42f70e1][Jesús Moris] Avance T07: Se modifico base de datos para poder implementar un mucho a muchos triple, user->role, user_role->projects @BastianIgnacio
+| | |_|_|/ / /  
+| |/| | | | |   
+| | * | | | | [368b088][Elías Avendaño Núñez] T06-1 Vista Log-In (Finalizada)
+| | * | | | | [84c115a][Elías Avendaño Núñez] Merge remote-tracking branch 'origin/Mauricio' into EliasA
+| | |\| | | | 
+| | | * | | | [dd0bd12][Mauricio Herrera] Avance T06-4: Avance en Vista General
+| | | |/ / /  
+| | | * | | [299b376][Matías] Avance T06-4: Avance en Vista General
+| | | * | | [f928199][Matías] Avance barra navegación
+| | | |/ /  
+| | * | |   [6e7b02a][Elías Avendaño Núñez] Merge remote-tracking branch 'origin/Moris' into EliasA
+| | |\ \ \  
+| | |/ / /  
+| |/| | |   
+| * | | | [7144900][Jesús Moris] Avance T07: Se mejoro la autenticacion, se arreglo problema con rutas y se agregaron rutas protegidas para crear usuarios desde controlador admin.
+| * | | |   [723237a][Jesús Moris] Merge remote-tracking branch 'origin/Sepulveda' into Moris
+| |\ \ \ \  
+| | * | | | [314b1f2][Bastian] Avance T07: Controladores Backend
+| * | | | | [6aaea89][Jesús Moris] Merge remote-tracking branch 'origin/Moris' into Moris
+| |\| | | | 
+| | * | | | [150d4c6][Jesús Moris] Se implemento registro, login y logout con jwt
+| * | | | | [e0c1458][Jesús Moris] Avance T07: Se implemento registro, login y logout con jwt
+| |/ / / /  
+| * | | | [53f803a][Jesús Moris] Avance creacion controladores
+| * | | | [3730f99][Jesús Moris] Migraciones faltantes
+| * | | | [449eec1][Jesús Moris] Se arregla problemas al hacer merge
+| * | | | [08d621a][Jesús Moris] Auto stash before merge of "Moris" and "master"
+| * | | |   [f8ac927][Jesús Moris] Merge branch 'master' into Moris
+| |\ \ \ \  
+| | | |/ /  
+| | |/| |   
+| | | * | [b7a209a][Elías Avendaño Núñez] T06: Vista Log-In
+| | |/ /  
+* | / / [8bdf9db][Bastian] (tag: test) T05: Implementar Modelos e Iniciar Base de Datos (Incompleta)
+| |/ /  
+|/| |   
+* | | [9492c87][GitHub] Se agrega composer.json al proyecto, GitKraken lo omite.
+* | | [51d4f33][Jesús Moris] Se crean los modelos con sus respectivas migraciones
+|/ /  
+* / [3f84d1b][Jesús Moris] Se inicializa proyecto backend y frontend. Laravel 6 Angular 9
+|/  
+* [5dfef60][Jesús Moris] Initial commit

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CustomFormsModule } from 'ngx-custom-validators';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagInputModule } from 'ngx-chips';
@@ -27,7 +26,6 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     NgxDatatableModule,
     NgbModule,
     DashboardRoutingModule,
-    CustomFormsModule,
     TagInputModule
   ],
   declarations: [DashboadDefaultComponent, DashboardSuperAdminComponent, DashboadEstudianteComponent, DashboadAyudanteComponent, DashboadDocenteComponent]

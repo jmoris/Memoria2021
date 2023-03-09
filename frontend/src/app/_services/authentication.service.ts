@@ -24,6 +24,12 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
+    loginOauth2(data){
+        localStorage.setItem('currentUser', JSON.stringify(data));
+        this.currentUserSubject.next(data);
+        return data;
+    }
+
     login(institucion: number, email: string, password: string) {
         return this.http.post<any>(`${environment.apiUrl}/login`, { institucion, email, password })
             .pipe(map(user => {
@@ -49,7 +55,7 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
-        this.router.navigateByUrl("/sessions/signin");
+        //this.router.navigateByUrl("/sessions/signin");
     }
 
     getInstitucion(): String {

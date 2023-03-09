@@ -56,7 +56,7 @@ class RepositorioController extends Controller
                 'collabs' => $collabs,
                 'issues' => $issues,
                 'branches' => count($branches),
-                'ncommits' => $ncommits,
+                'ncommits' => intval($ncommits),
                 'commits' => $commits,
                 'has_wiki' => $repo->has_wiki,
                 'proyectos' => count($proyectos),

@@ -341,7 +341,7 @@ export class ProjectComponent implements AfterViewInit {
     }
     openUserActivityDialog(miembro){
         let dialogRef = this.dialog.open(UserActivityComponent, {
-            width: '900px',
+            width: '600px',
             data: {id:this.id, miembro:miembro},
             disableClose: true,
             autoFocus: true
