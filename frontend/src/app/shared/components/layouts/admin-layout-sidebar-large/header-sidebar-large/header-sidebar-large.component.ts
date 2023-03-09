@@ -132,7 +132,7 @@ export class HeaderSidebarLargeComponent implements OnInit {
 
     salir(){
       this.auth.logout();
-      location.href = "http://localhost:8000/home"
+      location.href = "http://sso.ghtracker.site/home"
     }
 
 }
