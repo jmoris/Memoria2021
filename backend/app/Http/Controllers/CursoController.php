@@ -233,7 +233,6 @@ class CursoController extends Controller
                 $usuario->rut = "1-9";
                 $usuario->save();
                 $usuario->instituciones()->attach($request->institucion, ['role_id' => 4]);
-                \App\Jobs\InvitarUsuario::dispatch((string)$email, ($nombre.' '.$apellido), $password)->onQueue('invitaciones');
 
                 $curso->usuarios()->sync($usuario, false);
             }else{
