@@ -105,6 +105,7 @@ class UsuarioController extends Controller
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios");
             curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, [
                 'Authorization: Bearer '.$access_token,
                 'Accept: application/json'
@@ -114,11 +115,11 @@ class UsuarioController extends Controller
             curl_close($ch);
             Log::info('Token CURL: '. $access_token);
             Log::info('Salida CURL: '.$data);
-            $status = $data['status'];
+            $response = json_encode($data);
             return response()->json([
                 'status' => 201,
                 'message' => 'User creada correctamente',
-                //'sso_user' => $status
+                'sso_user' => $response['status']
             ]);
         }catch(Exception $ex){
             return $ex;
@@ -189,6 +190,7 @@ class UsuarioController extends Controller
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios/modificar");
             curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer '.$access_token]);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
             $data = curl_exec($ch);
