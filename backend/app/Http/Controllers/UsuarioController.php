@@ -274,8 +274,6 @@ class UsuarioController extends Controller
                     $usuario->name = $nombre;
                     $usuario->lastname = $apellido;
                     $usuario->email = (string)$email;
-                    $password = Str::random(8);
-                    $usuario->password = bcrypt($password);
                     $usuario->rut = "1-9";
                     $usuario->save();
                     $usuario->instituciones()->attach($request->institucion, ['role_id' => 4]);
