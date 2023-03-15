@@ -199,6 +199,7 @@ class UsuarioController extends Controller
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
             $data = curl_exec($ch);
             curl_close($ch);
+            Log::info($data);
             $response = json_decode($data, true);
             return response()->json([
                 'status' => 201,
