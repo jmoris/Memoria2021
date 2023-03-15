@@ -6,6 +6,7 @@ use App\Models\Institucion;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -102,16 +103,20 @@ class UsuarioController extends Controller
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios");
             curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer '.$access_token]);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer '.$access_token,
+                'Accept: application/json'
+            ]);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
             $data = curl_exec($ch);
             curl_close($ch);
             $status = $data['status'];
-
+            Log::info('Token CURL: '. $access_token);
+            Log::info('Salida CURL: '.$data);
             return response()->json([
                 'status' => 201,
                 'message' => 'User creada correctamente',
-                'sso_user' => $status
+                //'sso_user' => $status
             ]);
         }catch(Exception $ex){
             return $ex;
