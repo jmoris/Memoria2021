@@ -122,7 +122,6 @@ class UsuarioController extends Controller
                 'sso_user' => $response['status']
             ]);
         }catch(Exception $ex){
-            return $ex;
             return response()->json([
                 'status' => 500,
                 'message' => 'Error al crear User',
@@ -206,7 +205,6 @@ class UsuarioController extends Controller
                 'sso_user' => $response['status']
             ]);
         }catch(Exception $ex){
-            return $ex;
             return response()->json([
                 'status' => 500,
                 'message' => 'Error al modificar User',

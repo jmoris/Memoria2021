@@ -265,7 +265,6 @@ class CursoController extends Controller
             ]
         ]);
         }catch(Exception $ex){
-            return $ex;
             return response()->json([
                 'success' => false,
                 'msg' => "Carga masiva de usuarios fallida.",
