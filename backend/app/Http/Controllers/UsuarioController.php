@@ -80,9 +80,35 @@ class UsuarioController extends Controller
             $user->matricula = $request->matricula;
             $user->save();
             $user->instituciones()->attach($request->institucion, ['role_id' => $request->role]);
+
+            $role = null;
+            if($request->role == 1||$request->role == 2){
+                $role = 0;
+            }else if($request->role == 3){
+                $role = 1;
+            }else if($request->role == 4){
+                $role = 2;
+            }
+            $fields = [
+                'name' => $request->name,
+                'lastname' => $request->lastname,
+                'email' => $request->email,
+                'password' => $request->password,
+                'role' => $role
+            ];
+            $fields_string = http_build_query($fields);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios");
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
+            $data = curl_exec($ch);
+            curl_close($ch);
+            $status = $data['status'];
+
             return response()->json([
                 'status' => 201,
-                'message' => 'User creada correctamente'
+                'message' => 'User creada correctamente',
+                'sso_user' => $status
             ]);
         }catch(Exception $ex){
             return response()->json([
@@ -148,7 +174,7 @@ class UsuarioController extends Controller
             ];
             $fields_string = http_build_query($fields);
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios");
+            curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios/modificar");
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
             $data = curl_exec($ch);
