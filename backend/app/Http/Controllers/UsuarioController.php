@@ -113,6 +113,7 @@ class UsuarioController extends Controller
                 'sso_user' => $status
             ]);
         }catch(Exception $ex){
+            return $ex;
             return response()->json([
                 'status' => 500,
                 'message' => 'Error al crear User',
