@@ -91,6 +91,20 @@ class SSOController extends Controller
             }
             $user->save();
             $user->instituciones()->attach($institucion, ['role_id' => $role]);
+        }else{
+            $user->name = $userArray['name'];
+            $user->lastname = $userArray['lastname'];
+            $user->email = $userArray['email'];
+            $role = null;
+            if($userArray['role'] == 0){
+                $role = 2;
+            }else if($userArray['role'] == 1){
+                $role = 3;
+            }else if($userArray['role'] == 2){
+                $role = 4;
+            }
+            $user->save();
+            $user->instituciones()->attach($institucion, ['role_id' => $role]);
         }
         Auth::login($user);
         Cache::put('access_token_'.$user->id, $access_token, now()->addMinutes(180));
