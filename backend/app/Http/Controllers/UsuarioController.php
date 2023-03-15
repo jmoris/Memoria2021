@@ -99,7 +99,7 @@ class UsuarioController extends Controller
                 'role' => $role
             ];
             $fields_string = http_build_query($fields);
-            $access_token = Session::get("access_token");
+            $access_token = session()->get('access_token');
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios");
             curl_setopt($ch, CURLOPT_POST, 1);
@@ -183,7 +183,7 @@ class UsuarioController extends Controller
                 'role' => $role
             ];
             $fields_string = http_build_query($fields);
-            $access_token = Session::get("access_token");
+            $access_token = session()->get('access_token');
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios/modificar");
             curl_setopt($ch, CURLOPT_POST, 1);

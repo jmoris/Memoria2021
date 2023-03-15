@@ -63,7 +63,7 @@ class SSOController extends Controller
         }
 
         $access_token = $request->session()->get("access_token");
-        Session::push('access_token', $access_token);
+        session()->put('access_token', $access_token);
         $response = Http::withHeaders([
             "Accept" => "application/json",
             "Authorization" => "Bearer " . $access_token
