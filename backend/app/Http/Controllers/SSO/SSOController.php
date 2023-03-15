@@ -63,7 +63,7 @@ class SSOController extends Controller
         }
 
         $access_token = $request->session()->get("access_token");
-        session()->put('access_token', $access_token);
+
         $response = Http::withHeaders([
             "Accept" => "application/json",
             "Authorization" => "Bearer " . $access_token
@@ -93,6 +93,7 @@ class SSOController extends Controller
             $user->instituciones()->attach($institucion, ['role_id' => $role]);
         }
         Auth::login($user);
+        Cache::put('access_token_'.$user->id, $access_token, now()->addMinutes(180));
 
         $rolePivot = $user->instituciones()->withPivot('role_id')->find($institucion);
         $role = Role::find($rolePivot->pivot->role_id);
