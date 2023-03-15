@@ -179,7 +179,6 @@ class UsuarioController extends Controller
             }
 
             $fields = [
-                'user_id' => $id,
                 'name' => $request->name,
                 'lastname' => $request->lastname,
                 'email' => $request->email,
