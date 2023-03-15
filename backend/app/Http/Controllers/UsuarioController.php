@@ -110,9 +110,9 @@ class UsuarioController extends Controller
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
             $data = curl_exec($ch);
             curl_close($ch);
-            $status = $data['status'];
             Log::info('Token CURL: '. $access_token);
             Log::info('Salida CURL: '.$data);
+            $status = $data['status'];
             return response()->json([
                 'status' => 201,
                 'message' => 'User creada correctamente',
