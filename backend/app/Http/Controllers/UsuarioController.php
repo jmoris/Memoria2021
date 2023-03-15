@@ -97,9 +97,11 @@ class UsuarioController extends Controller
                 'role' => $role
             ];
             $fields_string = http_build_query($fields);
+            $access_token = $request->session()->get("access_token");
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios");
             curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer '.$access_token]);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
             $data = curl_exec($ch);
             curl_close($ch);
@@ -165,6 +167,7 @@ class UsuarioController extends Controller
             }else if($request->role == 4){
                 $role = 2;
             }
+
             $fields = [
                 'name' => $request->name,
                 'lastname' => $request->lastname,
@@ -173,9 +176,11 @@ class UsuarioController extends Controller
                 'role' => $role
             ];
             $fields_string = http_build_query($fields);
+            $access_token = $request->session()->get("access_token");
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios/modificar");
             curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer '.$access_token]);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
             $data = curl_exec($ch);
             curl_close($ch);
