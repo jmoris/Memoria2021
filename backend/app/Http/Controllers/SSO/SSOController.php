@@ -9,10 +9,12 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use InvalidArgumentException;
 
 class SSOController extends Controller
@@ -61,6 +63,7 @@ class SSOController extends Controller
         }
 
         $access_token = $request->session()->get("access_token");
+        Session::push('access_token', $access_token);
         $response = Http::withHeaders([
             "Accept" => "application/json",
             "Authorization" => "Bearer " . $access_token
