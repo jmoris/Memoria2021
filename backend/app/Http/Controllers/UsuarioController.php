@@ -189,7 +189,7 @@ class UsuarioController extends Controller
             $fields_string = http_build_query($fields);
             $access_token = Cache::get('access_token_'.Auth::user()->id);
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios/modificar");
+            curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/modificarusuario");
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, [
