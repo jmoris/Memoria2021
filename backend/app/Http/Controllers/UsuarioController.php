@@ -179,6 +179,7 @@ class UsuarioController extends Controller
             }
 
             $fields = [
+                'user_id' => $id,
                 'name' => $request->name,
                 'lastname' => $request->lastname,
                 'email' => $request->email,
@@ -191,15 +192,18 @@ class UsuarioController extends Controller
             curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios/modificar");
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer '.$access_token]);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer '.$access_token,
+                'Accept: application/json'
+            ]);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
             $data = curl_exec($ch);
             curl_close($ch);
-            $status = $data['status'];
+            $response = json_decode($data, true);
             return response()->json([
                 'status' => 201,
                 'message' => 'User modificada correctamente',
-                'remote_change' => $status
+                'sso_user' => $response['status']
             ]);
         }catch(Exception $ex){
             return response()->json([
