@@ -115,11 +115,11 @@ class UsuarioController extends Controller
             curl_close($ch);
             Log::info('Token CURL: '. $access_token);
             Log::info('Salida CURL: '.$data);
-            $response = json_encode($data);
+            $response = json_decode($data);
             return response()->json([
                 'status' => 201,
                 'message' => 'User creada correctamente',
-                'sso_user' => $response['status']
+                'sso_user' => $response->status
             ]);
         }catch(Exception $ex){
             return $ex;
