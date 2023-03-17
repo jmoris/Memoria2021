@@ -237,6 +237,28 @@ class CursoController extends Controller
                 $usuario->instituciones()->attach($request->institucion, ['role_id' => 4]);
 
                 $curso->usuarios()->sync($usuario, false);
+
+                $fields = [
+                    'name' => $nombre,
+                    'lastname' => $apellido,
+                    'email' => $email,
+                    'password' => $nombre[0].$apellido.date('y'),
+                    'role' => 4
+                ];
+                $fields_string = http_build_query($fields);
+                $access_token = Cache::get('access_token_'.Auth::user()->id);
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios");
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                    'Authorization: Bearer '.$access_token,
+                    'Accept: application/json'
+                ]);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
+                $data = curl_exec($ch);
+                curl_close($ch);
+
             }else{
                 $exists = $user->cursos->contains($id);
                 if($exists){
