@@ -243,7 +243,7 @@ class CursoController extends Controller
                     'lastname' => $apellido,
                     'email' => $email,
                     'password' => $nombre[0].$apellido.date('y'),
-                    'role' => 4
+                    'role' => 2
                 ];
                 $fields_string = http_build_query($fields);
                 $access_token = Cache::get('access_token_'.Auth::user()->id);
