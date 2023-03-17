@@ -9,6 +9,8 @@ use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -246,6 +248,20 @@ class CursoController extends Controller
             }
             $contador++;
         }
+
+        $access_token = Cache::get('access_token_'.Auth::user()->id);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://sso.ghtracker.site/api/usuarios/cargamasiva");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/x-www-form-urlencoded',
+            'Authorization: Bearer '.$access_token,
+            'Accept: application/json'
+        ]);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, '@'.$path );
+        $data = curl_exec($ch);
+        curl_close($ch);
 
         return response()->json([
             'success' => true,

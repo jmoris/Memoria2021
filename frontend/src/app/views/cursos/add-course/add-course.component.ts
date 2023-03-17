@@ -53,20 +53,7 @@ export class AddCourseComponent implements OnInit {
   ) {
     this.userRole = this.authService.getUserType();
     this.userId = this.authService.currentUserValue.user.id;
-    this.userService.getStudents().subscribe((data) => {
-      if (!data) {
-        return;
-      }
-      data.forEach(element => {
-          if(element.active){
-              this.estudiantes.push(element);
-          }
-      });
-      this.dataSource.data = this.estudiantes;
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.isDataLoading = false;
-    });
+
     this.userService.getTeachers().subscribe((data) => {
       this.teachers = data;
       console.log("Datos: ", this.teachers);
@@ -76,9 +63,6 @@ export class AddCourseComponent implements OnInit {
       teacher_id: new FormControl(this.userId, [Validators.required]),
       year: new FormControl(this.currentYear, [Validators.required]),
       semester: new FormControl("", [Validators.required]),
-    });
-    this.seleccionarForm = new FormGroup({
-        usuarios: new FormArray([], [])
     });
   }
 
@@ -94,47 +78,11 @@ export class AddCourseComponent implements OnInit {
 
   onComplete(e) {
     let frm = this.form.value;
-    frm.students = this.seleccionarForm.controls.usuarios.value;
+    frm.students = [];
     this.cursosService.insertComplete(frm).subscribe((data) => {
       console.log(data);
       this.dialogRef.close('Confirm');
     });
-  }
-
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected == numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    if (this.isAllSelected()) {
-      this.seleccionarForm.controls.usuarios.setValue([]);
-      this.selection.clear();
-    } else {
-      let usersControl = <FormArray>this.seleccionarForm.controls.usuarios;
-      this.dataSource.data.forEach(row => this.selection.select(row));
-      this.estudiantes.forEach(element => {
-        usersControl.push(this.formBuilder.group({ user_id: element.id }));
-      });
-
-    }
-  }
-
-  seleccionar(row) {
-    let usersControl = <FormArray>this.seleccionarForm.controls.usuarios;
-    let selected = this.selection.isSelected(row);
-    if (selected) {
-      usersControl.push(this.formBuilder.group({ user_id: row.id }));
-    } else {
-      usersControl.removeAt(usersControl.value.findIndex(student => student.id === row.id))
-    }
-  }
-
-  filtrarEstudiantes(value){
-    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
 }

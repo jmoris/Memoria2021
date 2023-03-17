@@ -160,6 +160,7 @@ export class CursoComponent implements OnInit {
     }
 
     handleFileInput(files: FileList, modal) {
+        this.loading = true;
         this.fileToUpload = files.item(0);
         this.cursoService.uploadFile(this.fileToUpload, this.id).subscribe((data: any) => {
             this.fileToUpload = null;
@@ -169,6 +170,7 @@ export class CursoComponent implements OnInit {
             }
             this.toastr.success(data.msg, 'Notificación de exito', { timeOut: 3000 });
             this.carga = data;
+            this.loading = false;
             this.modalService.open(this.modalRef, { backdropClass: 'light-blue-backdrop' });
             this.loadData();
         });
