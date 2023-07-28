@@ -12,7 +12,7 @@
     <hr />
     <mat-dialog-content class="mat-dialog-content">
         <form-wizard>
-            <wizard-step [title]="'Información básica'" [isValid]="form.valid" (onNext)="onStep1Next($event)">
+            <wizard-step [title]="'Información básica'" [isValid]="form.valid" (onComplete)="onComplete($event)">
                 <form [formGroup]="form">
                     <div class="form-div">
                         <mat-form-field appearance="standard" class="input">

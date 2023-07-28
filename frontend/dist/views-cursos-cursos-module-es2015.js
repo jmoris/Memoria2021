@@ -557,7 +557,7 @@ AddCourseComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.sort2 = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.paginator = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.paginator2 = _t.first);
-    } }, decls: 44, vars: 11, consts: [[1, "row"], [1, "col-md-11"], ["mat-dialog-title", ""], [1, "col-md-1"], ["href", "javascript:void(0)"], ["mat-button", "", "mat-dialog-close", "", 1, "i-Close-Window", "text-danger"], [1, "mat-dialog-content"], [3, "title", "isValid", "onNext"], [3, "formGroup"], [1, "form-div"], ["appearance", "standard", 1, "input"], ["matInput", "", "placeholder", "Nombre del proyecto", "formControlName", "name", "maxlength", "70"], [4, "ngIf"], ["formControlName", "teacher_id", 3, "disabled"], [3, "value", 4, "ngFor", "ngForOf"], ["formControlName", "semester"], [3, "value"], ["matInput", "", "type", "number", "placeholder", "A\u00F1o del proyecto", "formControlName", "year", "min", "2000", "max", "2100"]], template: function AddCourseComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, decls: 44, vars: 11, consts: [[1, "row"], [1, "col-md-11"], ["mat-dialog-title", ""], [1, "col-md-1"], ["href", "javascript:void(0)"], ["mat-button", "", "mat-dialog-close", "", 1, "i-Close-Window", "text-danger"], [1, "mat-dialog-content"], [3, "title", "isValid", "onComplete"], [3, "formGroup"], [1, "form-div"], ["appearance", "standard", 1, "input"], ["matInput", "", "placeholder", "Nombre del proyecto", "formControlName", "name", "maxlength", "70"], [4, "ngIf"], ["formControlName", "teacher_id", 3, "disabled"], [3, "value", 4, "ngFor", "ngForOf"], ["formControlName", "semester"], [3, "value"], ["matInput", "", "type", "number", "placeholder", "A\u00F1o del proyecto", "formControlName", "year", "min", "2000", "max", "2100"]], template: function AddCourseComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
@@ -575,7 +575,7 @@ AddCourseComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "mat-dialog-content", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "form-wizard");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "wizard-step", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("onNext", function AddCourseComponent_Template_wizard_step_onNext_11_listener($event) { return ctx.onStep1Next($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("onComplete", function AddCourseComponent_Template_wizard_step_onComplete_11_listener($event) { return ctx.onComplete($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "form", 8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "mat-form-field", 10);

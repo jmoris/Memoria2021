@@ -1116,7 +1116,7 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
       },
       decls: 44,
       vars: 11,
-      consts: [[1, "row"], [1, "col-md-11"], ["mat-dialog-title", ""], [1, "col-md-1"], ["href", "javascript:void(0)"], ["mat-button", "", "mat-dialog-close", "", 1, "i-Close-Window", "text-danger"], [1, "mat-dialog-content"], [3, "title", "isValid", "onNext"], [3, "formGroup"], [1, "form-div"], ["appearance", "standard", 1, "input"], ["matInput", "", "placeholder", "Nombre del proyecto", "formControlName", "name", "maxlength", "70"], [4, "ngIf"], ["formControlName", "teacher_id", 3, "disabled"], [3, "value", 4, "ngFor", "ngForOf"], ["formControlName", "semester"], [3, "value"], ["matInput", "", "type", "number", "placeholder", "A\xF1o del proyecto", "formControlName", "year", "min", "2000", "max", "2100"]],
+      consts: [[1, "row"], [1, "col-md-11"], ["mat-dialog-title", ""], [1, "col-md-1"], ["href", "javascript:void(0)"], ["mat-button", "", "mat-dialog-close", "", 1, "i-Close-Window", "text-danger"], [1, "mat-dialog-content"], [3, "title", "isValid", "onComplete"], [3, "formGroup"], [1, "form-div"], ["appearance", "standard", 1, "input"], ["matInput", "", "placeholder", "Nombre del proyecto", "formControlName", "name", "maxlength", "70"], [4, "ngIf"], ["formControlName", "teacher_id", 3, "disabled"], [3, "value", 4, "ngFor", "ngForOf"], ["formControlName", "semester"], [3, "value"], ["matInput", "", "type", "number", "placeholder", "A\xF1o del proyecto", "formControlName", "year", "min", "2000", "max", "2100"]],
       template: function AddCourseComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
@@ -1153,8 +1153,8 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "wizard-step", 7);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("onNext", function AddCourseComponent_Template_wizard_step_onNext_11_listener($event) {
-            return ctx.onStep1Next($event);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("onComplete", function AddCourseComponent_Template_wizard_step_onComplete_11_listener($event) {
+            return ctx.onComplete($event);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "form", 8);
