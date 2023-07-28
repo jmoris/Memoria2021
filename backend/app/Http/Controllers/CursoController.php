@@ -242,7 +242,7 @@ class CursoController extends Controller
                     'name' => $nombre,
                     'lastname' => $apellido,
                     'email' => $email,
-                    'password' => $nombre[0].$apellido.date('y'),
+                    'password' => explode('@', $email)[0],
                     'role' => 2
                 ];
                 $fields_string = http_build_query($fields);
