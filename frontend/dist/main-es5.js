@@ -8069,7 +8069,7 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
 
     var environment = {
       production: false,
-      apiUrl: 'https://api.ghtracker.site/api' //apiUrl: 'http://localhost:8001/api'
+      apiUrl: 'http://api.ghtracker.site/api' //apiUrl: 'http://localhost:8001/api'
 
     };
     /*
