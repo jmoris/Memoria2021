@@ -34108,12 +34108,13 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
 
             _this15.change.emit(_this15.loading);
 
+            var fechaActual = moment_moment__WEBPACK_IMPORTED_MODULE_7__(_this15.createdDate).format('DD-MM-YYYY');
             var fecha = moment_moment__WEBPACK_IMPORTED_MODULE_7__(_this15.createdDate).format('DD-MM-YYYY').split('-');
             _this15.createdDate = new _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbDate"](parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
             _this15.fromDate = new _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbDate"](parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
             _this15.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormGroup"]({
               selected: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]({
-                startDate: dayjs__WEBPACK_IMPORTED_MODULE_9__(_this15.createdDate),
+                startDate: dayjs__WEBPACK_IMPORTED_MODULE_9__(fechaActual),
                 endDate: dayjs__WEBPACK_IMPORTED_MODULE_9__()
               })
             });

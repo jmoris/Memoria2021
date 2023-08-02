@@ -74,11 +74,12 @@ export class InformeMaatComponent implements OnInit {
     setTimeout(() => {
       this.loading = true;
       this.change.emit(this.loading);
+      let fechaActual = moment(this.createdDate).format('DD-MM-YYYY');
       let fecha = moment(this.createdDate).format('DD-MM-YYYY').split('-');
       this.createdDate = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
       this.fromDate = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
       this.form = new FormGroup({
-        selected: new FormControl({ startDate: dayjs(this.createdDate), endDate: dayjs() })
+        selected: new FormControl({ startDate: dayjs(fechaActual), endDate: dayjs() })
       });
       this.proyectoService.getMaatReport(this.id).subscribe((data: any) => {
         this.info = data;;
