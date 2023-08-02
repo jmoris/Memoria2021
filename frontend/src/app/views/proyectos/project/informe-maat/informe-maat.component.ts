@@ -6,6 +6,8 @@ import { NgbCalendar, NgbDate, NgbDateParserFormatter, NgbModal } from '@ng-boot
 import { ApexAxisChartSeries, ApexChart, ApexTitleSubtitle, ApexXAxis, ChartComponent } from 'ng-apexcharts';
 import { ProjectsService } from 'src/app/_services/projects.service';
 import * as moment from 'moment/moment';
+import { FormControl, FormGroup } from '@angular/forms';
+import * as dayjs from 'dayjs';
 
 export interface Maat {
   entity: string,
@@ -42,6 +44,23 @@ export class InformeMaatComponent implements OnInit {
   public chartOptions2: Partial<ChartOptions>;
 
   entityComplexity: any = { };
+
+  form: FormGroup = new FormGroup({
+    selected: new FormControl({ startDate: dayjs(), endDate: dayjs() })
+  });
+
+
+  locale: any = {
+    format: 'DD-MM-YYYY',
+    displayFormat: 'DD/MM/YYYY',
+    separator: ' al ', // default is ' - '
+    cancelLabel: 'Cancelar', // detault is 'Cancel'
+    applyLabel: 'Aceptar', // detault is 'Apply'
+    clearLabel: 'Limpiar', // detault is 'Clear'
+    customRangeLabel: 'Personalizar',
+    daysOfWeek: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
+    monthNames: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+  };
 
   dsMaat: MatTableDataSource<Maat> = new MatTableDataSource<Maat>();
   @ViewChild(MatSort) maatSort: MatSort = new MatSort();
@@ -154,6 +173,25 @@ export class InformeMaatComponent implements OnInit {
       this.loading = false;
     });
 
+  }
+
+  changeDate(e){
+    let value = this.form.value;
+    this.loading = true;
+    let desde = dayjs(value.selected.startDate).format('YYYY-MM-DD')
+    let hasta = dayjs(value.selected.endDate).format('YYYY-MM-DD')
+    let filename =this.entityComplexity.entity;
+    this.proyectoService.getProjectComplexityAnalysis(this.id, filename, desde, hasta).subscribe((data) => {
+      this.entityComplexity = data;
+      this.entityComplexity.entity = filename;
+      this.chartOptions.series = [{
+        name: 'Complejidad',
+        data: data.y
+      }];
+      this.chartOptions.xaxis.categories = data.x;
+
+      this.loading = false;
+    });
   }
 
   onDateSelection(date: NgbDate) {

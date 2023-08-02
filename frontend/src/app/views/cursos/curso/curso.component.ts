@@ -136,7 +136,9 @@ export class CursoComponent implements OnInit {
             supports: 0
         };
         console.log(this.curso);
-        this.users = this.users.concat(this.curso.profesor);
+        let profesor = this.curso.profesor;
+        profesor.pivot.perfil = 2;
+        this.users = this.users.concat(profesor);
         this.cursoService.usersList(this.id).subscribe((userData: any) => {
             this.users = this.users.concat(userData);
             this.dataSource.data = this.users;
