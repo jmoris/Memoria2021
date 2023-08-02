@@ -30,7 +30,8 @@ export class UserActivityComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     selected: new FormControl({ startDate: dayjs(), endDate: dayjs() })
-  });;
+  });
+  
   idProyecto: any;
   proyecto: any = null;
   miembroProyecto: any;

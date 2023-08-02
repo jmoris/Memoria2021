@@ -1,95 +1,97 @@
 <div class="row">
-    <div class="col-md-12">
-        <div class="card o-hidden mb-4">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="card o-hidden mb-4 mt-4 ml-4">
-                        <div class="card-body text-center">
-                            <div class="content">
-                                <p class="m-0 text-small text-muted">Total de entidades</p>
-                                <p class="text-primary text-40 line-height-1 m-0">
-                                    {{ info.length }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="card o-hidden mb-4 mt-4 mr-4">
-                        <table mat-table [dataSource]="dsMaat" class="mat-elevation-z8" matSort matSortActive="nrevs"
-                            matSortDirection="desc" matSortDisableClear>
-                            <ng-container matColumnDef="entity">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Entidad </th>
-                                <td mat-cell *matCellDef="let element"> {{element.entity}} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="nrevs">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Revisiones </th>
-                                <td mat-cell *matCellDef="let element"> {{element.nrevs}} </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="accion">
-                                <th mat-header-cell *matHeaderCellDef> Editar </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <button mat-icon-button color="primary" (click)="complexityAnalysis(complexityAnalysisModal, element.entity)">
-                                        <mat-icon class="mat-18">search</mat-icon>
-                                    </button>
-                                    <button mat-icon-button color="primary" (click)="openPCAModal(projectComplexityAnalisis, element.entity)">
-                                        <mat-icon class="mat-18">date_range</mat-icon>
-                                    </button>
-                                </td>
-                            </ng-container>
-
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                        </table>
-
-                        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 15]" class="mat-elevation-z8">
-                        </mat-paginator>
-                    </div>
-                </div>
+  <div class="col-md-12">
+    <div class="card o-hidden mb-4">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="card o-hidden mb-4 mt-4 ml-4">
+            <div class="card-body text-center">
+              <div class="content">
+                <p class="m-0 text-small text-muted">Total de entidades</p>
+                <p class="text-primary text-40 line-height-1 m-0">
+                  {{ info.length }}</p>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col-md-10">
+          <div class="card o-hidden mb-4 mt-4 mr-4">
+            <table mat-table [dataSource]="dsMaat" class="mat-elevation-z8" matSort matSortActive="nrevs"
+              matSortDirection="desc" matSortDisableClear>
+              <ng-container matColumnDef="entity">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Entidad </th>
+                <td mat-cell *matCellDef="let element"> {{element.entity}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nrevs">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Revisiones </th>
+                <td mat-cell *matCellDef="let element"> {{element.nrevs}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="accion">
+                <th mat-header-cell *matHeaderCellDef> Editar </th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button color="primary"
+                    (click)="complexityAnalysis(complexityAnalysisModal, element.entity)">
+                    <mat-icon class="mat-18">search</mat-icon>
+                  </button>
+                  <button mat-icon-button color="primary"
+                    (click)="openPCAModal(projectComplexityAnalisis, element.entity)">
+                    <mat-icon class="mat-18">date_range</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 15]" class="mat-elevation-z8">
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- VENTANA MODAL QUE SE DESPLEGA PARA CONFIRMAR LA ELIMINACIÓN DE UN DATO-->
 <ng-template #complexityAnalysisModal let-modal>
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-title">Análisis de complejidad a entidad</h4>
-		<button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
-			(click)="modal.dismiss('Cross click')">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
-	<div class="modal-body">
-		<div class="col-md-12">
-			<h3>{{ entityComplexity.entity }}</h3>
-			<table class="table">
-				<thead></thead>
-				<tbody>
-					<tr>
-						<td>Complejidad acumulada</td>
-						<td>{{ entityComplexity.total }}</td>
-					</tr>
-					<tr>
-						<td>Media de complejidad</td>
-						<td>{{ entityComplexity.mean }}</td>
-					</tr>
-					<tr>
-						<td>Desviación est. complejidad</td>
-						<td>{{ entityComplexity.sd }}</td>
-					</tr>
-					<tr>
-						<td>Maxima complejidad</td>
-						<td>{{ entityComplexity.max }}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-secondary btn-rounded"
-			(click)="modal.dismiss('cancel')">Cerrar</button>
-	</div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Análisis de complejidad a entidad</h4>
+    <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      <h3>{{ entityComplexity.entity }}</h3>
+      <table class="table">
+        <thead></thead>
+        <tbody>
+          <tr>
+            <td>Complejidad acumulada</td>
+            <td>{{ entityComplexity.total }}</td>
+          </tr>
+          <tr>
+            <td>Media de complejidad</td>
+            <td>{{ entityComplexity.mean }}</td>
+          </tr>
+          <tr>
+            <td>Desviación est. complejidad</td>
+            <td>{{ entityComplexity.sd }}</td>
+          </tr>
+          <tr>
+            <td>Maxima complejidad</td>
+            <td>{{ entityComplexity.max }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary btn-rounded"
+      (click)="modal.dismiss('cancel')">Cerrar</button>
+  </div>
 </ng-template>
 
 <!-- VENTANA MODAL QUE SE DESPLEGA PARA CONFIRMAR LA ELIMINACIÓN DE UN DATO-->
@@ -97,8 +99,8 @@
   <div class="modal-header">
     <h4 class="modal-title" id="modal-title">Análisis de complejidad a entidad</h4>
     <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
-    (click)="modal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
@@ -106,68 +108,31 @@
       <h3>{{ entityComplexity.entity }}</h3>
       <form class="row row-cols-sm-auto">
         <div class="col-12">
-          <div class="dp-hidden position-absolute">
-            <div class="input-group">
-              <form [formGroup]="form" class="col-md-12">
-                <mat-form-field appearance="standard" class="input" style="width:100%">
-                  <mat-label>Rango de fechas</mat-label>
-                  <input type="text" matInput ngxDaterangepickerMd formControlName="selected" placeholder="Seleccione el rango"
-                    (change)="changeDate($event)" [linkedCalendars]="false"
-                    [showDropdowns]="true" [locale]="locale" [lockStartDate]="false" />
-                </mat-form-field>
-              </form>
-              <ng-template #t let-date let-focused="focused">
-                <span
-                  class="custom-day"
-                  [class.focused]="focused"
-                  [class.range]="isRange(date)"
-                  [class.faded]="isHovered(date) || isInside(date)"
-                  (mouseenter)="hoveredDate = date"
-                  (mouseleave)="hoveredDate = null"
-                >
-                  {{ date.day }}
-                </span>
-              </ng-template>
-            </div>
-          </div>
-          <div class="input-group">
-            <input
-              #dpFromDate
-              class="form-control"
-              placeholder="yyyy-mm-dd"
-              name="dpFromDate"
-              [value]="formatter.format(fromDate)"
-              (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
-            />
-            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="datepicker.toggle()" type="button"></button>
-          </div>
+          <form [formGroup]="form" class="col-md-12">
+            <mat-form-field appearance="standard" class="input" style="width:100%">
+              <mat-label>Rango de fechas</mat-label>
+              <input type="text" matInput ngxDaterangepickerMd formControlName="selected"
+                placeholder="Seleccione el rango" (change)="changeDate($event)" [linkedCalendars]="false"
+                [showDropdowns]="true" [locale]="locale" [lockStartDate]="false" />
+            </mat-form-field>
+          </form>
         </div>
-        <div class="col-12">
-          <div class="input-group">
-            <input
-              #dpToDate
-              class="form-control"
-              placeholder="yyyy-mm-dd"
-              name="dpToDate"
-              [value]="formatter.format(toDate)"
-              (input)="toDate = validateInput(toDate, dpToDate.value)"
-            />
-            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="datepicker.toggle()" type="button"></button>
-          </div>
-        </div>
-      </form>
-
-      <apx-chart
-        [series]="chartOptions.series"
-        [chart]="chartOptions.chart"
-        [xaxis]="chartOptions.xaxis"
-        [title]="chartOptions.title"
-        ></apx-chart>
+    <div class="col-12">
+      <div class="input-group">
+        <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate"
+          [value]="formatter.format(toDate)" (input)="toDate = validateInput(toDate, dpToDate.value)" />
+        <button class="btn btn-outline-secondary bi bi-calendar3" (click)="datepicker.toggle()" type="button"></button>
+      </div>
     </div>
-    
+    </form>
+
+    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+      [title]="chartOptions.title"></apx-chart>
+  </div>
+
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary btn-rounded"
-    (click)="modal.dismiss('cancel')">Cerrar</button>
+      (click)="modal.dismiss('cancel')">Cerrar</button>
   </div>
-  </ng-template>
+</ng-template>

@@ -794,11 +794,11 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
       }
 
       if (rf & 2) {
-        var element_r604 = ctx.$implicit;
+        var element_r594 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r604.nombre, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r594.nombre, " ");
       }
     }
 
@@ -822,11 +822,11 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
       }
 
       if (rf & 2) {
-        var element_r605 = ctx.$implicit;
+        var element_r595 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r605.razon_social, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r595.razon_social, " ");
       }
     }
 
@@ -842,20 +842,20 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
 
     function GestionComponent_td_30_Template(rf, ctx) {
       if (rf & 1) {
-        var _r608 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r598 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td", 28);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 30);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GestionComponent_td_30_Template_button_click_1_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r608);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r598);
 
-          var element_r606 = ctx.$implicit;
+          var element_r596 = ctx.$implicit;
 
-          var ctx_r607 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r597 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r607.editCourse(element_r606.id);
+          return ctx_r597.editCourse(element_r596.id);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "mat-icon", 31);
@@ -878,20 +878,20 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
 
     function GestionComponent_td_33_Template(rf, ctx) {
       if (rf & 1) {
-        var _r611 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r601 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td", 28);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 30);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GestionComponent_td_33_Template_button_click_1_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r611);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r601);
 
-          var element_r609 = ctx.$implicit;
+          var element_r599 = ctx.$implicit;
 
-          var ctx_r610 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r600 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r610.deleteCourse(element_r609.id);
+          return ctx_r600.deleteCourse(element_r599.id);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "mat-icon", 32);
@@ -927,8 +927,8 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 37);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GestionComponent_ng_template_37_Template_button_click_3_listener() {
-          var modal_r613 = ctx.$implicit;
-          return modal_r613.dismiss("Cross click");
+          var modal_r603 = ctx.$implicit;
+          return modal_r603.dismiss("Cross click");
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 38);
@@ -960,8 +960,8 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 41);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GestionComponent_ng_template_37_Template_button_click_11_listener() {
-          var modal_r613 = ctx.$implicit;
-          return modal_r613.dismiss("cancel");
+          var modal_r603 = ctx.$implicit;
+          return modal_r603.dismiss("cancel");
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Cancelar");
@@ -971,8 +971,8 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 42);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GestionComponent_ng_template_37_Template_button_click_13_listener() {
-          var modal_r613 = ctx.$implicit;
-          return modal_r613.close("Ok");
+          var modal_r603 = ctx.$implicit;
+          return modal_r603.close("Ok");
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Borrar");
@@ -996,8 +996,8 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 37);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GestionComponent_ng_template_39_Template_button_click_3_listener() {
-          var modal_r617 = ctx.$implicit;
-          return modal_r617.dismiss("Cross click");
+          var modal_r607 = ctx.$implicit;
+          return modal_r607.dismiss("Cross click");
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 38);
@@ -1029,8 +1029,8 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 43);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GestionComponent_ng_template_39_Template_button_click_11_listener() {
-          var modal_r617 = ctx.$implicit;
-          return modal_r617.dismiss("cancel");
+          var modal_r607 = ctx.$implicit;
+          return modal_r607.dismiss("cancel");
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Cancelar");
@@ -1040,8 +1040,8 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 44);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GestionComponent_ng_template_39_Template_button_click_13_listener() {
-          var modal_r617 = ctx.$implicit;
-          return modal_r617.close("Ok");
+          var modal_r607 = ctx.$implicit;
+          return modal_r607.close("Ok");
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Borrar");
