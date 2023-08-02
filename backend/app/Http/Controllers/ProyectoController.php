@@ -461,6 +461,8 @@ class ProyectoController extends Controller
         $grafico3 = shell_exec($str . implode(',', $entity3['x']) . ' ' . implode(',', $entity3['y']));
         Log::info("IMPRESION DE GRAFICO");
         Log::info($str . implode(',', $entity1['x']) . ' ' . implode(',', $entity1['y']));
+        Log::info("LOG GRAFICO 1 ACTIVIDAD");
+        Log::info($grafico1);
         $html = '<style>
         @media print {
           .pagebreak { page-break-before: always; } /* page-break-after works, as well */
