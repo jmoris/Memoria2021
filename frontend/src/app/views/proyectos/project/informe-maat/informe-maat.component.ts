@@ -45,9 +45,7 @@ export class InformeMaatComponent implements OnInit {
 
   entityComplexity: any = { };
 
-  form: FormGroup = new FormGroup({
-    selected: new FormControl({ startDate: dayjs(), endDate: dayjs() })
-  });
+  form: FormGroup;
 
 
   locale: any = {
@@ -79,6 +77,9 @@ export class InformeMaatComponent implements OnInit {
       let fecha = moment(this.createdDate).format('DD-MM-YYYY').split('-');
       this.createdDate = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
       this.fromDate = new NgbDate(parseInt(fecha[2]), parseInt(fecha[1]), parseInt(fecha[0]));
+      this.form = new FormGroup({
+        selected: new FormControl({ startDate: dayjs(this.createdDate), endDate: dayjs() })
+      });
       this.proyectoService.getMaatReport(this.id).subscribe((data: any) => {
         this.info = data;;
 
