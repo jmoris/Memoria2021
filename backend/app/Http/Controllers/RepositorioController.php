@@ -138,7 +138,7 @@ class RepositorioController extends Controller
             }
             $start_sha = $filtered[0]['sha'];
             $end_sha = $filtered[count($filtered)-1]['sha'];
-            $str = 'cd '.$path_project.' && /usr/bin/python2.7 ../scripts/git_complexity_trend.py --end '.$start_sha.' --start '.$end_sha.' --file '.$request->filename;
+            $str = 'cd '.$path_project.' && /usr/bin/python2.7 ../scripts/git_complexity_trend.py --end '.$start_sha.' --start '.$end_sha.' --file '.$request->filename.' 2>&1';
             $res = shell_exec($str);
             $lines = explode(PHP_EOL, $res);
             $data = [
@@ -167,7 +167,7 @@ class RepositorioController extends Controller
             $path = public_path();
             $path = str_replace(' ', '\ ', $path);
             $path_project = $path.'/'.$nombre[1];
-            $str = 'cd '.$path.' && /usr/bin/python2.7 scripts/complexity_analysis.py '.$nombre[1].'/'.$request->filename;
+            $str = 'cd '.$path.' && /usr/bin/python2.7 scripts/complexity_analysis.py '.$nombre[1].'/'.$request->filename.' 2>&1';
             $res = shell_exec($str);
             $lines = explode(PHP_EOL, $res);
             $values = explode(',', $lines[1]);
@@ -318,8 +318,8 @@ class RepositorioController extends Controller
                 }
             }
 
-            $grafico1 = shell_exec('cd '.$path.' && /usr/bin/python2.7 grafico_usuario.py  \''.json_encode($data). '\'');
-            $grafico2 = shell_exec('cd '.$path.' && /usr/bin/python2.7 grafico_usuario_commits.py  \''.json_encode($data). '\'');
+            $grafico1 = shell_exec('cd '.$path.' && /usr/bin/python2.7 grafico_usuario.py  \''.json_encode($data). '\'').' 2>&1';
+            $grafico2 = shell_exec('cd '.$path.' && /usr/bin/python2.7 grafico_usuario_commits.py  \''.json_encode($data). '\'').' 2>&1';
             return '<img src="data:image/png;base64,'.$grafico1.'" border="0" /><img src="data:image/png;base64,'.$grafico2.'" border="0" />';
         }catch(Exception $ex){
             return $ex;
@@ -439,7 +439,7 @@ class RepositorioController extends Controller
                 Log::info('se clona');
                 // revisar script por que genera mal el log
                 //$str = 'cd '.$path.' &&  git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' &&  git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ &&  java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' &&  perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' &&  java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' &&  /usr/bin/python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
-                $str = 'cd '.$path.' && git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' &&  git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ &&  java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' &&  perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' &&  java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' &&  /usr/bin/python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
+                $str = 'cd '.$path.' && git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' &&  git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ &&  java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' &&  perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' &&  java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' &&  /usr/bin/python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4].' 2>&1';
                 Log::info("CLI CLONE: ". $str);
                 $res = shell_exec($str);
                 shell_exec('cd '.$path_project. ' && git log --graph --full-history --all --pretty=format:"[%h][%cn]%d%x20%s" > ../tree_'.$project->repositorio_id.'.txt');
@@ -449,7 +449,7 @@ class RepositorioController extends Controller
                 }
             }else{
                 Log::info('se hace pull(rm dir y clone)');
-                $str = 'cd '.$path.' && rm -Rf '.$nombre[1].' && git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' && git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && /usr/bin/python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
+                $str = 'cd '.$path.' && rm -Rf '.$nombre[1].' && git clone https://'.$user->gh_user.':'.$user->gh_token.'@github.com/'.$nombre[0].'/'.$nombre[1].'.git && cd ./'.$nombre[1].' && git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && /usr/bin/python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4].' 2>&1';
                 Log::info($str);
                 //$str = 'cd '.$path_project.' &&  git pull --ff-only && git log --pretty=format:"[%h] %an %ad %s" --date=short --numstat --before='.date('Y-m-d').' > ../'.$fileNames[0].' && cd ../ && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a summary > '.$fileNames[1].' && perl cloc ./'.$nombre[1].' --by-file --csv --quiet --report-file='.$fileNames[2].' && java -jar code-maat-0.8.5-standalone.jar maat -l '.$fileNames[0].' -c git -a revisions > '.$fileNames[3].' && /usr/bin/python2.7 scripts/merge_comp_freqs.py '.$fileNames[3].' '.$fileNames[2].' > '.$fileNames[4];
                 $res = shell_exec($str);
