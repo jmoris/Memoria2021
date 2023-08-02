@@ -432,8 +432,8 @@ class ProyectoController extends Controller
         }
         $graficos = [];
         foreach ($collabs as $collab) {
-            $grafico1 = shell_exec('cd ' . $path . ' && /usr/bin/python2 grafico_usuario.py  \'' . json_encode($data[$collab['name']]) . '\'');
-            $grafico2 = shell_exec('cd ' . $path . ' && /usr/bin/python2 grafico_usuario_commits.py  \'' . json_encode($data[$collab['name']]) . '\'');
+            $grafico1 = shell_exec('cd ' . $path . ' && /usr/bin/python2 grafico_usuario.py  \'' . json_encode($data[$collab['name']]) . '\'').' 2>&1';
+            $grafico2 = shell_exec('cd ' . $path . ' && /usr/bin/python2 grafico_usuario_commits.py  \'' . json_encode($data[$collab['name']]) . '\'').' 2>&1';
             $graficos[$collab['name']] = [
                 'activity' => $grafico1,
                 'commits' => $grafico2
@@ -456,9 +456,9 @@ class ProyectoController extends Controller
         $entity2 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[1]->entity, $repo->created_at);
         $entity3 = $this->getFileRangeComplexityAnalysis($request->project_id, $maat[2]->entity, $repo->created_at);
         $str = 'cd ' . $path . ' && /usr/bin/python2 grafico.py ';
-        $grafico1 = shell_exec($str . implode(',', $entity1['x']) . ' ' . implode(',', $entity1['y']));
-        $grafico2 = shell_exec($str . implode(',', $entity2['x']) . ' ' . implode(',', $entity2['y']));
-        $grafico3 = shell_exec($str . implode(',', $entity3['x']) . ' ' . implode(',', $entity3['y']));
+        $grafico1 = shell_exec($str . implode(',', $entity1['x']) . ' ' . implode(',', $entity1['y']).' 2>&1');
+        $grafico2 = shell_exec($str . implode(',', $entity2['x']) . ' ' . implode(',', $entity2['y']).' 2>&1');
+        $grafico3 = shell_exec($str . implode(',', $entity3['x']) . ' ' . implode(',', $entity3['y']).' 2>&1');
         Log::info("IMPRESION DE GRAFICO");
         Log::info($str . implode(',', $entity1['x']) . ' ' . implode(',', $entity1['y']));
         Log::info("LOG GRAFICO 1 ACTIVIDAD");
