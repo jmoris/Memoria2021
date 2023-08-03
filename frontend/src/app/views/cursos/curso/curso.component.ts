@@ -137,7 +137,6 @@ export class CursoComponent implements OnInit {
         };
         console.log(this.curso);
         let profesor = this.curso.profesor;
-        profesor.pivot.perfil = 2;
         this.users = this.users.concat(profesor);
         this.cursoService.usersList(this.id).subscribe((userData: any) => {
             this.users = this.users.concat(userData);
@@ -156,8 +155,8 @@ export class CursoComponent implements OnInit {
             });
             //this.users.push(this.curso.user);
             //this.users = this.users.concat(userData);
+            this.loading = false;
         })
-        this.loading = false;
 
     }
 
@@ -215,6 +214,8 @@ export class CursoComponent implements OnInit {
           if (result == 'Confirm') {
             this.toastr.success('Usuario agregado exitosamente', 'Notificación', { timeOut: 3000 });
             this.loadData();
+          }else if(result == 'Error'){
+            this.toastr.error('Hubo un error al agregar el usuario al curso.', 'Notificación de error', { timeOut: 3000 });
           }
         })
       }

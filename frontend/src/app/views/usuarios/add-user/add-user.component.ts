@@ -114,6 +114,7 @@ export class AddUserComponent implements OnInit {
         this.dialogRef.close('Confirm');
       },
       error: result => {
+        this.dialogRef.close('Error');
         console.log('Error: ' + result);
       }
     });

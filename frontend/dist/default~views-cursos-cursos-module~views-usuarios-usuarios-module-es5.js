@@ -372,6 +372,8 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
               _this3.dialogRef.close('Confirm');
             },
             error: function error(result) {
+              _this3.dialogRef.close('Error');
+
               console.log('Error: ' + result);
             }
           });

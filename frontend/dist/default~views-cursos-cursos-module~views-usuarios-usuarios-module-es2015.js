@@ -205,6 +205,7 @@ class AddUserComponent {
                 this.dialogRef.close('Confirm');
             },
             error: result => {
+                this.dialogRef.close('Error');
                 console.log('Error: ' + result);
             }
         });

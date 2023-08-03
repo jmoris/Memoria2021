@@ -2126,7 +2126,6 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
           };
           console.log(this.curso);
           var profesor = this.curso.profesor;
-          profesor.pivot.perfil = 2;
           this.users = this.users.concat(profesor);
           this.cursoService.usersList(this.id).subscribe(function (userData) {
             _this12.users = _this12.users.concat(userData);
@@ -2144,8 +2143,9 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
               }
             }); //this.users.push(this.curso.user);
             //this.users = this.users.concat(userData);
+
+            _this12.loading = false;
           });
-          this.loading = false;
         }
       }, {
         key: "handleFileInput",
@@ -2232,6 +2232,10 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
               });
 
               _this15.loadData();
+            } else if (result == 'Error') {
+              _this15.toastr.error('Hubo un error al agregar el usuario al curso.', 'Notificación de error', {
+                timeOut: 3000
+              });
             }
           });
         }

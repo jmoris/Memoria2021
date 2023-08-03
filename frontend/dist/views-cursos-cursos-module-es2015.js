@@ -1079,7 +1079,6 @@ class CursoComponent {
         };
         console.log(this.curso);
         let profesor = this.curso.profesor;
-        profesor.pivot.perfil = 2;
         this.users = this.users.concat(profesor);
         this.cursoService.usersList(this.id).subscribe((userData) => {
             this.users = this.users.concat(userData);
@@ -1100,8 +1099,8 @@ class CursoComponent {
             });
             //this.users.push(this.curso.user);
             //this.users = this.users.concat(userData);
+            this.loading = false;
         });
-        this.loading = false;
     }
     handleFileInput(files, modal) {
         this.loading = true;
@@ -1152,6 +1151,9 @@ class CursoComponent {
             if (result == 'Confirm') {
                 this.toastr.success('Usuario agregado exitosamente', 'Notificación', { timeOut: 3000 });
                 this.loadData();
+            }
+            else if (result == 'Error') {
+                this.toastr.error('Hubo un error al agregar el usuario al curso.', 'Notificación de error', { timeOut: 3000 });
             }
         });
     }
